@@ -6,6 +6,8 @@
 \usepackage[T1]{fontenc}
 %\usepackage{gentium}
 \usepackage{mathptmx} % Use Times Font
+\usepackage{esvect}
+\usepackage{mathrsfs}
 
 
 \usepackage[pdftex]{graphicx} % Required for including pictures
@@ -29,7 +31,7 @@
 % Set pdf information and add title, fill in the fields
 %-----------------------
 \hypersetup{ 	
-pdfsubject = {},
+pdfsubject = {The Discovery of Dark Matter - NOTES},
 pdftitle = {},
 pdfauthor = {}
 }
@@ -39,11 +41,85 @@ pdfauthor = {}
 %-----------------------
 \begin{document} %All text i dokumentet hamnar mellan dessa taggar, allt ovanför är formatering av dokumentet
 
-\section{Introduction}
+\section{On Particle Physics}
+\subsection{Standard Model}
+\subsection{Cross Sectional Area}Propagator:
+\begin{equation}
+    \frac{1}{s} = \frac{1}{q_0^2 - |q|^2} = \frac{1}{{E^{TOT}_{CoM}}^2}
+\end{equation}
 
-\lipsum[1-3]
+\subsection{Interactions}
+\subsubsection{Electromagnetic}
+Intermediate particle (virtual particle): EM wave, $\gamma$
+Conservation Laws:
+\begin{itemize}
+    \item E, $\vec{p}$ at each vertex
+    \item Charge, Q
+    \item Lepton number ($L_{e^-} = +1$, $L_{e^+} = -1$)
+    \item Flavour
+\end{itemize}
 
+\subsubsection{Strong}
+Intermediate particle (virtual particle): Gluon, g
+\begin{itemize}
+    \item E, $\vec{p}$ at each vertex
+    \item Flavour
+\end{itemize}
+Note: No electric charges in play, and leptons do not interact strongly.
 
-\subsection*{Subtitle}
-\lipsum[4-5]
+\subsubsection{Weak (Neutral)}
+Intermediate particle (virtual particle): Z boson, $Z^0$
+Similar conservation laws to EM:
+\begin{itemize}
+    \item E, $\vec{p}$ at each vertex
+    \item Charge, Q
+    \item Lepton number
+    \item Flavour
+\end{itemize}
+
+\subsubsection{Weak (Charged)}
+Intermediate particle (virtual particle): W boson, $W^+$ or $W^-$
+Conservation laws:
+\begin{itemize}
+    \item E, $\vec{p}$ at each vertex
+    \item Charge, Q
+    \item Lepton number
+\end{itemize}
+
+\subsection{Feynman Diagrams}
+
+\subsection{Feynman Rules}
+To obtain the amplitude of an interaction, there are some rules used. For an EM interaction:
+\begin{itemize}
+    \item Vertex is proportional to the charge
+    \item Conservation of E and $\vec{p}$ at each vertex
+    \item The propagator: 
+        \begin{equation}
+            D(q_o, \vec{q}) = \frac{1}{q_0^2 - |\vec{q}|^2 - M + i\Gamma M}
+        \end{equation}
+        Where $q_0 = \frac{(E^1 _f - E^1 _i)}{c} = \frac{(E^2 _f - E^2 _i)}{c}$
+        and $\vec{q} = \vec{p}^1_f - \vec{p}^1_i = \vec{p}^2_f - \vec{p}^2_i$
+\end{itemize}
+And so the amplitude of the interaction, $\mathscr{A}$ is proportional to:
+\begin{equation}
+    \frac{e_1 e_2}{q_0^2 - |\vec{q}|^2} = \frac{e_1 e_2}{\frac{(E^1 _f - E^1 _i)}{c} - \vec{p}^1_f - \vec{p}^1_i}
+\end{equation}
+
+And we can say that $\mathscr{A} \propto \frac{e^2}{s}$
+
+\section{Detection of Dark Matter}
+\subsection{Direct}
+Underground Dirac detection
+\subsection{Indirect}
+Collider search, where:
+\begin{itemize}
+    \item $E = mc^2$, can derive mass of DM from energy of collider
+    \item A visible particle is recoiled by an invisible particle
+    \item Missing momenta can deduce mass of Dark matter
+\end{itemize}
+\section{}
+
+\section{CalcHEP Notes}
+
 \end{document}
+
