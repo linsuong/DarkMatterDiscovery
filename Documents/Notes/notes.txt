@@ -1,0 +1,23 @@
+meeting 1:
+differnt obs for DM
+DM - relic density (well measured)
+    - how it interacts with our world (grav waves)
+
+diff models:
+    if DM >> grav, then detectable
+    underground dirac DM detection (direct)
+    indirect detection of DM
+    collider search (energy of collider to mass of DM) - invisible recoil visible
+        missing momenta
+
+- more observables
+
+- SM 
+- particle interaction
+- beyond SM - how interaction is different
+- calc DM relic density (DM observable)
+
+to do :
+plot E against cross section of e+e- -> mu+ mu- (E = 10 -> 200 GeV)
+
+jaxeldroid
