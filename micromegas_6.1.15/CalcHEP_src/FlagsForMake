@@ -1,0 +1,24 @@
+# compiler Flags
+CC = clang
+CFLAGS = -g -fsigned-char -std=gnu99 -fPIC
+HX11 = -I/usr/X11R6/include
+LX11 = -L/usr/X11R6/lib -lX11
+lDL = -ldl 
+SHARED = -dynamiclib
+SONAME = -install_name 
+SO = so
+SNUM = -DNUM_DOUBLE
+
+FC = gfortran 
+FFLAGS = -fno-automatic
+RANLIB = ranlib -c
+lFort = 
+lQuad = 
+CXX=clang++    
+CXXFLAGS = -g -fPIC 
+CALCHEP = /Users/linusong/Repositories/DarkMatterDiscovery/micromegas_6.1.15/CalcHEP_src
+UNAME = Darwin
+LHAPDF = 
+export CC CFLAGS  lDL LX11 SHARED SONAME SO FC FFLAGS RANLIB CXX CXXFLAGS lFort LHAPDF
+
+

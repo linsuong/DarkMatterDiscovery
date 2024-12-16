@@ -1,0 +1,7 @@
+
+Based on John McDonald "Thermally Generated Gauge Singlet Scalars as Self-Interacting Dark Matter", Phys.Rev.Lett. 88 (2002) 091304,
+ 	arXiv:hep-ph/0106249
+
+But in our case DM is a real scalar, while the paper treats the case of comples one. 
+V=  VSM+  1/2*Mdm1^2*(~x1)*(~x1)  + LaSH*(~x1)^2* H*H-bar  +1/4* LaS*(~x1)^4
+ 

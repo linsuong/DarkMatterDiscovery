@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/linusong/Documents/DMDiscovery/calchep_3.9.1/lib/lhapdf.so'
+relocations:     []
+...

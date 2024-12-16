@@ -1,0 +1,47 @@
+Block MODSEL    # Select model
+  1    0           # EWSB input
+  3    1           # NMSSM PARTICLE CONTENT
+  8    2           # Precision for Higgs masses
+  9    0           # FLAG FOR MICROMEGAS (0=NO, 1=YES
+ 10    0           # No scan, no ...
+ 13    1           # Sparticles decays
+Block SMINPUTS    # Standard Model inputs
+ 3   1.18400000E-01       # alpha_s(MZ) SM MSbar
+ 5   4.18000000E+00       # mb(mb) SM MSbar
+ 6   1.73070000E+02       # mtop(pole)
+ 7   1.77700000E+00       #  Mtau     
+Block MINPAR                 # Input parameters
+ 3   5.00000000E+00       # tanb
+Block EXTPAR
+ 0   -1        # EWSB
+ 1   1.50000000E+02      # MG1
+ 2   3.00000000E+02      # MG2
+ 3   1.00000000E+03      # MG3
+ 11  2.00000000E+03      # At 
+ 12  2.00000000E+03      # Ab 
+ 13  1.00000000E+03      # Atau
+ 31  3.00000000E+02      # Ml1
+ 32  3.00000000E+02      # Ml2
+ 33  3.00000000E+02      # Ml3
+ 34  3.00000000E+02      # MR2
+ 35  3.00000000E+02      # MR2
+ 36  3.00000000E+02      # MR3
+ 41  1.00000000E+03      # Mq1
+ 42  1.00000000E+03      # Mq2
+ 43  1.00000000E+03      # Mq3
+ 44  1.00000000E+03      # Mu1
+ 45  1.00000000E+03      # Mu2
+ 46  1.00000000E+03      # Mu3
+ 47  1.00000000E+03      # Md1
+ 48  1.00000000E+03      # Md2
+ 49  1.00000000E+03      # Md3
+ 61  1.00000000E-01      # L
+ 62  1.00000000E-01      # K
+ 63  1.00000000E+02      # AL
+ 64  0.00000000E+00      # AK
+ 65  2.10000000E+02      # MU
+ 66  0.00000000E+00        # XiF 
+ 67  0.00000000E+00        # XiS 
+ 68  0.00000000E+00        # muP 
+ 69  0.00000000E+00        # MS'^2 
+ 72  0.00000000E+00        # M3H^2

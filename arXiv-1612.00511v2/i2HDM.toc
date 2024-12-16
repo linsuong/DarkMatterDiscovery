@@ -1,0 +1,33 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}% 
+\contentsline {section}{\numberline {2}i2HDM: parameter space, model implementation, theoretical and experimental constraints}{6}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Constraints from the Higgs potential}{6}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Model implementation}{8}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Constraints from perturbativity and unitarity}{9}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.4}Constraints from LEP and electroweak precision data}{11}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}Constraints from LHC Higgs data}{12}{subsection.2.5}% 
+\contentsline {subsection}{\numberline {2.6}Dark Matter relic density and direct/indirect detection}{14}{subsection.2.6}% 
+\contentsline {section}{\numberline {3}Numerical scan of the parameter space}{18}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Results of the general scan}{18}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Fitting the relic density}{20}{subsection.3.2}% 
+\contentsline {subsubsection}{\numberline {3.2.1}The low mass region}{21}{subsubsection.3.2.1}% 
+\contentsline {subsubsection}{\numberline {3.2.2}The high mass region and the LHC sensitivity}{22}{subsubsection.3.2.2}% 
+\contentsline {section}{\numberline {4}Probing Dark Matter signals from i2HDM at the LHC}{25}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Dark Matter signatures: diagrams and features}{25}{subsection.4.1}% 
+\contentsline {subsubsection}{\numberline {4.1.1}Mono-jet production}{25}{subsubsection.4.1.1}% 
+\contentsline {subsubsection}{\numberline {4.1.2}Mono-$Z$ production}{26}{subsubsection.4.1.2}% 
+\contentsline {subsubsection}{\numberline {4.1.3}Mono-Higgs production}{27}{subsubsection.4.1.3}% 
+\contentsline {subsubsection}{\numberline {4.1.4}Vector boson fusion}{29}{subsubsection.4.1.4}% 
+\contentsline {subsection}{\numberline {4.2}Mono-object production: rates and comparison}{29}{subsection.4.2}% 
+\contentsline {subsubsection}{\numberline {4.2.1}Implementation and cuts}{29}{subsubsection.4.2.1}% 
+\contentsline {subsubsection}{\numberline {4.2.2}Production rates}{30}{subsubsection.4.2.2}% 
+\contentsline {subsection}{\numberline {4.3}Benchmark points}{31}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {4.4}Limits from LHC@8TeV and projections for LHC@13TeV}{33}{subsection.4.4}% 
+\contentsline {subsubsection}{\numberline {4.4.1}Implementation and the LHC data used}{33}{subsubsection.4.4.1}% 
+\contentsline {subsubsection}{\numberline {4.4.2}Limits from $pp\rightarrow h_1h_1 j$}{34}{subsubsection.4.4.2}% 
+\contentsline {subsubsection}{\numberline {4.4.3}Limits from $pp\rightarrow h_1h_2 j$}{36}{subsubsection.4.4.3}% 
+\contentsline {section}{\numberline {5}Constraining i2HDM: future projections}{37}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}Highlighting the ``always allowed'' regions}{37}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}Highlighting the ``always excluded'' regions}{37}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}Fitting the PLANCK data: future projections}{39}{subsection.5.3}% 
+\contentsline {section}{\numberline {6}Concluding remarks}{41}{section.6}% 
+\contentsline {section}{\numberline {A}Numerical scan: detailed discussion}{43}{appendix.A}% 

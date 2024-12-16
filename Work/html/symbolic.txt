@@ -1,0 +1,16 @@
+	CalcHEP Symbolic Details
+
+Processes                Removes                  Lib  PID       Time
+u,U->~h+,~h-                                      x    79133     0.00
+U,u->~h+,~h-                                      x    79136     0.00
+d,D->~h+,~h-                                      x    79139     0.00
+D,d->~h+,~h-                                      x    79142     0.00
+s,S->~h+,~h-                                      x    79145     0.00
+S,s->~h+,~h-                                      x    79148     0.00
+c,C->~h+,~h-                                      x    79151     0.00
+C,c->~h+,~h-                                      x    79156     0.00
+b,B->~h+,~h-                                      x    79476     0.00
+B,b->~h+,~h-                                      x    79488     0.00
+G,G->~h+,~h-                                      x    79684     0.00
+Widths                                            x    79687     0.00
+

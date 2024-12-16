@@ -1,0 +1,135 @@
+
+
+Dear students, 
+
+I have uploaded I2HDM_DM folder to Onedrive, this is the folder in my  micrOMEGAs micromegas_6.1.15
+There I have written several useful programs -- templates for your study. Please read everything below very carefully, since this material is very important for the success of your study.
+
+main_random_scan.c
+As have written in  micrOMEGAs  manual as well as in any README file in micromegas folder.
+To compile main_random_scan.c and get executable from it you need to 
+
+Use "make" or "gmake":
+
+#########################
+make  main=main_random_scan.c
+
+It will create main_random_scan executable
+It is just a template for your study. You can use any name there.
+
+Main_random_scan.c is based on main.c
+But it does not need any file as a parameter:
+
+#########################
+main_random_scan.c
+
+
+It does the random scan (10000 points) (log scale) over 
+MD1, DMP, DM3 and ld345 space with the min-max values given in lines 
+104-107 of the code.
+
+The program evaluates several important observable, which you will be using for your analysis:
+Omh2 -> Omega h^2 protonSI -> DM-proton scattering cross section
+PvalDD -> P-value for DM direct detection (DD)  experiments -- if P-value is less than 0.1, then the point is excluded by DM DD experiments at 90% CL; the name of the experiment which excludes is given by expDD parameter
+CMB_ID -> the limit on DM from CMB constraints: if CMB_ID>1, then the point is excluded at 90% CL by these constraints
+brH_DMDM -> is Higgs-> DM DM branching ratio, i.e. the branching ratio for invisible Higgs decay. You should check the latest experimental limits on brH_DMDM. In my example analysis code plot.py which is also located in this folder, I am using rough limit (as an example) : brH_DMDM=<0.1 to select good points. I.e. if brH_DMDM>0.1 then the points are excluded if you use this criteria. But as I have said, you should use the latest experimental limits on thai value.You should check the Inspire database for this.
+
+main_random_scan.c writes the file scan.dat in a form of a table with all these parameters. Again, this is just a template for you. You can modify this program:
+E.g. to run many jobs in parallel to create several files scan1.dat, scan2.dat to get more statistics for further analysis
+To generate data for the grid instead of random scan, this is especially useful to explore 2D space (you fix all parameters except two and produce data for the grid in this specific parameter space)
+You can explore 1D space with the modified main_random_scan.c
+(in analogy to point b.)
+
+2. I have also written for you the python file plots.py as a template for your analysis
+This file reads scan.dat. Actually I have written plots.py which reads scan.dat.gz -- the zipped scan.dat (which one can get by execution ‘gzip scan.dat’ command). This is done to save disk space which would be very useful if you will be using big scans.
+So, plots.py reads scan.dat.gz and performs an  example of the analysis which you should develop during your project. What it does is:
+It reads data using pandas
+It applies selection criteria
+cutOM=(df['Omegah2'] < 1.)
+Which requires DM relic density to be not too large (df['Omegah2'] < 1. , but in you own analysis you need to apply Planck constraints on DM relic density), <-- important
+
+cutDD=(df['PvalDD'] > 0.1) -- DM DD constraints
+cutCMB=(df['CMB_ID'] <1) -- DM CMB constraints
+It makes a plot in a form of the scatter plot in
+MD1-ld345 plane. The scatter plot also has a colour map reflecting relic density
+Then it saves the plot as plot.pdf in pdf format
+plots.py will allow you to create plots and perform analysis  analogous to those in 
+https://arxiv.org/abs/1612.00511 
+https://arxiv.org/abs/1809.00933 
+papers. But you need to adjust it -- this is the part of your project
+
+
+3. Your task -- for BSC (and the first part of MPHY project)
+Is to explore I2HDM parameter space and i find the regions allowed by:
+
+LEP/HIGGS data (for LEP constraints please read the end of 2.4 section of 1612.00511 )
+ DM relic density constraints
+DM DD constraints
+DM CMB constraint
+
+You should find how these constraints complement each other and what is the parameter space which survives.
+
+I also expect that you will project 4D scan into different 2D planes, perform 
+2D grid scan and analysis and 1D scan for some parameters, like relic density.
+
+You can also see the compatibility of the parameter space with the LHC constraints,
+See FIG. 12 of the  https://arxiv.org/pdf/2204.06411 paper
+
+You have everything in your hands with these examples.
+Of course, do not hesitate to ask questions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=====================================================
+Installation of a new model.
+
+The model of particle interaction has to be defined in the    
+CalcHEP format,   Comput.Phys.Commun. 184 (2013) 1729-1769 //arXiv:arXiv:1207.6082[hep-ph] 
+
+1. Define the model  by writing the
+  extlib1.mdl  func1.mdl  lgrng1.mdl  prtcls1.mdl  vars1.mdl 
+ model files and put these files in the  directory work/models/.
+   LanHEP program  (as well as FeynRules with UFO output) can help  you to generate model files. 
+   The names of all particles in the dark sectors that can potentially be a dark matter candidate  should  start with "~". 
+
+2. To check your model, go to work/  and launch 
+   ./calchep 
+Use "Check Model"  to get  information  about   model inconsistencies. 
+  
+3. External constraints. 
+If your model has external functions  they have to be realized 
+as a  library in lib/aLib.a. If your external functions do not need other 
+libraries and are written in C, then put this code in the lib/
+subdirectory. The library will be compiled automatically.  In more complicated case,
+improve  lib/Makefile
+ 
+4. We provide the  user with  two examples of main programs: 
+main.c and main.F
+
+Compilation of executable is launched by 
+
+    gmake  main=<name of your main file>
+
+if gmake is absent, use make. We assume that in such case make works like 
+gmake.

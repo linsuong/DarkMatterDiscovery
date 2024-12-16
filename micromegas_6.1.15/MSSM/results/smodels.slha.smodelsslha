@@ -1,0 +1,674 @@
+BLOCK SModelS_Settings
+ 0 v3.0.0                    #SModelS version
+ 1 3.0.0                     #database version
+ 2 0.2                       #maximum condition violation
+ 3 1                         #compression (0 off, 1 on)
+ 4 5.                        #minimum mass gap for mass compression [GeV]
+ 5 1e-4                      #sigmacut [fb]
+ 6 0                         #signal region combination (0 off, 1 on)
+ 7 0                         #analyses combination (0 off, 1 on)
+ 8 1e-11                     #prompt width [GeV] 
+ 9 1e-25                     #stable width [GeV] 
+
+BLOCK SModelS_Exclusion
+ 0 0 0                              #output status (-1 not tested, 0 not excluded, 1 excluded)
+ 1 0 TChiWZ                         #txname 
+ 1 1 7.065E-01                      #r value
+ 1 2 6.084E-01                      #expected r value
+ 1 3 0.00                           #condition violation
+ 1 4 ATLAS-SUSY-2019-09             #analysis
+ 1 5 (UL)                           #signal region 
+ 1 6 N/A                            #nll
+ 1 7 N/A                            #nll_min
+ 1 8 N/A                            #nll_SM
+
+ 2 0 TChiWZ                         #txname 
+ 2 1 6.834E-01                      #r value
+ 2 2 4.284E-01                      #expected r value
+ 2 3 0.00                           #condition violation
+ 2 4 ATLAS-SUSY-2019-09             #analysis
+ 2 5 SRWZ_5                         #signal region 
+ 2 6 8.57E+00                       #nll
+ 2 7 7.05E+00                       #nll_min
+ 2 8 7.05E+00                       #nll_SM
+
+ 3 0 TChiWZ                         #txname 
+ 3 1 6.749E-01                      #r value
+ 3 2 7.824E-01                      #expected r value
+ 3 3 0.00                           #condition violation
+ 3 4 ATLAS-SUSY-2018-05-ewk         #analysis
+ 3 5 SRInt_1_cuts                   #signal region 
+ 3 6 5.65E+00                       #nll
+ 3 7 4.68E+00                       #nll_min
+ 3 8 4.70E+00                       #nll_SM
+
+ 4 0 TChiWW                         #txname 
+ 4 1 6.322E-01                      #r value
+ 4 2 N/A                            #expected r value
+ 4 3 0.00                           #condition violation
+ 4 4 ATLAS-SUSY-2018-32             #analysis
+ 4 5 (UL)                           #signal region 
+ 4 6 N/A                            #nll
+ 4 7 N/A                            #nll_min
+ 4 8 N/A                            #nll_SM
+
+ 5 0 TChiWH                         #txname 
+ 5 1 4.923E-01                      #r value
+ 5 2 5.681E-01                      #expected r value
+ 5 3 0.00                           #condition violation
+ 5 4 ATLAS-SUSY-2019-08             #analysis
+ 5 5 SR_MM_High_MCT                 #signal region 
+ 5 6 2.14E+00                       #nll
+ 5 7 1.71E+00                       #nll_min
+ 5 8 1.80E+00                       #nll_SM
+
+ 6 0 TChiWZ                         #txname 
+ 6 1 4.569E-01                      #r value
+ 6 2 N/A                            #expected r value
+ 6 3 0.00                           #condition violation
+ 6 4 ATLAS-SUSY-2016-24             #analysis
+ 6 5 (UL)                           #signal region 
+ 6 6 N/A                            #nll
+ 6 7 N/A                            #nll_min
+ 6 8 N/A                            #nll_SM
+
+ 7 0 TChiWH                         #txname 
+ 7 1 3.863E-01                      #r value
+ 7 2 N/A                            #expected r value
+ 7 3 0.00                           #condition violation
+ 7 4 ATLAS-SUSY-2019-08             #analysis
+ 7 5 (UL)                           #signal region 
+ 7 6 N/A                            #nll
+ 7 7 N/A                            #nll_min
+ 7 8 N/A                            #nll_SM
+
+ 8 0 TChiWZ                         #txname 
+ 8 1 3.581E-01                      #r value
+ 8 2 5.109E-01                      #expected r value
+ 8 3 0.00                           #condition violation
+ 8 4 ATLAS-SUSY-2018-06             #analysis
+ 8 5 (UL)                           #signal region 
+ 8 6 N/A                            #nll
+ 8 7 N/A                            #nll_min
+ 8 8 N/A                            #nll_SM
+
+ 9 0 TChiWZ                         #txname 
+ 9 1 3.433E-01                      #r value
+ 9 2 N/A                            #expected r value
+ 9 3 0.00                           #condition violation
+ 9 4 CMS-SUS-17-004                 #analysis
+ 9 5 (UL)                           #signal region 
+ 9 6 N/A                            #nll
+ 9 7 N/A                            #nll_min
+ 9 8 N/A                            #nll_SM
+
+ 10 0 TChiWH, TChiWW, TChiWZ         #txname 
+ 10 1 3.311E-01                      #r value
+ 10 2 2.691E-01                      #expected r value
+ 10 3 0.00                           #condition violation
+ 10 4 CMS-SUS-21-002                 #analysis
+ 10 5 b_veto_SR0                     #signal region 
+ 10 6 6.78E+00                       #nll
+ 10 7 6.38E+00                       #nll_min
+ 10 8 6.38E+00                       #nll_SM
+
+ 11 0 TChiWZ                         #txname 
+ 11 1 2.850E-01                      #r value
+ 11 2 2.287E-01                      #expected r value
+ 11 3 0.00                           #condition violation
+ 11 4 ATLAS-SUSY-2016-24             #analysis
+ 11 5 SR2-int                        #signal region 
+ 11 6 3.81E+00                       #nll
+ 11 7 3.42E+00                       #nll_min
+ 11 8 3.42E+00                       #nll_SM
+
+ 12 0 TChiWZ                         #txname 
+ 12 1 2.755E-01                      #r value
+ 12 2 N/A                            #expected r value
+ 12 3 0.00                           #condition violation
+ 12 4 ATLAS-SUSY-2017-03             #analysis
+ 12 5 (UL)                           #signal region 
+ 12 6 N/A                            #nll
+ 12 7 N/A                            #nll_min
+ 12 8 N/A                            #nll_SM
+
+ 13 0 TChiWW                         #txname 
+ 13 1 2.705E-01                      #r value
+ 13 2 2.705E-01                      #expected r value
+ 13 3 0.00                           #condition violation
+ 13 4 ATLAS-SUSY-2018-32             #analysis
+ 13 5 SRDF_0e_cuts                   #signal region 
+ 13 6 3.94E+00                       #nll
+ 13 7 3.74E+00                       #nll_min
+ 13 8 3.74E+00                       #nll_SM
+
+ 14 0 TChiWZ                         #txname 
+ 14 1 2.700E-01                      #r value
+ 14 2 2.025E-01                      #expected r value
+ 14 3 0.00                           #condition violation
+ 14 4 ATLAS-SUSY-2017-03             #analysis
+ 14 5 SR3l_Int                       #signal region 
+ 14 6 2.19E+00                       #nll
+ 14 7 1.65E+00                       #nll_min
+ 14 8 1.65E+00                       #nll_SM
+
+ 15 0 TChiWZ                         #txname 
+ 15 1 2.573E-01                      #r value
+ 15 2 N/A                            #expected r value
+ 15 3 0.00                           #condition violation
+ 15 4 ATLAS-SUSY-2018-05             #analysis
+ 15 5 (UL)                           #signal region 
+ 15 6 N/A                            #nll
+ 15 7 N/A                            #nll_min
+ 15 8 N/A                            #nll_SM
+
+ 16 0 TChiWZ                         #txname 
+ 16 1 2.464E-01                      #r value
+ 16 2 2.240E-01                      #expected r value
+ 16 3 0.00                           #condition violation
+ 16 4 CMS-SUS-20-001                 #analysis
+ 16 5 (UL)                           #signal region 
+ 16 6 N/A                            #nll
+ 16 7 N/A                            #nll_min
+ 16 8 N/A                            #nll_SM
+
+ 17 0 TChiWZ                         #txname 
+ 17 1 2.190E-01                      #r value
+ 17 2 N/A                            #expected r value
+ 17 3 0.00                           #condition violation
+ 17 4 CMS-SUS-16-039                 #analysis
+ 17 5 (UL)                           #signal region 
+ 17 6 N/A                            #nll
+ 17 7 N/A                            #nll_min
+ 17 8 N/A                            #nll_SM
+
+ 18 0 TChiWH                         #txname 
+ 18 1 1.912E-01                      #r value
+ 18 2 N/A                            #expected r value
+ 18 3 0.00                           #condition violation
+ 18 4 CMS-SUS-17-004                 #analysis
+ 18 5 (UL)                           #signal region 
+ 18 6 N/A                            #nll
+ 18 7 N/A                            #nll_min
+ 18 8 N/A                            #nll_SM
+
+ 19 0 TChiWH                         #txname 
+ 19 1 1.867E-01                      #r value
+ 19 2 2.460E-01                      #expected r value
+ 19 3 0.00                           #condition violation
+ 19 4 ATLAS-SUSY-2018-23             #analysis
+ 19 5 (UL)                           #signal region 
+ 19 6 N/A                            #nll
+ 19 7 N/A                            #nll_min
+ 19 8 N/A                            #nll_SM
+
+ 20 0 TChiWZ                         #txname 
+ 20 1 1.867E-01                      #r value
+ 20 2 2.073E-01                      #expected r value
+ 20 3 0.00                           #condition violation
+ 20 4 ATLAS-SUSY-2018-06             #analysis
+ 20 5 SR_low                         #signal region 
+ 20 6 5.42E+00                       #nll
+ 20 7 5.41E+00                       #nll_min
+ 20 8 5.58E+00                       #nll_SM
+
+ 21 0 TChiWW                         #txname 
+ 21 1 1.848E-01                      #r value
+ 21 2 1.731E-01                      #expected r value
+ 21 3 0.00                           #condition violation
+ 21 4 CMS-SUS-21-002                 #analysis
+ 21 5 (UL)                           #signal region 
+ 21 6 N/A                            #nll
+ 21 7 N/A                            #nll_min
+ 21 8 N/A                            #nll_SM
+
+ 22 0 TChiWZ                         #txname 
+ 22 1 1.816E-01                      #r value
+ 22 2 2.343E-01                      #expected r value
+ 22 3 0.00                           #condition violation
+ 22 4 CMS-SUS-16-039-agg             #analysis
+ 22 5 AR6                            #signal region 
+ 22 6 2.92E+00                       #nll
+ 22 7 2.92E+00                       #nll_min
+ 22 8 3.08E+00                       #nll_SM
+
+ 23 0 TChiWZ                         #txname 
+ 23 1 1.699E-01                      #r value
+ 23 2 N/A                            #expected r value
+ 23 3 0.00                           #condition violation
+ 23 4 CMS-SUS-16-034                 #analysis
+ 23 5 (UL)                           #signal region 
+ 23 6 N/A                            #nll
+ 23 7 N/A                            #nll_min
+ 23 8 N/A                            #nll_SM
+
+ 24 0 TChiWZ                         #txname 
+ 24 1 1.650E-01                      #r value
+ 24 2 N/A                            #expected r value
+ 24 3 0.00                           #condition violation
+ 24 4 ATLAS-SUSY-2013-12             #analysis
+ 24 5 (UL)                           #signal region 
+ 24 6 N/A                            #nll
+ 24 7 N/A                            #nll_min
+ 24 8 N/A                            #nll_SM
+
+ 25 0 TChiWZ                         #txname 
+ 25 1 1.622E-01                      #r value
+ 25 2 1.427E-01                      #expected r value
+ 25 3 0.00                           #condition violation
+ 25 4 ATLAS-SUSY-2013-12             #analysis
+ 25 5 SR0tau_a_Bin16                 #signal region 
+ 25 6 3.38E+00                       #nll
+ 25 7 3.14E+00                       #nll_min
+ 25 8 3.14E+00                       #nll_SM
+
+ 26 0 TChiWH                         #txname 
+ 26 1 1.592E-01                      #r value
+ 26 2 1.623E-01                      #expected r value
+ 26 3 0.00                           #condition violation
+ 26 4 CMS-SUS-21-002                 #analysis
+ 26 5 (UL)                           #signal region 
+ 26 6 N/A                            #nll
+ 26 7 N/A                            #nll_min
+ 26 8 N/A                            #nll_SM
+
+ 27 0 TChiWH                         #txname 
+ 27 1 1.572E-01                      #r value
+ 27 2 N/A                            #expected r value
+ 27 3 0.00                           #condition violation
+ 27 4 CMS-SUS-16-043                 #analysis
+ 27 5 (UL)                           #signal region 
+ 27 6 N/A                            #nll
+ 27 7 N/A                            #nll_min
+ 27 8 N/A                            #nll_SM
+
+ 28 0 TChiWZ                         #txname 
+ 28 1 1.202E-01                      #r value
+ 28 2 N/A                            #expected r value
+ 28 3 0.00                           #condition violation
+ 28 4 ATLAS-SUSY-2013-11             #analysis
+ 28 5 (UL)                           #signal region 
+ 28 6 N/A                            #nll
+ 28 7 N/A                            #nll_min
+ 28 8 N/A                            #nll_SM
+
+ 29 0 TChiWH                         #txname 
+ 29 1 1.151E-01                      #r value
+ 29 2 N/A                            #expected r value
+ 29 3 0.00                           #condition violation
+ 29 4 CMS-SUS-18-007                 #analysis
+ 29 5 (UL)                           #signal region 
+ 29 6 N/A                            #nll
+ 29 7 N/A                            #nll_min
+ 29 8 N/A                            #nll_SM
+
+ 30 0 TChiWH                         #txname 
+ 30 1 1.138E-01                      #r value
+ 30 2 N/A                            #expected r value
+ 30 3 0.00                           #condition violation
+ 30 4 ATLAS-SUSY-2013-23             #analysis
+ 30 5 (UL)                           #signal region 
+ 30 6 N/A                            #nll
+ 30 7 N/A                            #nll_min
+ 30 8 N/A                            #nll_SM
+
+ 31 0 TChiWH                         #txname 
+ 31 1 1.098E-01                      #r value
+ 31 2 N/A                            #expected r value
+ 31 3 0.00                           #condition violation
+ 31 4 CMS-SUS-13-006                 #analysis
+ 31 5 (UL)                           #signal region 
+ 31 6 N/A                            #nll
+ 31 7 N/A                            #nll_min
+ 31 8 N/A                            #nll_SM
+
+ 32 0 TChiWZ                         #txname 
+ 32 1 9.368E-02                      #r value
+ 32 2 N/A                            #expected r value
+ 32 3 0.00                           #condition violation
+ 32 4 CMS-SUS-13-006                 #analysis
+ 32 5 (UL)                           #signal region 
+ 32 6 N/A                            #nll
+ 32 7 N/A                            #nll_min
+ 32 8 N/A                            #nll_SM
+
+ 33 0 TChiWW                         #txname 
+ 33 1 8.587E-02                      #r value
+ 33 2 1.041E-01                      #expected r value
+ 33 3 0.00                           #condition violation
+ 33 4 ATLAS-SUSY-2013-11             #analysis
+ 33 5 WWc-DF                         #signal region 
+ 33 6 3.87E+00                       #nll
+ 33 7 3.83E+00                       #nll_min
+ 33 8 3.97E+00                       #nll_SM
+
+ 34 0 TChiWH                         #txname 
+ 34 1 8.520E-02                      #r value
+ 34 2 1.374E-01                      #expected r value
+ 34 3 0.00                           #condition violation
+ 34 4 ATLAS-SUSY-2019-09             #analysis
+ 34 5 (UL)                           #signal region 
+ 34 6 N/A                            #nll
+ 34 7 N/A                            #nll_min
+ 34 8 N/A                            #nll_SM
+
+ 35 0 TChiWZ                         #txname 
+ 35 1 8.461E-02                      #r value
+ 35 2 8.301E-02                      #expected r value
+ 35 3 0.00                           #condition violation
+ 35 4 CMS-SUS-21-002                 #analysis
+ 35 5 (UL)                           #signal region 
+ 35 6 N/A                            #nll
+ 35 7 N/A                            #nll_min
+ 35 8 N/A                            #nll_SM
+
+ 36 0 TChiWH                         #txname 
+ 36 1 7.669E-02                      #r value
+ 36 2 N/A                            #expected r value
+ 36 3 0.00                           #condition violation
+ 36 4 CMS-SUS-16-039                 #analysis
+ 36 5 (UL)                           #signal region 
+ 36 6 N/A                            #nll
+ 36 7 N/A                            #nll_min
+ 36 8 N/A                            #nll_SM
+
+ 37 0 TChiWH                         #txname 
+ 37 1 7.539E-02                      #r value
+ 37 2 N/A                            #expected r value
+ 37 3 0.00                           #condition violation
+ 37 4 CMS-SUS-16-045                 #analysis
+ 37 5 (UL)                           #signal region 
+ 37 6 N/A                            #nll
+ 37 7 N/A                            #nll_min
+ 37 8 N/A                            #nll_SM
+
+ 38 0 TChiWW, TChiWZ, TChiZZ         #txname 
+ 38 1 1.654E-02                      #r value
+ 38 2 1.239E-02                      #expected r value
+ 38 3 0.00                           #condition violation
+ 38 4 CMS-SUS-13-012                 #analysis
+ 38 5 3NJet6_800HT1000_300MHT450     #signal region 
+ 38 6 8.57E+00                       #nll
+ 38 7 8.55E+00                       #nll_min
+ 38 8 8.55E+00                       #nll_SM
+
+ 39 0 TChiHH                         #txname 
+ 39 1 5.781E-04                      #r value
+ 39 2 4.011E-04                      #expected r value
+ 39 3 0.00                           #condition violation
+ 39 4 CMS-SUS-20-004                 #analysis
+ 39 5 SR21                           #signal region 
+ 39 6 8.86E-01                       #nll
+ 39 7 8.85E-01                       #nll_min
+ 39 8 8.85E-01                       #nll_SM
+
+ 40 0 TChiHH                         #txname 
+ 40 1 1.200E-04                      #r value
+ 40 2 1.677E-04                      #expected r value
+ 40 3 0.00                           #condition violation
+ 40 4 CMS-SUS-20-004                 #analysis
+ 40 5 (UL)                           #signal region 
+ 40 6 N/A                            #nll
+ 40 7 N/A                            #nll_min
+ 40 8 N/A                            #nll_SM
+
+ 41 0 TChiWZ                         #txname 
+ 41 1 1.059E-04                      #r value
+ 41 2 N/A                            #expected r value
+ 41 3 0.00                           #condition violation
+ 41 4 ATLAS-SUSY-2018-05             #analysis
+ 41 5 (UL)                           #signal region 
+ 41 6 N/A                            #nll
+ 41 7 N/A                            #nll_min
+ 41 8 N/A                            #nll_SM
+
+ 42 0 TChiWZ                         #txname 
+ 42 1 9.381E-05                      #r value
+ 42 2 4.950E-05                      #expected r value
+ 42 3 0.00                           #condition violation
+ 42 4 CMS-SUS-20-001                 #analysis
+ 42 5 (UL)                           #signal region 
+ 42 6 N/A                            #nll
+ 42 7 N/A                            #nll_min
+ 42 8 N/A                            #nll_SM
+
+ 43 0 TChiWW                         #txname 
+ 43 1 8.583E-05                      #r value
+ 43 2 5.551E-05                      #expected r value
+ 43 3 0.00                           #condition violation
+ 43 4 CMS-SUS-21-002                 #analysis
+ 43 5 (UL)                           #signal region 
+ 43 6 N/A                            #nll
+ 43 7 N/A                            #nll_min
+ 43 8 N/A                            #nll_SM
+
+ 44 0 TChiWH                         #txname 
+ 44 1 7.207E-05                      #r value
+ 44 2 5.892E-05                      #expected r value
+ 44 3 0.00                           #condition violation
+ 44 4 ATLAS-SUSY-2018-41             #analysis
+ 44 5 SR-2B2Q-Vh                     #signal region 
+ 44 6 2.16E+00                       #nll
+ 44 7 2.16E+00                       #nll_min
+ 44 8 2.16E+00                       #nll_SM
+
+ 45 0 TChiWZ                         #txname 
+ 45 1 6.614E-05                      #r value
+ 45 2 N/A                            #expected r value
+ 45 3 0.00                           #condition violation
+ 45 4 CMS-SUS-17-004                 #analysis
+ 45 5 (UL)                           #signal region 
+ 45 6 N/A                            #nll
+ 45 7 N/A                            #nll_min
+ 45 8 N/A                            #nll_SM
+
+ 46 0 TChiWZ                         #txname 
+ 46 1 5.725E-05                      #r value
+ 46 2 N/A                            #expected r value
+ 46 3 0.00                           #condition violation
+ 46 4 ATLAS-SUSY-2017-03             #analysis
+ 46 5 (UL)                           #signal region 
+ 46 6 N/A                            #nll
+ 46 7 N/A                            #nll_min
+ 46 8 N/A                            #nll_SM
+
+ 47 0 TChiWH                         #txname 
+ 47 1 5.718E-05                      #r value
+ 47 2 N/A                            #expected r value
+ 47 3 0.00                           #condition violation
+ 47 4 ATLAS-SUSY-2019-08             #analysis
+ 47 5 (UL)                           #signal region 
+ 47 6 N/A                            #nll
+ 47 7 N/A                            #nll_min
+ 47 8 N/A                            #nll_SM
+
+ 48 0 TChiWZ                         #txname 
+ 48 1 5.265E-05                      #r value
+ 48 2 5.631E-05                      #expected r value
+ 48 3 0.00                           #condition violation
+ 48 4 ATLAS-SUSY-2019-09             #analysis
+ 48 5 (UL)                           #signal region 
+ 48 6 N/A                            #nll
+ 48 7 N/A                            #nll_min
+ 48 8 N/A                            #nll_SM
+
+ 49 0 TChiWH                         #txname 
+ 49 1 4.979E-05                      #r value
+ 49 2 2.957E-05                      #expected r value
+ 49 3 0.00                           #condition violation
+ 49 4 ATLAS-SUSY-2018-41             #analysis
+ 49 5 (UL)                           #signal region 
+ 49 6 N/A                            #nll
+ 49 7 N/A                            #nll_min
+ 49 8 N/A                            #nll_SM
+
+ 50 0 TChiWH                         #txname 
+ 50 1 4.891E-05                      #r value
+ 50 2 7.944E-05                      #expected r value
+ 50 3 0.00                           #condition violation
+ 50 4 CMS-SUS-21-002                 #analysis
+ 50 5 (UL)                           #signal region 
+ 50 6 N/A                            #nll
+ 50 7 N/A                            #nll_min
+ 50 8 N/A                            #nll_SM
+
+ 51 0 TChiWZ                         #txname 
+ 51 1 4.845E-05                      #r value
+ 51 2 N/A                            #expected r value
+ 51 3 0.00                           #condition violation
+ 51 4 CMS-SUS-16-034                 #analysis
+ 51 5 (UL)                           #signal region 
+ 51 6 N/A                            #nll
+ 51 7 N/A                            #nll_min
+ 51 8 N/A                            #nll_SM
+
+ 52 0 TChiWH                         #txname 
+ 52 1 4.518E-05                      #r value
+ 52 2 N/A                            #expected r value
+ 52 3 0.00                           #condition violation
+ 52 4 ATLAS-SUSY-2017-01             #analysis
+ 52 5 (UL)                           #signal region 
+ 52 6 N/A                            #nll
+ 52 7 N/A                            #nll_min
+ 52 8 N/A                            #nll_SM
+
+ 53 0 TChiWZ                         #txname 
+ 53 1 4.388E-05                      #r value
+ 53 2 N/A                            #expected r value
+ 53 3 0.00                           #condition violation
+ 53 4 ATLAS-SUSY-2016-24             #analysis
+ 53 5 (UL)                           #signal region 
+ 53 6 N/A                            #nll
+ 53 7 N/A                            #nll_min
+ 53 8 N/A                            #nll_SM
+
+ 54 0 TChiWZ                         #txname 
+ 54 1 3.728E-05                      #r value
+ 54 2 4.492E-05                      #expected r value
+ 54 3 0.00                           #condition violation
+ 54 4 CMS-SUS-21-002                 #analysis
+ 54 5 (UL)                           #signal region 
+ 54 6 N/A                            #nll
+ 54 7 N/A                            #nll_min
+ 54 8 N/A                            #nll_SM
+
+ 55 0 TChiWW                         #txname 
+ 55 1 3.420E-05                      #r value
+ 55 2 N/A                            #expected r value
+ 55 3 0.00                           #condition violation
+ 55 4 ATLAS-SUSY-2018-32             #analysis
+ 55 5 (UL)                           #signal region 
+ 55 6 N/A                            #nll
+ 55 7 N/A                            #nll_min
+ 55 8 N/A                            #nll_SM
+
+ 56 0 TChiWH                         #txname 
+ 56 1 2.637E-05                      #r value
+ 56 2 N/A                            #expected r value
+ 56 3 0.00                           #condition violation
+ 56 4 CMS-SUS-16-043                 #analysis
+ 56 5 (UL)                           #signal region 
+ 56 6 N/A                            #nll
+ 56 7 N/A                            #nll_min
+ 56 8 N/A                            #nll_SM
+
+ 57 0 TChiWH                         #txname 
+ 57 1 2.604E-05                      #r value
+ 57 2 N/A                            #expected r value
+ 57 3 0.00                           #condition violation
+ 57 4 CMS-SUS-17-004                 #analysis
+ 57 5 (UL)                           #signal region 
+ 57 6 N/A                            #nll
+ 57 7 N/A                            #nll_min
+ 57 8 N/A                            #nll_SM
+
+ 58 0 TChiZH                         #txname 
+ 58 1 2.536E-05                      #r value
+ 58 2 2.484E-05                      #expected r value
+ 58 3 0.00                           #condition violation
+ 58 4 CMS-SUS-21-002                 #analysis
+ 58 5 (UL)                           #signal region 
+ 58 6 N/A                            #nll
+ 58 7 N/A                            #nll_min
+ 58 8 N/A                            #nll_SM
+
+ 59 0 TChiWZ                         #txname 
+ 59 1 2.058E-05                      #r value
+ 59 2 2.155E-05                      #expected r value
+ 59 3 0.00                           #condition violation
+ 59 4 ATLAS-SUSY-2018-41             #analysis
+ 59 5 (UL)                           #signal region 
+ 59 6 N/A                            #nll
+ 59 7 N/A                            #nll_min
+ 59 8 N/A                            #nll_SM
+
+ 60 0 TChiWZ                         #txname 
+ 60 1 2.009E-05                      #r value
+ 60 2 N/A                            #expected r value
+ 60 3 0.00                           #condition violation
+ 60 4 CMS-SUS-16-039                 #analysis
+ 60 5 (UL)                           #signal region 
+ 60 6 N/A                            #nll
+ 60 7 N/A                            #nll_min
+ 60 8 N/A                            #nll_SM
+
+ 61 0 TChiWZ                         #txname 
+ 61 1 8.211E-06                      #r value
+ 61 2 N/A                            #expected r value
+ 61 3 0.00                           #condition violation
+ 61 4 ATLAS-SUSY-2013-11             #analysis
+ 61 5 (UL)                           #signal region 
+ 61 6 N/A                            #nll
+ 61 7 N/A                            #nll_min
+ 61 8 N/A                            #nll_SM
+
+ 62 0 TChiWZ                         #txname 
+ 62 1 7.817E-06                      #r value
+ 62 2 1.075E-05                      #expected r value
+ 62 3 0.00                           #condition violation
+ 62 4 ATLAS-SUSY-2018-06             #analysis
+ 62 5 (UL)                           #signal region 
+ 62 6 N/A                            #nll
+ 62 7 N/A                            #nll_min
+ 62 8 N/A                            #nll_SM
+
+ 63 0 TChiZH                         #txname 
+ 63 1 6.543E-06                      #r value
+ 63 2 6.427E-06                      #expected r value
+ 63 3 0.00                           #condition violation
+ 63 4 CMS-SUS-21-002                 #analysis
+ 63 5 (UL)                           #signal region 
+ 63 6 N/A                            #nll
+ 63 7 N/A                            #nll_min
+ 63 8 N/A                            #nll_SM
+
+ 64 0 TChiHH                         #txname 
+ 64 1 4.091E-06                      #r value
+ 64 2 5.542E-06                      #expected r value
+ 64 3 0.00                           #condition violation
+ 64 4 CMS-SUS-20-004                 #analysis
+ 64 5 (UL)                           #signal region 
+ 64 6 N/A                            #nll
+ 64 7 N/A                            #nll_min
+ 64 8 N/A                            #nll_SM
+
+ 65 0 TChiWW                         #txname 
+ 65 1 2.688E-06                      #r value
+ 65 2 2.695E-06                      #expected r value
+ 65 3 0.00                           #condition violation
+ 65 4 ATLAS-SUSY-2018-41             #analysis
+ 65 5 (UL)                           #signal region 
+ 65 6 N/A                            #nll
+ 65 7 N/A                            #nll_min
+ 65 8 N/A                            #nll_SM
+
+ 66 0 TChiWH                         #txname 
+ 66 1 2.137E-06                      #r value
+ 66 2 N/A                            #expected r value
+ 66 3 0.00                           #condition violation
+ 66 4 CMS-SUS-16-045                 #analysis
+ 66 5 (UL)                           #signal region 
+ 66 6 N/A                            #nll
+ 66 7 N/A                            #nll_min
+ 66 8 N/A                            #nll_SM
+

@@ -1,0 +1,42 @@
+:
+  echo "Remove all generated files? (Y/N)"
+  read answer
+  if(test  $answer = Y -o $answer = y  ) then
+    echo OK!
+  else
+    echo cleaning is refused!
+    exit 1
+  fi 
+  
+  rm -rf Packages/higgsbounds*  Packages/higgssignals* Packages/smodels-* Packages/softsusy* Packages/SPheno-* Packages/superiso_v*
+  if(test -x "`which gmake`") then
+     MAKE=gmake
+  else
+     MAKE=make
+  fi
+  export MAKE
+
+  for Dir in Packages/*
+  do 
+    if(test -f $Dir/Makefile || test -f $Dir/makefile)  then 
+       echo clean $Dir
+       $MAKE -C $Dir clean
+       cd $Dir
+         rm -rf *.dSYM */*.dSYM */*/*.dSYM   */*/*/*.dSYM
+         rm  -f  ._*   */._*    */*/._*      */*/*/._*   */*/*/*/._*
+       cd -
+    fi
+  done
+
+  for Dir in *
+  do 
+    if(test -d $Dir  -a $Dir != Packages  -a  -f $Dir/Makefile) then 
+       echo clean $Dir
+       $MAKE -C $Dir clean 
+    fi
+  done
+
+  rm -f include/microPath.h
+  
+  
+  exit 0

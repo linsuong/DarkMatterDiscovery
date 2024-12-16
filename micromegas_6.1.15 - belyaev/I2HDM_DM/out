@@ -1,0 +1,190 @@
+PROCESS: ~h2 -> N1,e1,~h+
+PROCESS: ~h2 -> N2,e2,~h+
+PROCESS: ~h2 -> N3,e3,~h+
+PROCESS: ~h2 -> U,d,~h+
+PROCESS: ~h2 -> C,s,~h+
+PROCESS: ~h2 -> n1,E1,~h-
+PROCESS: ~h2 -> n2,E2,~h-
+PROCESS: ~h2 -> n3,E3,~h-
+PROCESS: ~h2 -> u,D,~h-
+PROCESS: ~h2 -> c,S,~h-
+PROCESS: ~h+->2*x
+PROCESS: ~h+ -> n1,E1,~h1
+PROCESS: proton,proton->~h1,~h1{G,u,U,d,D,c,C,s,S,b,B
+PROCESS: proton,proton->~h1,~h2{G,u,U,d,D,c,C,s,S,b,B
+PROCESS: proton,proton->~h1,~h+{G,u,U,d,D,c,C,s,S,b,B
+PROCESS: proton,proton->~h1,~h-{G,u,U,d,D,c,C,s,S,b,B
+PROCESS: proton,proton->~h2,~h2{G,u,U,d,D,c,C,s,S,b,B
+PROCESS: proton,proton->~h2,~h+{G,u,U,d,D,c,C,s,S,b,B
+PROCESS: proton,proton->~h2,~h-{G,u,U,d,D,c,C,s,S,b,B
+PROCESS: proton,proton->~h+,~h-{G,u,U,d,D,c,C,s,S,b,B
+[SModelS:pyhfInterface] WARNING could not set pytorch as the pyhf backend, falling back to the default.
+[SModelS:pyhfInterface] We however recommend that pytorch be installed.
+
+ MD1=3.31560779096648275299E+03    
+DMP=5.76342289945592223255E-02    
+DM3=3.02599481500535389955E+01    
+ld345=-1.06689317594098587172E+00    
+
+Dark matter candidate is '~h1' with spin=0/2 mass=3.32E+03
+
+=== MASSES OF HIGGS AND ODD PARTICLES: ===
+Higgs masses and widths
+      H   125.00 3.27E-03
+
+Masses of odd sector Particles:
+~h1      : Mh1     = 3315.608 || ~h+      : Mhc     = 3315.665 || ~h2      : Mh2     = 3345.925 
+
+
+
+=====  LHC constraints with SModelS  =====
+
+Downloading SModelS v3.0.0
+found SM-like Higgs = H
+writing mass block and decay tables ... 
+computing LHC cross sections ... 
+SLHA input file done.
+
+SModelS 3.0.0 
+
+ highest r-value = 0.00E+00
+
+
+=====  LHC constraints with SModelS  =====
+
+found SM-like Higgs = H
+writing mass block and decay tables ... 
+computing LHC cross sections ... 
+SLHA input file done.
+
+SModelS 3.0.0 
+
+ highest r-value = 0.00E+00
+
+==== Calculation of relic density =====
+Xf=2.94e+01 Omega=2.04e-02
+# Channels which contribute to 1/(omega) more than 1%.
+# Relative contributions in % are displayed
+   29% ~h1 ~h+ ->Z W+ 
+   28% ~h+ ~h+ ->W+ W+ 
+   13% ~h2 ~h+ ->W+ H 
+   10% ~h1 ~h1 ->Z Z 
+    7% ~h+ ~h- ->W+ W- 
+    7% ~h1 ~h2 ->Z H 
+    3% ~h2 ~h2 ->H H 
+
+==== Indirect detection =======
+    Channel          vcs[cm^3/s]
+==================================
+ annihilation cross section 1.96E-25 cm^3/s
+ contribution of processes
+  ~h1,~h1 -> Z Z                  8.97E-01
+  ~h1,~h1 -> W+ W-                6.51E-02
+  ~h1,~h1 -> H H                  3.11E-02
+  ~h1,~h1 -> A W+ W-              6.22E-03
+  ~h1,~h1 -> t T                  2.48E-04
+  ~h1,~h1 -> G G                  3.28E-05
+  ~h1,~h1 -> A A                  8.98E-07
+  ~h1,~h1 -> b B                  4.47E-08
+  ~h1,~h1 -> e3 E3                8.82E-09
+  ~h1,~h1 -> c C                  1.90E-09
+  ~h1,~h1 -> s S                  3.35E-10
+  ~h1,~h1 -> e2 E2                3.12E-11
+  ~h1,~h1 -> d D                  2.09E-13
+  ~h1,~h1 -> u U                  7.54E-14
+CMB ID/3.2x10^-28 (cm^3/s/GeV) = 2.884e-02
+Photon flux  for angle of sight f=0.10[rad]
+and spherical region described by cone with angle 0.10[rad]
+Photon flux = 2.64E-17[cm^2 s GeV]^{-1} for E=1657.8[GeV]
+Positron flux  =  2.47E-16[cm^2 sr s GeV]^{-1} for E=1657.8[GeV] 
+Antiproton flux  =  3.82E-15[cm^2 sr s GeV]^{-1} for E=1657.8[GeV] 
+
+==== Calculation of CDM-nucleons amplitudes  =====
+~h1[~h1]-nucleon micrOMEGAs amplitudes
+proton:  SI  -1.020E-09 [-1.020E-09]  SD  0.000E+00 [0.000E+00]
+neutron: SI  -1.037E-09 [-1.037E-09]  SD  0.000E+00 [0.000E+00]
+~h1[~h1]-nucleon cross sections[pb]:
+ proton  SI 4.549E-10 [4.549E-10] SD 0.000E+00 [0.000E+00]
+ neutron SI 4.694E-10 [4.694E-10] SD 0.000E+00 [0.000E+00]
+
+===== Direct detection exclusion:======
+Not excluded by DD experiments  at 90% level 
+
+H :   total width=3.267176E-03 
+ and Branchings:
+2.971827E-03 H -> A,A
+1.058035E-01 H -> G,G
+2.900006E-04 H -> e2,E2
+8.186509E-02 H -> e3,E3
+7.008311E-07 H -> u,U
+1.946753E-06 H -> d,D
+3.305781E-02 H -> c,C
+3.114680E-03 H -> s,S
+7.728943E-01 H -> b,B
+N_line= 1
+
+ MD1=3.91430000054579068092E+01    
+DMP=2.22105488178803052446E-02    
+DM3=2.38343133603796104580E+01    
+ld345=-1.24070780348343692083E-04    
+
+Dark matter candidate is '~h1' with spin=0/2 mass=3.91E+01
+
+=== MASSES OF HIGGS AND ODD PARTICLES: ===
+Higgs masses and widths
+      H   125.00 3.27E-03
+
+Masses of odd sector Particles:
+~h1      : Mh1     =  39.143 || ~h+      : Mhc     =  39.165 || ~h2      : Mh2     =  63.000 
+
+
+
+=====  LHC constraints with SModelS  =====
+
+found SM-like Higgs = H
+writing mass block and decay tables ... 
+computing LHC cross sections ... 
+SLHA input file done.
+
+ Block 'SMODELS_EXCLUSION', key={ 0 0} - is absent
+ Block 'SMODELS_EXCLUSION', key={ 1 1} - is absent
+SModelS ≤ß`07Á©@Ïô#ŒX“<íÇ3Bˆÿ<øs√$]·< ∏h®ÖÁ<:ò[Q with database ≤ß`07Á©@–Ãπ^9tt0¡i?>#˜`m◊S>:,{Œ`>Ê‹å Aºg>V@≈j°o>ö≤ˆBS≈>æ¶)Ø5ã>—l§Áﬂö>∆9§áR®>∏–	:z“ø>$'c>M“>M’EX{«„>ÛúX≥Ù>◊l–?pL?[«e”?{øGòŸ?W≤≈}IÄ!?F~lŒn*?Õq≤ÏW3?+4Q⁄5:?∫Ú2I(èA?€⁄b~xG?°Ba#O?Ÿ„—V3T?XùL6ÂÚY?t∫“7í`?Ô,ÈRe?≠î†ej?6wΩûip?SËxAt?±{∆SÒ÷x?8I^lnA~?}J2·âGÇ?Tb
+ÒÍÖ[SModelS:pyhfInterface] WARNING could not set pytorch as the pyhf backend, falling back to the default.
+[SModelS:pyhfInterface] We however recommend that pytorch be installed.
+                                                            <loading >..Traceback (most recent call last):
+  File "/home/belyaev/packages/micromegas/micromegas_6.1.15/Packages/smodels-3.0.0/runSModelS.py", line 3, in <module>
+    from smodels.tools.runSModelS import main
+  File "/home/belyaev/packages/micromegas/micromegas_6.1.15/Packages/smodels-3.0.0/smodels/tools/runSModelS.py", line 13, in <module>
+    from smodels.matching import modelTester
+  File "/home/belyaev/packages/micromegas/micromegas_6.1.15/Packages/smodels-3.0.0/smodels/matching/modelTester.py", line 20, in <module>
+    from smodels.matching import theoryPrediction
+  File "/home/belyaev/packages/micromegas/micromegas_6.1.15/Packages/smodels-3.0.0/smodels/matching/theoryPrediction.py", line 15, in <module>
+    from smodels.statistics.statsTools import StatsComputer
+  File "/home/belyaev/packages/micromegas/micromegas_6.1.15/Packages/smodels-3.0.0/smodels/statistics/statsTools.py", line 19, in <module>
+    from smodels.statistics.simplifiedLikelihoods import LikelihoodComputer, UpperLimitComputer, Data
+  File "/home/belyaev/packages/micromegas/micromegas_6.1.15/Packages/smodels-3.0.0/smodels/statistics/simplifiedLikelihoods.py", line 12, in <module>
+    from scipy import stats, optimize, integrate, special, linalg
+  File "<frozen importlib._bootstrap>", line 1412, in _handle_fromlist
+  File "/home/belyaev/.local/lib/python3.13/site-packages/scipy/__init__.py", line 134, in __getattr__
+    return _importlib.import_module(f'scipy.{name}')
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/belyaev/.local/lib/python3.13/site-packages/scipy/stats/__init__.py", line 610, in <module>
+    from ._stats_py import *
+  File "/home/belyaev/.local/lib/python3.13/site-packages/scipy/stats/_stats_py.py", line 40, in <module>
+    from scipy.optimize import milp, LinearConstraint
+  File "/home/belyaev/.local/lib/python3.13/site-packages/scipy/optimize/__init__.py", line 427, in <module>
+    from ._linprog import linprog, linprog_verbose_callback
+  File "/home/belyaev/.local/lib/python3.13/site-packages/scipy/optimize/_linprog.py", line 25, in <module>
+    from ._linprog_doc import (_linprog_highs_doc, _linprog_ip_doc,  # noqa: F401
+                               _linprog_rs_doc, _linprog_simplex_doc,
+                               _linprog_highs_ipm_doc, _linprog_highs_ds_doc)
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1018, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1151, in get_code
+  File "<frozen importlib._bootstrap_external>", line 780, in _compile_bytecode
+KeyboardInterrupt

@@ -1,0 +1,9 @@
+#!/bin/bash
+cd /Users/linusong/Documents/DMDiscovery/Work/Processes/m7/Feynman/w
+nice -n 19 ln -s ../p1/results results  2>&1 1>  job.o
+err=$?
+if(test $err -ne 0) then
+	echo CH Error $err
+fi
+echo n_calchep is created
+touch finished-symbolic

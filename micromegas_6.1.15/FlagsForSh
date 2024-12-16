@@ -1,0 +1,60 @@
+# C compiler
+CC="clang" 
+
+# Flags for C compiler 
+# Use -D_LONG_ to implement 'long double' for numerical calculations with gcc compiler. 
+# Use '-Qoption,cpp,--extended_float_type  -D_QUAD_'  flag for icc compiler to works
+# with quadrouple precision  
+CFLAGS="-g -fsigned-char -std=gnu99 -fPIC"
+
+# Disposition of header files for X11 
+HX11=
+
+# Disposition of lX11  
+LX11="-lX11"
+
+# Library which supports runtime  loading of shared libraries  
+lDL="-ldl"
+
+# C Flag which forces compilation of  shared library 
+SHARED="-dynamiclib"
+
+# FLAG to define  shared_object_name for shared library
+SONAME="-install_name "
+
+#Suffix for shared libraies
+SO=so
+
+
+# Flag which defines type of numbers used in symbolic calculations 
+# it could be -DNUM_DOUBLE ,  -DNUM_LONG_LONG  -DNUM_LONG
+SNUM=
+
+# Fortran compiler
+FC="gfortran"
+
+# Flags for Fortran compiler
+FFLAGS="-fno-automatic"
+
+# Special Fortran libraries one has to pass to C linker
+lFort="-L/sw/lib  -lgfortran"
+
+# C++ compiler
+CXX="clang++"
+
+CXXFLAGS="-g -fPIC"
+
+# RANLIB 
+RANLIB="ranlib -c"
+
+# MAKE 
+MAKE=gmake        
+
+# Quadruple
+lQuad="" 
+
+#LHAPDF
+LHAPDF=
+
+export CC CFLAGS lDL LX11 SHARED SONAME SO FC FFLAGS RANLIB CXX CXXFLAGS lFort lQuad MAKE LHAPDF
+

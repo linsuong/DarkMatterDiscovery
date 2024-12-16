@@ -1,0 +1,1 @@
+#define rootDir "/Users/linusong/Repositories/DarkMatterDiscovery/micromegas_6.1.15/CalcHEP_src" 

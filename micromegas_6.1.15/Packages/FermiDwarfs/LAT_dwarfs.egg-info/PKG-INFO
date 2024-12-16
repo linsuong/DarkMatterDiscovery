@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: LAT-dwarfs
+Version: 1.0
+Summary: Python code to derive data-driven upper limits on the thermally averaged, velocity-weighted pair-annihilation cross-section (velocity-independent) of a user-defined particle dark matter model using the expected differential gamma-ray spectrum of an annihilation event (provided by the user) as well as 10 years of Fermi-LAT data from observations of the Milky Way´s dwarf spheroidal galaxies.
+Author: Francesca Calore, Pasquale Serpico, Bryan Zaldivar
+Author-email: calore@lapth.cnrs.fr, serpico@lapth.cnrs.fr, b.zaldivar.m@csic.es
+License: Open Source. MIT license. See LICENSE file.
+Keywords: gamma-ray astronomy,particle physics,indirect dark matter searches
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+License-File: LICENSE
