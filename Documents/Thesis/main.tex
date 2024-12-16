@@ -1,0 +1,206 @@
+\documentclass[12pt]{article}
+
+\usepackage{report}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage[colorlinks=true, linkcolor=black, citecolor=blue, urlcolor=blue]{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}		% Can be removed after putting your text content
+\usepackage{graphicx}
+\usepackage{footnote}
+\usepackage{doi}
+\usepackage{comment}
+\usepackage{multirow}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage[skip=10pt plus1pt, indent=30pt]{parskip}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \includegraphics[width=2.3cm]{crest.jpg}\par
+    \vspace{1cm}
+    {\scshape\Large Department of Physics and Astronomy \par}
+    \vspace{1cm}
+    {\scshape\Large The University of Southampton \par}
+    \vspace{1cm}
+    \vspace{1cm}
+    {\huge\bfseries Parameter space of the Inert Two Higgs Doublet Model (i2HDM) for Dark Matter discovery\par}
+    \vspace{1cm}
+    {\Large Ong Chin Phin (Linus) \par}
+    \vspace{1cm}
+    {\Large Student ID: 33184747 \par}
+    \vfill
+    {\large November 2024 \par}
+\end{titlepage}
+
+%\maketitle
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+\thispagestyle{empty}
+\begin{abstract}
+abstract here
+\end{abstract}
+
+\newpage
+%\twocolumn
+\setcounter{page}{1}
+\section{Introduction}
+\label{sec:introduction}
+There have been strong evidence for Dark Matter (DM) over the years; Gravitational lensing, %etc, etc, add more example + source
+
+Dark matter has to be neutral, colorless, nonbaryonic, long-lived (DM life exceeds the age of the Universe) and massive (nonrelativistic) %source?
+However, none of the SM particles fit the description perfectly, except for the neutrino. The neutrino helped develop a group of hypothetical particles called WIMPS (Weakly Interacting Massive Particles).
+
+The only way to do this is to introduce a new particle that fits the description of DM. There are many models, but the Inert Two-Higgs Doublet Model (i2HDM) will be the model of focus in this work. The Higgs is responsible for giving masses to the $W^+, W^-$ and $Z_0$ bosons. This is done via the Higgs mechanism. The Higgs mechanism is as follows.
+The Higgs doublet before electroweak symmetry breaking (EWSB), $\Phi_H$ is:
+\begin{equation}
+    \Phi_H =
+    \begin{pmatrix}
+        {\phi_1 + i\phi_2} \\
+        {\phi_3 + i\phi_4}
+    \end{pmatrix}
+\end{equation}
+
+% 
+%A more accurate description of the Higgs mechanism is the moving around of the degrees of freedom \cite{lyre2008does}.
+
+This consists of 4 (real) degrees of freedom. Via the Higgs mechanism, the first 2 degrees of freedom are "given" as the mass of the $W^+$ and $W-$ boson ($\phi_1 + i\phi_2$ is the longitudinal component of $W^\pm$), whereas the third is the mass of the $Z_0$ boson. The Higgs field has one last degree of freedom ($\phi_4$), which, after symmetry breaking (when the degrees of freedom are lost to the other baryons) of the Higgs potential function is: 
+\begin{equation}
+    \Phi_H = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        {0} \\
+        {v + H}
+    \end{pmatrix}
+\end{equation}
+
+Here $v$ is the vacuum expectation value (VEV) of the Higgs potential. The Higgs potential is a function known as a Mexican hat, and the symmetry breaking allows the Higgs potential to acquire a VEV.
+
+\begin{equation}
+    \braket{\Phi} = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        0\\
+        v
+    \end{pmatrix}
+\end{equation}
+
+The Higgs mechanism can be described simply as the mechanism that gives the baryons we know today their masses\footnote{Fermions get their masses via Yukawa coupling with the Higgs field $\Phi$}.
+
+The aim of this paper is to discover and perform analysis for the parameter space of the model. In section \ref{sec:i2HDM} we introduce the i2HDM model in more detail, in section \ref{sec:methodology} we introduce the tools used and how the parameters are fixed/scanned, in section \ref{sec:results} the results are presented followed by an analysis in section \ref{sec:analysis}. Finally, there is the conclusion which is in Section \ref{sec:conclusion}.
+
+\section{Inert Two Higgs Doublet Model (i2HDM)}
+\label{sec:i2HDM}
+In the i2HDM, we start with two doublets, $\Phi_1$, $\Phi_2$ - where the second doublet is inert. It does not share its degrees of freedom with other particles (or, it does not couple to fermions via Yukawa interactions \cite{Belyaev_2022}). We can invoke a new set of particles - $h^\pm, h_1,$ and $h_2$. The lightest particle, $h_1$ is going to be the DM candidate particle.
+
+As mentioned in the Introduction (Section \ref{sec:introduction}), i2HDM is an extension of SM that introduces new scalar particles that could be candidates for DM.
+
+Unlike the standard Higgs, there are now two doublets - one active and one inert. Active is the SM Higgs, which has the VEV. The inert doublet has no VEV, so it is relatively simple to work with.
+
+ The field, along with its Hermitian conjugate is:
+\begin{align}
+    &\Phi_2 = \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            {\sqrt{2}h^+} \\
+            {h_1 + ih_2 }
+        \end{pmatrix}&
+    &\Phi_2^\dagger = \frac{1}{\sqrt{2}} 
+        \begin{pmatrix}
+            {\sqrt{2}h^-} \\
+            {h_1 - ih_2 }
+        \end{pmatrix}
+\end{align}
+
+where $m_{h_1} < m_{h_2}$ and $m_{h_1} < m_{h^\pm}$. 
+
+The (scalar) potential is expressed as:
+\begin{equation}
+    \begin{split}
+        V(\Phi_1, \Phi_2) =& -m_1^2(\Phi_1^\dagger\Phi_1) - m_2^2(\Phi_2^\dagger\Phi_2) +
+        \lambda_1(\Phi_1^\dagger\Phi_1)^2 + \lambda_2(\Phi_2^\dagger\Phi_2)^2 \\ 
+        &+ \lambda_3(\Phi_1^\dagger\Phi_1)(\Phi_2^\dagger\Phi_2) + \lambda_4(\Phi_2^\dagger\Phi_1)(\Phi_1^\dagger\Phi_2)\\ 
+        &+ \frac{\lambda_5}{2}[(\Phi_1^\dagger\Phi_2)^2 + (\Phi_2^\dagger\Phi_1)^2]
+        \end{split}
+        \label{eq:higgs_potential}
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $\Phi_1$ represents the active doublet
+    \item $\Phi_2$ represents the inert doublet
+    \item $m_1$ is the term which determines the mass of the Higgs boson and symmetry breaking\footnote{The negative sign in the first term of Equation \ref{eq:higgs_potential} makes the first term a potential with negative slope, which introduces spontaneous symmetry breaking and gives the active Higgs doublet the VEV.}
+    \item $m_2$ is the mass term of the inert Higgs doublet (which helps determine the masses of the extra particles, $h_1$, $h_2$ and $h_\pm$)
+    \item $\lambda_{1, 2, 3, 4, 5}$ determine self coupling magnitudes and the behaviour of doublet interaction terms.
+\end{itemize}
+
+Furthermore, we impose additional parametrisation in terms of mass differences that allow better visualisation of parameter space \cite{Belyaev_2022}:
+\begin{align}
+    \Delta m_{h_2} = m_{h_1} - m_{h^\pm},&&\Delta m^+ = m_{h^\pm} - m_{h_1}
+\end{align}
+
+\subsection{Parameter Space}
+$m_{h_1}$, $m_{h_2}$, $h{h_\pm}$ and $\lambda_{345}$ ($\lambda_3 + \lambda_4 + \lambda_5$) are the main parameters of the study. The reason why $\lambda_1$ is not considered is that it determines the mass of the Higgs boson and is not of our concern in this study. $\lambda_2$ is not considered is because: it only goverens self interaction of the inert Higgs doublet, does not affect physical observables, and the DM candidate $h_1$ is only dependent on $\lambda_3$, $\lambda_4$ and $\lambda_5$.
+
+We have five parameters to scan: $m_{h_1}$, $\Delta m$, $\Delta m$ and $\lambda_{345}$. This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|. Constraints defined in Section \ref{sec:constraints} are applied to the data sets to determine parameter space.
+
+\subsection{Constraints}
+\label{sec:constraints}
+We refer \cite{Belyaev:2016lok} for constraints for $\lambda$. We impose that:
+\begin{equation}
+\lambda_1>0,\ \  \lambda_2>0,\ \ 
+2\sqrt{\lambda_1\lambda_2}+\lambda_3>0,\ \ 
+2\sqrt{\lambda_1\lambda_2}+\lambda_3+\lambda_4 - |\lambda_5|>0\,.
+\end{equation}
+
+This is to ensure that the Higgs potential is bounded from below and has a neutral, non-charge breaking vacuum, which is only satisfied if
+\begin{equation}
+    \lambda_4 - |\lambda_5| < 0
+\end{equation}
+
+\subsection{Dark Matter Relic Density}
+\label{sec:relic density}
+DM relic density is the remaining DM from the Big Bang, and there are multiple experiments (PLANCK, WMAP) that calculate various cosmological parameters, one of them being the DM relic density. We can use this very accurate data to limit our parameter space to make the search for DM simpler.
+
+From \cite{Planck:2018vyg}, the latest experimental value for DM relic density is:
+\begin{equation}
+    \Omega ^{PLANCK}_{DM} h^2 = 0.11933 \pm 0.00091
+\end{equation}
+
+Like in \cite{Belyaev:2016lok}, we limit the parameter space for DM relic density so as to ignore cases of DM overabundance (where $\Omega h^2 > \max(\Omega^{PLANCK}_{DM}h^2)$). DM overabundance is not possible as the Universe would have collapsed on itself. %expand on this
+
+%\section{Mass of Dark Matter}
+%DM mass plays a crucial role in the relic density of DM.
+
+\section{Feynmann Diagrams}
+
+\section{Results}
+\label{sec:results}
+
+\section{Analysis}
+\label{sec:analysis}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
+
+**Introduction**
+The Higgs potential, characterized by a Mexican hat-shaped function, determines the vacuum expectation value (VEV) of the Higgs boson, denoted as $v$. The symmetry breaking of the degrees of freedom associated with the Higgs boson leads to the loss of these degrees of freedom to other baryons, resulting in the VEV.
+
+We extend this concept to propose the existence of a new set of particles that follow a similar pattern. To achieve this, we impose a condition that the second doublet, denoted as $h_2$, is inert, meaning it does not share its degrees of freedom with other particles or couples to fermions.
+
+The primary objective of this paper is to discover and analyze the parameters, namely $m_{h_1}$, $m_{h_2}$, $h_{h_\pm}$, $\lambda_2$, and $\lambda_{345}$, for the i2HDM model. In Section \ref{sec:i2HDM}, we provide a detailed introduction to the i2HDM model. Section \ref{sec:methodology} introduces the tools employed and the methods used to fix or scan the parameters. Section \ref{sec:results} presents the results obtained, followed by an analysis in Section \ref{sec:analysis}. Finally, the conclusion is presented in Section \ref{sec:conclusion}.
