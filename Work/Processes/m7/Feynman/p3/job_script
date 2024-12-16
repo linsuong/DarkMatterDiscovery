@@ -1,8 +1,0 @@
-#!/bin/bash
-cd /Users/linusong/Documents/DMDiscovery/Work/Processes/m7/Feynman/p3
-nice -n 19 ./calchep -blind "5[[[{1{}[[[[[[{{d,D->~h+,~h-{{[{[[[{"  2>&1 1>  job.o
-err=$?
-if(test $err -ne 0) then
-	echo CH Error $err
-fi
-touch finished-symbolic
