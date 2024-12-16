@@ -32,64 +32,53 @@ cut_tot=(cutDD & cutOM)
 
 df_f = df[cut_tot] #make dataframe smaller, quicker to deal with
 
+params_dict = {
+    'DM1': r'$m_{h1}$',
+    'DM2': r'$m_{h2}$',
+    'DMP': r'$m_{h_{\\pm}}$',
+    'Omegah2': r'$\\Omega h_2$'
+}
+
 # Create a scatter plot of MD1 vs DMP, coloured by Omegah2
-def plotfig(df1, df2, omegah2bar = False, xlog = True, ylog = True):
+def plotfig(df1, df2, omegah2bar = False, xlog = True, ylog = True, savefig = False, label_dict = params_dict):
+    label1 = label_dict.get(df1, df1)
+    label2 = label_dict.get(df2, df2)
+    
     plt.figure(figsize=(8, 6))
 
     if omegah2bar == True:
-    #sc = plt.scatter(df_f['MD1'], df_f['DMP'], c=df_f['Omegah2'],
-    #                 cmap='viridis', norm=LogNorm(vmin=df_f['Omegah2'].min(), vmax=df_f['Omegah2'].max()))
-
         sc = plt.scatter(df_f[df1], df_f[df2], c=df_f['Omegah2'], rasterized=True, s=1,
                         cmap='viridis', norm=LogNorm(vmin=df_f['Omegah2'].min(), vmax=df_f['Omegah2'].max()))
 
-        #plt.ylim(-0.2, 0.2)
-        plt.xlabel(df1, fontsize=12)
-        plt.ylabel(df2, fontsize=12)
-        plt.xlim(0, 300)
-        plt.ylim(0, 300)
-        #plt.yscale('log') #l345 can be <0, so using linear 
-
-        # Add colour bar
+        plt.title(f'Plot of {label1} against {label2}, coloured by $\\Omega h_2$')
+        
         cbar = plt.colorbar(sc)
         cbar.set_label('$\\Omega h_2$', fontsize=12)
-
-        # Add labels and title
-        if xlog == True:
-            plt.xscale('log')
-            
-        
-        if ylog == True:
-            plt.yscale('log')
-            
-        #plt.title('Scatter Plot of $m_{h_1}$ vs $\\lambda_{345}$, Coloured by $\\Omega h_2$', fontsize=14)
-        plt.grid(True, linestyle='--', alpha=0.7)
-
-        plt.tight_layout()
-        
-        #plt.savefig(f"run/run_Dec2/plot_{df1}_{df2}.pdf", format='pdf')
-
-        # Save  the plot to pdf format
     
     else:
         sc = plt.scatter(df_f[df1], df_f[df2], c = 'red', s = 1)
-        if xlog == True:
-            plt.xscale('log')
-        
-        if ylog == True:
-            plt.yscale('log')
-            
-        plt.xlabel(df1, fontsize=12)
-        plt.ylabel(df2, fontsize=12)
-        plt.grid(True, linestyle='--', alpha=0.7)
-        plt.tight_layout()
-    
-        #plt.savefig(f"run/run_Dec2/plot_{df1}_{df2}(no_grad).pdf", format='pdf') #pdf is full quality
+        plt.title(f'Plot of {label1} against {label2}')
 
-        # Show the plot
+        
+    if xlog == True:
+        plt.xscale('log')
+    
+    if ylog == True:
+        plt.yscale('log')
+        
+    if savefig:
+        plt.savefig(f"run/run_Dec2/plot_{df1}_{df2}(no_grad).pdf", format='pdf') #pdf is full quality
+
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.xlabel(label1, fontsize=12)
+    plt.ylabel(label2, fontsize=12)
     plt.show() 
     
-def constraintplot(df1, df2):
+def constraintplot(df1, df2, label_dict = params_dict):
+    label1 = label_dict.get(df1, df1)
+    label2 = label_dict.get(df2, df2)
+    
     plt.figure(figsize=(8, 6))
     
     lz5tmedian_df = df_f[df_f['expName'] == 'LZ5Tmedian']
@@ -105,18 +94,11 @@ def constraintplot(df1, df2):
 
     plt.ylim(-2, 2)
     plt.xscale('log')
-    plt.xlabel(df1)
-    plt.ylabel(df2)
+    plt.xlabel(label1)
+    plt.ylabel(label2)
     plt.legend()
     #plt.savefig('run/run_Dec2/allowedParamsExps1.pdf')
     plt.show()
     
 
 plotfig('MD2', 'MDP', omegah2bar= True, xlog = False, ylog = False)
-
-exp_names = df['expName'].unique()
-print(exp_names)
-
-#print(df_f)
-
-#constraintplot('MD1', 'l345')
