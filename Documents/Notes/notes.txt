@@ -20,4 +20,3 @@ diff models:
 to do :
 plot E against cross section of e+e- -> mu+ mu- (E = 10 -> 200 GeV)
 
-----------------

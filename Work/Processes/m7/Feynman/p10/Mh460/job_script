@@ -1,0 +1,15 @@
+#!/bin/bash
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:
+cd /Users/linusong/Documents/DMDiscovery/Work/Processes/m7/Feynman/p10/Mh460/
+nice -n 19 ./n_calchep -blind "[[[[[[[[[{{5{[{100000{[[{[[{[{]]]]]]{5{[{100000{[[{0"  2>&1 1>  cs.o
+err=$?
+if(test $err -eq 123) then
+	echo 0.0E+0 0.0E+0> cs.o
+elif(test $err -ne 0) then
+	echo CH Error $err
+else
+	res=`grep "< >"  prt_1 |tail -1`
+	res=`echo $res| cut -f3,4 -d" "`
+	echo $res 2>&1 1> cs.o
+fi
+touch finished-cross-section

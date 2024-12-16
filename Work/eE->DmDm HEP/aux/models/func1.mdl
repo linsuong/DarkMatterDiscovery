@@ -1,0 +1,246 @@
+2HDM-II-BSM
+ Constraints 
+ Name  |> Expression                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <|
+PI     |acos(-1)
+GG     |sqrt(4*PI*alphaQCD(Q)) % g_strong
+alphaE0|1/137.036 % Fine Structure Constant at zero energy
+sb     |tb/sqrt(1+tb^2) % Sine beta
+cb     |sqrt(1-sb^2) % Cosine beta
+ctb    |1/tb % Cotangent beta
+c2b    |cb^2-sb^2 % cos(2b)
+s2b    |4*sb*cb/2 % sin(2b)
+Mcp    |McMc*(1+4/3*alphaQCD(McMc)/PI) % 1 loop formula like in Hdecay
+Mbp    |MbMb*(1+4/3*alphaQCD(MbMb)/PI) % 1 loop formula like in Hdecay
+Mtp    |Mtop
+CW     |MW/MZ % on-shell cos of the Weinberg angle
+SW     |sqrt(1-CW^2) % sin of the Weinberg angle
+GF     |EE^2/(2*SW*MW)^2/Sqrt2 % Fermi Constant
+vvev   |2*MW/EE*SW % ~246 GeV
+vev1   |vvev*cb % Down-higgs vev
+vev2   |vvev*sb % Up-Higgs vev
+c12    |sqrt(1-s12^2) % parameter  of C-K-M matrix
+c23    |sqrt(1-s23^2) % parameter  of C-K-M matrix
+c13    |sqrt(1-s13^2) % parameter  of C-K-M matrix
+LamQCD |initQCD5(alphaSMZ, McMc, MbMb, Mtop)
+Mb     |MbEff(Q)
+Mt     |MtEff(Q)
+Mc     |McEff(Q)
+Ml     |Mtau
+bma    |asin(sbma) % b-a
+beta   |atan(tb)
+alpha  |beta-bma
+cbma   |cos(bma) % cos(b-a)
+sa     |sin(alpha) % Sine alpha
+ca     |cos(alpha) % Cosine alpha
+sapb   |sa*cb+ca*sb % sin(a+b)
+camb   |ca*cb+sa*sb % cos(a-b)
+samb   |sa*cb-ca*sb % sin(a-b)
+capb   |ca*cb-sa*sb % cos(a+b)
+s2a    |2*sa*ca % sin(2a)
+c2a    |ca^2-sa^2 % cos(2a)
+aQCD   |alphaQCD(QHGG)/PI
+rhF_c  |creal(HggF((QHGG/2/Mcp)^2))
+ihF_c  |cimag(HggF((QHGG/2/Mcp)^2))
+rAF_c  |creal(HggA((QHGG/2/Mcp)^2))
+iAF_c  |cimag(HggA((QHGG/2/Mcp)^2))
+rhF_b  |creal(HggF((QHGG/2/Mbp)^2))
+ihF_b  |cimag(HggF((QHGG/2/Mbp)^2))
+rAF_b  |creal(HggA((QHGG/2/Mbp)^2))
+iAF_b  |cimag(HggA((QHGG/2/Mbp)^2))
+rhF_t  |creal(HggF((QHGG/2/Mtp)^2))
+ihF_t  |cimag(HggF((QHGG/2/Mtp)^2))
+rAF_t  |creal(HggA((QHGG/2/Mtp)^2))
+iAF_t  |cimag(HggA((QHGG/2/Mtp)^2))
+rhF_l  |creal(HggF((QHGG/2/Ml)^2))
+ihF_l  |cimag(HggF((QHGG/2/Ml)^2))
+rAF_l  |creal(HggA((QHGG/2/Ml)^2))
+iAF_l  |cimag(HggA((QHGG/2/Ml)^2))
+rhS_Hc |creal(HggS((QHGG/2/MHc)^2))
+ihS_Hc |cimag(HggS((QHGG/2/MHc)^2))
+rhV_W  |creal(HggV((QHGG/2/MW)^2))
+ihV_W  |cimag(HggV((QHGG/2/MW)^2))
+rhF1_c |creal(HggF((QHAA/2/McRun(QHAA/2))^2)*(1+aQCD*Hgam1F((QHAA/2/McRun(QHAA/2))^2)))
+ihF1_c |cimag(HggF((QHAA/2/McRun(QHAA/2))^2)*(1+aQCD*Hgam1F((QHAA/2/McRun(QHAA/2))^2)))
+rAF1_c |creal(HggA((QHAA/2/McRun(QHAA/2))^2)*(1+aQCD*Hgam1A((QHAA/2/McRun(QHAA/2))^2)))
+iAF1_c |cimag(HggA((QHAA/2/McRun(QHAA/2))^2)*(1+aQCD*Hgam1A((QHAA/2/McRun(QHAA/2))^2)))
+rhF1_b |creal(HggF((QHAA/2/MbRun(QHAA/2))^2)*(1+aQCD*Hgam1F((QHAA/2/MbRun(QHAA/2))^2)))
+ihF1_b |cimag(HggF((QHAA/2/MbRun(QHAA/2))^2)*(1+aQCD*Hgam1F((QHAA/2/MbRun(QHAA/2))^2)))
+rAF1_b |creal(HggA((QHAA/2/MbRun(QHAA/2))^2)*(1+aQCD*Hgam1A((QHAA/2/MbRun(QHAA/2))^2)))
+iAF1_b |cimag(HggA((QHAA/2/MbRun(QHAA/2))^2)*(1+aQCD*Hgam1A((QHAA/2/MbRun(QHAA/2))^2)))
+rhF1_t |creal(HggF((QHAA/2/MtRun(QHAA/2))^2)*(1+aQCD*Hgam1F((QHAA/2/MtRun(QHAA/2))^2)))
+ihF1_t |cimag(HggF((QHAA/2/MtRun(QHAA/2))^2)*(1+aQCD*Hgam1F((QHAA/2/MtRun(QHAA/2))^2)))
+rAF1_t |creal(HggA((QHAA/2/MtRun(QHAA/2))^2)*(1+aQCD*Hgam1A((QHAA/2/MtRun(QHAA/2))^2)))
+iAF1_t |cimag(HggA((QHAA/2/MtRun(QHAA/2))^2)*(1+aQCD*Hgam1A((QHAA/2/MtRun(QHAA/2))^2)))
+ahF_c  |(-Mc)*ca/vev2/Mc
+ahF_b  |(-Mb)*sa/vev1/Mb
+ahF_t  |(-Mt)*ca/vev2/Mt
+ahF_l  |(-Mtau)*sa/vev1/Ml
+aHF_c  |(-Mc)*sa/vev2/Mc
+aHF_b  |Mb*ca/vev1/Mb
+aHF_t  |(-Mt)*sa/vev2/Mt
+aHF_l  |Mtau*ca/vev1/Ml
+ahV_W  |(-EE^2)/SW^2*(sa*vev1-ca*vev2)/2/MW^2/2
+B00000 |ca*cb^2*la2*vev2+ca*la3*sb^2*vev2-cb^2*la3*sa*vev1-la1*sa*sb^2*vev1-ca*cb*la4*sb*vev1
+B00001 |B00000-ca*cb*la5*sb*vev1+cb*la4*sa*sb*vev2+cb*la5*sa*sb*vev2
+ahS_Hc |1*(-B00001)/MHc^2/2
+aHV_W  |EE^2/SW^2*(ca*vev1+sa*vev2)/2/MW^2/2
+B00002 |ca*cb^2*la3*vev1+ca*la1*sb^2*vev1+cb^2*la2*sa*vev2+la3*sa*sb^2*vev2-ca*cb*la4*sb*vev2
+B00003 |B00002-ca*cb*la5*sb*vev2-cb*la4*sa*sb*vev1-cb*la5*sa*sb*vev1
+aHS_Hc |-1*B00003/MHc^2/2
+aAF_c  |Mc*cb/vev2/Mc
+aAF_b  |(-Mb)*sb/vev1/Mb
+aAF_t  |Mt*cb/vev2/Mt
+aAF_l  |(-Mtau)*sb/vev1/Ml
+Rqcd   |1+aQCD*(149/12+aQCD*(68.6482-aQCD*212.447))
+lnTop  |2*log(Mtp/QHGG)
+Ctop   |1+aQCD*(11/4+aQCD*(6.1537-2.8542*lnTop+aQCD*(10.999-17.93*lnTop+5.47*lnTop^2)))
+Cq     |1+11/4*aQCD
+Qu     |2/3
+Qd     |-1/3
+Fodd   |1+aQCD*(221/12+aQCD*(171.5-5*lnTop))
+ahF_b0 |ahF_b*(1+dMb)/(1-dMb*ca/sa/tb)
+aHF_b0 |aHF_b*(1+dMb)/(1+dMb*sa/ca/tb)
+aAF_b0 |aAF_b*(1+dMb)/(1-dMb/tb^2)
+ahF_l0 |ahF_l*(1+dMl)/(1-dMl*ca/sa/tb)
+aHF_l0 |aHF_l*(1+dMl)/(1+dMl*sa/ca/tb)
+aAF_l0 |aAF_l*(1+dMl)/(1-dMl/tb^2)
+LGGh   |-aQCD/8*1/2*sqrt(Rqcd)*cabs(((rhF_b+i*ihF_b)*ahF_b0-(rhF_c+i*ihF_c)*ahF_c)*Cq-(rhF_t+i*ihF_t)*ahF_t*Ctop)
+LAAh   |-alphaE0/(8*PI)*cabs(-3*Qd^2*(rhF1_b+i*ihF1_b)*ahF_b0+3*Qu^2*((rhF1_t+i*ihF1_t)*ahF_t+(rhF1_c+i*ihF1_c)*ahF_c)-(rhF_l+i*ihF_l)*ahF_l0-(rhV_W+i*ihV_W)*ahV_W+(rhS_Hc+i*ihS_Hc)*ahS_Hc)
+LGGH   |-aQCD/8*1/2*sqrt(Rqcd)*cabs(((rhF_b+i*ihF_b)*aHF_b0-(rhF_c+i*ihF_c)*aHF_c)*Cq-(rhF_t+i*ihF_t)*aHF_t*Ctop)
+LAAH   |-alphaE0/(8*PI)*cabs(-3*Qd^2*(rhF1_b+i*ihF1_b)*aHF_b0+3*Qu^2*((rhF1_t+i*ihF1_t)*aHF_t+(rhF1_c+i*ihF1_c)*aHF_c)-(rhF_l+i*ihF_l)*aHF_l0-(rhV_W+i*ihV_W)*aHV_W+(rhS_Hc+i*ihS_Hc)*aHS_Hc)
+LGGH3  |-aQCD/8*(1/2)*sqrt(Fodd)*cabs((rAF_c+i*iAF_c)*aAF_c-(rAF_b+i*iAF_b)*aAF_b0+(rAF_t+i*iAF_t)*aAF_t)
+LAAH3  |-alphaE0/(8*PI)*cabs(-3*Qd^2*(rAF1_b+i*iAF1_b)*aAF_b0+3*Qu^2*((rAF1_t+i*iAF1_t)*aAF_t+(rAF1_c+i*iAF1_c)*aAF_c)-(rAF_l+i*iAF_l)*aAF_l0)
+aSMhF_f|-EE/MW/SW/2
+aSMhV_W|EE/SW/MW/2
+LGGSM  |aQCD/8*1/2*sqrt(Rqcd)*aSMhF_f*cabs((rhF_b+i*ihF_b+(rhF_c+i*ihF_c))*Cq+(rhF_t+i*ihF_t)*Ctop)
+LAASM  |-alphaE0/(8*PI)*cabs(3*Qd^2*(rhF1_b+i*ihF1_b)*aSMhF_f+3*Qu^2*((rhF1_t+i*ihF1_t)*aSMhF_f+(rhF1_c+i*ihF1_c)*aSMhF_f)+(rhF_l+i*ihF_l)*aSMhF_f-(rhV_W+i*ihV_W)*aSMhV_W)
+B00004 |cb*vev2-sb*vev1
+B00005 |cb*vev1+sb*vev2
+B00006 |1+2*CW^2
+B00007 |1-4*CW^2
+B00008 |1-2*CW^2
+B00009 |ca*la1*vev1+la2*sa^3*vev2+la3*sa*vev2-la3*sa^3*vev2+la4*sa*vev2
+B00010 |B00009-la4*sa^3*vev2+la5*sa*vev2-la5*sa^3*vev2-ca*la1*sa^2*vev1+ca*la3*sa^2*vev1
+B00011 |B00010+ca*la4*sa^2*vev1+ca*la5*sa^2*vev1
+B00012 |ca*la3*vev2+ca*la4*vev2+ca*la5*vev2-3*la1*sa*vev1+3*la1*sa^3*vev1
+B00013 |B00012+2*la3*sa*vev1-3*la3*sa^3*vev1+2*la4*sa*vev1-3*la4*sa^3*vev1+2*la5*sa*vev1
+B00014 |B00013-3*la5*sa^3*vev1+3*ca*la2*sa^2*vev2-3*ca*la3*sa^2*vev2-3*ca*la4*sa^2*vev2-3*ca*la5*sa^2*vev2
+B00015 |ca*la4*vev2+ca*la5*vev2+la4*sa*vev1+la5*sa*vev1-2*ca*la4*sb^2*vev2
+B00016 |B00015-2*ca*la5*sb^2*vev2-2*la4*sa*sb^2*vev1-2*la5*sa*sb^2*vev1-2*ca*cb*la1*sb*vev1+2*ca*cb*la3*sb*vev1
+B00017 |B00016+2*cb*la2*sa*sb*vev2-2*cb*la3*sa*sb*vev2
+B00018 |ca*la5*vev1-ca*cb^2*la3*vev1-ca*cb^2*la4*vev1-ca*la1*sb^2*vev1-ca*la5*sb^2*vev1
+B00019 |B00018-cb^2*la2*sa*vev2-la3*sa*sb^2*vev2-la4*sa*sb^2*vev2+la5*sa*sb^2*vev2+2*ca*cb*la5*sb*vev2
+B00020 |B00019+2*cb*la5*sa*sb*vev1
+B00021 |ca*la5*vev2+la5*sa*vev1-2*ca*la5*sb^2*vev2-2*la5*sa*sb^2*vev1-ca*cb*la1*sb*vev1
+B00022 |B00021+ca*cb*la3*sb*vev1+ca*cb*la4*sb*vev1-ca*cb*la5*sb*vev1+cb*la2*sa*sb*vev2-cb*la3*sa*sb*vev2
+B00023 |B00022-cb*la4*sa*sb*vev2+cb*la5*sa*sb*vev2
+B00024 |ca*vev1+sa*vev2
+B00025 |ca*cb^2*la1*vev1+ca*la3*sb^2*vev1+cb^2*la3*sa*vev2+la2*sa*sb^2*vev2+ca*cb*la4*sb*vev2
+B00026 |B00025+ca*cb*la5*sb*vev2+cb*la4*sa*sb*vev1+cb*la5*sa*sb*vev1
+B00027 |la5*sa*vev2-ca*cb^2*la1*vev1-ca*la3*sb^2*vev1-ca*la4*sb^2*vev1+ca*la5*sb^2*vev1
+B00028 |B00027-cb^2*la3*sa*vev2-cb^2*la4*sa*vev2-la2*sa*sb^2*vev2-la5*sa*sb^2*vev2-2*ca*cb*la5*sb*vev2
+B00029 |B00028-2*cb*la5*sa*sb*vev1
+B00030 |ca*la3*vev1+ca*la4*vev1+ca*la5*vev1+3*la2*sa*vev2-3*la2*sa^3*vev2
+B00031 |B00030-2*la3*sa*vev2+3*la3*sa^3*vev2-2*la4*sa*vev2+3*la4*sa^3*vev2-2*la5*sa*vev2
+B00032 |B00031+3*la5*sa^3*vev2+3*ca*la1*sa^2*vev1-3*ca*la3*sa^2*vev1-3*ca*la4*sa^2*vev1-3*ca*la5*sa^2*vev1
+B00033 |cb*la4*vev1-cb*la5*vev1+la4*sb*vev2-la5*sb*vev2
+B00034 |cb*la4*vev2-cb*la5*vev2-la4*sb*vev1+la5*sb*vev1
+B00035 |ca*la4*vev1+ca*la5*vev1-la4*sa*vev2-la5*sa*vev2-2*ca*la4*sb^2*vev1
+B00036 |B00035-2*ca*la5*sb^2*vev1+2*la4*sa*sb^2*vev2+2*la5*sa*sb^2*vev2+2*ca*cb*la2*sb*vev2-2*ca*cb*la3*sb*vev2
+B00037 |B00036+2*cb*la1*sa*sb*vev1-2*cb*la3*sa*sb*vev1
+B00038 |la5*sa*vev1+ca*cb^2*la2*vev2+ca*la3*sb^2*vev2+ca*la4*sb^2*vev2-ca*la5*sb^2*vev2
+B00039 |B00038-cb^2*la3*sa*vev1-cb^2*la4*sa*vev1-la1*sa*sb^2*vev1-la5*sa*sb^2*vev1-2*ca*cb*la5*sb*vev1
+B00040 |B00039+2*cb*la5*sa*sb*vev2
+B00041 |ca*la5*vev1-la5*sa*vev2-2*ca*la5*sb^2*vev1+2*la5*sa*sb^2*vev2+ca*cb*la2*sb*vev2
+B00042 |B00041-ca*cb*la3*sb*vev2-ca*cb*la4*sb*vev2+ca*cb*la5*sb*vev2+cb*la1*sa*sb*vev1-cb*la3*sa*sb*vev1
+B00043 |B00042-cb*la4*sa*sb*vev1+cb*la5*sa*sb*vev1
+B00044 |ca*vev2-sa*vev1
+B00045 |ca*cb^2*la3*vev2+ca*la2*sb^2*vev2-cb^2*la1*sa*vev1-la3*sa*sb^2*vev1+ca*cb*la4*sb*vev1
+B00046 |B00045+ca*cb*la5*sb*vev1-cb*la4*sa*sb*vev2-cb*la5*sa*sb*vev2
+B00047 |ca*la5*vev2-ca*cb^2*la3*vev2-ca*cb^2*la4*vev2-ca*la2*sb^2*vev2-ca*la5*sb^2*vev2
+B00048 |B00047+cb^2*la1*sa*vev1+la3*sa*sb^2*vev1+la4*sa*sb^2*vev1-la5*sa*sb^2*vev1-2*ca*cb*la5*sb*vev1
+B00049 |B00048+2*cb*la5*sa*sb*vev2
+B00050 |ca*la2*vev2-la1*sa^3*vev1-la3*sa*vev1+la3*sa^3*vev1-la4*sa*vev1
+B00051 |B00050+la4*sa^3*vev1-la5*sa*vev1+la5*sa^3*vev1-ca*la2*sa^2*vev2+ca*la3*sa^2*vev2
+B00052 |B00051+ca*la4*sa^2*vev2+ca*la5*sa^2*vev2
+B00053 |la1-2*la1*sa^2+la1*sa^4+la2*sa^4+2*la3*sa^2
+B00054 |B00053-2*la3*sa^4+2*la4*sa^2-2*la4*sa^4+2*la5*sa^2-2*la5*sa^4
+B00055 |la1-c2a*la3-c2a*la4-c2a*la5-la1*sa^2
+B00056 |B00055-la2*sa^2
+B00057 |la3+la1*sb^2+la2*sa^2-la3*sa^2-la3*sb^2
+B00058 |B00057-la1*sa^2*sb^2-la2*sa^2*sb^2+2*la3*sa^2*sb^2-2*ca*cb*la4*sa*sb-2*ca*cb*la5*sa*sb
+B00059 |ca*la4*sa+ca*la5*sa-cb*la1*sb+cb*la3*sb-2*ca*la4*sa*sb^2
+B00060 |B00059-2*ca*la5*sa*sb^2+cb*la1*sa^2*sb+cb*la2*sa^2*sb-2*cb*la3*sa^2*sb
+B00061 |la3+la4-la5+la1*sb^2+la2*sa^2
+B00062 |B00061-la3*sa^2-la3*sb^2-la4*sa^2-la4*sb^2+la5*sa^2
+B00063 |B00062+la5*sb^2-la1*sa^2*sb^2-la2*sa^2*sb^2+2*la3*sa^2*sb^2+2*la4*sa^2*sb^2
+B00064 |B00063-2*la5*sa^2*sb^2-4*ca*cb*la5*sa*sb
+B00065 |2*ca*la5*sa-cb*la1*sb+cb*la3*sb+cb*la4*sb-cb*la5*sb
+B00066 |B00065-4*ca*la5*sa*sb^2+cb*la1*sa^2*sb+cb*la2*sa^2*sb-2*cb*la3*sa^2*sb-2*cb*la4*sa^2*sb
+B00067 |B00066+2*cb*la5*sa^2*sb
+B00068 |la1-la1*sa^2-la1*sb^2+la3*sa^2+la3*sb^2
+B00069 |B00068+la1*sa^2*sb^2+la2*sa^2*sb^2-2*la3*sa^2*sb^2+2*ca*cb*la4*sa*sb+2*ca*cb*la5*sa*sb
+B00070 |la1-la1*sa^2-la1*sb^2+la3*sa^2+la3*sb^2
+B00071 |B00070+la4*sa^2+la4*sb^2-la5*sa^2-la5*sb^2+la1*sa^2*sb^2
+B00072 |B00071+la2*sa^2*sb^2-2*la3*sa^2*sb^2-2*la4*sa^2*sb^2+2*la5*sa^2*sb^2+4*ca*cb*la5*sa*sb
+B00073 |la3+la4+la5+3*la1*sa^2-3*la1*sa^4
+B00074 |B00073+3*la2*sa^2-3*la2*sa^4-6*la3*sa^2+6*la3*sa^4-6*la4*sa^2
+B00075 |B00074+6*la4*sa^4-6*la5*sa^2+6*la5*sa^4
+B00076 |ca*la2*sa-ca*la3*sa-cb*la4*sb-cb*la5*sb-ca*la1*sa*sb^2
+B00077 |B00076-ca*la2*sa*sb^2+2*ca*la3*sa*sb^2+2*cb*la4*sa^2*sb+2*cb*la5*sa^2*sb
+B00078 |la4-la5
+B00079 |la4+la5-2*la4*sa^2-2*la4*sb^2-2*la5*sa^2
+B00080 |B00079-2*la5*sb^2+4*la4*sa^2*sb^2+4*la5*sa^2*sb^2+2*ca*cb*la1*sa*sb+2*ca*cb*la2*sa*sb
+B00081 |B00080-4*ca*cb*la3*sa*sb
+B00082 |ca*la2*sa-ca*la3*sa-ca*la4*sa+ca*la5*sa-2*cb*la5*sb
+B00083 |B00082-ca*la1*sa*sb^2-ca*la2*sa*sb^2+2*ca*la3*sa*sb^2+2*ca*la4*sa*sb^2-2*ca*la5*sa*sb^2
+B00084 |B00083+4*cb*la5*sa^2*sb
+B00085 |la5-2*la5*sa^2-2*la5*sb^2+4*la5*sa^2*sb^2+ca*cb*la1*sa*sb
+B00086 |B00085+ca*cb*la2*sa*sb-2*ca*cb*la3*sa*sb-2*ca*cb*la4*sa*sb+2*ca*cb*la5*sa*sb
+B00087 |ca*la1*sa-ca*la3*sa-cb*la4*sb-cb*la5*sb-ca*la1*sa*sb^2
+B00088 |B00087-ca*la2*sa*sb^2+2*ca*la3*sa*sb^2+2*cb*la4*sa^2*sb+2*cb*la5*sa^2*sb
+B00089 |ca*la1*sa-ca*la3*sa-ca*la4*sa+ca*la5*sa-2*cb*la5*sb
+B00090 |B00089-ca*la1*sa*sb^2-ca*la2*sa*sb^2+2*ca*la3*sa*sb^2+2*ca*la4*sa*sb^2-2*ca*la5*sa*sb^2
+B00091 |B00090+4*cb*la5*sa^2*sb
+B00092 |la2-c2a*la3-c2a*la4-c2a*la5-la1*sa^2
+B00093 |B00092-la2*sa^2
+B00094 |la2+la1*sb^4-2*la2*sb^2+la2*sb^4+2*la3*sb^2
+B00095 |B00094-2*la3*sb^4+2*la4*sb^2-2*la4*sb^4+2*la5*sb^2-2*la5*sb^4
+B00096 |c2b*la3+c2b*la4+c2b*la5-cb^2*la2+la1*sb^2
+B00097 |la5+la1*sb^2-la1*sb^4+la2*sb^2-la2*sb^4
+B00098 |B00097-2*la3*sb^2+2*la3*sb^4-2*la4*sb^2+2*la4*sb^4-2*la5*sb^2
+B00099 |B00098+2*la5*sb^4
+B00100 |la3+la4+2*la1*sb^2-2*la1*sb^4+2*la2*sb^2
+B00101 |B00100-2*la2*sb^4-4*la3*sb^2+4*la3*sb^4-4*la4*sb^2+4*la4*sb^4
+B00102 |B00101-4*la5*sb^2+4*la5*sb^4
+B00103 |1-4*CW^2+4*CW^4
+B00104 |la3+la1*sb^2-la1*sb^4+la2*sb^2-la2*sb^4
+B00105 |B00104-2*la3*sb^2+2*la3*sb^4-2*la4*sb^2+2*la4*sb^4-2*la5*sb^2
+B00106 |B00105+2*la5*sb^4
+B00107 |la2-la2*sa^2-la2*sb^2+la3*sa^2+la3*sb^2
+B00108 |B00107+la1*sa^2*sb^2+la2*sa^2*sb^2-2*la3*sa^2*sb^2+2*ca*cb*la4*sa*sb+2*ca*cb*la5*sa*sb
+B00109 |la4+la5+2*la1*sb^2-2*la1*sb^4+2*la2*sb^2
+B00110 |B00109-2*la2*sb^4-4*la3*sb^2+4*la3*sb^4-4*la4*sb^2+4*la4*sb^4
+B00111 |B00110-4*la5*sb^2+4*la5*sb^4
+B00112 |c2b*la3+c2b*la4+c2b*la5-cb^2*la1+la2*sb^2
+B00113 |ca*la4*sa+ca*la5*sa-cb*la2*sb+cb*la3*sb-2*ca*la4*sa*sb^2
+B00114 |B00113-2*ca*la5*sa*sb^2+cb*la1*sa^2*sb+cb*la2*sa^2*sb-2*cb*la3*sa^2*sb
+B00115 |la3+la4+la5+3*la1*sb^2-3*la1*sb^4
+B00116 |B00115+3*la2*sb^2-3*la2*sb^4-6*la3*sb^2+6*la3*sb^4-6*la4*sb^2
+B00117 |B00116+6*la4*sb^4-6*la5*sb^2+6*la5*sb^4
+B00118 |la2-la2*sa^2-la2*sb^2+la3*sa^2+la3*sb^2
+B00119 |B00118+la4*sa^2+la4*sb^2-la5*sa^2-la5*sb^2+la1*sa^2*sb^2
+B00120 |B00119+la2*sa^2*sb^2-2*la3*sa^2*sb^2-2*la4*sa^2*sb^2+2*la5*sa^2*sb^2+4*ca*cb*la5*sa*sb
+B00121 |2*ca*la5*sa-cb*la2*sb+cb*la3*sb+cb*la4*sb-cb*la5*sb
+B00122 |B00121-4*ca*la5*sa*sb^2+cb*la1*sa^2*sb+cb*la2*sa^2*sb-2*cb*la3*sa^2*sb-2*cb*la4*sa^2*sb
+B00123 |B00122+2*cb*la5*sa^2*sb
+B00124 |la1-2*la1*sb^2+la1*sb^4+la2*sb^4+2*la3*sb^2
+B00125 |B00124-2*la3*sb^4+2*la4*sb^2-2*la4*sb^4+2*la5*sb^2-2*la5*sb^4
+B00126 |la3+la1*sa^2+la2*sb^2-la3*sa^2-la3*sb^2
+B00127 |B00126-la1*sa^2*sb^2-la2*sa^2*sb^2+2*la3*sa^2*sb^2-2*ca*cb*la4*sa*sb-2*ca*cb*la5*sa*sb
+B00128 |la3+la4-la5+la1*sa^2+la2*sb^2
+B00129 |B00128-la3*sa^2-la3*sb^2-la4*sa^2-la4*sb^2+la5*sa^2
+B00130 |B00129+la5*sb^2-la1*sa^2*sb^2-la2*sa^2*sb^2+2*la3*sa^2*sb^2+2*la4*sa^2*sb^2
+B00131 |B00130-2*la5*sa^2*sb^2-4*ca*cb*la5*sa*sb
+B00132 |la2+la1*sa^4-2*la2*sa^2+la2*sa^4+2*la3*sa^2
+B00133 |B00132-2*la3*sa^4+2*la4*sa^2-2*la4*sa^4+2*la5*sa^2-2*la5*sa^4
