@@ -1,0 +1,1 @@
+combined.dat is 60,000 data points, combination of scan.dat files of 4 parameter scan.
