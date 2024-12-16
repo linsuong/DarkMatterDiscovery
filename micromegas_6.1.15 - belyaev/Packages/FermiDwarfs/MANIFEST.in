@@ -1,7 +1,0 @@
-include README.md
-include LICENSE
-include run_ID_MLFermiDwarfs.py
-include idm.txt
- 
-graft data
-

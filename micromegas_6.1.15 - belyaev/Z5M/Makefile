@@ -1,4 +1,0 @@
-
-include ../include/modelMakefile
-
-specialClean: 
