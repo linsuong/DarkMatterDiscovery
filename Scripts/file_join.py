@@ -20,7 +20,7 @@ def join_dat_files(folder_path, output_file):
                             continue
 
                         if not header_written:
-                            # Write the header from the first file
+                            # Write the header from the first file 
                             outfile.write(lines[0].rstrip() + '\n')  # Ensure newline
                             header_written = True
 
@@ -36,6 +36,6 @@ def join_dat_files(folder_path, output_file):
     print(f"All files successfully joined into {output_file}")
     
 # Replace with your folder path and output file name
-folder_path = "run/5-D_scans/"
-output_file = "run/5-D_scans/combined.dat"
+folder_path = "scans/5-D_scans/"
+output_file = "scans/5-D_scans/Dec_16_combined.dat"
 join_dat_files(folder_path, output_file)

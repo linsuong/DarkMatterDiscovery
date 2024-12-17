@@ -13,8 +13,8 @@ def clean_dat_file(input_file, output_file):
 expected_columns = 12  # Update this based on your data's actual column count
 
 # Process multiple files
-input_directory = "run/5-D_scans/run_Dec15"  # Folder containing .dat files
-output_directory = "run/5-D_scans"  # Folder for cleaned files
+input_directory = "/Users/linusong/Repositories/DarkMatterDiscovery/scans/5-D_scans/run_Dec15_Linux"  # Folder containing .dat files
+output_directory = "/Users/linusong/Repositories/DarkMatterDiscovery/scans/5-D_scans/run_Dec15_Linux"  # Folder for cleaned files
 
 # Create output directory if it doesn't exist
 if not os.path.exists(output_directory):
@@ -27,3 +27,4 @@ for filename in os.listdir(input_directory):
         output_path = os.path.join(output_directory, f"cleaned_{filename}")
         clean_dat_file(input_path, output_path)
         print(f"Cleaned: {filename} -> {output_path}")
+        

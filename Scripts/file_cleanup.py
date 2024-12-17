@@ -63,5 +63,5 @@ def remove_partially_empty_rows(folder_path):
         print(f"\nTotal files processed: {files_processed}")
 
 # Replace with your folder path
-folder_path = "run/5-D_scans/run_Dec13"
+folder_path = "scans/5-D_scans/run_Dec15_Linux/"
 remove_partially_empty_rows(folder_path)
