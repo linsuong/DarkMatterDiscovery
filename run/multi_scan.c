@@ -5,7 +5,7 @@
 
 int main() {
     int num_instances = 5;  // Number of instances
-    char program_path[] = "/Users/linusong/Documents/DMDiscovery/micromegas_6.1.15/I2HDM_DM/5-D_scan";
+    char program_path[] = "/home/linus/Repositories/DarkMatterDiscovery/micromegas_6.1.15/I2HDM_DM/5-D_scan";
 
     for (int i = 0; i < num_instances; i++) {
         pid_t pid = fork();
