@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import LogNorm
 
-file_path = '/Users/linusong/Repositories/DarkMatterDiscovery/scans/5-D_scans/Dec_16_combined.dat'
+file_path = '/Users/linusong/Repositories/DarkMatterDiscovery/scans/5-D_scans/Dec_17_combined.dat'
 
 df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
 
@@ -21,10 +21,17 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut4=False, cut5=False):
     """
     Applies constraints to the dataframe and returns a filtered dataframe.
     """
+    MW = 80.377
+    MZ = 91.19
 
     dataframe['MD2'] = dataframe['DMP'] + dataframe['DM3'] + dataframe['MD1']
     dataframe['MDP'] = dataframe['DMP'] + dataframe['MD1']
     dataframe['DM2'] = dataframe['MD2'] - dataframe['MD1']
+    
+    #columns for LEP constraints:
+    dataframe['MD1+MD2'] = dataframe['MD1'] + dataframe['MD2']
+    dataframe['MD1+MDP'] = dataframe['MD1'] + dataframe['MD2']
+    dataframe['MD2+MDP'] = dataframe['MD2'] + dataframe['MDP']
 
     cutl345 = dataframe['l345'] > -np.inf
     cutMD1 = dataframe['MD1'] > -np.inf
@@ -33,17 +40,25 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut4=False, cut5=False):
     cutOM = dataframe['Omegah2'] > -np.inf
     cutDD = dataframe['PvalDD'] > -np.inf
     cutCMB = dataframe['CMB_ID'] > -np.inf
+    
+    cutMD1MD2 = True
+    cutMD2MDP = True
+    cutMDP = True
 
     if cut1:
         cutl345 = dataframe['l345'] > -1.47
 
     if cut2:
+        cutMD1MD2 = (dataframe['MD1+MD2'] > MW) & (dataframe['MD1+MDP'] > MZ)
+        cutMD2MDP = dataframe['MD2+MDP'] > MW
+        
         cutMD1 = dataframe['MD1'] < 80
         cutMD2 = dataframe['MD2'] < 100
+        cutMDP = 2 * dataframe['MDP'] > MZ
         cutDM2 = dataframe['DM2'] < 8
 
     if cut3:
-        cutOM = (dataframe['Omegah2'] < 0.12024)
+        cutOM = dataframe['Omegah2'] < 0.12024
         #cutOM = (df['Omegah2'] > 0.10) & (df['Omegah2'] < 0.12024) #strict bound of Omegah2
 
 
@@ -54,7 +69,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut4=False, cut5=False):
         cutCMB = dataframe['CMB_ID'] < 1
 
     # Combine all cuts
-    cut_tot = cutMD1 & cutMD2 & cutDM2 & cutl345 & cutOM & cutDD & cutCMB
+    cut_tot = cutMD1 & cutMD2 & cutDM2 & cutl345 & cutOM & cutDD & cutCMB & cutMD1MD2 & cutMD2MDP & cutMDP
 
     # Apply the combined cuts
     dataframe_cut = dataframe[cut_tot]
@@ -134,11 +149,19 @@ def constraintplot(df1, df2, label_dict = params_dict):
     #plt.savefig('run/run_Dec2/allowedParamsExps1.pdf')
     plt.show()
     
+'''
+cut 1: constraints from model
+cut 2: constraints from LEP 
+cut 3: constraints from relic density
+cut 4: DM DD constraints
+cut 5: CMB constraints
 
-df_f = cuts(df, cut2 = False, cut3 = True, cut4 = True)
-plotfig(df_f, 'MD1', 'l345', omegah2bar= True, ylog = False, savefig = False)
+'''
 
-df_f = cuts(df, cut3 = False, cut4 = True)
-plotfig(df_f, 'MD1', 'l345', omegah2bar= True, ylog = False, savefig = False)
+df_f = cuts(df, cut1 = True, cut2 = True, cut3 = False, cut4 = True)
+plotfig(df_f, 'MD1', 'MDP', omegah2bar= True, ylog = True, savefig = False)
+
+df_f = cuts(df, cut1 = True, cut3 = False, cut4 = True)
+plotfig(df_f, 'MD1', 'MDP', omegah2bar= True, ylog = True, savefig = False)
 
 plt.show()

@@ -37,5 +37,5 @@ def join_dat_files(folder_path, output_file):
     
 # Replace with your folder path and output file name
 folder_path = "scans/5-D_scans/"
-output_file = "scans/5-D_scans/Dec_16_combined.dat"
+output_file = "scans/5-D_scans/Dec_17_combined.dat"
 join_dat_files(folder_path, output_file)
