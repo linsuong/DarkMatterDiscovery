@@ -17,6 +17,39 @@ params_dict = {
     'DM3' : r'$\Delta m_+$' #mass diff mh+ - mh2
 }
 
+def calculate_ST(dataframe):
+    """
+    Add S and T parameter columns to the dataframe based on mass differences.
+    """
+    v = 246  # Higgs vev in GeV
+
+    # Calculate S and T based on mass splittings
+    x1 = dataframe['MD1'] / dataframe['MDP']
+    x2 = dataframe['MD2'] / dataframe['MDP']
+    log_term = np.log(dataframe['MDP'] / dataframe['MD1'])
+    
+    # Approximate expressions for S and T (from paper)
+    dataframe['S'] = (1 / (72 * np.pi)) * ((x2**2 - x1**2) * log_term)
+    dataframe['T'] = (1 / (32 * np.pi**2 * v**2)) * (dataframe['MDP']**2 - dataframe['MD2']**2)
+    
+    return dataframe
+
+def chi_squared(S, T, S0=0.06, T0=0.1, sigma_S=0.09, sigma_T=0.07, rho=0.91):
+    """
+    Compute the chi-squared value for the S and T parameters.
+    """
+    # Covariance matrix and its inverse
+    cov = np.array([[sigma_S**2, rho * sigma_S * sigma_T],
+                    [rho * sigma_S * sigma_T, sigma_T**2]])
+    inv_cov = np.linalg.inv(cov)
+
+    # Delta vector
+    delta = np.array([S - S0, T - T0])
+    
+    # Compute chi-squared
+    chi2 = delta.T @ inv_cov @ delta
+    return chi2
+
 def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut4=False, cut5=False):
     """
     Applies constraints to the dataframe and returns a filtered dataframe.
@@ -51,6 +84,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     cutMD1MD2 = True
     cutMD2MDP = True
     cutMDP = True
+    cutEWPT = True
 
     if cut1:
         #vs1: mh1^2 > 0 for |R| < 1
@@ -71,11 +105,25 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
         )
         
     if cut2:
-        
-        cutMD1MD2 = (dataframe['MD1+MD2'] > MZ) & (dataframe['MD1+MDP'] > MW)
-        cutMD2MDP = dataframe['MD2+MDP'] > MW
+        # LEP constraints
+        cutMD1MD2 = (dataframe['MD1'] + dataframe['MD2']) > MZ
+        cutMD1MDP = (dataframe['MD1'] + dataframe['MDP']) > MW
+        cutMD2MDP = (dataframe['MD2'] + dataframe['MDP']) > MW
         cutMDP = (2 * dataframe['MDP'] > MZ) & (dataframe['MDP'] > 70)
+
+        # EWPT constraints
+        x1 = dataframe['MD1'] / dataframe['MDP']
+        x2 = dataframe['MD2'] / dataframe['MDP']
+        log_term = np.log(dataframe['MDP'] / dataframe['MD1'])
         
+        # Approximate expressions for S and T (from paper)
+        dataframe['S'] = (1 / (72 * np.pi)) * ((x2**2 - x1**2) * log_term)
+        dataframe['T'] = (1 / (32 * np.pi**2 * v**2)) * (dataframe['MDP']**2 - dataframe['MD2']**2)
+
+        chi2_threshold = 5.99  # 95% confidence level
+        dataframe['chi2'] = dataframe.apply(lambda row: chi_squared(row['S'], row['T']), axis=1)
+        cutEWPT = dataframe['chi2'] < chi2_threshold
+
         #cutMD1 = dataframe['MD1'] > 80
         #cutMD2 = dataframe['MD2'] > 100
         #cutDM2 = dataframe['DM2'] < 8
@@ -94,25 +142,12 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
         cutCMB = dataframe['CMB_ID'] < 1
 
     # Combine all cuts
-    cut_tot = cutMD1_1 & cutMD1 & cutMD2 & cutDM2 & cutl345 & cutOM & cutDD & cutCMB & cutMD1MD2 & cutMD2MDP & cutMDP
+    cut_tot = cutMD1_1 & cutMD1 & cutMD2 & cutDM2 & cutl345 & cutEWPT & cutOM & cutDD & cutCMB & cutMD1MD2 & cutMD2MDP & cutMDP
 
     # Apply the combined cuts
     dataframe_cut = dataframe[cut_tot]
 
     return dataframe_cut
-
-
-'''
-cutDD=(df['PvalDD'] > 0.1)
-cutOM=(df['Omegah2'] < 0.12024)
-#cutOM = (df['Omegah2'] > 0.10) & (df['Omegah2'] < 0.12024) #strict bound of Omegah2
-#cutCMB=(df['CMB_ID'] <1) 
-
-
-#cut_tot=(cutDD & cutOM)
-cut_tot=(cutOM)
-df_f = df[cut_tot]
-'''
 
 def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, savefig = False, label_dict = params_dict):
     
@@ -148,7 +183,6 @@ def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, s
     plt.xlabel(label1, fontsize=12)
     plt.ylabel(label2, fontsize=12)
     
-    
 def constraintplot(df1, df2, label_dict = params_dict):
     label1 = label_dict.get(df1, df1)
     label2 = label_dict.get(df2, df2)
@@ -180,42 +214,56 @@ cut 2: constraints from LEP
 cut 3: constraints from relic density
 cut 4: DM DD constraints
 cut 5: CMB constraints
-
 '''
 
-"""
-df_f = cuts(df, cut1 = True)
-plotfig(df_f, 'MD1', 'MD2', omegah2bar= True, ylog = True, savefig = False)
+def multi_plot_old(df, x_axis, y_axis, ylog = None, xlog = None):
+    df_f = cuts(df, cut1 = True)
+    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = False)
 
-df_f = cuts(df, cut1 = True, cut2= True)
-plotfig(df_f, 'MD1', 'MD2', omegah2bar= True, ylog = True, savefig = False)
+    df_f = cuts(df, cut1 = True, cut2= True)
+    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = False)
 
-df_f = cuts(df, cut1 = True, cut2= True, cut3 = True)
-plotfig(df_f, 'MD1', 'MD2', omegah2bar= True, ylog = True, savefig = False)
-"""
-'''
+    df_f = cuts(df, cut1 = True, cut2= True, cut3 = True)
+    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = False)
 
-df_f = cuts(df, cut1 = True)
-plotfig(df_f, 'MD2', 'MDP', omegah2bar= True, ylog = True, savefig = False)
+    #df_f = cuts(df, cut1 = True, cut2= True, cut3_strict = True)
+    
+    df_f = cuts(df, cut1 = True, cut2= True, cut3 = True, cut4 = True)
+    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = False)
 
-df_f = cuts(df, cut1 = True, cut2= True)
-plotfig(df_f, 'MD2', 'MDP', omegah2bar= True, ylog = True, savefig = False)
+    df_f = cuts(df, cut1 = True, cut2= True, cut3 = True, cut4 = True, cut5 = True)
+    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = False)
+   
+    plt.show()
+    
+def multi_plot(df, x_axis, y_axis, xlog=None, ylog=None, omegah2bar=True, cut_flags=None):
+    """
+    Plot data with different combinations of cuts dynamically.
 
-df_f = cuts(df, cut1 = True, cut2= True, cut3 = True)
-plotfig(df_f, 'MD2', 'MDP', omegah2bar= True, ylog = True, savefig = False)
+    Parameters:
+    - df: DataFrame
+    - x_axis: column name for x-axis
+    - y_axis: column name for y-axis
+    - ylog_values: List of booleans to toggle y-log scale for each plot
+    - omegah2bar: Whether to color by Omega h2
+    - cut_flags: A list of dictionaries with cut booleans for each plot
+    """
+    if cut_flags is None:
+        # Default list of cuts if none are provided
+        cut_flags = [
+            {'cut1': True},  # Cut 1 only
+            {'cut1': True, 'cut2': True},  # Cut 1 + Cut 2
+            {'cut1': True, 'cut2': True, 'cut3': True},  # Cut 1 + Cut 2 + Cut 3
+            {'cut1': True, 'cut2': True, 'cut3': True, 'cut4': True},  # Add Cut 4
+            {'cut1': True, 'cut2': True, 'cut3': True, 'cut4': True, 'cut5': True}  # Add Cut 5
+        ]
 
-'''
+    # Loop over each set of cuts and corresponding ylog value
+    for i, flags in enumerate(cut_flags):
+        print(f"Applying cuts: {flags}")
+        df_f = cuts(df, **flags)  # Unpack cuts dynamically
+        plotfig(df_f, x_axis, y_axis, omegah2bar=omegah2bar, xlog=xlog, ylog=ylog, savefig=False)
 
-df_f = cuts(df, cut1 = True)
-plotfig(df_f, 'MD1', 'l345', omegah2bar= True, ylog = False, savefig = False)
-
-df_f = cuts(df, cut1 = True, cut2= True)
-plotfig(df_f, 'MD1', 'l345', omegah2bar= True, ylog = False, savefig = False)
-
-df_f = cuts(df, cut1 = True, cut2= True, cut3 = True)
-plotfig(df_f, 'MD1', 'l345', omegah2bar= True, ylog = False, savefig = False)
-
-df_f = cuts(df, cut1 = True, cut2= True, cut3_strict = True)
-plotfig(df_f, 'MD1', 'l345', omegah2bar= False, ylog = False, savefig = False)
-
-plt.show()
+    plt.show()
+    
+multi_plot_old(df, 'MD1', 'l345', xlog = True, ylog = False)
