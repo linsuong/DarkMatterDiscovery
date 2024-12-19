@@ -35,7 +35,16 @@ def join_dat_files(folder_path, output_file):
 
     print(f"All files successfully joined into {output_file}")
     
-# Replace with your folder path and output file name
-folder_path = "scans/5-D_scans/"
-output_file = "scans/5-D_scans/Dec_17_combined.dat"
-join_dat_files(folder_path, output_file)
+if __name__ == "__main__":
+    #unfiltered data:
+    dates = [
+            'Dec2',
+            'Dec13',
+            'Dec15',
+            'Dec15_Linux',
+            'Dec16_Linux' 
+            ]
+    for date in dates:
+        folder_path = f"scans/5-D_scans/run_{date}/dat_files"
+        output_file = f"scans/5-D_scans/run_{date}/combined_{date}.dat"
+        join_dat_files(folder_path, output_file)

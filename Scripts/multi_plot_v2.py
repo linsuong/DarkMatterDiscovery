@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import LogNorm
 
-file_path = '/Users/linusong/Repositories/DarkMatterDiscovery/scans/5-D_scans/Dec_17_combined.dat'
+file_path = '/Users/linusong/Repositories/DarkMatterDiscovery/scans/5-D_scans/combined.dat.gz'
 
-df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
+df = pd.read_csv(file_path, sep=r'\s+', compression= 'gzip', low_memory= False)
 
 params_dict = {
     'MD1': r'$m_{h1}$',
@@ -149,7 +149,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
 
     return dataframe_cut
 
-def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, savefig = False, label_dict = params_dict):
+def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, savefig = False, ext = None, label_dict = params_dict):
     
     dataframe
     label1 = label_dict.get(df1, df1)
@@ -175,8 +175,11 @@ def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, s
         sc = plt.scatter(dataframe[df1], dataframe[df2], c = 'red', s = 1)
         plt.title(f'Plot of {label1} against {label2}')
 
-    if savefig:
-        plt.savefig(f"plots/plot_{df1}_{df2}(no_grad).pdf", format='pdf') #pdf is full quality
+    if omegah2bar & savefig:
+        plt.savefig(f"plots/plot_{df1}_{df2}(no_grad){ext}.pdf", format='pdf') #pdf is full quality
+    
+    if omegah2bar == False & savefig == True:
+        plt.savefig(f"plots/plot_{df1}_{df2}{ext}.pdf", format='pdf') #pdf is full quality
 
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()
@@ -216,23 +219,23 @@ cut 4: DM DD constraints
 cut 5: CMB constraints
 '''
 
-def multi_plot_old(df, x_axis, y_axis, ylog = None, xlog = None):
+def multi_plot_old(df, x_axis, y_axis, ylog = None, xlog = None, savefig = True):
     df_f = cuts(df, cut1 = True)
-    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = False)
+    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = savefig)
 
     df_f = cuts(df, cut1 = True, cut2= True)
-    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = False)
+    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = savefig)
 
     df_f = cuts(df, cut1 = True, cut2= True, cut3 = True)
-    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = False)
+    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = savefig)
 
     #df_f = cuts(df, cut1 = True, cut2= True, cut3_strict = True)
     
     df_f = cuts(df, cut1 = True, cut2= True, cut3 = True, cut4 = True)
-    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = False)
+    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = savefig)
 
     df_f = cuts(df, cut1 = True, cut2= True, cut3 = True, cut4 = True, cut5 = True)
-    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = False)
+    plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = savefig)
    
     plt.show()
     
