@@ -11,12 +11,12 @@ dates = [
 
 for date in dates:
     folder_path = f"scans/5-D_scans/run_{date}/dat_files"
-    output_file = f"scans/5-D_scans/run_{date}/combined_{date}.dat"
+    output_file = f"scans/5-D_scans/run_{date}/combined_{date}.dat.gz"
     join_dat_files(folder_path, output_file)
     
 for date in dates:
-    input_file = f"scans/5-D_scans/run_{date}/combined_{date}.dat"
-    output_file = f'scans/5-D_scans/cleaned_dat_files/combined_{date}_clean.dat'
+    input_file = f"scans/5-D_scans/run_{date}/combined_{date}.dat.gz"
+    output_file = f'scans/5-D_scans/cleaned_dat_files/combined_{date}_clean.dat.gz'
     
     clean_incomplete_rows(input_file, output_file, expected_columns=12)
 
