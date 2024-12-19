@@ -58,7 +58,8 @@ abstract here
 \setcounter{page}{1}
 \section{Introduction}
 \label{sec:introduction}
-There have been strong evidence for Dark Matter (DM) over the years; Gravitational lensing, %etc, etc, add more example + source
+There have been strong evidence for Dark Matter (DM) over the years; Gravitational lensing, %etc, etc, add more example + source 
+Although there have been recent alternative theories for the existance of DM \cite{Gupta_2023, Gupta_2024}, we nonetheless will continue expanding on 
 
 Dark matter has to be neutral, colorless, nonbaryonic, long-lived (DM life exceeds the age of the Universe) and massive (nonrelativistic) %source?
 However, none of the SM particles fit the description perfectly, except for the neutrino. The neutrino helped develop a group of hypothetical particles called WIMPS (Weakly Interacting Massive Particles).
@@ -151,21 +152,29 @@ Furthermore, we impose additional parametrisation in terms of mass differences t
 \subsection{Parameter Space}
 $m_{h_1}$, $m_{h_2}$, $h{h_\pm}$ and $\lambda_{345}$ ($\lambda_3 + \lambda_4 + \lambda_5$) are the main parameters of the study. The reason why $\lambda_1$ is not considered is that it determines the mass of the Higgs boson and is not of our concern in this study. $\lambda_2$ is not considered is because: it only goverens self interaction of the inert Higgs doublet, does not affect physical observables, and the DM candidate $h_1$ is only dependent on $\lambda_3$, $\lambda_4$ and $\lambda_5$.
 
-We have five parameters to scan: $m_{h_1}$, $\Delta m$, $\Delta m$ and $\lambda_{345}$. This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|. Constraints defined in Section \ref{sec:constraints} are applied to the data sets to determine parameter space.
+We have four parameters to scan across: $m_{h_1}$, $\Delta m_1$, $\Delta m^+$ and $\lambda_{345}$. This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|. Constraints defined in Section \ref{sec:constraints} are applied to the data sets to determine parameter space.
 
-\subsection{Constraints}
+\section{Constraints}
 \label{sec:constraints}
+\subsection{Constraints from vacuum stability and permeability}
 We refer \cite{Belyaev:2016lok} for constraints for $\lambda$. We impose that:
 \begin{equation}
-\lambda_1>0,\ \  \lambda_2>0,\ \ 
-2\sqrt{\lambda_1\lambda_2}+\lambda_3>0,\ \ 
-2\sqrt{\lambda_1\lambda_2}+\lambda_3+\lambda_4 - |\lambda_5|>0\,.
+m_{h_1}^2 >0
 \end{equation}
+
+Where $R = \frac{\lambda_{345}}{2\sqrt{\lambda_1\lambda_2}}$, and $\lambda_1$ can be evaluated with the equation:
+\begin{align}
+    \lambda_1 &= \frac{m^2_{Higgs}}{2 v^2}\\
+                &\approx\frac{125^2}{2\cdot 246 ^ 2} \\
+                &\approx0.129
+\end{align}
 
 This is to ensure that the Higgs potential is bounded from below and has a neutral, non-charge breaking vacuum, which is only satisfied if
 \begin{equation}
     \lambda_4 - |\lambda_5| < 0
 \end{equation}
+
+In addition, 
 
 \subsection{Dark Matter Relic Density}
 \label{sec:relic density}
@@ -176,8 +185,24 @@ From \cite{Planck:2018vyg}, the latest experimental value for DM relic density i
     \Omega ^{PLANCK}_{DM} h^2 = 0.11933 \pm 0.00091
 \end{equation}
 
-Like in \cite{Belyaev:2016lok}, we limit the parameter space for DM relic density so as to ignore cases of DM overabundance (where $\Omega h^2 > \max(\Omega^{PLANCK}_{DM}h^2)$). DM overabundance is not possible as the Universe would have collapsed on itself. %expand on this
+We set the parameter space for DM relic density to ignore cases of DM overabundance (where $\Omega h^2 > \Omega^{PLANCK}_{DM_{max}}h^2$). DM overabundance is not considered as it leads to inconsistencies with the observed CMB and its constraints \cite{Croon_2024, Zavala_2010}. DM underabundance is allowed as to give room for possible external sources of DM.
 
+For data interpretation purposes, the constraints applied for the density of DM relics will be within $\pm10\%$ of the value of $\Omega ^{PLANCK}_{DM} h^2$. The value for DM relic density will be:
+\begin{align}
+    \Omega^{constraint}_{DM} h^2 &= 0.11933 \pm 10\% \\ &\approx 0.119 \pm 0.012
+\end{align}
+
+\subsection{Constraints form perturbativity and unitarity}
+
+\subsection{Constraints from LEP}
+
+\subsection{Constraints from electroweak prescision data}
+
+\subsection{Constraints from DM Direct Detection (DD)}
+
+\subsection{Constraints from CMB}
+
+\subsection{}
 %\section{Mass of Dark Matter}
 %DM mass plays a crucial role in the relic density of DM.
 
