@@ -20,4 +20,4 @@ for date in dates:
 
     clean_incomplete_rows(input_file, output_file, expected_columns=12)
 
-join_dat_files('scans/5-D_scans/cleaned_dat_files', 'scans/5-D_scans/combined.dat.gz')
+join_dat_files('scans/5-D_scans/cleaned_dat_files', 'scans/5-D_scans/combined.dat')

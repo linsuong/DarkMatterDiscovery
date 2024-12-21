@@ -52,14 +52,14 @@ import numpy as np
 from matplotlib.patches import Rectangle
 
 files = [
-    'scans/1-D_scans/Omegah2_MD1_l345_+100/scan.dat',
-    'scans/1-D_scans/Omegah2_MD1_l345_+100/scan_1.dat',
-    'scans/1-D_scans/Omegah2_MD1_l345_+100/scan_2.dat',
-    'scans/1-D_scans/Omegah2_MD1_l345_+100/scan_3.dat',
-    'scans/1-D_scans/Omegah2_MD1_l345_+100/scan_4.dat',
-    'scans/1-D_scans/Omegah2_MD1_l345_+100/scan_5.dat',
-    'scans/1-D_scans/Omegah2_MD1_l345_+100/scan_6.dat',
-    'scans/1-D_scans/Omegah2_MD1_l345_+100/scan_7.dat'
+    'scans/1-D_scans/Omegah2_MD1_l345_+1/scan.dat',
+    'scans/1-D_scans/Omegah2_MD1_l345_+1/scan_1.dat',
+    'scans/1-D_scans/Omegah2_MD1_l345_+1/scan_2.dat',
+    'scans/1-D_scans/Omegah2_MD1_l345_+1/scan_3.dat',
+    'scans/1-D_scans/Omegah2_MD1_l345_+1/scan_4.dat',
+    'scans/1-D_scans/Omegah2_MD1_l345_+1/scan_5.dat',
+    'scans/1-D_scans/Omegah2_MD1_l345_+1/scan_6.dat',
+    'scans/1-D_scans/Omegah2_MD1_l345_+1/scan_7.dat'
 ]
 
 desired_order = [1, 0.1, 0.01, 0.001, -1, -0.1, -0.01, -0.001]
@@ -73,10 +73,10 @@ for filepath in files:
     l345_value = df['l345'][1]
     
     if l345_value > 0:   
-        line, = plt.plot(df['MD1'], df['Omegah2'], '-', linewidth=1, rasterized=True,
+        line, = plt.plot(df['MD1'], df['Omegah2'], '-', linewidth=1, rasterized=False,
                          label=f'$\lambda_{{345}} = {l345_value}$')
     else:
-        line, = plt.plot(df['MD1'], df['Omegah2'], '--', linewidth=1, rasterized=True,
+        line, = plt.plot(df['MD1'], df['Omegah2'], '--', linewidth=1, rasterized=False,
                          label=f'$\lambda_{{345}} = {l345_value}$')
     
     lines.append(line)
@@ -95,12 +95,12 @@ plt.xlim(10, 10e2)
 plt.ylim(10e-7, 10e1)
 plt.xlabel('$m_{h_1}$ (GeV)', fontsize=12)
 plt.ylabel('Relic Density, $\\Omega h^2$', fontsize=12)
-plt.title('Plot where $m_{h_2} = m_{h_\pm} = m_{h_1}$ + 100 GeV', fontsize=14)
+plt.title('Plot where $m_{h_2} = m_{h_\pm} = m_{h_1}$ + 1 GeV', fontsize=14)
 plt.grid(True, linestyle='--', alpha=0.7)
 plt.gca().add_patch(Rectangle((0, 10e-7), 45, 10e1, color='red', alpha=0.2))
 plt.tight_layout()
 
 plt.legend(sorted_lines, sorted_labels, loc='upper right', prop={'size': 8}, ncol=2)
 
-plt.savefig("plots/plot_MD1_l345+100.pdf", format='pdf')
+#plt.savefig("plots/plot_MD1_l345+1.pdf", format='pdf')
 plt.show()
