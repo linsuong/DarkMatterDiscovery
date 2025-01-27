@@ -48,6 +48,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     cutOM = dataframe['Omegah2'] > -np.inf
     cutDD = dataframe['PvalDD'] > -np.inf
     cutCMB = dataframe['CMB_ID'] > -np.inf
+    #cutBr = dataframe['brH_DMDM'] > -np.inf
     
     cutMD1MD2 = True
     cutMD2MDP = True
@@ -91,8 +92,9 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     if cut4:
         cutDD = dataframe['PvalDD'] > 0.1
 
-    if cut5:
         cutCMB = dataframe['CMB_ID'] < 1
+        
+        #cutBr = dataframe['brH_DMDM'] > 0.15
 
     # Combine all cuts
     cut_tot = cutMD1_1 & cutMD1 & cutMD2 & cutDM2 & cutl345 & cutOM & cutDD & cutCMB & cutMD1MD2 & cutMD2MDP & cutMDP
@@ -115,8 +117,8 @@ cut_tot=(cutOM)
 df_f = df[cut_tot]
 '''
 
-def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, savefig = False, label_dict = params_dict, info = None):
-    
+def plotfig(dataframe, df1, df2, omegah2bar = False, colbar = True, xlog = True, ylog = True, savefig = False, label_dict = params_dict, info = None):
+
     dataframe
     label1 = label_dict.get(df1, df1)
     label2 = label_dict.get(df2, df2)
@@ -129,13 +131,14 @@ def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, s
         plt.yscale('log')
         
     if omegah2bar == True:
-        sc = plt.scatter(dataframe[df1], dataframe[df2], c=dataframe['Omegah2'], rasterized=False, s=1,
+        sc = plt.scatter(dataframe[df1], dataframe[df2], c=dataframe['Omegah2'], rasterized=True, s=1,
                         cmap='plasma', norm=LogNorm(vmin=10e-6, vmax=dataframe['Omegah2'].max()))
 
         plt.title(f'Plot of {label1} against {label2}, coloured by $\\Omega h_2$')
         
-        cbar = plt.colorbar(sc)
-        cbar.set_label('$\\Omega h_2$', fontsize=12)
+        if colbar == True:
+            cbar = plt.colorbar(sc)
+            cbar.set_label('$\\Omega h_2$', fontsize=12)
 
     else:
         sc = plt.scatter(dataframe[df1], dataframe[df2], c = 'red', s = 1)
@@ -182,58 +185,7 @@ def constraintplot(df1, df2, label_dict = params_dict):
     plt.legend()
     #plt.savefig('run/run_Dec2/allowedParamsExps1.pdf')
     #plt.show()
-    
-'''
-cut 1: constraints from model
-cut 2: constraints from LEP 
-cut 3: constraints from relic density
-cut 4: DM DD constraints
-cut 5: CMB constraints
 
-'''
-
-"""
-df_f = cuts(df, cut1 = True)
-plotfig(df_f, 'MD1', 'MD2', omegah2bar= True, ylog = True, savefig = False)
-
-df_f = cuts(df, cut1 = True, cut2= True)
-plotfig(df_f, 'MD1', 'MD2', omegah2bar= True, ylog = True, savefig = False)
-
-df_f = cuts(df, cut1 = True, cut2= True, cut3 = True)
-plotfig(df_f, 'MD1', 'MD2', omegah2bar= True, ylog = True, savefig = False)
-"""
-'''
-
-df_f = cuts(df, cut1 = True)
-plotfig(df_f, 'MD2', 'MDP', omegah2bar= True, ylog = True, savefig = False)
-
-df_f = cuts(df, cut1 = True, cut2= True)
-plotfig(df_f, 'MD2', 'MDP', omegah2bar= True, ylog = True, savefig = False)
-
-df_f = cuts(df, cut1 = True, cut2= True, cut3 = True)
-plotfig(df_f, 'MD2', 'MDP', omegah2bar= True, ylog = True, savefig = False)
-
-pairs = [
-    ['MD1', 'MD2'], ['MD1', 'MDP'], ['MD2', 'MDP'], 
-    ['MD1', 'DMP'], ['MD1', 'DM2'], ['MD1', 'DM3'],
-    ['MD2', 'DMP'], ['MD2', 'DM2'], ['MD2', 'DM3'],
-    ['MD1', 'l345'], ['MD1', 'l345'], ['MD2', 'l345'],
-    ['DMP', 'l345'], ['DM2', 'l345'], ['DM3', 'l345']
-]
-
-df_f = cuts(df, cut1 = True)
-plotfig(df_f, 'DM3', 'l345', omegah2bar= True, ylog = False, savefig = True, info = 'cut1')
-
-df_f = cuts(df, cut1 = True, cut2= True)
-plotfig(df_f, 'DM3', 'l345', omegah2bar= True, ylog = False, savefig = True, info = 'cut12')
-
-df_f = cuts(df, cut1 = True, cut2= True, cut3 = True)
-plotfig(df_f, 'DM3', 'l345', omegah2bar= True, ylog = False, savefig = True, info = 'cut123')
-
-df_f = cuts(df, cut1 = True, cut2= True, cut3 = True, cut4 = True)
-plotfig(df_f, 'DM3', 'l345', omegah2bar= True, ylog = False, savefig = True, info = 'cut1234')
-'''
-#plt.show()
 
 pairs = [
     ['MD1', 'MD2'], ['MD1', 'MDP'], ['MD2', 'MDP'], 
@@ -255,6 +207,9 @@ for cut_number in range(1, 5):  # Iterating over cut levels (cut1, cut12, cut123
 
         # Call plotfig with dynamic x, y, and info
         #print(info_label)
-        plotfig(df_f, x, y, omegah2bar=True, ylog= False, savefig=False, info=info_label)
+        #plotfig(df_f, x, y, omegah2bar=True, ylog= False, savefig=False, info=info_label)
+        
+        plotfig(df_f, x, y, omegah2bar=True, colbar = True, ylog= False, savefig=False, info=info_label)
+            
         plt.savefig(f'plots/{x}_{y}_{info_label}.pdf')
         plt.close()
