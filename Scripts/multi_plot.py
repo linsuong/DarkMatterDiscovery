@@ -209,7 +209,7 @@ for cut_number in range(1, 5):  # Iterating over cut levels (cut1, cut12, cut123
         #print(info_label)
         #plotfig(df_f, x, y, omegah2bar=True, ylog= False, savefig=False, info=info_label)
         
-        plotfig(df_f, x, y, omegah2bar=False, colbar = True, ylog= True, savefig=False, info=info_label)
+        plotfig(df_f, x, y, omegah2bar=True, colbar = False, ylog= True, savefig=False, info=info_label)
             
         plt.savefig(f'plots1/{x}_{y}_{info_label}.pdf')
         plt.close()
