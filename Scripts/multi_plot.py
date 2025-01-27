@@ -201,7 +201,7 @@ pairs2 = [
 for cut_number in range(1, 5):  # Iterating over cut levels (cut1, cut12, cut123, cut1234)
     cut_args = {f'cut{i+1}': True for i in range(cut_number)}  # Dynamically set cut arguments
 
-    for x, y in pairs2:
+    for x, y in pairs:
         df_f = cuts(df, **cut_args)  # Apply cuts dynamically
         info_label = ''.join([f'cut{i+1}' for i in range(cut_number)])  # Generate info string
 
@@ -209,7 +209,7 @@ for cut_number in range(1, 5):  # Iterating over cut levels (cut1, cut12, cut123
         #print(info_label)
         #plotfig(df_f, x, y, omegah2bar=True, ylog= False, savefig=False, info=info_label)
         
-        plotfig(df_f, x, y, omegah2bar=True, colbar = True, ylog= False, savefig=False, info=info_label)
+        plotfig(df_f, x, y, omegah2bar=False, colbar = True, ylog= True, savefig=False, info=info_label)
             
-        plt.savefig(f'plots/{x}_{y}_{info_label}.pdf')
+        plt.savefig(f'plots1/{x}_{y}_{info_label}.pdf')
         plt.close()
