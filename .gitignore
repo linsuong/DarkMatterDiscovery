@@ -1,5 +1,4 @@
 ProgramFiles/
-FlagsForSh
 arXiv-1612.00511v2.tar
 calchep_3.9.1
 micromegas_6.1.15
@@ -13,5 +12,4 @@ Data/
 scans/5-D_scans/combined.dat.gz
 scans/.DS_Store
 scans/5-D_scans/.DS_Store
-scans/5-D_scans/cleaned_dat_files/scans/5-D_scans/combined.dat
-scans/5-D_scans/combined.dat
+scans/5-D_scans/cleaned_dat_files/
