@@ -57,7 +57,12 @@
 \newpage
 \thispagestyle{empty}
 \begin{abstract}
-abstract here
+The Higgs potential, characterized by a Mexican hat-shaped function, determines the vacuum expectation value (VEV) of the Higgs boson, denoted as $v$. The symmetry breaking of the degrees of freedom associated with the Higgs boson leads to the loss of these degrees of freedom to other baryons, resulting in the VEV.
+
+We extend this concept to propose the existence of a new set of particles that follow a similar pattern. To achieve this, we impose a condition that the second doublet, denoted as $h_2$, is inert, meaning it does not share its degrees of freedom with other particles or couples to fermions, neither does it undergo symmetry breaking and nor does it have its VEV.
+
+The primary objective of this paper is to discover and analyse the parameters, namely $m_{h_1}$, $m_{h_2}$, $h_{h_\pm}$, $\lambda_2$, and $\lambda_{345}$, for the i2HDM model. In Section \ref{sec:i2HDM}, we provide a detailed introduction to the i2HDM model. Section \ref{sec:methodology} introduces the tools employed and the methods used to fix or scan the parameters. Section \ref{sec:results} presents the results obtained, followed by an analysis in Section \ref{sec:analysis}. Finally, the conclusion is presented in Section \ref{sec:conclusion}.
+
 \end{abstract}
 
 \newpage
@@ -67,10 +72,36 @@ abstract here
 \setcounter{page}{1}
 \section{Introduction}
 \label{sec:introduction}
-There have been strong evidence for Dark Matter (DM) over the years; Gravitational lensing, %etc, etc, add more example + source 
-Although there have been recent alternative theories for the non-existance of DM \cite{Gupta_2023, Gupta_2024}, we nonetheless will continue expanding on 
+There have been strong evidence for Dark Matter (DM) over the years; Gravitational lensing, %etc, etc, add more example + source \section{Dark Matter}
+Initially, universe hot with initial temp unknown (big bang, dont know when and how hot. we know for sure it was above 10MeV, otherwise big bang will not happen). This
+should be sufficiently hot to generate protons and neutrons.
+strong confidence that there was inflation (big bang was an expansion from a singularity which slowed down over time)
+all particles in plasma in thermal equilibrium. energy of plasma -> high enough to produce particles ($E = mc^2$)
+assume DM is particles. and DM interact with particles. 
 
-Dark matter has to be neutral, colourless (lacking colour charge), non-baryonic, long-lived (DM life exceeds the age of the Universe) and massive (non-relativistic) \cite{ZACEK_2007, DeLuca2018, gondolo2004introductionnonbaryonicdarkmatter}. However, none of the SM particles fit the description perfectly - the neutrino is the closest, however it is not massive. The low mass of the neutrino causes them to move at relativistic speeds, which then do not allow the formation of large scale structures. The neutrino inspired the development a group of hypothetical particles called WIMPs (Weakly Interacting Massive Particles). Other than WIMPs, there are many models that were developed to search for DM. There are many models, but the Inert Two-Higgs Doublet Model (i2HDM) will be the model of focus in this work. 
+At high enough temps (higher than their mass) they behave relativistic and behave similarly (same number of dof (1-3 factor difference))
+universe cooling down, temp drops exponentially ~14 billion years to current day.
+at some point the temperature became lower than DM mass, meaning it can annihilate with SM particles (however, there is no reverse process. (freeze out process))
+dark matter -> sm particles, no way around. depending on c.s, relic density can be derived. higher rate, the less DM there is.
+dm density drops due to annihilation. reaction rate becomes smaller than the rate of expansion of the universe. then DM canot annihilate anymore due to low density. then dm density ~ constant (freeze out)
+if DM annihilates too strongly, no relic DM left. If DM reacts too weakly, there will be too little DM, and the universe will be filled with too much DM -> universe closes up
+controlled by Boltzmann equation (classical) to know the rate of reaction. 
+freeze in - if DM interacts with SM particles weakly, at high temps SM particles and DM will not be in thermal equilibrium (since they react weakly). rarely that SM particles react with DM. 
+
+There are many experiments done that can confirm the existence of DM.
+
+\begin{itemize}
+    \item Galactic Rotation Curves - The observed curves do not match the predicted curves due to the fact that the Milky Way is surrounded by DM
+    \item CMB (WMAP and PLANCK): Confirmed relic density
+    \item Large Scale Structures: Simulation of the formation of galaxies are not possible if DM is not accounted for. Therefore, if there was no DM, the universe would not have formed.
+    \item Gravitational Lensing: DM present as an intergalactic medium and plays a role as a gravitational lens (Objects appear to be warped)
+    \item Bullet Clusters: Clusters of galaxies collide, DM passes through each other.
+\end{itemize}
+
+
+Although there have been recent alternative theories for the non-existence of DM \cite{Gupta_2023, Gupta_2024}, we nonetheless will continue expanding on this matter, as the strong evidence for DM is very convincing.
+
+We know that DM has to satisfy certain properties. It has to be neutral, colourless (lacking colour charge), non-baryonic, long-lived (DM life exceeds the age of the Universe) and massive (non-relativistic) \cite{ZACEK_2007, DeLuca2018, gondolo2004introductionnonbaryonicdarkmatter}. However, none of the SM particles fit the description perfectly - the neutrino is the closest, however it is not massive. The low mass of the neutrino causes them to move at relativistic speeds, which then do not allow the formation of large scale structures. The neutrino inspired the development a group of hypothetical particles called WIMPs (Weakly Interacting Massive Particles). Other than WIMPs, there are many models that were developed to search for DM. There are many models, but the Inert Two-Higgs Doublet Model (i2HDM) will be the model of focus in this work. 
 
 The Higgs boson is responsible for giving masses to the $W^+, W^-$ and $Z_0$ bosons. This is done via the Higgs mechanism. The Higgs mechanism is as follows.
 The Higgs doublet before electroweak symmetry breaking (EWSB), $\Phi_H$ is:
@@ -259,72 +290,96 @@ For data interpretation purposes, and since \verb|micrOMEGAS| software calculate
 \label{sec:results}
 \subsection{5-D Random Scan}
 \label{5-D scan}
-\newpage
-\onecolumn
-\begin{figure}[H]
-\begin{subfigure}{\textwidth}
-  \centering
-  \includegraphics[width=0.2\columnwidth]{plots1/MD1_MD2_cut1.pdf}
-  %\caption{$H_1(f)$ with added input noise}
-\end{subfigure}%
-\begin{subfigure}{\textwidth}
-  \centering
-  \includegraphics[width=0.2\columnwidth]{plots/MD1_MD2_cut1cut2.pdf}
-  %\caption{$H_2(f)$ with added input noise}
-\end{subfigure}
-\begin{subfigure}{\textwidth}
-  \centering
-  \includegraphics[width=0.2\columnwidth]{plots1/MD1_MD2_cut1cut2cut3.pdf}
-  %\caption{$H_2(f)$ with added input noise}
-\end{subfigure}
-\begin{subfigure}{\textwidth}
-  \centering
-  \includegraphics[width=0.2\columnwidth]{plots1/MD1_MD2_cut1cut2cut3cut4.pdf}
-  %\caption{$H_2(f)$ with added input noise}
-\end{subfigure}
-\caption{Plot of DM mass $m_{h_1}$ against $m_{h_2}$}
-\label{fig:input noise}
-\end{figure}
-
-\begin{figure}[H]
-\begin{subfigure}{\textwidth}
-  \centering
-  \includegraphics[width=0.25\columnwidth]{plots/MD1_l345_cut1.pdf}
-  %\caption{$H_1(f)$ with added input noise}
-\end{subfigure}%
-\begin{subfigure}{\textwidth}
-  \centering
-  \includegraphics[width=0.25\columnwidth]{plots/MD1_l345_cut1cut2.pdf}
-  %\caption{$H_2(f)$ with added input noise}
-\end{subfigure}
-\begin{subfigure}{\textwidth}
-  \centering
-  \includegraphics[width=0.25\columnwidth]{plots1/MD1_l345_cut1cut2cut3.pdf}
-  %\caption{$H_2(f)$ with added input noise}
-\end{subfigure}
-\begin{subfigure}{\textwidth}
-  \centering
-  \includegraphics[width=0.25\columnwidth]{plots/MD1_l345_cut1cut2cut3cut4.pdf}
-  %\caption{$H_2(f)$ with added input noise}
-\end{subfigure}
-\caption{Plot of DM mass $m_{h_1}$ against $\lambda_{345}$}
-\label{fig:input noise}
-\end{figure}
-
-\twocolumn
-\end{document}
-
-\subsection{2-D scans}
-\label{2-D scan}
 By applying "cuts" to the 5-D datasets, we can then narrow the parameter space in our search for the DM particle.
 We apply cuts in the following order:
 \begin{itemize}
     \item Cut 1 - Constraints from vacuum permeability and stability (Eqn. \ref{eqn:R>1}
     \item Cut 2 - Constraints from LEP and EWPT
-    \item Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
-    \item Constraints from DM Direct Detection
-    \item Constraints from CMB data 
+    \item Cut 3 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
+    \item Cut 4 - Constraints from DM direct detection, and Constraints from CMB data.
 \end{itemize}
+
+The plots against DM mass will be shown in the following pages, and the rest in the \hyperref[Appendix]{Appendix}.
+\newpage
+\onecolumn
+\begin{figure}[H]
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]
+      {plots/MD1_MD2_cut1.pdf}
+    \end{subfigure}%
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_MD2_cut1cut2.pdf}
+      %\caption{$H_2(f)$ with added input noise}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_MD2_cut1cut2cut3.pdf}
+      %\caption{$H_2(f)$ with added input noise}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_MD2_cut1cut2cut3cut4.pdf}
+      %\caption{$H_2(f)$ with added input noise}
+    \end{subfigure}
+    \caption{Plot of DM mass, $m_{h_1}$ against $m_{h_2}$}
+    \label{fig:input noise}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_l345_cut1.pdf}
+      %\caption{$H_1(f)$ with added input noise}
+    \end{subfigure}%
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_l345_cut1cut2.pdf}
+      %\caption{$H_2(f)$ with added input noise}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_l345_cut1cut2cut3.pdf}
+      %\caption{$H_2(f)$ with added input noise}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_l345_cut1cut2cut3cut4.pdf}
+      %\caption{$H_2(f)$ with added input noise}
+    \end{subfigure}
+    \caption{Plot of DM mass $m_{h_1}$ against $\lambda_{345}$}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_MDP_cut1.pdf}
+      %\caption{$H_1(f)$ with added input noise}
+    \end{subfigure}%
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_MDP_cut1cut2.pdf}
+      %\caption{$H_2(f)$ with added input noise}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_MDP_cut1cut2cut3.pdf}
+      %\caption{$H_2(f)$ with added input noise}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=0.5\columnwidth]{plots/MD1_MDP_cut1cut2cut3cut4.pdf}
+      %\caption{$H_2(f)$ with added input noise}
+    \end{subfigure}
+    \caption{Plot of DM mass $m_{h_1}$ against $m_{h^\pm}$}
+    \label{fig:input noise}
+    \end{figure}
+\newpage
+\twocolumn
+
+\subsection{2-D scans}
+\label{2-D scan}
 
 \subsection{1-D scans}
 \label{1-D scan}
@@ -350,12 +405,7 @@ In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of 
     \item At 80-90 GeV
     \item At 105 GeV
 \end{itemize}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\linewidth]{plots/}
-    \caption{Caption}
-    \label{fig:enter-label}
-\end{figure}
+
 \section{Analysis}
 \label{sec:analysis}
 
@@ -366,11 +416,9 @@ In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of 
 \bibliographystyle{plain}
 \bibliography{references}
 
+\section{Appendix}
+The remaining plots mentioned in Section \ref{2-D scan} are shown below:
+
 \end{document}
 
 **Introduction**
-The Higgs potential, characterized by a Mexican hat-shaped function, determines the vacuum expectation value (VEV) of the Higgs boson, denoted as $v$. The symmetry breaking of the degrees of freedom associated with the Higgs boson leads to the loss of these degrees of freedom to other baryons, resulting in the VEV.
-
-We extend this concept to propose the existence of a new set of particles that follow a similar pattern. To achieve this, we impose a condition that the second doublet, denoted as $h_2$, is inert, meaning it does not share its degrees of freedom with other particles or couples to fermions.
-
-The primary objective of this paper is to discover and analyze the parameters, namely $m_{h_1}$, $m_{h_2}$, $h_{h_\pm}$, $\lambda_2$, and $\lambda_{345}$, for the i2HDM model. In Section \ref{sec:i2HDM}, we provide a detailed introduction to the i2HDM model. Section \ref{sec:methodology} introduces the tools employed and the methods used to fix or scan the parameters. Section \ref{sec:results} presents the results obtained, followed by an analysis in Section \ref{sec:analysis}. Finally, the conclusion is presented in Section \ref{sec:conclusion}.
