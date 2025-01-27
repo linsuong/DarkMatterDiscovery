@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage{report}
+%\usepackage{report}
 
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
@@ -68,12 +68,11 @@ abstract here
 \section{Introduction}
 \label{sec:introduction}
 There have been strong evidence for Dark Matter (DM) over the years; Gravitational lensing, %etc, etc, add more example + source 
-Although there have been recent alternative theories for the existance of DM \cite{Gupta_2023, Gupta_2024}, we nonetheless will continue expanding on 
+Although there have been recent alternative theories for the non-existance of DM \cite{Gupta_2023, Gupta_2024}, we nonetheless will continue expanding on 
 
-Dark matter has to be neutral, colorless, nonbaryonic, long-lived (DM life exceeds the age of the Universe) and massive (nonrelativistic) %source?
-However, none of the SM particles fit the description perfectly, except for the neutrino. The neutrino helped develop a group of hypothetical particles called WIMPS (Weakly Interacting Massive Particles).
+Dark matter has to be neutral, colourless (lacking colour charge), non-baryonic, long-lived (DM life exceeds the age of the Universe) and massive (non-relativistic) \cite{ZACEK_2007, DeLuca2018, gondolo2004introductionnonbaryonicdarkmatter}. However, none of the SM particles fit the description perfectly - the neutrino is the closest, however it is not massive. The low mass of the neutrino causes them to move at relativistic speeds, which then do not allow the formation of large scale structures. The neutrino inspired the development a group of hypothetical particles called WIMPs (Weakly Interacting Massive Particles). Other than WIMPs, there are many models that were developed to search for DM. There are many models, but the Inert Two-Higgs Doublet Model (i2HDM) will be the model of focus in this work. 
 
-The only way to do this is to introduce a new particle that fits the description of DM. There are many models, but the Inert Two-Higgs Doublet Model (i2HDM) will be the model of focus in this work. The Higgs is responsible for giving masses to the $W^+, W^-$ and $Z_0$ bosons. This is done via the Higgs mechanism. The Higgs mechanism is as follows.
+The Higgs boson is responsible for giving masses to the $W^+, W^-$ and $Z_0$ bosons. This is done via the Higgs mechanism. The Higgs mechanism is as follows.
 The Higgs doublet before electroweak symmetry breaking (EWSB), $\Phi_H$ is:
 \begin{equation}
     \Phi_H =
@@ -84,7 +83,6 @@ The Higgs doublet before electroweak symmetry breaking (EWSB), $\Phi_H$ is:
 \end{equation}
 
 %A more accurate description of the Higgs mechanism is the moving around of the degrees of freedom \cite{lyre2008does}.
-
 This consists of 4 (real) degrees of freedom. Via the Higgs mechanism, the first 2 degrees of freedom are "given" as the mass of the $W^+$ and $W-$ boson ($\phi_1 + i\phi_2$ is the longitudinal component of $W^\pm$), whereas the third is the mass of the $Z_0$ boson. The Higgs field has one last degree of freedom ($\phi_4$), which, after symmetry breaking (when the degrees of freedom are lost to the other baryons) of the Higgs potential function is: 
 \begin{equation}
     \Phi_H = \frac{1}{\sqrt{2}}
@@ -157,10 +155,10 @@ Furthermore, we impose additional parametrisation in terms of mass differences t
     \Delta m^+ = m_{h^\pm} - m_{h_1}
 \end{align}
 
-\section{The Parameter Space and its Constraints}
+\subsection{The Parameter Space and its Constraints}
 We have four parameters to scan across: $m_{h_1}$, $\Delta m^0$, $\Delta m^+$ and $\lambda_{345}$ (with $\lambda_2 = 1$). This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|. Constraints defined in Section \ref{sec:constraints} are applied to the data sets to determine parameter space.
 \label{sec:constraints}
-\subsection{Constraints from vacuum stability and permeability}
+\subsubsection{Constraints from vacuum stability and permeability}
 First of all, we need to ensure that the potential is bounded from below to ensure stability \cite{Deshpande:1977rw}:
 \begin{equation}
     \begin{split}
@@ -231,14 +229,18 @@ In addition, we can see from equation \ref{eqn:R>1} this can be rewritten as:
     \lambda_{345} < 2\left( \frac{m_{h_1}^2}{v^2} + \sqrt{\lambda_1\lambda_2}\right)
 \end{equation}
 
-\subsection{Dark Matter Relic Density}
+\subsubsection{Constraints form perturbativity and unitarity}
+
+\subsubsection{Constraints from LEP and EWPT (Electroweak Precision Data)}
+
+\subsubsection{Constraint from Dark Matter Relic Density}
 \label{sec:relic density}
 DM relic density is the remaining DM from the Big Bang, and there are multiple experiments (PLANCK, WMAP) that calculate various cosmological parameters, one of them being the DM relic density. We can use this very accurate data to limit our parameter space to make the search for DM simpler. The latest experimental value for DM relic density is  \cite{Planck:2018vyg}:
 \begin{equation}
     \Omega ^{PLANCK}_{DM} h^2 = 0.11933 \pm 0.00091
 \end{equation}
 
-We set the parameter space for the density of the DM relic to ignore the cases of DM overabundance (where $\Omega h^2 > \Omega^{PLANCK}_{DM_{max}}h^2$). DM overabundance is not considered as it leads to inconsistencies with the observed CMB and its constraints \cite{Croon_2024, Zavala_2010}. DM underabundance is allowed to allow for possible external sources of DM.
+We set the parameter space for the density of the DM relic to ignore the cases of DM overabundance (where $\Omega h^2 > \Omega^{PLANCK}_{DM_{max}}h^2$). DM overabundance is not considered as it leads to inconsistencies with the observed CMB and its constraints \cite{Croon_2024, Zavala_2010}. DM under-abundance is allowed to allow for possible external sources of DM.
 
 For data interpretation purposes, and since \verb|micrOMEGAS| software calculates relic density via tree-level calculation, the theoretical constraints applied to the density of DM relics will be within $\pm10\%$ of the value of $\Omega ^{PLANCK}_{DM} h^2$.
 \begin{equation}
@@ -249,6 +251,29 @@ For data interpretation purposes, and since \verb|micrOMEGAS| software calculate
     \label{eqn:DM relic density value}
 \end{equation}
 
+\subsubsection{Constraints from DM Direct Detection (DD)}
+
+\subsubsection{Constraints from CMB}
+
+\section{Results}
+\label{sec:results}
+\subsection{5-D Random Scan}
+\label{5-D scan}
+
+\subsection{2-D scans}
+\label{2-D scan}
+By applying "cuts" to the 5-D datasets, we can then narrow the parameter space in our search for the DM particle.
+We apply cuts in the following order:
+\begin{itemize}
+    \item Cut 1 - Constraints from vacuum permeability and stability (Eqn. \ref{eqn:R>1}
+    \item Cut 2 - Constraints from LEP and EWPT
+    \item Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
+    \item Constraints from DM Direct Detection
+    \item Constraints from CMB data 
+\end{itemize}
+
+\subsection{1-D scans}
+\label{1-D scan}
 We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:MD1_l345_1}, \ref{fig:MD1_l345_100}):
 \begin{figure}[H]
     \centering
@@ -266,29 +291,17 @@ We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:
 
 In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of the DM candidate, $h_1$ and its complementary particles ($h_2$ and $h_{\pm}$) to observe the relic density, we make a few observations:
 \begin{itemize}
-    \item The slight dips at 40 and 45 GeV for all values of $\lambda$ is the reaction where $h, h \rightarrow Z_0$ boson, and also the reaction for $h, h \rightarrow W_\pm$. The $Z_0$ boson has a mass of \sim80 GeV, so 
+    \item The slight dips at 40 and 45 GeV for all values of $\lambda$ is the reaction where $h, h \rightarrow Z_0$ boson, and also the reaction for $h, h \rightarrow W_\pm$. The $Z^0$ and $W^\pm$ boson have masses $\sim$80 GeV and $\sim$85 GeV respectively.
     \item At 60 GeV, there is a dip for all values of $\lambda$ - this is because that is the $h_1,h_1\rightarrow H$ process - the DM DM annihilation process. 
-    \item 
+    \item At 80-90 GeV
+    \item At 105 GeV
 \end{itemize}
-\subsection{Constraints form perturbativity and unitarity}
-
-\subsection{Constraints from LEP}
-
-\subsection{Constraints from electroweak prescision data}
-
-\subsection{Constraints from DM Direct Detection (DD)}
-
-\subsection{Constraints from CMB}
-
-\subsection{}
-%\section{Mass of Dark Matter}
-%DM mass plays a crucial role in the relic density of DM.
-
-\section{Feynmann Diagrams}
-
-\section{Results}
-\label{sec:results}
-
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{plots/}
+    \caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
 \section{Analysis}
 \label{sec:analysis}
 
