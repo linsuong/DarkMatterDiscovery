@@ -117,37 +117,34 @@ cut_tot=(cutOM)
 df_f = df[cut_tot]
 '''
 
-def plotfig(dataframe, df1, df2, omegah2bar = False, colbar = True, xlog = True, ylog = True, savefig = False, label_dict = params_dict, info = None):
+def plotfig(dataframe, df1, df2, ax, omegah2bar = False, colbar = True, xlog = True, ylog = True, savefig = False, label_dict = params_dict, info = None, label_y = True):
 
     dataframe
     label1 = label_dict.get(df1, df1)
     label2 = label_dict.get(df2, df2)
-    
-    plt.figure(figsize=(8, 6))
-    if xlog == True:
-        plt.xscale('log')
-    
-    if ylog == True:
-        plt.yscale('log')
-        
-    if omegah2bar == True:
-        sc = plt.scatter(dataframe[df1], dataframe[df2], c=dataframe['Omegah2'], rasterized=True, s=1,
-                        cmap='plasma', norm=LogNorm(vmin=10e-6, vmax=dataframe['Omegah2'].max()))
 
-        plt.title(f'Plot of {label1} against {label2}, coloured by $\\Omega h_2$')
-        
-        if colbar == True:
-            cbar = plt.colorbar(sc)
-            cbar.set_label('$\\Omega h_2$', fontsize=12)
+    if xlog:
+        ax.set_xscale('log')
+    if ylog:
+        ax.set_yscale('log')
 
+    if omegah2bar:
+        sc = ax.scatter(dataframe[df1], dataframe[df2], c=dataframe['Omegah2'], rasterized=True, s=1,
+                        cmap='plasma_r', norm=LogNorm(vmin=1e-6, vmax=dataframe['Omegah2'].max()))
+        if colbar:
+            cbar = plt.colorbar(sc, ax=ax)
+            cbar.set_label('$\\Omega h_2$', fontsize=18)
     else:
-        sc = plt.scatter(dataframe[df1], dataframe[df2], c = 'red', s = 1)
-        plt.title(f'Plot of {label1} against {label2}')
+        ax.scatter(dataframe[df1], dataframe[df2], c='red', s=1)
 
-    plt.grid(True, linestyle='--', alpha=0.7)
-    plt.tight_layout()
-    plt.xlabel(label1, fontsize=12)
-    plt.ylabel(label2, fontsize=12)
+    ax.set_xlabel(label1, fontsize=18)
+    
+    if label_y == True:
+        ax.set_ylabel(label2, fontsize=18)
+    
+    ax.tick_params(axis='both', labelsize=18)
+    
+    ax.grid(True, linestyle='--', alpha=0.7)
     
     #plt.xlim()
     #plt.ylim()
@@ -159,6 +156,35 @@ def plotfig(dataframe, df1, df2, omegah2bar = False, colbar = True, xlog = True,
         
         if omegah2bar == True:
             plt.savefig(f"plots/plot_{label1}_{label2}{info}.pdf", format='pdf') #pdf is full quality 
+
+def multiplotfig(dataframe, df1, df2, ax, omegah2bar = False, colbar = True, xlog = True, ylog = True, savefig = False, label_dict = params_dict, info = None, label_y = True):
+
+    dataframe
+    label1 = label_dict.get(df1, df1)
+    label2 = label_dict.get(df2, df2)
+
+    if xlog:
+        ax.set_xscale('log')
+    if ylog:
+        ax.set_yscale('log')
+
+    if omegah2bar:
+        sc = ax.scatter(dataframe[df1], dataframe[df2], c=dataframe['Omegah2'], rasterized=True, s=1,
+                        cmap='plasma_r', norm=LogNorm(vmin=1e-6, vmax=dataframe['Omegah2'].max()))
+        if colbar:
+            cbar = plt.colorbar(sc, ax=ax)
+            cbar.set_label('$\\Omega h_2$', fontsize=30)
+    else:
+        ax.scatter(dataframe[df1], dataframe[df2], c='red', s=1)
+
+    ax.set_xlabel(label1, fontsize=30)
+    
+    if label_y == True:
+        ax.set_ylabel(label2, fontsize=30)
+    
+    ax.tick_params(axis='both', labelsize=30)
+    
+    ax.grid(True, linestyle='--', alpha=0.7)
     
     
 def constraintplot(df1, df2, label_dict = params_dict):
@@ -197,6 +223,7 @@ pairs2 = [
     ['DMP', 'l345'], ['DM2', 'l345'], ['DM3', 'l345']
 ]
 
+'''
 # Define your cuts and plotting loop
 for cut_number in range(1, 5):  # Iterating over cut levels (cut1, cut12, cut123, cut1234)
     cut_args = {f'cut{i+1}': True for i in range(cut_number)}  # Dynamically set cut arguments
@@ -213,3 +240,77 @@ for cut_number in range(1, 5):  # Iterating over cut levels (cut1, cut12, cut123
             
         plt.savefig(f'plots1/{x}_{y}_{info_label}.pdf')
         plt.close()
+'''
+
+
+
+'''
+  # Dynamically set cut arguments
+for x, y in pairs:
+    fig, ax = plt.subplots(1, 4, figsize=(16, 9))
+    
+    for cut_number in range(1, 5):  # Iterating over cut levels (cut1, cut12, cut123, cut1234)
+        cut_args = {f'cut{i+1}': True for i in range(cut_number)} 
+        df_f = cuts(df, **cut_args)
+        label_x = params_dict.get(x, x)
+        label_y = params_dict.get(y, y)
+        
+        fig.suptitle(f'{label_x} against {label_y}')  
+        plt.sca(ax[cut_number - 1])
+        plotfig(df_f, x, y, omegah2bar=True, ylog= False, savefig=False)
+            
+    plt.show()
+#plt.savefig(f'4plot/{x}_{y}.pdf')'''
+
+def four_plot():
+    for x, y in pairs:
+        fig, axes = plt.subplots(1, 4, figsize=(28, 7), constrained_layout=True)  # Use axes array
+        ylog = True
+        for cut_number in range(1, 5):
+            cut_args = {f'cut{i+1}': True for i in range(cut_number)}
+            df_f = cuts(df, **cut_args)
+            print(x, y, cut_args)
+            print(np.shape(df_f))
+            if cut_number > 1:
+                axes[cut_number - 1].set_ylabel("")
+                axes[cut_number - 1].tick_params(axis='y', left=False, labelleft=False)
+
+                multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False, label_y = False)
+
+            elif cut_number == 4:
+                multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= True, label_y = False)
+        
+            else:
+                multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False)
+
+        plt.suptitle(f'{params_dict.get(x, x)} against {params_dict.get(y, y)}', fontsize=35)
+        plt.savefig(f'4plot/{x}_{y}.pdf')
+        print(f'saved {x}_{y} plot')
+        
+    for x, y in pairs2:
+        fig, axes = plt.subplots(1, 4, figsize=(28, 7), constrained_layout=True)  # Use axes array
+        ylog = False
+        for cut_number in range(1, 5):
+            cut_args = {f'cut{i+1}': True for i in range(cut_number)}
+            df_f = cuts(df, **cut_args)
+            print(x, y, cut_args)
+            print(np.shape(df_f))
+            if cut_number > 1:
+                axes[cut_number - 1].set_ylabel("")
+                axes[cut_number - 1].tick_params(axis='y', left=False, labelleft=False)
+
+                multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False, label_y = False)
+
+            elif cut_number == 4:
+                multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= True, label_y = False)
+        
+            else:
+                multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False)
+
+        plt.suptitle(f'{params_dict.get(x, x)} against {params_dict.get(y, y)}', fontsize=35)
+        plt.savefig(f'4plot/{x}_{y}.pdf')
+        print(f'saved {x}_{y} plot')
+        
+        #plt.show()
+
+four_plot()
