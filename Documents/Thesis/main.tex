@@ -61,7 +61,7 @@ The Higgs potential, characterized by a Mexican hat-shaped function, determines 
 
 We extend this concept to propose the existence of a new set of particles that follow a similar pattern. To achieve this, we impose a condition that the second doublet, denoted as $h_2$, is inert, meaning it does not share its degrees of freedom with other particles or couples to fermions, neither does it undergo symmetry breaking and nor does it have its VEV.
 
-The primary objective of this paper is to discover and analyse the parameters, namely $m_{h_1}$, $m_{h_2}$, $h_{h_\pm}$, $\lambda_2$, and $\lambda_{345}$, for the i2HDM model. In Section \ref{sec:i2HDM}, we provide a detailed introduction to the i2HDM model. Section \ref{sec:methodology} introduces the tools employed and the methods used to fix or scan the parameters. Section \ref{sec:results} presents the results obtained, followed by an analysis in Section \ref{sec:analysis}. Finally, the conclusion is presented in Section \ref{sec:conclusion}.
+The primary objective of this paper is to discover and analyse the parameters, namely $m_{h_1}$, $m_{h_2}$, $h_{h_\pm}$, $\lambda_2$, and $\lambda_{345}$, for the i2HDM model. In Section \ref{sec:i2HDM}, we provide a detailed introduction to the i2HDM model and the constraints that will be taken into consideration. Section \ref{sec:results} presents the results obtained along with the analysis. Finally, the conclusion is presented in Section \ref{sec:conclusion}.
 
 \end{abstract}
 
@@ -286,7 +286,7 @@ For data interpretation purposes, and since \verb|micrOMEGAS| software calculate
 
 \subsubsection{Constraints from CMB}
 
-\section{Results}
+\section{Results and Analysis}
 \label{sec:results}
 \subsection{5-D Random Scan}
 \label{5-D scan}
@@ -307,32 +307,8 @@ The plots against DM mass will be shown in the following pages, and the rest in 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\columnwidth]{4plot/MD1_l345.pdf}
-    \caption{Caption}
-    \label{fig:enter-label}
-\end{figure}
-\begin{figure}[H]
-    \begin{subfigure}{\textwidth}
-      \centering
-      \includegraphics[width=0.5\columnwidth]
-      {plots/MD1_MD2_cut1.pdf}
-    \end{subfigure}%
-    \begin{subfigure}{\textwidth}
-      \centering
-      \includegraphics[width=0.5\columnwidth]{plots/MD1_MD2_cut1cut2.pdf}
-      %\caption{$H_2(f)$ with added input noise}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth}
-      \centering
-      \includegraphics[width=0.5\columnwidth]{plots/MD1_MD2_cut1cut2cut3.pdf}
-      %\caption{$H_2(f)$ with added input noise}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth}
-      \centering
-      \includegraphics[width=0.5\columnwidth]{plots/MD1_MD2_cut1cut2cut3cut4.pdf}
-      %\caption{$H_2(f)$ with added input noise}
-    \end{subfigure}
     \caption{Plot of DM mass, $m_{h_1}$ against $m_{h_2}$}
-    \label{fig:input noise}
+    \label{fig:enter-label}
 \end{figure}
 
 \begin{figure}[H]
@@ -410,12 +386,9 @@ In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of 
 \begin{itemize}
     \item The slight dips at 40 and 45 GeV for all values of $\lambda$ is the reaction where $h, h \rightarrow Z_0$ boson, and also the reaction for $h, h \rightarrow W_\pm$. The $Z^0$ and $W^\pm$ boson have masses $\sim$80 GeV and $\sim$85 GeV respectively.
     \item At 60 GeV, there is a dip for all values of $\lambda$ - this is because that is the $h_1,h_1\rightarrow H$ process - the DM DM annihilation process. 
-    \item At 80-90 GeV
+    \item At 80-90 GeV, we can observe 
     \item At 105 GeV
 \end{itemize}
-
-\section{Analysis}
-\label{sec:analysis}
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -424,6 +397,8 @@ In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of 
 \bibliographystyle{plain}
 \bibliography{references}
 
+\newpage
+\onecolumn
 \section{Appendix}
 The remaining plots mentioned in Section \ref{5-D scan} are shown below, with cuts applied from left to right in the following order: Cut 1, Cut 1 and 2, Cut 1, 2 and 3, and Cut 1, 2, 3 and 4:
 \begin{figure}[H]
@@ -495,12 +470,41 @@ The remaining plots mentioned in Section \ref{5-D scan} are shown below, with cu
 \begin{figure}[H]
     \begin{subfigure}{\textwidth}
       \centering
-      \includegraphics[width=1\columnwidth]{4plot/DM2_l345.pdf}
+      \includegraphics[width=1\columnwidth]{4plot/MDP_MD1.pdf}
     \end{subfigure}
 
     \begin{subfigure}{\textwidth}
       \centering
-      \includegraphics[width=1\columnwidth]{4plot/DM3_l345.pdf}
+      \includegraphics[width=1\columnwidth]{4plot/MDP_MD2.pdf}
+    \end{subfigure}
+
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/MDP_DM2.pdf}
+    \end{subfigure}
+    
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/MDP_DM3.pdf}
+    \end{subfigure}
+
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/MDP_DMP.pdf}
+    \end{subfigure}
+
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/MDP_l345.pdf}
+    \end{subfigure}
+\caption{Plots with $m_{h_\pm}$ against other parameters.}
+\end{figure}
+
+\begin{figure}[H]
+
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/DM2_l345.pdf}
     \end{subfigure}
     
     \begin{subfigure}{\textwidth}
@@ -508,6 +512,20 @@ The remaining plots mentioned in Section \ref{5-D scan} are shown below, with cu
       \includegraphics[width=1\columnwidth]{4plot/DMP_l345.pdf}
     \end{subfigure}
     
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/MD1_l345.pdf}
+    \end{subfigure}   
+    
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/MD2_l345.pdf}
+    \end{subfigure}
+
+    \begin{subfigure}{\textwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/MDP_l345.pdf}
+    \end{subfigure}
 \caption{Plots with other parameters against $l_{345}$.}
 \end{figure}
 
