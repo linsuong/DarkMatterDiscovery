@@ -16,8 +16,8 @@ params_dict = {
     'Omegah2': r'$\Omega h_2$',
     'l345' : r'$\lambda_{345}$',
     'DMP' : r'$\Delta m^+$', #mass diff mhp - mh1
-    'DM2' : r'$\Delta m^1$', #mass diff mh2 - mh1
-    'DM3' : r'$\Delta m^0$' #mass diff mh2 - mh+
+    'DM2' : r'$\Delta m^0$', #mass diff mh2 - mh1
+    'DM3' : r'$\Delta m^1$' #mass diff mh2 - mh+
 }
 
 def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut4=False, cut5=False):
@@ -52,6 +52,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     cutMD1 = True 
     cutMDP = True
     cutl345 = True
+    cutMass = True
     cutLEP = True
     cutLEP2 = True
     
@@ -74,11 +75,16 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
             (dataframe['l345'] < 8 * np.pi)
         )
         
+        cutMass = ((dataframe['MD1']<1000) & (dataframe['MD2']<1000) & (dataframe['MDP']<1000) &
+                    (dataframe['MD1']>10) & (dataframe['MD2']>10) & (dataframe['MDP']>10))
+        
     if cut2:
         #cutLEP2 = (dataframe['MD1'] > 80) & (dataframe['MD2'] > 100) & (dataframe['DM2'] < 8) 
         cutMDP = (dataframe['MDP'] > 70)
         cutLEP = ((dataframe['MD1+MD2'] > MZ) & (dataframe['MD1+MDP'] > MW) & 
                     (dataframe['MD2+MDP'] > MW) & (2 * dataframe['MDP'] > MZ))
+        
+        
         
     if cut3:
         
@@ -97,7 +103,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
 
     # Combine all cuts
     cut_tot = (
-                cutMD1 & cutl345 & 
+                cutMD1 & cutl345 & cutMass & 
                 cutLEP & cutLEP2 & cutMDP &
                 cutOM & 
                 cutDD & cutCMB & cutBr
@@ -310,8 +316,8 @@ def four_plot():
                 multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False)
 
         plt.suptitle(f'{params_dict.get(y, y)} against {params_dict.get(x, x)}', fontsize=35)
-        plt.savefig(f'4plot/{x}_{y}.pdf')
-        print(f'saved {x}_{y} plot')
+        plt.savefig(f'4plot/{y}_{x}.pdf')
+        print(f'saved {y}_{x} plot')
         
     for x, y in pairs2:
         fig, axes = plt.subplots(1, 4, figsize=(28, 7), constrained_layout=True)  # Use axes array
@@ -338,8 +344,8 @@ def four_plot():
                 multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False)
 
         plt.suptitle(f'{params_dict.get(y, y)} against {params_dict.get(x, x)}', fontsize=35)
-        plt.savefig(f'4plot/{x}_{y}.pdf')
-        print(f'saved {x}_{y} plot')
+        plt.savefig(f'4plot/{y}_{x}.pdf')
+        print(f'saved {y}_{x} plot')
         
         #plt.show()
 
