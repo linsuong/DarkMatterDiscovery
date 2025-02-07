@@ -17,7 +17,7 @@ params_dict = {
     'l345' : r'$\lambda_{345}$',
     'DMP' : r'$\Delta m^+$', #mass diff mhp - mh1
     'DM2' : r'$\Delta m^1$', #mass diff mh2 - mh1
-    'DM3' : r'$\Delta m^0$' #mass diff mh+ - mh2
+    'DM3' : r'$\Delta m^0$' #mass diff mh2 - mh+
 }
 
 def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut4=False, cut5=False):
@@ -32,8 +32,8 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     v = 246
 
     dataframe['MDP'] = dataframe['DMP'] + dataframe['MD1']
-    dataframe['MD2'] = dataframe['MDP'] - dataframe['DM3']
-    dataframe['DM2'] = dataframe['MD2'] - dataframe['MD1']
+    dataframe['MD2'] = dataframe['DM3'] + dataframe['DMP'] + dataframe['MD1']
+    dataframe['DM2'] = dataframe['DM3'] + dataframe['DMP']
     
     #columns for vacuum stability 
     dataframe['R'] = dataframe['l345'] /(2 * np.sqrt(l1))
@@ -49,10 +49,12 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     cutCMB = dataframe['CMB_ID'] > -np.inf
     cutBr = dataframe['brH_DMDM'] > -np.inf
     
+    cutMD1 = True 
     cutMDP = True
-    cutMD1_1 = True 
+    cutl345 = True
     cutLEP = True
     cutLEP2 = True
+    
 
     if cut1:
         #vs1: mh1^2 > 0 for |R| < 1
@@ -62,18 +64,19 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
         threshold = (dataframe['R'] - 1) * np.sqrt(l1) * (v ** 2) 
         vs2 = (dataframe['MD1']**2 > threshold) & (dataframe['R'] > 1)
         
-        cutMD1_1 = vs1 | vs2
+        cutMD1 = vs1 | vs2
         
         cutl345 = (
             (dataframe['l345'] < 2 * (((dataframe['MD1'] ** 2)/(v ** 2)) + np.sqrt(l1))) & 
-            (dataframe['l345'] < ((16/3) * np.pi) - l1) & 
-            (dataframe['l345'] < 4 * np.pi - ((3/2) * l1)) &
+            #(dataframe['l345'] < ((16/3) * np.pi) - l1) & 
+            #(dataframe['l345'] < 4 * np.pi - ((3/2) * l1)) &
             (dataframe['l345'] > -1.47) &
             (dataframe['l345'] < 8 * np.pi)
         )
         
     if cut2:
-        #cutLEP2 = (dataframe['MD1'] > 80) & (dataframe['MD2'] > 100) & (dataframe['DM2'] < 8) & (dataframe['MDP'] > 70)
+        #cutLEP2 = (dataframe['MD1'] > 80) & (dataframe['MD2'] > 100) & (dataframe['DM2'] < 8) 
+        cutMDP = (dataframe['MDP'] > 70)
         cutLEP = ((dataframe['MD1+MD2'] > MZ) & (dataframe['MD1+MDP'] > MW) & 
                     (dataframe['MD2+MDP'] > MW) & (2 * dataframe['MDP'] > MZ))
         
@@ -93,9 +96,11 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
         cutBr = dataframe['brH_DMDM'] < 0.145
 
     # Combine all cuts
-    cut_tot = (cutMD1_1 & cutl345 & 
-               cutLEP & cutLEP2 & cutMDP &
-               cutOM & cutDD & cutCMB & cutBr
+    cut_tot = (
+                cutMD1 & cutl345 & 
+                cutLEP & cutLEP2 & cutMDP &
+                cutOM & 
+                cutDD & cutCMB & cutBr
                 )
 
     # Apply the combined cuts
@@ -304,7 +309,7 @@ def four_plot():
             elif cut_number == 1:
                 multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False)
 
-        plt.suptitle(f'{params_dict.get(x, x)} against {params_dict.get(y, y)}', fontsize=35)
+        plt.suptitle(f'{params_dict.get(y, y)} against {params_dict.get(x, x)}', fontsize=35)
         plt.savefig(f'4plot/{x}_{y}.pdf')
         print(f'saved {x}_{y} plot')
         
@@ -332,7 +337,7 @@ def four_plot():
             elif cut_number == 1:
                 multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False)
 
-        plt.suptitle(f'{params_dict.get(x, x)} against {params_dict.get(y, y)}', fontsize=35)
+        plt.suptitle(f'{params_dict.get(y, y)} against {params_dict.get(x, x)}', fontsize=35)
         plt.savefig(f'4plot/{x}_{y}.pdf')
         print(f'saved {x}_{y} plot')
         
@@ -340,8 +345,8 @@ def four_plot():
 
 #oneplots()
 #oneplots_nobar()
-#four_plot()
+four_plot()
 
-df_cut = cuts(df, cut1= True, cut2= True, cut3= True, cut4= True)
-plotfig(df_cut, 'MD1', 'MD2', omegah2bar= True, colbar=True)
-plt.show()
+#df_cut = cuts(df, cut1= True, cut2= True, cut3= True, cut4= True)
+#plotfig(df_cut, 'MD1', 'MD2', omegah2bar= True, colbar=True)
+#plt.show()
