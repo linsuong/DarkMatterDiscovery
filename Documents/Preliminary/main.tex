@@ -119,8 +119,8 @@ Where:
 Furthermore, we impose additional parametrisation in terms of mass differences that allow better visualisation of parameter space \cite{Belyaev_2022}, the reason which will be prevalent in the next sections when considering constrains:
 \begin{align}
 \label{eq:mass_diff_1}
-    \Delta m^{0} = m_{h_2} - m_{h^\pm},\\
-    \Delta m^1 = m_{h_2} - m_{h_1},\\
+    \Delta m^0 = m_{h_2} - m_{h_1},\\
+    \Delta m^1 = m_{h_2} - m_{h^\pm},\\
     \Delta m^+ = m_{h^\pm} - m_{h_1}
 \end{align}
 
@@ -129,7 +129,7 @@ We have four parameters to scan across: $m_{h_1}$, $\Delta m^0$, $\Delta m^+$ an
 
 This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|, version 6.1.15. Through theory and experiments, there are certain constraints that will have to be applied to the scan such that a proper search can be done.
 
-\subsubsection{Constraints from vacuum permeability}
+\subsubsection{Constraints from vacuum stability}
 First of all, we need to ensure that the potential is bounded from below to ensure stability \cite{Deshpande:1977rw}:
 \begin{equation}
     \begin{split}
@@ -200,9 +200,16 @@ In addition, we can see from equation \ref{eqn:R>1} this can be rewritten as:
 \end{equation}
 
 \subsubsection{Constraints form perturbativity and unitarity}
-As shown in 
-
-
+As shown in \cite{Belyaev:2016lok}, where \cite{Aruhrib2012Inert} was considered, it was shown that $\lambda_{345}$ had to obey these constraints:
+\begin{equation}
+    -1.47 < \lambda_{345} < 4\pi
+    \label{eqn:l345_pert}
+\end{equation}
+And $m_{h_1, h_2, h_\pm}$ had to obey:
+\begin{equation}
+    10\text{ Gev} < m_{h_1, h_2, h_\pm} < 1000\text{ GeV}
+    \label{eqn:masses_pert}
+\end{equation}
 
 \subsubsection{Constraints from LEP and EWPT (Electroweak Precision Data)}
 From LEP, we can see that the constraints follow the W and Z boson widths:
@@ -214,12 +221,12 @@ From LEP, we can see that the constraints follow the W and Z boson widths:
     2m_{h_\pm} > m_{Z^0}, \qquad  \label{LEP2_2}
 \end{align}
 
-From LEP II \cite{Lundstr_m_2009}, there are the additional constraints on the masses and mass differences:
+From LEP II \cite{Lundstr_m_2009}, there are the additional constraints on the masses and mass differences, due to a visible dijet/dilepton signal:
 \begin{align}
-    m_{h_1}< 80 \text{ GeV}, \qquad
-    m_{h_2}< 100 \text{ GeV}, \qquad \label{LEP2_3}
+    m_{h_1}> 80 \text{ GeV}, \qquad
+    m_{h_2}> 100 \text{ GeV}, \qquad \label{LEP2_3}
     \\
-    m_{h_2} - m_{h_1} > 8\text{ GeV}, \qquad
+    m_{h_2} - m_{h_1} < 8\text{ GeV}, \qquad
     m_{h_\pm}> 70\text{ GeV} \qquad \label{LEP2_4}
 \end{align}
 
@@ -281,6 +288,7 @@ There also is the chance that the values obtained could have been excluded by th
 The upper limit of the branching ratio for the invisible Higgs at 95\% confidence level from the latest ATLAS search is\cite{ATLAS:2022yvh}:
 \begin{equation}
     Br(\text{Higgs} \rightarrow \text{invisible}) = 0.145
+    \label{eqn:branching_ratio}
 \end{equation}
 
 
@@ -288,23 +296,24 @@ The upper limit of the branching ratio for the invisible Higgs at 95\% confidenc
 A 5-D scan is done across the parameters stated earlier and by applying "cuts" to the 5-D datasets, we can then narrow the parameter space in our search for the DM particle.
 We apply cuts in the following order:
 \begin{itemize}
-    \item Cut 1 - Constraints from vacuum permeability and stability (Eqn. \ref{eqn:R>1})
-    \item Cut 2 - Constraints from LEP (Eqn. \ref{LEP2_1}, \ref{LEP2_2}, \ref{LEP2_3}, \ref{LEP2_4}) and EWPT (Eqn. \ref{eqn:S}, \ref{eqn:T})
+    \item Cut 1 - Constraints from vacuum stability (Eqn. \ref{eqn:R>1}), pertubativity and unitarity (Eqn. \ref{eqn:l345_pert}, \ref{eqn:masses_pert}) 
+    \item Cut 2 - Constraints from LEP (Eqn. \ref{LEP2_1}, \ref{LEP2_2}, \ref{LEP2_3}, \ref{LEP2_4}) and EWPT (Eqn. \ref{eqn:S}, \ref{eqn:T}) - however, EWPT constraints have not been completely implemented so the results shown here will not include EWPT constraints.
     \item Cut 3 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
-    \item Cut 4 - Constraints from DM direct detection, CMB data and branching ratios.
+    \item Cut 4 - Constraints from DM direct detection, CMB data and branching ratios \ref{eqn:branching_ratio}.
 \end{itemize}
 
-The 5-D datasets are projected onto a 2-D plane, and majority of the plots can be found in the \hyperref[sec:Appendix]{Appendix}.
+The 5-D datasets are projected onto a 2-D plane, and majority of the plots can be found in the \hyperref[sec:Appendix]{Appendix}. 
 
 \subsection{2-D Projection}
 We can first consider the relationship between $m_{h_1}$ and $\lambda_{345}$. 
-\begin{figure}
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\linewidth]{4plot/MD1_l345.pdf}
     \caption{Plot of $\lambda_{345}$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-4 applied onto the data. }
     \label{fig:enter-label}
 \end{figure}
 
+We can see that as the constraints are applied, the parameter space becomes more obvious - the 
 \subsection{1-D Analysis}
 \label{1-D scan}
 We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:MD1_l345_1}, \ref{fig:MD1_l345_100}) as done in \cite{Belyaev:2016lok}:
@@ -463,7 +472,7 @@ The remaining plots mentioned in Section \ref{5-D scan} are shown below, with cu
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MDP_l345.pdf}
     \end{subfigure}
-\caption{Plots with other parameters against $l_{345}$.}
+\caption{Plots with $l_{345}$ against other parameters.}
 \end{figure}
 
 \end{document}
