@@ -216,7 +216,11 @@ pairs = [
     ['MD1', 'MD2'], ['MD1', 'MDP'], ['MD1', 'DMP'], ['MD1', 'DM2'], ['MD1', 'DM3'],
     ['MD2', 'MD1'], ['MD2', 'MDP'], ['MD2', 'DMP'], ['MD2', 'DM2'], ['MD2', 'DM3'],
     ['MDP', 'MD1'], ['MDP', 'MD2'], ['MDP', 'DMP'], ['MDP', 'DM2'], ['MDP', 'DM3'],
+    ['MD1', 'MD2'], ['MDP', 'MD1'], ['DMP', 'MD1'], ['DM2', 'MD1'], ['DM3', 'MD1'],
+    ['MD2', 'MD1'], ['MDP', 'MD2'], ['DMP', 'MD2'], ['DM2', 'MD2'], ['DM3', 'MD2'],
+    ['MD1', 'MDP'], ['MD2', 'MDP'], ['DMP', 'MDP'], ['DM2', 'MDP'], ['DM3', 'MDP']
 ]
+
 pairs2 = [
     ['MD1', 'l345'], ['MD2', 'l345'], ['MDP', 'l345'],
     ['DMP', 'l345'], ['DM2', 'l345'], ['DM3', 'l345']
@@ -353,8 +357,8 @@ def lambdaplot():
 
 #oneplots()
 #oneplots_nobar()
-#four_plot()
-lambdaplot()
+four_plot()
+#lambdaplot()
 #df_cut = cuts(df, cut1= True, cut2= True, cut3= True, cut4= True)
 #plotfig(df_cut, 'MD1', 'MD2', omegah2bar= True, colbar=True)
 #plt.show()
