@@ -6,6 +6,8 @@ from matplotlib.colors import LogNorm
 file_path = 'scans/5-D_scans/combined.dat'
 
 df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
+df['brH_DMDM'] = pd.to_numeric(df['brH_DMDM'], errors='coerce')
+
 
 params_dict = {
     'MD1': r'$m_{h1}$',
@@ -30,8 +32,8 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     v = 246
 
     dataframe['MDP'] = dataframe['DMP'] + dataframe['MD1']
-    dataframe['DM2'] = dataframe['DM3'] + dataframe['DMP']
-    dataframe['MD2'] = dataframe['DM2'] + dataframe['MD1']
+    dataframe['MD2'] = dataframe['MDP'] - dataframe['DM3']
+    dataframe['DM2'] = dataframe['MD2'] - dataframe['MD1']
     
     #columns for vacuum stability 
     dataframe['R'] = dataframe['l345'] /(2 * np.sqrt(l1))
@@ -42,17 +44,15 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     dataframe['MD2+MDP'] = dataframe['MD2'] + dataframe['MDP']
 
     cutl345 = dataframe['l345'] > -np.inf
-    cutMD1 = dataframe['MD1'] > -np.inf
-    cutMD2 = dataframe['MD2'] > -np.inf
-    cutDM2 = dataframe['DM2'] > -np.inf
     cutOM = dataframe['Omegah2'] > -np.inf
     cutDD = dataframe['PvalDD'] > -np.inf
     cutCMB = dataframe['CMB_ID'] > -np.inf
-    #cutBr = dataframe['brH_DMDM'] > -np.inf
+    cutBr = dataframe['brH_DMDM'] > -np.inf
     
-    cutMD1MD2 = True
-    cutMD2MDP = True
     cutMDP = True
+    cutMD1_1 = True 
+    cutLEP = True
+    cutLEP2 = True
 
     if cut1:
         #vs1: mh1^2 > 0 for |R| < 1
@@ -65,24 +65,20 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
         cutMD1_1 = vs1 | vs2
         
         cutl345 = (
-            (dataframe['l345'] < 2 * (((df['MD1'] ** 2)/(v ** 2)) + np.sqrt(l1))) & 
+            (dataframe['l345'] < 2 * (((dataframe['MD1'] ** 2)/(v ** 2)) + np.sqrt(l1))) & 
             (dataframe['l345'] < ((16/3) * np.pi) - l1) & 
             (dataframe['l345'] < 4 * np.pi - ((3/2) * l1)) &
             (dataframe['l345'] > -1.47) &
-            (dataframe['l345'] < 4 * np.pi)
+            (dataframe['l345'] < 8 * np.pi)
         )
         
     if cut2:
+        #cutLEP2 = (dataframe['MD1'] > 80) & (dataframe['MD2'] > 100) & (dataframe['DM2'] < 8) & (dataframe['MDP'] > 70)
+        cutLEP = ((dataframe['MD1+MD2'] > MZ) & (dataframe['MD1+MDP'] > MW) & 
+                    (dataframe['MD2+MDP'] > MW) & (2 * dataframe['MDP'] > MZ))
         
-        cutMD1MD2 = (dataframe['MD1+MD2'] > MZ) & (dataframe['MD1+MDP'] > MW)
-        cutMD2MDP = dataframe['MD2+MDP'] > MW
-        cutMDP = (2 * dataframe['MDP'] > MZ) & (dataframe['MDP'] > 70)
-        
-        #cutMD1 = dataframe['MD1'] > 80
-        #cutMD2 = dataframe['MD2'] > 100
-        #cutDM2 = dataframe['DM2'] < 8
-
     if cut3:
+        
         cutOM = dataframe['Omegah2'] < 0.12024
         #cutOM = (df['Omegah2'] > 0.10) & (df['Omegah2'] < 0.12024) #strict bound of Omegah2
         
@@ -94,28 +90,18 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
 
         cutCMB = dataframe['CMB_ID'] < 1
         
-        #cutBr = dataframe['brH_DMDM'] > 0.15
+        cutBr = dataframe['brH_DMDM'] < 0.145
 
     # Combine all cuts
-    cut_tot = cutMD1_1 & cutMD1 & cutMD2 & cutDM2 & cutl345 & cutOM & cutDD & cutCMB & cutMD1MD2 & cutMD2MDP & cutMDP
+    cut_tot = (cutMD1_1 & cutl345 & 
+               cutLEP & cutLEP2 & cutMDP &
+               cutOM & cutDD & cutCMB & cutBr
+                )
 
     # Apply the combined cuts
     dataframe_cut = dataframe[cut_tot]
 
     return dataframe_cut
-
-
-'''
-cutDD=(df['PvalDD'] > 0.1)
-cutOM=(df['Omegah2'] < 0.12024)
-#cutOM = (df['Omegah2'] > 0.10) & (df['Omegah2'] < 0.12024) #strict bound of Omegah2
-#cutCMB=(df['CMB_ID'] <1) 
-
-
-#cut_tot=(cutDD & cutOM)
-cut_tot=(cutOM)
-df_f = df[cut_tot]
-'''
 
 def plotfig(dataframe, df1, df2, omegah2bar = False, colbar = True, xlog = True, ylog = True, savefig = False, label_dict = params_dict, info = None, label_y = True):
 
@@ -158,9 +144,8 @@ def plotfig(dataframe, df1, df2, omegah2bar = False, colbar = True, xlog = True,
         if omegah2bar == True:
             plt.savefig(f"plots/plot_{label1}_{label2}{info}.pdf", format='pdf') #pdf is full quality 
 
-def multiplotfig(dataframe, df1, df2, ax, omegah2bar = False, colbar = True, xlog = True, ylog = True, savefig = False, label_dict = params_dict, info = None, label_y = True):
-
-    dataframe
+def multiplotfig(dataframe, df1, df2, ax, omegah2bar = False, colbar = True, xlog = True, ylog = True, 
+                 savefig = False, label_dict = params_dict, info = None, label_y = True):
     label1 = label_dict.get(df1, df1)
     label2 = label_dict.get(df2, df2)
 
@@ -355,4 +340,8 @@ def four_plot():
 
 #oneplots()
 #oneplots_nobar()
-four_plot()
+#four_plot()
+
+df_cut = cuts(df, cut1= True, cut2= True, cut3= True, cut4= True)
+plotfig(df_cut, 'MD1', 'MD2', omegah2bar= True, colbar=True)
+plt.show()
