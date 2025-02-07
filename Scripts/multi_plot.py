@@ -162,6 +162,7 @@ def multiplotfig(dataframe, df1, df2, ax, omegah2bar = False, colbar = True, xlo
 
     if xlog:
         ax.set_xscale('log')
+        
     if ylog:
         ax.set_yscale('log')
 
@@ -176,7 +177,7 @@ def multiplotfig(dataframe, df1, df2, ax, omegah2bar = False, colbar = True, xlo
         ax.scatter(dataframe[df1], dataframe[df2], c='red', s=1)
 
     ax.set_xlabel(label1, fontsize=30)
-    
+
     if label_y == True:
         ax.set_ylabel(label2, fontsize=30)
     
@@ -318,7 +319,8 @@ def four_plot():
         plt.suptitle(f'{params_dict.get(y, y)} against {params_dict.get(x, x)}', fontsize=35)
         plt.savefig(f'4plot/{y}_{x}.pdf')
         print(f'saved {y}_{x} plot')
-        
+
+def lambdaplot():
     for x, y in pairs2:
         fig, axes = plt.subplots(1, 4, figsize=(28, 7), constrained_layout=True)  # Use axes array
         ylog = False
@@ -330,15 +332,15 @@ def four_plot():
             
             if cut_number > 1 and cut_number < 4:
                 axes[cut_number - 1].set_ylabel("")
-                axes[cut_number - 1].tick_params(axis='y', left=False, labelleft=False)
+                #axes[cut_number - 1].tick_params(axis='y', left=False, labelleft=False)
 
-                multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False, label_y = False)
+                multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False,)
 
             elif cut_number == 4:
                 axes[cut_number - 1].set_ylabel("")
-                axes[cut_number - 1].tick_params(axis='y', left=False, labelleft=False)
+                #axes[cut_number - 1].tick_params(axis='y', left=False, labelleft=False)
 
-                multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= True, label_y = False)
+                multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= True)
         
             elif cut_number == 1:
                 multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False)
@@ -351,8 +353,8 @@ def four_plot():
 
 #oneplots()
 #oneplots_nobar()
-four_plot()
-
+#four_plot()
+lambdaplot()
 #df_cut = cuts(df, cut1= True, cut2= True, cut3= True, cut4= True)
 #plotfig(df_cut, 'MD1', 'MD2', omegah2bar= True, colbar=True)
 #plt.show()
