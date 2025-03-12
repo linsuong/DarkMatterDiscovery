@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import cuts
 from matplotlib.colors import LogNorm
 
 file_path = '/Users/linusong/Repositories/DarkMatterDiscovery/scans/5-D_scans/combined.dat.gz'
@@ -50,104 +51,6 @@ def chi_squared(S, T, S0=0.06, T0=0.1, sigma_S=0.09, sigma_T=0.07, rho=0.91):
     chi2 = delta.T @ inv_cov @ delta
     return chi2
 
-def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut4=False, cut5=False):
-    """
-    Applies constraints to the dataframe and returns a filtered dataframe.
-    """
-    if cut3 == True and cut3_strict == True:
-        raise Exception('please choose for a strict or relaxed bound on relic density')
-    MW = 80.377
-    MZ = 91.19
-    l1 = 0.129
-    v = 246
-
-    dataframe['MDP'] = dataframe['DMP'] + dataframe['MD1']
-    dataframe['DM2'] = dataframe['DM3'] + dataframe['DMP']
-    dataframe['MD2'] = dataframe['DM2'] + dataframe['MD1']
-    
-    #columns for vacuum stability 
-    dataframe['R'] = dataframe['l345'] /(2 * np.sqrt(l1))
-    
-    #columns for LEP constraints:
-    dataframe['MD1+MD2'] = dataframe['MD1'] + dataframe['MD2']
-    dataframe['MD1+MDP'] = dataframe['MD1'] + dataframe['MDP']
-    dataframe['MD2+MDP'] = dataframe['MD2'] + dataframe['MDP']
-
-    cutl345 = dataframe['l345'] > -np.inf
-    cutMD1 = dataframe['MD1'] > -np.inf
-    cutMD2 = dataframe['MD2'] > -np.inf
-    cutDM2 = dataframe['DM2'] > -np.inf
-    cutOM = dataframe['Omegah2'] > -np.inf
-    cutDD = dataframe['PvalDD'] > -np.inf
-    cutCMB = dataframe['CMB_ID'] > -np.inf
-    
-    cutMD1MD2 = True
-    cutMD2MDP = True
-    cutMDP = True
-    cutEWPT = True
-
-    if cut1:
-        #vs1: mh1^2 > 0 for |R| < 1
-        vs1 = (dataframe['R'].abs() < 1) & (dataframe['MD1'] ** 2 > 0)
-        
-        #vs2: mh1^2 > threshold for R > 1
-        threshold = (dataframe['R'] - 1) * np.sqrt(l1) * (v ** 2) 
-        vs2 = (dataframe['MD1']**2 > threshold) & (dataframe['R'] > 1)
-        
-        cutMD1_1 = vs1 | vs2
-        
-        cutl345 = (
-            (dataframe['l345'] < 2 * (((df['MD1'] ** 2)/(v ** 2)) + np.sqrt(l1))) & 
-            (dataframe['l345'] < ((16/3) * np.pi) - l1) & 
-            (dataframe['l345'] < 4 * np.pi - ((3/2) * l1)) &
-            (dataframe['l345'] > -1.47) &
-            (dataframe['l345'] < 4 * np.pi)
-        )
-        
-    if cut2:
-        # LEP constraints
-        cutMD1MD2 = (dataframe['MD1'] + dataframe['MD2']) > MZ
-        cutMD1MDP = (dataframe['MD1'] + dataframe['MDP']) > MW
-        cutMD2MDP = (dataframe['MD2'] + dataframe['MDP']) > MW
-        cutMDP = (2 * dataframe['MDP'] > MZ) & (dataframe['MDP'] > 70)
-
-        # EWPT constraints
-        x1 = dataframe['MD1'] / dataframe['MDP']
-        x2 = dataframe['MD2'] / dataframe['MDP']
-        log_term = np.log(dataframe['MDP'] / dataframe['MD1'])
-        
-        # Approximate expressions for S and T (from paper)
-        dataframe['S'] = (1 / (72 * np.pi)) * ((x2**2 - x1**2) * log_term)
-        dataframe['T'] = (1 / (32 * np.pi**2 * v**2)) * (dataframe['MDP']**2 - dataframe['MD2']**2)
-
-        chi2_threshold = 5.99  # 95% confidence level
-        dataframe['chi2'] = dataframe.apply(lambda row: chi_squared(row['S'], row['T']), axis=1)
-        cutEWPT = dataframe['chi2'] < chi2_threshold
-
-        #cutMD1 = dataframe['MD1'] > 80
-        #cutMD2 = dataframe['MD2'] > 100
-        #cutDM2 = dataframe['DM2'] < 8
-
-    if cut3:
-        cutOM = dataframe['Omegah2'] < 0.12024
-        #cutOM = (df['Omegah2'] > 0.10) & (df['Omegah2'] < 0.12024) #strict bound of Omegah2
-        
-    if cut3_strict:
-        cutOM = (df['Omegah2'] > 0.10737) & (df['Omegah2'] < 0.13123) #strict bound of Omegah2
-
-    if cut4:
-        cutDD = dataframe['PvalDD'] > 0.1
-
-    if cut5:
-        cutCMB = dataframe['CMB_ID'] < 1
-
-    # Combine all cuts
-    cut_tot = cutMD1_1 & cutMD1 & cutMD2 & cutDM2 & cutl345 & cutEWPT & cutOM & cutDD & cutCMB & cutMD1MD2 & cutMD2MDP & cutMDP
-
-    # Apply the combined cuts
-    dataframe_cut = dataframe[cut_tot]
-
-    return dataframe_cut
 
 def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, savefig = False, ext = None, label_dict = params_dict):
     

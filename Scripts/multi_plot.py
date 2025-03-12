@@ -8,6 +8,8 @@ file_path = 'scans/5-D_scans/combined.dat'
 df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
 df['brH_DMDM'] = pd.to_numeric(df['brH_DMDM'], errors='coerce')
 
+df_HEP = pd.read_csv('HEPData-ins2841863-v1-csv/SIcrosssection.csv', sep=',' , low_memory= False)
+
 
 params_dict = {
     'MD1': r'$m_{h1}$',
@@ -349,11 +351,12 @@ def lambdaplot():
             elif cut_number == 1:
                 multiplotfig(df_f, x, y, axes[cut_number - 1], omegah2bar=True, ylog=ylog, colbar= False)
 
+        df_HEP['median'] = (df_HEP['median']/(10 ** (-47)))  * (10 ** -11)
         plt.suptitle(f'{params_dict.get(y, y)} against {params_dict.get(x, x)}', fontsize=35)
-        plt.savefig(f'4plot/{y}_{x}.pdf')
+        #plt.savefig(f'4plot/{y}_{x}.pdf')
         print(f'saved {y}_{x} plot')
         
-        #plt.show()
+        plt.show()
 
 #oneplots()
 #oneplots_nobar()
