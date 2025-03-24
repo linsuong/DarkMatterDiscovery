@@ -20,12 +20,13 @@
 \usepackage{gensymb}
 \usepackage{float}
 \usepackage{amsmath}
-\usepackage{subfigure}
+\usepackage{subcaption}
 \usepackage{setspace}
+\usepackage{wrapfig}
 \usepackage[skip=10pt plus1pt, indent=30pt]{parskip}
 \usepackage[top=1.5in, bottom=1.5in, left=1in, right=1in]{geometry}
 \usepackage{titlesec}
-
+\usepackage[numbers,sort&compress]{natbib}
 \begin{document}
 % Adjust section heading size
 \titleformat{\section}{\large\bfseries}{\thesection}{0.5em}{}
@@ -69,7 +70,7 @@ Section \ref{sec:i2HDM} provides a detailed overview of the i2HDM and the constr
 \end{abstract}
 
 \newpage
-\twocolumn
+%\twocolumn
 
 \onehalfspacing
 \setcounter{page}{1}
@@ -79,9 +80,7 @@ Initially, the Universe was in a hot dense state with an unknown initial tempera
 
 We assume that if DM is a particle, then at high temperatures, it behaved relativistically like other particles. However, as the universe cooled down exponentially, there was a point where the temperature of the universe dropped below the mass of DM. This led to DM annihilation with standard model (SM) particles, an irreversible process which lowered the density of DM particles. 
 
-The annihilation rate, which depends on the interaction cross section determined how much DM remained (the relic density). An annihilation process that is too efficient would lead to too low relic density, which would not pose too much of a problem. However, a relic density that is too high will cause an unstable Universe and cause it to collapse on itself. The reality is that DM particles eventually stopped interacting with SM particles, leading to a process known as freeze out, giving a constant relic density. This process can be described via the Boltzmann equation.
-
-The Boltzmann equation is:
+The annihilation rate, which depends on the interaction cross section determined how much DM remained (the relic density). An annihilation process that is too efficient would lead to too low relic density, which would not pose too much of a problem. However, a relic density that is too high will cause an unstable Universe and cause it to collapse on itself. The reality is that DM particles eventually stopped interacting with SM particles, leading to a process known as freeze out, giving a constant relic density. This process can be described via the Boltzmann equation, which will be explained briefly in Section \ref{sec:boltzmann}.
 
 Many experiments have been carried can confirm the existence of DM\footnote{Although there have been recent alternative theories for the non-existence of DM \cite{Gupta_2023, Gupta_2024}, we nonetheless will continue expanding on this matter, as the strong evidence for DM is very convincing.}:
 
@@ -127,9 +126,93 @@ Here $v$ is the vacuum expectation value (VEV) of the Higgs potential. The Higgs
 
 The Higgs mechanism can be described simply as the mechanism that gives the baryons we know today their masses\footnote{Fermions get their masses via Yukawa coupling with the Higgs field $\Phi$}.
 
-The aim of this paper is to discover and perform analysis for the parameter space of the model, as a revision of the work done in \cite{Belyaev:2016lok}. In section \ref{sec:i2HDM} we introduce the i2HDM model in more detail and the constraints; in Section \ref{sec:results} the results are presented followed by an analysis in Section \ref{sec:analysis}. Finally, there is the conclusion which is in Section \ref{sec:conclusion}.
+The aim of this paper is to discover and perform analysis for the parameter space of the model, as a revision of the work done in \cite{Belyaev:2016lok}. In section \ref{sec:i2HDM} we introduce the i2HDM model in more detail and the constraints; in Section \ref{sec:results} the results are presented followed by an analysis. Finally, there is the conclusion which is in Section \ref{sec:conclusion}.
 
 \section{The Boltzmann Equation}
+\label{sec:boltzmann}
+The Boltzmann equation can be qualitatively derived by the simple relation:
+$\text{Evolution of particle A per unit volume} = \text{Particle A created by annihilation of particles in the bath B} - \text{self annihilation of A}$
+\begin{equation}
+    \begin{split}
+        \frac{1}{a^3}\frac{d(n_Aa^3)}{dt} = \braket{\sigma \nu}_{B \rightarrow A} n^2_B- \braket{\sigma \nu}_{A \rightarrow B}n^2_A
+          
+    \end{split}
+\end{equation}
+For a number density $n$ of a particle species in an expanding universe, the Boltzmann equation is:
+\begin{equation}
+    \label{eqn:boltzmann}
+    \frac{dn}{dt} = -3Hn - \braket{\sigma\nu}(n^2 - n^2_{eq})
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $H$ is the Hubble expansion rate.
+    \item $\braket{\sigma\nu}$ is the thermally averaged cross section - the average rate at which particles interact in a hot environment, accounting for their varying speeds due to temperature.
+    \item $n$ and $n_{eq}$ are number densities, with the later being number density at equilibrium.
+\end{itemize}
+
+We also can define interaction rate, $\Gamma$, as $\Gamma = n\sigma\nu$, the interaction rate per article. The interaction rate drops below the Hubble constant $H$. At this point particles here no longer have enough energy to interact with DM, and as the universe expands, the particles get further apart from each other. This is the "freeze-out" process. This leads to the popular plot in Fig. \ref{fig:freezeout}.
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+    %\centering
+    \includegraphics[width=\linewidth]{Documents/Thesis/Figs/Thermal-freeze-out-of-dark-matter-for-different-annihilation-cross-sections-c-Dan.jpg}
+    \caption{Freeze-out of dark matter for different annihilation cross-sections. Source: Dan Hooper, [hep-ph] FERMILAB-CONF-09-025-A \cite{hooper2009tasi2008lecturesdark}.}
+    \label{fig:freezeout}
+\end{wrapfigure}
+
+Fig. \ref{fig:freezeout} is a plot of comoving number density (the number density scaled by the Hubble constant), $Y = \frac{n}{s}$ where $s$ is the entropy density, against inverse temperature of the universe, $x = \frac{m}{T}$, where $m$ is the mass of DM, $T$ being temperature. If DM relic density does not change, it would follow the black solid line. However, that is not the case, as the number density of DM actually follows the dotted line. A higher cross-section means particles stay in equilibrium longer, resulting in a lower relic abundance, and vice versa.
+
+We can derive an expression for $\frac{dY}{dx}$ from Eqn. \ref{eqn:boltzmann}:
+
+By using the product rule,we can write the following equation:
+\begin{equation}
+    \begin{split}
+        \frac{d}{dt} \left(\frac{n}{s} \right) =& \frac{s\frac{dn}{dt} - n\frac{ds}{dt}}{s^2}
+        \\=& \frac{1}{s}\frac{dn}{dt} - \frac{n}{s}\frac{ds}{dt}
+        \\=& \frac{1}{s}\frac{dn}{dt} - \frac{n}{s^2}(-3Hs)
+    \end{split}
+    \label{eqn:dydt}
+\end{equation}
+
+Due to the fact that $sa^3 = \text{constant}$, so $\frac{ds}{dt} = -3Hs$. We can substitude Eqn. \ref{eqn:dydt} and $Y = \frac{n}{s}$ into Eqn. \ref{eqn:boltzmann}:
+\begin{equation}
+    \begin{split}
+        \frac{dY}{dt} &= \frac{1}{s}\left(-3Hn - \braket{\sigma\nu}(n^2 - n^2_{eq})\right) - \frac{n}{s^2}(-3Hs)
+        \\&= -s\braket{\sigma\nu}(Y^2 - Y^2_{eq})
+    \end{split}
+\end{equation}
+Considering temperature dependance, we now use the expression $\frac{dT}{dt} = -HT$. This is due to the fact that in the early universe where it was radiation dominated, temperature scaled like $\frac{1}{a}$. Using that information, we can write:
+\begin{equation}
+    \begin{split}
+            T(t) &= \frac{T_0}{a(t)}
+            \\ \frac{dT(t)}{dt} &= -T_0\frac{\dot a(t)}{a(t)^2}
+            \\ &= -\frac{T_0}{a(t)}\frac{\dot a(t)}{a(t)}
+            \\ &= -HT(t)
+    \end{split}
+\end{equation}
+
+Using another chain rule, it is obvious that:
+\begin{equation}
+    \frac{dY}{dT} = \frac{dY}{dt}\cdot\frac{dt}{dT} = \frac{s}{HT}\braket{\sigma\nu}(Y^2 - Y^2_{eq})
+\end{equation}
+
+In order to reach the final form of the equation, $\frac{dY}{dx}$, we use the chain rule $\frac{dY}{dx} = \frac{dY}{dT}\cdot\frac{dT}{dx}$, where 
+\begin{equation}
+    \begin{split}
+        \frac{d}{dx}\left(\frac{m}{x}\right) &= \frac{x\frac{dm}{dx} - m\frac{dx}{dx}}{x^2} 
+        \\ &= -\frac{m}{x^2} \text{ ,}\qquad \text{as }\qquad \frac{dm}{dx}= 0
+    \end{split}
+\end{equation}
+Giving the final equation:
+\begin{equation}
+        \frac{dY}{dx} = \frac{dY}{dT}\cdot\frac{dT}{dx} = -\frac{s}{HT}\left(-\frac{m}{x^2}\right)\braket{\sigma\nu}(Y^2 - Y^2_{eq})
+\end{equation}
+
+\begin{equation}
+    \boxed{\text{ }\frac{dY}{dx} = -\frac{s}{Hx}\braket{\sigma\nu}(Y^2 - Y^2_{eq})\text{ }}
+\end{equation}
+
+From the Boltzmann equation, one can derive an expression for DM relic density.
 
 \section{Inert Two Higgs Doublet Model (i2HDM)}
 \label{sec:i2HDM}
@@ -175,15 +258,19 @@ Where:
 Furthermore, we impose additional parametrisation in terms of mass differences that allow better visualisation of parameter space \cite{Belyaev_2022}, the reason which will be prevalent in the next sections when considering constrains:
 \begin{align}
 \label{eq:mass_diff_1}
-    \Delta m^{0} = m_{h_2} - m_{h^\pm},\\
-    \Delta m^1 = m_{h_2} - m_{h_1},\\
+    \Delta m^{0} = m_{h_2} - m_{h^\pm},\\ \notag
+    \Delta m^1 = m_{h_2} - m_{h_1},\\ \notag
     \Delta m^+ = m_{h^\pm} - m_{h_1}
 \end{align}
 
-\subsection{Constraints of the Parameter Space}
-We have four parameters to scan across: $m_{h_1}$, $\Delta m^0$, $\Delta m^+$ and $\lambda_{345}$ (with $\lambda_2 = 1$). This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|. Constraints defined in Section \ref{sec:constraints} are applied to the data sets to determine parameter space.
-\label{sec:constraints}
-\subsubsection{Constraints from vacuum stability and permeability}
+\subsection{Constraints of the i2HDM}
+We have four parameters to scan across: $m_{h_1}$, $\Delta m^0$, $\Delta m^+$ and $\lambda_{345}$ ($\lambda_3 + \lambda_4 + \lambda_5$), with $\lambda_2 = 1$. We can set $\lambda_2 = 1$ because $\lambda_2$ does not affect DM phenomenology at the tree level\footnote{lowest-order approximation in perturbation theory, where Feynman diagrams do not include loops (closed paths)}\cite{Belyaev:2016lok}; it only governs self interaction of the inert Higgs doublet, does not affect physical observables, and the DM candidate $h_1$ is only dependent on $\lambda_3$, $\lambda_4$ and $\lambda_5$ (Equation \ref{eqn:massdmscalar}). 
+
+While $\lambda_2$ does not appear explicitly in the relevant interactions, it indirectly contributes to vacuum stability, ensuring a consistent and physically viable model. Setting $\lambda_2 = 1$ also greatly reduces computing load and time. The masses of $h_2$, $h_\pm$ are then calculated using Eqn. \ref{eq:mass_diff_1}.
+
+This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|, version 6.1.15. Through theory and experiments, there are certain constraints that will have to be applied to the scan such that a proper search can be done.
+
+\subsubsection{Constraints from vacuum stability}
 First of all, we need to ensure that the potential is bounded from below to ensure stability \cite{Deshpande:1977rw}:
 \begin{equation}
     \begin{split}
@@ -223,17 +310,17 @@ and the mass differences:
     &m_{h_\pm}^2 - m_{h_2}^2 = -\frac{1}{2}(\lambda_4 - |\lambda_5|)v^2
 \end{align}
 
-$m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$ and $\lambda_{345}$ ($\lambda_3 + \lambda_4 + \lambda_5$) are the main parameters of the study. $\lambda_{345}$ is an important parameter as it is involved in the $H\rightarrow h_1,h_1$ and $h_1,h_1 \rightarrow H$ (written in short as $Hh_1h_1$) interaction vertex. $\lambda_1$ is not a free parameter as it can be evaluated via the Higgs boson mass and the VEV. $\lambda_2$ is not considered at tree level\footnote{lowest-order approximation in perturbation theory, where Feynman diagrams do not include loops (closed paths)}; it only governs self interaction of the inert Higgs doublet, does not affect physical observables, and the DM candidate $h_1$ is only dependent on $\lambda_3$, $\lambda_4$ and $\lambda_5$ (Equation \ref{eqn:massdmscalar}). While $\lambda_2$ does not appear explicitly in the relevant interactions, it indirectly contributes to vacuum stability, ensuring a consistent and physically viable model.
+$m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$ and $\lambda_{345}$ are the main parameters of the study. $\lambda_{345}$ is an important parameter as it is involved in the $H\rightarrow h_1,h_1$ and $h_1,h_1 \rightarrow H$ (written in short as $Hh_1h_1$) interaction vertex. $\lambda_1$ is not a free parameter due to the reasons discussed earlier.
 
 In addition to that, we consider constraints due to symmetry breaking. We impose that, from \cite{Belyaev:2016lok, Ginzburg2010}:
-For $|R| < 1$,
+
 \begin{equation}
-    m_{h_1}^2 > 0
-\end{equation}
-And for $R>1$, 
-\begin{equation}
-    \label{eqn:R>1}
-    m_{h_1}^2 > (R-1) \sqrt{\lambda_1\lambda_2} v^2
+    m_{h_1}^2 >
+        \begin{cases}
+         0, & |R| < 1\\
+         (R-1) \sqrt{\lambda_1\lambda_2} v^2, & R>1
+        \end{cases}
+        \label{eqn:R}
 \end{equation}
 
 Where:
@@ -249,30 +336,99 @@ $\lambda_1$, the self coupling term for the Higgs boson can be evaluated (from E
     \end{split}
 \end{equation}
 
-In addition, we can see from equation \ref{eqn:R>1} this can be rewritten as:
+In addition, we can see Eqn. \ref{eqn:R} can be rewritten as:
 \begin{equation}
     \lambda_{345} < 2\left( \frac{m_{h_1}^2}{v^2} + \sqrt{\lambda_1\lambda_2}\right)
 \end{equation}
+This is another one of our constraints on $\lambda_{345}$.
 
 \subsubsection{Constraints form perturbativity and unitarity}
+As shown in \cite{Belyaev:2016lok}, where \cite{Aruhrib2012Inert} was considered, it was shown that $\lambda_{345}$ had to obey these constraints:
+\begin{equation}
+    -1.47 < \lambda_{345} < 4\pi
+    \label{eqn:l345_pert}
+\end{equation}
+And $m_{h_1, h_2, h_\pm}$ had to obey:
+\begin{equation}
+    10\text{ Gev} < m_{h_1, h_2, h_\pm} < 1000\text{ GeV}
+    \label{eqn:masses_pert}
+\end{equation}
 
 \subsubsection{Constraints from LEP and EWPT (Electroweak Precision Data)}
 From LEP, we can see that the constraints follow the W and Z boson widths:
+\begin{equation}
+    \begin{split}
+        m_{h_1} + m_{h_\pm} &> m_{W^\pm},
+        \\m_{h_2} + m_{h_\pm} &> m_{W^\pm},
+        \\m_{h_1} + m_{h_\pm} &> m_{Z^0},
+        \\2m_{h_\pm} &> m_{Z^0}, 
+    \end{split}
+\label{LEP2}
+\end{equation}
+
+From LEP II \cite{Lundstr_m_2009}, there are the additional constraints on the masses and mass differences, due to a visible dijet/dilepton signal:
+
+\begin{equation}
+    \begin{split}
+        m_{h_1}> 80 \text{ GeV},
+        m_{h_2}> 100 \text{ GeV},
+        \\
+        m_{h_2} - m_{h_1} < 8\text{ GeV},
+        m_{h_\pm}> 70\text{ GeV}
+    \end{split}
+\label{LEP2_2}
+\end{equation}
+
+From \cite{gfitter2014global}, for a Higgs boson mass of 125 GeV, we have values for $S$, $T$ and $U$, the Peskin-Takeuchi parameters \cite{PeskinTakeuchi1990} which describe potential new physics contributions (for example - BSM) to electroweak radiative corrections.
+
+ The values for $S$ and $T$ when setting $U = 0$ are:
+ \begin{align}
+     S = 0.06 \pm0.09, \qquad
+     T = 0.10\pm0.07
+ \end{align}
+
+With a correlation coefficient of $+0.91$. Setting $U = 0$ allows simplification in parameter space, requiring only focus on the $S-T$ plane, which are more dominant. Defining:
 \begin{align}
-    &&m_{h_1} + m_{h_\pm} > m_{W^\pm},
-    &&m_{h_2} + m_{h_\pm} > m_{W^\pm},
-    \\
-    &&m_{h_1} + m_{h_\pm} > m_{Z^0},
-    &&2m_{h_\pm} > m_{Z^0},
+    x_1 = \frac{m_{h_1}}{m_{h_\pm}}, \qquad 
+    x_2 = \frac{m_{h_2}}{m_{h_\pm}}
 \end{align}
-\subsubsection{Constraint from Dark Matter Relic Density}
+As well as:
+\begin{align}
+    &f_a(x) = -5 +12\log(x), \qquad
+    \\&f_b(x) = 3-4\log(x),
+    \\
+    &f_c(x,y) = 
+    \begin{cases}
+        \frac{x+y}{2}-\frac{xy}{x-y}\log{\left(\frac{x}{y}\right)}, & x\neq y\\
+        0, & x = y
+    \end{cases}
+\end{align}
+
+The S and T parameters are given with the equations:
+\begin{equation}
+    \begin{split}
+           S =& \frac{1}{72\pi}\frac{1}{(x^2_2 - x^2_1)^3}[x^6_2f_a(x_2)-x^6_1f_a(x_1)
+            \\&+ 9x_2^2x_1^2(x_2^2f_b(x_2)-x^2_1f_b(x_1)] 
+    \end{split}
+    \label{eqn:S}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        T = &\frac{1}{32\pi^2\alpha\nu}[f_c(m^2_{h_\pm},m^2_{h_2})
+            \\&+ f_c(m^2_{h_\pm},m^2_{h_1}) - f_c(m^2_{h_2},m^2_{h_1})]
+    \end{split}
+    \label{eqn:T}
+\end{equation}
+
+\subsubsection{Constraint from DM Relic Density}
 \label{sec:relic density}
 DM relic density is the remaining DM from the Big Bang, and there are multiple experiments (PLANCK, WMAP) that calculate various cosmological parameters, one of them being the DM relic density. We can use this very accurate data to limit our parameter space to make the search for DM simpler. The latest experimental value for DM relic density is  \cite{Planck:2018vyg}:
 \begin{equation}
     \Omega ^{PLANCK}_{DM} h^2 = 0.11933 \pm 0.00091
 \end{equation}
 
-We set the parameter space for the density of the DM relic to ignore the cases of DM overabundance (where $\Omega h^2 > \Omega^{PLANCK}_{DM_{max}}h^2$). DM overabundance is not considered as it leads to inconsistencies with the observed CMB and its constraints \cite{Croon_2024, Zavala_2010}. DM under-abundance is allowed to allow for possible external sources of DM.
+We set the parameter space for the density of the DM relic to ignore the cases of DM overabundance (where $\Omega h^2 > \Omega^{PLANCK}_{DM_{max}}h^2$). DM overabundance is not considered as it leads to inconsistencies with the observed CMB and its constraints \cite{Croon_2024, Zavala_2010}. DM underabundance is allowed to allow for possible external sources of DM.
 
 For data interpretation purposes, and since \verb|micrOMEGAS| software calculates relic density via tree-level calculation, the theoretical constraints applied to the density of DM relics will be within $\pm10\%$ of the value of $\Omega ^{PLANCK}_{DM} h^2$.
 \begin{equation}
@@ -283,60 +439,74 @@ For data interpretation purposes, and since \verb|micrOMEGAS| software calculate
     \label{eqn:DM relic density value}
 \end{equation}
 
-\subsubsection{Constraints from DM Direct Detection (DD)}
+\subsubsection{Constraints from DM Direct Detection (DD), CMB and Branching Ratios}
+The constraints applied from DM DD experiments are applied via a p-value. A p-value of 0.1 is used, and values greater than 0.1 are accepted to exclude values given by DD experiments.
 
-\subsubsection{Constraints from CMB}
+There also is the chance that the values obtained could have been excluded by the CMB. CMB measurements are sensitive to energy injections in the early universe, such as those from dark matter annihilations. Ensuring that the model complies with CMB constraints helps in maintaining consistency with observed cosmological parameters. 
+
+The upper limit of the branching ratio for the invisible Higgs at 95\% confidence level from the latest ATLAS search is\cite{ATLAS:2022yvh}:
+\begin{equation}
+    Br(\text{Higgs} \rightarrow \text{invisible}) = 0.145
+    \label{eqn:branching_ratio}
+\end{equation}
+\subsection{2 Lepton Final States at the Collider Level}
 
 \section{Results and Analysis}
 \label{sec:results}
 \subsection{5-D Random Scan}
 \label{5-D scan}
-By applying "cuts" to the 5-D datasets, we can then narrow the parameter space in our search for the DM particle.
+A 5-D scan is done across the parameters stated earlier and by applying "cuts" to the 5-D datasets, we can then narrow the parameter space in our search for the DM particle.
 We apply cuts in the following order:
 \begin{itemize}
-    \item Cut 1 - Constraints from vacuum and stability (Eqn. \ref{eqn:R>1})
-    \item Cut 2 - Constraints from LEP and EWPT
+    \item Cut 1 - Constraints from vacuum stability (Eqn. \ref{eqn:R}), pertubativity and unitarity (Eqn. \ref{eqn:l345_pert}, \ref{eqn:masses_pert}) 
+    \item Cut 2 - Constraints from LEP (Eqn. \ref{LEP2}, \ref{LEP2_2}) and EWPT (Eqn. \ref{eqn:S}, \ref{eqn:T}) - however, EWPT constraints have not been completely implemented so the results shown here will not include EWPT constraints.
     \item Cut 3 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
-    \item Cut 4 - Constraints from DM direct detection, and Constraints from CMB data.
+    \item Cut 4 - Constraints from DM direct detection, CMB data and branching ratios \ref{eqn:branching_ratio}.
 \end{itemize}
 
-The plots against DM mass will be shown in the following pages, and the rest in the \hyperref[Appendix]{sec:Appendix}.
+The plots against DM mass will be shown in the following pages, and the rest in the Appendix (\ref{sec:Appendix}).
 
-\onecolumn
-\begin{figure}[H]
+\subsection{2-D Projection}
+\label{sec:2D-proj}
+We can first consider the relationship between $m_{h_1}$ and $\lambda_{345}$. 
+\begin{figure*}[ht]
     \centering
-    \includegraphics[width=\columnwidth]{4plot/MD1_MD2.pdf}
-    \caption{Plot of DM mass, $m_{h_1}$ against $m_{h_2}$}
-    \label{fig:enter-label}
-\end{figure}
+    \includegraphics[width=\linewidth]{4plot/l345_MD1.pdf}
+    \caption{Plot of $\lambda_{345}$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-4 applied onto the data.}
+    \label{fig:l345_md1_main}
+\end{figure*}
 
-\begin{figure}[H]
+We can see that in Fig. \ref{fig:l345_md1_main}, as the constraints are applied, the parameter space becomes more obvious - the final cut is the most obvious, as the values of $\lambda_{345}$ is constrained such that it has only values between $\pm 0.2$, which is in line with what has been discovered in \cite{Belyaev:2018ext}, which found strong cross section of $100 - 1000 \text{ fb}$. This also gives a good narrowing of the mass of DM particle.
+
+\begin{figure*}[ht]
     \centering
-    \includegraphics[width=\columnwidth]{4plot/MD1_l345.pdf}
-    \caption{Plot of DM mass, $m_{h_1}$ against $\lambda_{345}$}
-    \label{fig:enter-label}
-\end{figure}
-\twocolumn
+    \includegraphics[width=\linewidth]{4plot/DM2_MD1.pdf}
+    \caption{Plot of $\Delta m^0$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-4 applied onto the data.}
+    \label{fig:DM2_md1_main}
+\end{figure*}
 
-\subsection{2-D Analysis}
-\label{2-D scan}
+In Fig. \ref{fig:DM2_md1_main}, as constraints are applied, the final constraint shows a mass range of $m_{h_1}$ to be below $10^2$ GeV and above $1.1\times10^2$ GeV. The empty space in between the values of $m_{h_1}$ in the rightmost plot is excluded due to the DM DD constraints.
 
 \subsection{1-D Analysis}
 \label{1-D scan}
-We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:MD1_l345_1}, \ref{fig:MD1_l345_100}):
-\begin{figure}[H]
+We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:MD1_l345_1}, \ref{fig:MD1_l345_100}) as done in \cite{Belyaev:2016lok}:
+\begin{figure*}[ht]
     \centering
-    \includegraphics[width=\columnwidth]{plots/plot_MD1_l345+1.pdf}
-    \caption{Relic density against $m_{h_1}$, the case where $\Delta m^0 = 1$ GeV. The red shaded region is the area excluded by LEP, and the red line the upper limit of DM relic density (Eqn. \ref{eqn:DM relic density value}).}
-    \label{fig:MD1_l345_1}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\columnwidth]{plots/plot_MD1_l345+100.pdf}
-    \caption{Relic density against $m_{h_1}$, the case where $\Delta m^0 = 100$ GeV}
-    \label{fig:MD1_l345_100}
-\end{figure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/plot_MD1_l345+1.pdf}
+        \caption{Relic density against $m_{h_1}$, the case where $\Delta m^0 = 1$ GeV.}
+        \label{fig:MD1_l345_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/plot_MD1_l345+100.pdf}
+        \caption{Relic density against $m_{h_1}$, the case where $\Delta m^0 = 100$ GeV.}
+        \label{fig:MD1_l345_100}
+    \end{subfigure}
+    \caption{Plots of relic density against $m_{h_1}$ for different mass differences (while keeping $m_{h_1}$ lightest). The red shaded region is the area excluded by LEP, and the red line the upper limit of DM relic density (Eqn. \ref{eqn:DM relic density value}).}
+\end{figure*}
 
 In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of the DM candidate, $h_1$ and its complementary particles ($h_2$ and $h_{\pm}$) to observe the relic density, we make a few observations:
 \begin{itemize}
@@ -349,139 +519,147 @@ In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of 
 \section{Conclusion}
 \label{sec:conclusion}
 
+\onecolumn
 \newpage
 \bibliographystyle{plain}
 \bibliography{references}
 
 \newpage
 \onecolumn
+\appendix
+
 \section{Appendix}
 \label{sec:Appendix}
-The remaining plots mentioned in Section \ref{5-D scan} are shown below, with cuts applied from left to right in the following order: Cut 1, Cut 1 and 2, Cut 1, 2 and 3, and Cut 1, 2, 3 and 4:
+The remaining plots mentioned in Section \ref{sec:2D-proj} are shown below, with cuts applied from left to right in the following order: Cut 1, Cut 1 and 2, Cut 1, 2 and 3, and Cut 1, 2, 3 and 4. Due to word limit constraints, detailed analysis of the plots will be done in the final work.
 \begin{figure}[H]
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MD1_MD2.pdf}
     \end{subfigure}
 
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MD1_MDP.pdf}
     \end{subfigure}
-    \caption{Plots of $m_{h_1}$ against other masses.}
+    \caption{Plots of $m_{h_1}$ against other masses. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
 \end{figure}
 
 \begin{figure}[H]
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MD1_DM2.pdf}
     \end{subfigure}
     
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MD1_DM3.pdf}
     \end{subfigure}
 
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MD1_DMP.pdf}
     \end{subfigure}
-    \caption{Plots with $m_{h1}$ against mass differences.}
+    \caption{Plots with $m_{h1}$ against mass differences. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
 \end{figure}
 
 
 \begin{figure}[H]
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MD2_MD1.pdf}
     \end{subfigure}
 
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MD2_MDP.pdf}
     \end{subfigure}
-    \caption{Plots of $m_{h_1}$ against other masses.}
+    \caption{Plots of $m_{h_1}$ against other masses. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
 \end{figure}
 
 \begin{figure}[H]
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MD2_DM2.pdf}
     \end{subfigure}
     
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MD2_DM3.pdf}
     \end{subfigure}
 
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MD2_DMP.pdf}
     \end{subfigure}
-    \caption{Plots with $m_{h2}$ against mass differences.}
+    \caption{Plots with $m_{h2}$ against mass differences. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
 \end{figure}
 
 \begin{figure}[H]
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MDP_MD1.pdf}
     \end{subfigure}
 
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MDP_MD2.pdf}
     \end{subfigure}
-    \caption{Plots of $m_{h_\pm}$ against other masses.}
+    \caption{Plots of $m_{h_\pm}$ against other masses. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
 \end{figure}
 
 \begin{figure}[H]
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MDP_DM2.pdf}
     \end{subfigure}
     
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MDP_DM3.pdf}
     \end{subfigure}
 
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
       \includegraphics[width=1\columnwidth]{4plot/MDP_DMP.pdf}
     \end{subfigure}
-    \caption{Plots with $m_{h_\pm}$ against mass differences.}
+    \caption{Plots with $m_{h_\pm}$ against mass differences. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
 \end{figure}
 
 \begin{figure}[H]
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
-      \includegraphics[width=1\columnwidth]{4plot/DM2_l345.pdf}
-    \end{subfigure}
-    
-    \begin{subfigure}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/DMP_l345.pdf}
-    \end{subfigure}
-    
-    \begin{subfigure}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD1_l345.pdf}
+      \includegraphics[width=1\columnwidth]{4plot/l345_MD1.pdf}
     \end{subfigure}   
     
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD2_l345.pdf}
+      \includegraphics[width=1\columnwidth]{4plot/l345_MD2.pdf}
     \end{subfigure}
 
-    \begin{subfigure}
+    \begin{subfigure}[b]{\columnwidth}
       \centering
-      \includegraphics[width=1\columnwidth]{4plot/MDP_l345.pdf}
+      \includegraphics[width=1\columnwidth]{4plot/l345_MDP.pdf}
     \end{subfigure}
-\caption{Plots with other parameters against $l_{345}$.}
+\caption{Plots with $l_{345}$ against masses. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
 \end{figure}
 
-\newpage
-\twocolumn
+\begin{figure}[H]
+    \begin{subfigure}[b]{\columnwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/l345_DM2.pdf}
+    \end{subfigure}
+    
+    \begin{subfigure}[b]{\columnwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/l345_DMP.pdf}
+    \end{subfigure}
+    
+    \begin{subfigure}[b]{\columnwidth}
+      \centering
+      \includegraphics[width=1\columnwidth]{4plot/l345_DMP.pdf}
+    \end{subfigure}   
+\caption{Plots with $l_{345}$ against mass differences. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
+\end{figure}
 \end{document}
 
 **Introduction**

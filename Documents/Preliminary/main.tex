@@ -79,7 +79,7 @@ The annihilation rate, which depends on the interaction cross section determined
 \label{sec:i2HDM}
 In the i2HDM, we propose two doublets, $\Phi_1$, $\Phi_2$ - where the first doublet is active and second doublet is inert. The latter does not share its degrees of freedom with other particles (or, it does not couple to fermions via Yukawa interactions \cite{Belyaev_2022}), and has no VEV; unlike the former which is just the SM Higgs doublet, which has a VEV. We can invoke a new set of particles arising from $\Phi_2$- $h^\pm, h_1,$ and $h_2$, where $m_{h_1} < m_{h_2}$ and $m_{h_1} < m_{h^\pm}$. The lightest particle, $h_1$ is the DM candidate particle.
 
-As mentioned in the Introduction (Section \ref{sec:introduction}), i2HDM is an extension of SM that introduces new scalar particles that could be candidates for DM.
+As mentioned earlier, i2HDM is an extension of SM that introduces new scalar particles that could be candidates for DM.
 
 The field, along with its Hermitian conjugate is:
 \begin{align}
@@ -125,7 +125,9 @@ Furthermore, we impose additional parametrisation in terms of mass differences t
 \end{align}
 
 \subsection{Constraints of the i2HDM}
-We have four parameters to scan across: $m_{h_1}$, $\Delta m^0$, $\Delta m^+$ and $\lambda_{345}$ ($\lambda_3 + \lambda_4 + \lambda_5$), with $\lambda_2 = 1$. We can set $\lambda_2 = 1$ because $\lambda_2$ does not affect DM phenomenology at the tree level\footnote{lowest-order approximation in perturbation theory, where Feynman diagrams do not include loops (closed paths)}\cite{Belyaev:2016lok}; it only governs self interaction of the inert Higgs doublet, does not affect physical observables, and the DM candidate $h_1$ is only dependent on $\lambda_3$, $\lambda_4$ and $\lambda_5$ (Equation \ref{eqn:massdmscalar}). While $\lambda_2$ does not appear explicitly in the relevant interactions, it indirectly contributes to vacuum stability, ensuring a consistent and physically viable model. Setting $\lambda_2 = 1$ also greatly reduces computing load and time. The masses of $h_2$, $h_\pm$ are then calculated using Eqn. \ref{eq:mass_diff_1}.
+We have four parameters to scan across: $m_{h_1}$, $\Delta m^0$, $\Delta m^+$ and $\lambda_{345}$ ($\lambda_3 + \lambda_4 + \lambda_5$), with $\lambda_2 = 1$. We can set $\lambda_2 = 1$ because $\lambda_2$ does not affect DM phenomenology at the tree level\footnote{lowest-order approximation in perturbation theory, where Feynman diagrams do not include loops (closed paths)}\cite{Belyaev:2016lok}; it only governs self interaction of the inert Higgs doublet, does not affect physical observables, and the DM candidate $h_1$ is only dependent on $\lambda_3$, $\lambda_4$ and $\lambda_5$ (Equation \ref{eqn:massdmscalar}). 
+
+While $\lambda_2$ does not appear explicitly in the relevant interactions, it indirectly contributes to vacuum stability, ensuring a consistent and physically viable model. Setting $\lambda_2 = 1$ also greatly reduces computing load and time. The masses of $h_2$, $h_\pm$ are then calculated using Eqn. \ref{eq:mass_diff_1}.
 
 This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|, version 6.1.15. Through theory and experiments, there are certain constraints that will have to be applied to the scan such that a proper search can be done.
 
@@ -298,25 +300,34 @@ The upper limit of the branching ratio for the invisible Higgs at 95\% confidenc
 A 5-D scan is done across the parameters stated earlier and by applying "cuts" to the 5-D datasets, we can then narrow the parameter space in our search for the DM particle.
 We apply cuts in the following order:
 \begin{itemize}
-    \item Cut 1 - Constraints from vacuum stability (Eqn. \ref{eqn:R>1}), pertubativity and unitarity (Eqn. \ref{eqn:l345_pert}, \ref{eqn:masses_pert}) 
+    \item Cut 1 - Constraints from vacuum stability (Eqn. \ref{eqn:R}), pertubativity and unitarity (Eqn. \ref{eqn:l345_pert}, \ref{eqn:masses_pert}) 
     \item Cut 2 - Constraints from LEP (Eqn. \ref{LEP2_1}, \ref{LEP2_2}, \ref{LEP2_3}, \ref{LEP2_4}) and EWPT (Eqn. \ref{eqn:S}, \ref{eqn:T}) - however, EWPT constraints have not been completely implemented so the results shown here will not include EWPT constraints.
     \item Cut 3 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
     \item Cut 4 - Constraints from DM direct detection, CMB data and branching ratios \ref{eqn:branching_ratio}.
 \end{itemize}
 
-The 5-D datasets are projected onto a 2-D plane, and majority of the plots can be found in the \hyperref[sec:Appendix]{Appendix}. 
+The 5-D datasets are projected onto a 2-D plane. Due to size constraints, the remaining plots cannot be shown here. They will be shown in the final project. 
 
 \subsection{2-D Projection}
 \label{sec:2D-proj}
 We can first consider the relationship between $m_{h_1}$ and $\lambda_{345}$. 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{4plot/l345_MD1.pdf}
     \caption{Plot of $\lambda_{345}$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-4 applied onto the data.}
-    \label{fig:enter-label}
+    \label{fig:l345_md1_main}
 \end{figure}
 
-We can see that as the constraints are applied, the parameter space becomes more obvious - the final cut is the most obvious, as the values of $\lambda_{345}$ is constrained such that it has only values between $\pm 0.2$, which is in line with what has been discovered in \cite{Belyaev:2018ext}, which found strong cross section of $100 - 1000 \text{ fb}$. 
+We can see that in Fig. \ref{fig:l345_md1_main}, as the constraints are applied, the parameter space becomes more obvious - the final cut is the most obvious, as the values of $\lambda_{345}$ is constrained such that it has only values between $\pm 0.2$, which is in line with what has been discovered in \cite{Belyaev:2018ext}, which found strong cross section of $100 - 1000 \text{ fb}$. This also gives a good narrowing of the mass of DM particle.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{4plot/DM2_MD1.pdf}
+    \caption{Plot of $\Delta m^0$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-4 applied onto the data.}
+    \label{fig:DM2_md1_main}
+\end{figure}
+
+In Fig. \ref{fig:DM2_md1_main}, as constraints are applied, the final constraint shows a mass range of $m_{h_1}$ to be below $10^2$ GeV and above $1.1\times10^2$ GeV. The empty space in between the values of $m_{h_1}$ in the rightmost plot is excluded due to the DM DD constraints.
 
 \subsection{1-D Analysis}
 \label{1-D scan}
@@ -348,143 +359,9 @@ In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of 
 \end{itemize}
 
 \section{Further Work}
-For the remainder of the project, the cross sections of DM annihilation processes will be investigated. 
+For the remainder of the project, while adding more theory to the earlier part of the study, the cross sections of DM annihilation processes will be investigated. We dive deeper into DM production by calculating the cross section of DM production at the collider level of area $10^1 \rightarrow 10^2\text{ pb}^2$. All possible production channels of DM will be investigated. We will be looking at additional decay channels of DM in detail, as well as cases where virtual particles are involved.
 \newpage
 \bibliographystyle{plain}
 \bibliography{Documents/Thesis/references}
 
-\newpage
-\section{Appendix}
-
-\label{sec:Appendix}
-The remaining plots mentioned in Section \ref{sec:2D-proj} are shown below, with cuts applied from left to right in the following order: Cut 1, Cut 1 and 2, Cut 1, 2 and 3, and Cut 1, 2, 3 and 4:
-\begin{figure}[H]
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD1_MD2.pdf}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD1_MDP.pdf}
-    \end{subfigure}
-    \caption{Plots of $m_{h_1}$ against other masses. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD1_DM2.pdf}
-    \end{subfigure}
-    
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD1_DM3.pdf}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD1_DMP.pdf}
-    \end{subfigure}
-    \caption{Plots with $m_{h1}$ against mass differences. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
-\end{figure}
-
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD2_MD1.pdf}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD2_MDP.pdf}
-    \end{subfigure}
-    \caption{Plots of $m_{h_1}$ against other masses. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD2_DM2.pdf}
-    \end{subfigure}
-    
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD2_DM3.pdf}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MD2_DMP.pdf}
-    \end{subfigure}
-    \caption{Plots with $m_{h2}$ against mass differences. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MDP_MD1.pdf}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MDP_MD2.pdf}
-    \end{subfigure}
-    \caption{Plots of $m_{h_\pm}$ against other masses. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MDP_DM2.pdf}
-    \end{subfigure}
-    
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MDP_DM3.pdf}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/MDP_DMP.pdf}
-    \end{subfigure}
-    \caption{Plots with $m_{h_\pm}$ against mass differences. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/l345_MD1.pdf}
-    \end{subfigure}   
-    
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/l345_MD2.pdf}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/l345_MDP.pdf}
-    \end{subfigure}
-\caption{Plots with $l_{345}$ against masses. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
-\end{figure}
-
-\begin{figure}[H]
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/l345_DM2.pdf}
-    \end{subfigure}
-    
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/l345_DMP.pdf}
-    \end{subfigure}
-    
-    \begin{subfigure}[b]{\columnwidth}
-      \centering
-      \includegraphics[width=1\columnwidth]{4plot/l345_DMP.pdf}
-    \end{subfigure}   
-\caption{Plots with $l_{345}$ against mass differences. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
-\end{figure}
 \end{document}
