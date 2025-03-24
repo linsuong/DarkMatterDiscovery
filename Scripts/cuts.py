@@ -1,20 +1,26 @@
 import numpy as np
 import pandas as pd
+import yaml
 
-def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut4=False, cut5=False):
+def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut4=False, cut5=False, cut6 = False, cut7 = False, cut8 = False):
     """
     Applies constraints to the dataframe and returns a filtered dataframe.
     """
     if cut3 == True and cut3_strict == True:
         raise Exception('please choose for a strict or relaxed bound on relic density')
+    
     MW = 80.377
     MZ = 91.19
     l1 = 0.129
     v = 246
-
-    df_LZ = pd.read_csv(
-        "HEPData-ins2841863-v1-csv/SIcrosssection.csv", names=["mass", "median"], skiprows=0 
-        )
+        
+    yaml_file = "Data/SI_WS2022+WS2024.yaml"
+    
+    with open(yaml_file, 'r') as file:
+        LZ = yaml.safe_load(file)
+        
+    conversion_factor = 1e36  # Convert from cm^-2 to pb
+    y_data = {}
 
     dataframe['MDP'] = dataframe['DMP'] + dataframe['MD1']
     dataframe['MD2'] = dataframe['DM3'] + dataframe['DMP'] + dataframe['MD1']
@@ -34,49 +40,38 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     
     def f_a(x):
         return -5 + 12 * np.log(x)
-    
+
     def f_b(x):
         return 3 - 4 * np.log(x)
-    
-    '''
+
     def f_c(x, y):
-        if np.isclose(x, y):
-            return 0
-        
-        else:
-            return ((x + y)/2) - ((x * y)/(x - y)) * np.log(x/y) 
-    '''
+        mask = np.isclose(x, y, rtol=1e-10)
+        result = np.zeros_like(x)
+        result[~mask] = ((x[~mask] + y[~mask]) / 2) - ((x[~mask] * y[~mask]) / (x[~mask] - y[~mask])) * np.log(x[~mask] / y[~mask])
+        return result
     
-    def f_c(x, y):
-        return np.where(
-            np.isclose(x, y),
-            0,
-            ((x + y)/2) - ((x * y)/(x - y)) * np.log(x/y)
-        )
-    '''
     alpha = 1/137
-    nu = 246
-    
-    dataframe['S'] = (1/(72 * np.pi * ((dataframe['x1'] - dataframe['x2']) ** 3))) * ((dataframe['x2'] ** 6) * f_a(dataframe['x2']) - 
-                                                                               (dataframe['x1'] ** 6) * f_a(dataframe['x1']) + 
-                                                                               9 * ((dataframe['x2'] * dataframe['x2']) ** 2) * 
-                                                                               ((dataframe['x2'] ** 2) * f_b(dataframe['x2']) - 
-                                                                                 (dataframe['x1'] ** 2) * f_b(dataframe['x1']))
-                                                                               )
-    
+    nu = 246    
+        
+    dataframe['S'] = (1/(72 * np.pi * ((dataframe['x2']**2 - dataframe['x1']**2) ** 3))) * ((dataframe['x2'] ** 6) * f_a(dataframe['x2']) - 
+                                                                                ((dataframe['x1'] ** 6) * f_a(dataframe['x1'])) + 
+                                                                                (9 * ((dataframe['x2'] * dataframe['x1']) ** 2) * 
+                                                                                ((dataframe['x2'] ** 2)) * f_b(dataframe['x2']) - 
+                                                                                (dataframe['x1'] ** 2) * f_b(dataframe['x1']))
+                                                                                )
+
     dataframe['T'] = (1/(32 * (np.pi ** 2) * alpha * (nu ** 2))) * (f_c(dataframe['MDP'] ** 2, dataframe['MD2'] ** 2) + 
-                                                             f_c(dataframe['MDP'] ** 2, dataframe['MD1'] ** 2) -
-                                                             f_c(dataframe['MD2'] ** 2, dataframe['MD1'] ** 2)
-                                                             )
+                                                                f_c(dataframe['MDP'] ** 2, dataframe['MD1'] ** 2) -
+                                                                f_c(dataframe['MD2'] ** 2, dataframe['MD1'] ** 2)
+                                                                )
     
-    '''
+    
     
     cutl345 = dataframe['l345'] > -np.inf
     cutOM = dataframe['Omegah2'] > -np.inf
     cutDD = dataframe['PvalDD'] > -np.inf
     cutCMB = dataframe['CMB_ID'] > -np.inf
     cutBr = dataframe['brH_DMDM'] > -np.inf
-    #cutSI = dataframe['protonSI'] > -np.inf
     
     cutMD1 = cutMDP = cutl345 = cutMass = cutLEP = cutLEP2 = cutLZ = True
     
@@ -102,14 +97,19 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
                     (dataframe['MD1']>10) & (dataframe['MD2']>10) & (dataframe['MDP']>10))
         
     if cut2:
-        #cutLEP2 = (dataframe['MD1'] > 80) & (dataframe['MD2'] > 100) & (dataframe['DM2'] < 8) 
+        cutLEP2 = (dataframe['MD1'] > 80) & (dataframe['MD2'] > 100) & (dataframe['DM2'] < 8) 
         cutMDP = (dataframe['MDP'] > 70)
         cutLEP = ((dataframe['MD1+MD2'] > MZ) & (dataframe['MD1+MDP'] > MW) & 
                     (dataframe['MD2+MDP'] > MW) & (2 * dataframe['MDP'] > MZ))
+    
+    if cut8:
+        cutT = (dataframe['T'] > (0.1 - 0.07)) & (dataframe['T'] < (0.1 + 0.07))
+        cutS = (dataframe['S'] > (0.06 - 0.09)) & (dataframe ['S'] < (0.06 + 0.09))
         
-        #cutT = (dataframe['T'] > (0.1 - 0.07)) & (dataframe['T'] < (0.1 + 0.07))
-        #cutS = (dataframe['S'] > (0.06 - 0.09)) & (dataframe ['S'] < (0.06 + 0.09))
-        
+        cutT = (dataframe['T'] > (0.1 - 0.07)) & (dataframe['T'] < (0.1 + 0.07))
+        cutS = (dataframe['S'] > (0.06 - 0.09)) & (dataframe ['S'] < (0.06 + 0.09))
+
+
     if cut3:
         cutOM = dataframe['Omegah2'] < 0.12024
         #cutOM = (df['Omegah2'] > 0.10) & (df['Omegah2'] < 0.12024) #strict bound of Omegah2
@@ -120,29 +120,31 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     if cut4:
         cutDD = dataframe['PvalDD'] > 0.1
 
+    if cut5:
         cutCMB = dataframe['CMB_ID'] < 1
-        
+    
+    if cut6:
         cutBr = dataframe['brH_DMDM'] < 0.145
         
-    if cut5:
-        md1_si_map = dict(zip(df_LZ['mass'], df_LZ['median']))
-        print("MD1-SI Map:", md1_si_map)  # Debugging output
+    if cut7:
+        if 'independent_variables' in LZ:
+            for var in LZ['independent_variables']:
+                if var['header']['name'] == 'mass':
+                    x_values = [point['value'] for point in var['values']]
+                    break
         
-        """
-        cutLZ = dataframe.apply(
-            lambda row: print(f"MD1={row['MD1']}, SI={md1_si_map.get(row['MD1'], 'Not Found')}") or 
-                        row['protonSI'] <= md1_si_map.get(row['MD1'], np.inf),
-            axis=1
-        )
-        """
-
-        if dataframe['MD1'] == df_LZ['mass']:
-            cutLZ = dataframe['protonSI'] < dataframe['median']
-            
+            if 'dependent_variables' in LZ:
+                for var in LZ['dependent_variables']:
+                    name = var['header']['name']
+                    y_values = [point['value'] * conversion_factor for point in var['values']]
+                    y_data[name] = y_values
+                        
+        cutLZ=(dataframe['protonSI'] > np.interp(dataframe['MD1'], x_values, y_data["limit"]))       
+                     
     # Combine all cuts
     cut_tot = cutMD1 & cutl345 & cutMass & cutLEP & cutLEP2 & cutMDP
-    cut_tot &=  cutOM & cutDD & cutCMB & cutBr & cutLZ
-        #cutT & cutS &
+    cut_tot &=  cutOM & cutDD & cutCMB & cutBr & cutLZ 
+    #& cutT & cutS
     # Apply the combined cuts
     dataframe_cut = dataframe[cut_tot]
 

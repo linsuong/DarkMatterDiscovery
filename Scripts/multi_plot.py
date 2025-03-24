@@ -6,6 +6,7 @@ from matplotlib.colors import LogNorm
 file_path = 'scans/5-D_scans/combined.dat'
 
 df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
+
 df['brH_DMDM'] = pd.to_numeric(df['brH_DMDM'], errors='coerce')
 
 df_HEP = pd.read_csv('HEPData-ins2841863-v1-csv/SIcrosssection.csv', sep=',' , low_memory= False)

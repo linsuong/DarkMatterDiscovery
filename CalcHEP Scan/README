@@ -1,0 +1,12 @@
+1) compile with [path to calchep dir]/bin/make_main scan_example.c
+
+2) change paths in scan_example/model/extlib3.mdl to your path to the scan_example/model/ directory
+
+2) run ./a.out
+
+There is a mistake in bin/make_main 
+exe=`echo $1 |sed s/.c//` 
+should be replaced with 
+exe=`echo $1 |sed s/\.c$//`exe=`echo $1 |sed s/\.c$//`
+
+$CALCHEP/bin/make_main scan2.c

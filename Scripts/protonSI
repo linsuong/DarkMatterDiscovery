@@ -3,14 +3,27 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import LogNorm
 import cuts
+import yaml
 
 file_path = 'scans/5-D_scans/combined.dat'
+
+point1 = "Data/pt1.dat"
+point2 = "Data/pt2.dat"
 
 df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
 df['brH_DMDM'] = pd.to_numeric(df['brH_DMDM'], errors='coerce')
 df['protonSI'] = pd.to_numeric(df['protonSI'], errors='coerce')
 
-df_HEP = pd.read_csv('HEPData-ins2841863-v1-csv/SIcrosssection.csv', sep=',' , low_memory= False)
+#df_HEP = pd.read_csv('HEPData-ins2841863-v1-csv/SIcrosssection.csv', sep=',' , low_memory= False)
+
+with open('Data/SI_WS2022+WS2024.yaml', 'r') as file:
+    data = yaml.safe_load(file)
+
+# Extract mass and limit values
+conversion_factor = 1e36  # Convert from cm^-2 to pb
+mass = [entry['value'] for entry in data['independent_variables'][0]['values']]
+limit = [entry['value'] * conversion_factor for entry in data['dependent_variables'][0]['values']]
+
 
 df['MDP'] = df['DMP'] + df['MD1']
 #df['MD2'] = df['DM3'] + df['DMP'] + df['MD1']
@@ -36,16 +49,18 @@ params_dict = {
     'protonSI' : r'$\Sigma$'
 }
 
-df = cuts.cuts(df, cut1 = True, cut2 = True, cut3_strict = True, cut4 = True, cut5 = False)
-df_HEP['median'] = (df_HEP['median']/(10 ** (-47)))  * (10 ** -11)
+df = cuts.cuts(df, cut1 = True, cut2 = True, cut3_strict = True, cut4 = True, cut5 = True, cut6 = True, cut7 = True)
+#df_HEP['median'] = (df_HEP['median']/(10 ** (-47)))  * (10 ** -11)
 sc = plt.scatter(df['MD1'], df['protonSI'], c=df['Omegah2'], rasterized=True, s=1,
                         cmap='plasma_r', norm=LogNorm(vmin=1e-6, vmax=df['Omegah2'].max()))
 cbar = plt.colorbar(sc)
 
-print(df)
+df.to_csv('Data/non_excl.csv')
 
 cbar.set_label('$\\Omega h_2$', fontsize=13)
-plt.scatter(df_HEP['mass'], df_HEP['median'], color = 'red')
+plt.plot(mass, limit, label='Limit', color='blue')
+#plt.scatter(df_HEP['mass'], df_HEP['median'], color = 'red')
+
 plt.xlabel('mass of DM')
 plt.ylabel('proton SI')
 plt.xscale('log')
