@@ -20,3 +20,8 @@ HEPData-ins2841863-v1-csv.tar
 filedump./micromegas_6.2.3.tar
 micromegas_6.2.3
 micromegas_6.2.3.tar
+Documents/Thesis/*
+! Documents/Thesis/Figs
+! Documents/Thesis/main.tex
+! Documents/Thesis/references.bib
+filedump/

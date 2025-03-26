@@ -210,10 +210,24 @@ Giving the final equation:
 
 \begin{equation}
     \boxed{\text{ }\frac{dY}{dx} = -\frac{s}{Hx}\braket{\sigma\nu}(Y^2 - Y^2_{eq})\text{ }}
+    \label{eqn:boltzmann_xy}
 \end{equation}
 
-From the Boltzmann equation, one can derive an expression for DM relic density.
+From the Boltzmann equation, one can derive an expression for DM relic density. Knowing the expressions for $s$ and $H$, and from the equation above (Eqn. \ref{eqn:boltzmann_xy}), one has
+\begin{equation}
+    s = \frac{2 \pi^2}{45}{g_s}T^3, \qquad 
+    H = \frac{\pi}{3}\sqrt{\frac{g_*}{10}}\frac{m^2}{x^2 M_{Pl}}
+\end{equation}
+One has:
+\begin{equation}
+    \begin{align}
+        \frac{dY}{dx} &= \frac{1}{x}\frac{1}{\frac{\pi}{3}\sqrt{\frac{g_*}{10}\frac{m^3_DM}{x^2 M_{Pl}}}}\frac{2 \pi^2}{4\zeta}g_s \frac{m^3}{x^3}\braket{\sigma \nu}(Y_{eq}^2 - Y^2)
+        &= \frac{1}{x^2}\left(\frac{2 \pi}{\zeta}M_{Pl}m_{DM}g_s\right)\braket{\sigma \nu}(Y_{eq}^2 - Y^2)
+        &\text{setting }\lambda = \left(\frac{2 \pi}{\zeta}M_{Pl}m_{DM}g_s\right)\braket{\sigma \nu}
+        &= \frac{\lambda}{x^2} 
+    \end{align}
 
+\end{equation}
 \section{Inert Two Higgs Doublet Model (i2HDM)}
 \label{sec:i2HDM}
 In the i2HDM, we propose two doublets, $\Phi_1$, $\Phi_2$ - where the first doublet is active and second doublet is inert. The latter does not share its degrees of freedom with other particles (or, it does not couple to fermions via Yukawa interactions \cite{Belyaev_2022}), and has no VEV; unlike the former which is just the SM Higgs doublet, which has a VEV. We can invoke a new set of particles arising from $\Phi_2$- $h^\pm, h_1,$ and $h_2$, where $m_{h_1} < m_{h_2}$ and $m_{h_1} < m_{h^\pm}$. The lightest particle, $h_1$ is the DM candidate particle.
@@ -522,7 +536,7 @@ In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of 
 \onecolumn
 \newpage
 \bibliographystyle{plain}
-\bibliography{references}
+\bibliography{./references}
 
 \newpage
 \onecolumn
