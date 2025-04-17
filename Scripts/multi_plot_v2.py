@@ -18,40 +18,6 @@ params_dict = {
     'DM3' : r'$\Delta m_+$' #mass diff mh+ - mh2
 }
 
-def calculate_ST(dataframe):
-    """
-    Add S and T parameter columns to the dataframe based on mass differences.
-    """
-    v = 246  # Higgs vev in GeV
-
-    # Calculate S and T based on mass splittings
-    x1 = dataframe['MD1'] / dataframe['MDP']
-    x2 = dataframe['MD2'] / dataframe['MDP']
-    log_term = np.log(dataframe['MDP'] / dataframe['MD1'])
-    
-    # Approximate expressions for S and T (from paper)
-    dataframe['S'] = (1 / (72 * np.pi)) * ((x2**2 - x1**2) * log_term)
-    dataframe['T'] = (1 / (32 * np.pi**2 * v**2)) * (dataframe['MDP']**2 - dataframe['MD2']**2)
-    
-    return dataframe
-
-def chi_squared(S, T, S0=0.06, T0=0.1, sigma_S=0.09, sigma_T=0.07, rho=0.91):
-    """
-    Compute the chi-squared value for the S and T parameters.
-    """
-    # Covariance matrix and its inverse
-    cov = np.array([[sigma_S**2, rho * sigma_S * sigma_T],
-                    [rho * sigma_S * sigma_T, sigma_T**2]])
-    inv_cov = np.linalg.inv(cov)
-
-    # Delta vector
-    delta = np.array([S - S0, T - T0])
-    
-    # Compute chi-squared
-    chi2 = delta.T @ inv_cov @ delta
-    return chi2
-
-
 def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, savefig = False, ext = None, label_dict = params_dict):
     
     dataframe

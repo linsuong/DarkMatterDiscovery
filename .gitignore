@@ -1,12 +1,12 @@
 ProgramFiles/
 arXiv-1612.00511v2.tar
+arXiv-2204.06411v1
 calchep_3.9.1
 micromegas_6.1.15
 micromegas_6.1.15 - belyaev
 arXiv-1612.00511v2
 .DS_Store
 Documents/.DS_Store
-Work/
 ModelFiles/
 Data/
 scans/5-D_scans/combined.dat.gz
@@ -25,3 +25,18 @@ Documents/Thesis/*
 ! Documents/Thesis/main.tex
 ! Documents/Thesis/references.bib
 filedump/
+
+
+# Ignore everything in Work/
+Work/*
+
+# But not these subfolders
+!Work/CalcHEP_Scan_W/
+Work/CalcHEP_Scan_W/**
+!Work/CalcHEP_Scan_W/scan2.c
+!Work/CalcHEP_Scan_W/scan2.dat
+
+!Work/CalcHEP_Scan_Z/
+Work/CalcHEP_Scan_Z/**
+!Work/CalcHEP_Scan_Z/scan2.c
+!Work/CalcHEP_Scan_Z/scan2.dat
