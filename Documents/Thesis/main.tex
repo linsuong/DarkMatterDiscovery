@@ -36,7 +36,7 @@
 
 \begin{titlepage}
     \centering
-    \includegraphics[width=2.5cm]{crest.jpg}\par
+    \includegraphics[width=2.5cm]{filedump/crest.jpg}\par
     \vspace{0.5cm}
     {\scshape\Large Department of Physics and Astronomy \par}
     \vspace{0.25cm}
@@ -63,7 +63,7 @@ The Higgs potential, characterized by a "Mexican hat" shaped function, determine
 
 Extending this framework, we explore the Inert Two-Higgs Doublet Model (i2HDM), which introduces a second Higgs doublet that is inert — meaning it does not acquire a VEV, does not couple to fermions, and preserves a discrete symmetry. This inert doublet contributes additional scalar particles, including a viable dark matter candidate, $h_1$.
 
-In this study, we update the parameter space of the i2HDM, focusing on parameters such as the masses of the scalar particles ($m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$), and the quartic couplings ($\lambda_2$, and $\lambda_{345}$).We incorporate the latest theoretical and experimental constraints.
+In this study, we update the parameter space of the i2HDM, focusing on parameters such as the masses of the scalar particles ($m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$), and the quartic couplings ($\lambda_2$, and $\lambda_{345}$).We incorporate the latest theoretical and experimental constraints. Following that, we explore 2 lepton final states in the LHC, incorporating updated collider integrated luminosity, and exploring branching ratios of decay paths via $W$ and $Z$ bosons respectively.
 
 Section \ref{sec:i2HDM} provides a detailed overview of the i2HDM and the constraints considered. Section \ref{sec:results} presents our findings and analysis. Finally, Section \ref{sec:conclusion} offers concluding remarks.
 
@@ -131,7 +131,13 @@ The aim of this paper is to discover and perform analysis for the parameter spac
 \section{The Boltzmann Equation}
 \label{sec:boltzmann}
 The Boltzmann equation can be qualitatively derived by the simple relation:
-$\text{Evolution of particle A per unit volume} = \text{Particle A created by annihilation of particles in the bath B} - \text{self annihilation of A}$
+\begin{equation}
+    \begin{split}
+            \text{Evolution of particle A per unit volume} &= \text{Particle A created by annihilation of particles in the bath B} 
+            \\&- \text{Self annihilation of A}
+    \end{split}
+\end{equation}
+This can be expressed as:
 \begin{equation}
     \begin{split}
         \frac{1}{a^3}\frac{d(n_Aa^3)}{dt} = \braket{\sigma \nu}_{B \rightarrow A} n^2_B- \braket{\sigma \nu}_{A \rightarrow B}n^2_A
@@ -219,13 +225,21 @@ From the Boltzmann equation, one can derive an expression for DM relic density. 
 \end{equation}
 One has:
 \begin{equation}
-    \begin{align}
-        \frac{dY}{dx} &= \frac{1}{x}\frac{1}{\frac{\pi}{3}\sqrt{\frac{g_*}{10}\frac{m^3_DM}{x^2 M_{Pl}}}}\frac{2 \pi^2}{4\zeta}g_s \frac{m^3}{x^3}\braket{\sigma \nu}(Y_{eq}^2 - Y^2)
-        &= \frac{1}{x^2}\left(\frac{2 \pi}{\zeta}M_{Pl}m_{DM}g_s\right)\braket{\sigma \nu}(Y_{eq}^2 - Y^2)
-        &\text{setting }\lambda = \left(\frac{2 \pi}{\zeta}M_{Pl}m_{DM}g_s\right)\braket{\sigma \nu}
-        &= \frac{\lambda}{x^2} 
-    \end{align}
+    \begin{split}
+        \frac{dY}{dx} &= \frac{2\pi^2}{45}\left(\frac{3}{\pi}g_s\sqrt{\frac{10}{g}}\right)\frac{1}{x}\braket{\sigma \nu}(Y_{eq}^2 - Y^2) \\
+        &= \frac{1}{x^2}\left(\frac{2 \pi}{15}g_s\sqrt{\frac{10}{g_p}}m_{DM}M_{Pl}\right)\braket{\sigma \nu}(Y_{eq}^2 - Y^2) \\
+        \text{setting } \lambda &= \left(\frac{2 \pi}{15}g_s\sqrt{\frac{10}{g_p}}m_{DM}M_{Pl}\right)\braket{\sigma \nu}, \\
+        &= \frac{\lambda}{x^2}(Y_{eq}^2 - Y^2)
+    \end{split}
+\end{equation}
 
+We can solve for x:
+\begin{equation}
+    \begin{split}
+        \frac{dY}{dx} &= \frac{\lambda}{x^2} (Y_{eq}^2 - Y^2)
+        \\\int \frac{1}{Y_{eq}^2 - Y^2}\text{ } dY &= \int\frac{\lambda}{x^2}\text{ } dx
+        \\ 
+    \end{split}
 \end{equation}
 \section{Inert Two Higgs Doublet Model (i2HDM)}
 \label{sec:i2HDM}
@@ -425,13 +439,20 @@ The S and T parameters are given with the equations:
     \end{split}
     \label{eqn:S}
 \end{equation}
-
 \begin{equation}
     \begin{split}
         T = &\frac{1}{32\pi^2\alpha\nu}[f_c(m^2_{h_\pm},m^2_{h_2})
             \\&+ f_c(m^2_{h_\pm},m^2_{h_1}) - f_c(m^2_{h_2},m^2_{h_1})]
     \end{split}
     \label{eqn:T}
+\end{equation}
+
+Notice that there is a $\frac{0}{0}$ condition when $m_{h_1} = m_{h_2}$, which leads to instability. By applying L'Hopital's rule, we can resolve this problem. By expressing $S$ as a fraction of 2 functions, $\frac{F(x_1, x_2)}{H(x_1, x_2)}$, we require 3rd order derivatives for $F$  and $H$. For the case where $x_1 = x_2$, one requires the equation: 
+\begin{equation}
+    \begin{split}
+        S =& \frac{120 x^3f_a(x) + 90 x^4f_a'(x)+18x^5f''_a(x)+x^6f'''_a(x)}{48x^2} \\&+\frac{9x^2\left(24xf_b(x) + 36x^2f_b'(x)+12x^3f_b''(x) + x^4f_b'''(x)\right)}{48x^2}
+        \\ =& \frac{1}{24\pi}\left(-5 + 12\log(x) + 3x - 4x\log(x)\right)
+    \end{split}
 \end{equation}
 
 \subsubsection{Constraint from DM Relic Density}
@@ -441,7 +462,7 @@ DM relic density is the remaining DM from the Big Bang, and there are multiple e
     \Omega ^{PLANCK}_{DM} h^2 = 0.11933 \pm 0.00091
 \end{equation}
 
-We set the parameter space for the density of the DM relic to ignore the cases of DM overabundance (where $\Omega h^2 > \Omega^{PLANCK}_{DM_{max}}h^2$). DM overabundance is not considered as it leads to inconsistencies with the observed CMB and its constraints \cite{Croon_2024, Zavala_2010}. DM underabundance is allowed to allow for possible external sources of DM.
+We set the parameter space for the density of the DM relic to ignore the cases of DM overabundance (where $\Omega h^2 > \Omega^{PLANCK}_{DM_{max}}h^2$). DM overabundance is not considered as it leads to inconsistencies with the observed CMB and its constraints \cite{Croon_2024, Zavala_2010}. DM under-abundance is allowed to allow for possible external sources of DM.
 
 For data interpretation purposes, and since \verb|micrOMEGAS| software calculates relic density via tree-level calculation, the theoretical constraints applied to the density of DM relics will be within $\pm10\%$ of the value of $\Omega ^{PLANCK}_{DM} h^2$.
 \begin{equation}
@@ -462,7 +483,48 @@ The upper limit of the branching ratio for the invisible Higgs at 95\% confidenc
     Br(\text{Higgs} \rightarrow \text{invisible}) = 0.145
     \label{eqn:branching_ratio}
 \end{equation}
+
 \subsection{2 Lepton Final States at the Collider Level}
+We can now calculate the branching ratios for DM decay at the collider level, starting from 2 quarks. The goal here is to be able to find new limits at the 95\% confidence level. Using \verb|CalcHEP|'s \verb|getBr| function, it is easy to obtain the branching ratios.
+
+For example, we consider the process $p\bar{p} \rightarrow h_1h_2$ where $ h_2\rightarrow h_1 e^+e$ via the $Z$ boson. The branching ratio of the process is calculated like:
+\begin{equation}
+    \begin{split}
+        Br(h_2 \rightarrow h_1 e^+e) = Br(h_2\rightarrow h_1Z) \times Br(Z\rightarrow e^+e) + Br(h_2 \rightarrow h_1 e^+e)
+    \end{split}
+\end{equation}
+where \( Br(h_2 \rightarrow h_1 Z) \) is the branching ratio for the decay of \( h_2 \) into \( h_1 \) and a \( Z \)-boson, and \( Br(Z \rightarrow e^+ e^-) \) is the branching ratio for the \( Z \)-boson decaying into an electron-positron pair. The reason for the additional summation term is due to the nature of \verb|CalcHEP|, as it calculates a $1\rightarrow2$ decay first, and if that process is has branching ratio of $0$, then it will calculate the contribution from a $1\rightarrow3$ decay. Some processes have non-zero $1\rightarrow2$ decays, so just calculating $1\rightarrow3$ decays (directly computing $Br(h_2 \rightarrow h_1 e^+e)$) is going to result in zeros \footnote{There will be no double counting, because if a $1\rightarrow2$ decay path is not possible then the value of the intermediary (i.e. $Br(Z\rightarrow e^+e)$ will be $0$, giving only $Br(h_2 \rightarrow h_1 e^+e)$, the $1\rightarrow2$ decay.}. Likewise, another possible 2 lepton final state can occur through the $W$ boson, for example:
+\begin{equation}
+    Br(h_-\rightarrow h_1e^- \bar{\nu}_e) = Br(h_-\rightarrow h_1 W^-) \times Br(W^- \rightarrow e^- \bar{\nu}_e) + Br(h_-\rightarrow h_1e^- \bar{\nu}_e)
+\end{equation}
+
+\subsubsection{Exclusion Rate}
+From \cite{Aruhrib2012Inert}, the exclusion rate $r$ is defined as:
+\begin{equation}
+    r = \frac{\sigma_{DM}}{\sigma_{95}}
+\end{equation}
+Where $\sigma_{DM}$ and $\sigma_{95}$ are the cross sections for DM production and the limit of the cross section at $95\%$ confidence level. This equation can be scaled due to the fact that collider luminosity is constantly improving. In the LHC, luminosity depends on the beam parameters: the revolution frequency, number of particles per "bunch" (group of particles) in the beam, and the cross sectional area of the beams at collision point. One can scale $r$ in the following manner;
+Signal significance, the measure of how a potential signal stands out from background noise, is expressed as:
+\begin{equation}
+    \alpha = \frac{S}{\sqrt{B}}
+\end{equation}
+Where $S$ is the number of potential signals and $B$ the number of background signals. The signal and background can be expressed as $\sigma \mathcal{L}$
+\begin{equation}
+    \begin{split}
+        \alpha &= \frac{\sigma_{signal} \mathcal{L}}{\sqrt{\sigma_{background }\mathcal{L}}}
+        \\&= \frac{\sigma_{signal}}{\sqrt{\sigma_{background}}} \sqrt{\mathcal{L}}
+        \\&\implies \alpha \sqrt{\sigma_{background}} = \sigma_{limit}^{new}\sqrt{\mathcal{L}}
+        \\\sigma_{limit} &=\frac{\alpha \sqrt{\sigma_{background}}}{\sqrt{\mathcal{L}}}  
+        \\
+    \end{split}
+\end{equation}
+Keeping $\alpha$ the same, one can derive a relationship for the new limit, $\sigma_{limit}^{new}$ when there is new collider luminosity $\mathcal{L}^{new}$. Since $\sigma_{background}$ is the same for both, and writing the old integrated luminosity as $\mathcal{L}_0$ 
+\begin{equation}
+    \begin{split}
+    \sigma_{limit}^{new} \sqrt{\mathcal{L}^{new}} &= \sigma_{limit}\sqrt{\mathcal{L}_0}
+        \\ \sigma_{limit}^{new}&= \sigma_{limit}\sqrt{\frac{\mathcal{L}_0}{\mathcal{L}^{new}}}
+    \end{split}
+\end{equation}
 
 \section{Results and Analysis}
 \label{sec:results}
@@ -535,7 +597,7 @@ In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of 
 \onecolumn
 \newpage
 \bibliographystyle{plain}
-\bibliography{./references}
+\bibliography{references}
 
 \newpage
 \onecolumn
