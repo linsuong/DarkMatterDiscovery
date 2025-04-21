@@ -102,7 +102,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
         cutLEP = ((dataframe['MD1+MD2'] > MZ) & (dataframe['MD1+MDP'] > MW) & 
                     (dataframe['MD2+MDP'] > MW) & (2 * dataframe['MDP'] > MZ))
     
-    if cut8:
+    if cut3:
         cutT = (dataframe['T'] > (0.1 - 0.07)) & (dataframe['T'] < (0.1 + 0.07))
         cutS = (dataframe['S'] > (0.06 - 0.09)) & (dataframe ['S'] < (0.06 + 0.09))
         
@@ -110,23 +110,23 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
         cutS = (dataframe['S'] > (0.06 - 0.09)) & (dataframe ['S'] < (0.06 + 0.09))
 
 
-    if cut3:
+    if cut4:
         cutOM = dataframe['Omegah2'] < 0.12024
         #cutOM = (df['Omegah2'] > 0.10) & (df['Omegah2'] < 0.12024) #strict bound of Omegah2
         
-    if cut3_strict:
+    if cut4_strict:
         cutOM = (dataframe['Omegah2'] > 0.10737) & (dataframe['Omegah2'] < 0.13123) #strict bound of Omegah2
 
-    if cut4:
+    if cut5:
         cutDD = dataframe['PvalDD'] > 0.1
 
-    if cut5:
+    if cut6:
         cutCMB = dataframe['CMB_ID'] < 1
     
-    if cut6:
+    if cut7:
         cutBr = dataframe['brH_DMDM'] < 0.145
         
-    if cut7:
+    if cut8:
         if 'independent_variables' in LZ:
             for var in LZ['independent_variables']:
                 if var['header']['name'] == 'mass':

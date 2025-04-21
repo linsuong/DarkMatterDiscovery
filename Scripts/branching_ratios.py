@@ -95,21 +95,21 @@ def plotfig(df1, df2, df3, xlog=False, ylog=False, label_dict=params_dict):
                      cmap='plasma_r', norm=Normalize(vmin=vmin, vmax=vmax))
     
     cbar = plt.colorbar(sc)
-    cbar.set_label(label3, fontsize=13)
+    cbar.set_label(label3, fontsize=15)
             
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()
-    plt.xlabel(label1, fontsize=13)
-    plt.ylabel(label2, fontsize=13)
-    plt.tick_params(axis='both', labelsize=13)
-    plt.title(f'{label2} against {label1}, scaled by {label3}', fontsize=13)
+    plt.xlabel(label1, fontsize=15)
+    plt.ylabel(label2, fontsize=15)
+    plt.tick_params(axis='both', labelsize=15)
+    plt.title(f'{label2} against {label1}, scaled by {label3}', fontsize=15)
 
     # Sanitize filename
     safe_label1 = sanitize_filename(label1)
     safe_label3 = sanitize_filename(label3)
     safe_label4 = sanitize_filename(label4)
     
-    plt.savefig(f'branching_ratio_plots/{safe_label4}{safe_label1}_scale_{safe_label3}.pdf', bbox_inches='tight')
+    plt.savefig(f'branching_ratio_plots/images/{safe_label4}{safe_label1}_scale_{safe_label3}.jpg', bbox_inches='tight')
     plt.close()
 
 

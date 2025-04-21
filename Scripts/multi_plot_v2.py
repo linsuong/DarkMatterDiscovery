@@ -4,9 +4,9 @@ import numpy as np
 import cuts
 from matplotlib.colors import LogNorm
 
-file_path = '/Users/linusong/Repositories/DarkMatterDiscovery/scans/5-D_scans/combined.dat.gz'
+file_path = 'scans\\5-D_scans\\combined.dat'
 
-df = pd.read_csv(file_path, sep=r'\s+', compression= 'gzip', low_memory= False)
+df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
 
 params_dict = {
     'MD1': r'$m_{h1}$',
@@ -17,6 +17,18 @@ params_dict = {
     'DM2' : r'$\Delta m_1$', #mass diff mh2 - mh1
     'DM3' : r'$\Delta m_+$' #mass diff mh+ - mh2
 }
+
+cuts_dict = {
+    'cut1' : 'Vacuum stability',
+    'cut2' : '+ LEP',
+    'cut3' : '+ EWPT',
+    'cut4' : '+ Relic Density',
+    'cut5' : '+ DM DD',
+    'cut6' : '+ CMB',
+    'cut7' : '+ Branching Ratio',
+    'cut8' : '+ SI'
+}
+
 
 def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, savefig = False, ext = None, label_dict = params_dict):
     
@@ -38,7 +50,7 @@ def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, s
         plt.title(f'Plot of {label1} against {label2}, coloured by $\\Omega h_2$')
         
         cbar = plt.colorbar(sc)
-        cbar.set_label('$\\Omega h_2$', fontsize=12)
+        cbar.set_label('$\\Omega h_2$', fontsize=15)
     
     else:
         sc = plt.scatter(dataframe[df1], dataframe[df2], c = 'red', s = 1)
@@ -52,8 +64,8 @@ def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, s
 
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()
-    plt.xlabel(label1, fontsize=12)
-    plt.ylabel(label2, fontsize=12)
+    plt.xlabel(label1, fontsize=15)
+    plt.ylabel(label2, fontsize=15)
     
 def constraintplot(df1, df2, label_dict = params_dict):
     label1 = label_dict.get(df1, df1)
@@ -79,15 +91,9 @@ def constraintplot(df1, df2, label_dict = params_dict):
     plt.legend()
     #plt.savefig('run/run_Dec2/allowedParamsExps1.pdf')
     plt.show()
-    
-'''
-cut 1: constraints from model
-cut 2: constraints from LEP 
-cut 3: constraints from relic density
-cut 4: DM DD constraints
-cut 5: CMB constraints
-'''
 
+
+"""
 def multi_plot_old(df, x_axis, y_axis, ylog = None, xlog = None, savefig = True):
     df_f = cuts(df, cut1 = True)
     plotfig(df_f, x_axis, y_axis, omegah2bar = True, xlog = xlog, ylog = ylog, savefig = savefig)
@@ -109,7 +115,7 @@ def multi_plot_old(df, x_axis, y_axis, ylog = None, xlog = None, savefig = True)
     plt.show()
     
 def multi_plot(df, x_axis, y_axis, xlog=None, ylog=None, omegah2bar=True, cut_flags=None):
-    """
+    '
     Plot data with different combinations of cuts dynamically.
 
     Parameters:
@@ -119,7 +125,7 @@ def multi_plot(df, x_axis, y_axis, xlog=None, ylog=None, omegah2bar=True, cut_fl
     - ylog_values: List of booleans to toggle y-log scale for each plot
     - omegah2bar: Whether to color by Omega h2
     - cut_flags: A list of dictionaries with cut booleans for each plot
-    """
+    '
     if cut_flags is None:
         # Default list of cuts if none are provided
         cut_flags = [
@@ -139,3 +145,52 @@ def multi_plot(df, x_axis, y_axis, xlog=None, ylog=None, omegah2bar=True, cut_fl
     plt.show()
     
 multi_plot_old(df, 'MD1', 'l345', xlog = True, ylog = False)
+
+"""
+
+def plot_cuts_grid(df, xvar, yvar, omegah2bar=True, xlog=True, ylog=True,
+                   label_dict=params_dict, cuts_func=cuts.cuts, cuts_dict=cuts_dict):
+    fig, axes = plt.subplots(2, 4, figsize=(22, 10), sharex=True, sharey=True)
+    axes = axes.flatten()
+
+    cut_kwargs = {}  # Dictionary of keyword arguments to pass to cuts()
+
+    for i, (cut_flag, cut_label) in enumerate(cuts_dict.items()):
+        ax = axes[i]
+        
+        # Add current cut to the argument list
+        cut_kwargs[cut_flag] = True
+        
+        # Apply cumulative cuts up to this point
+        filtered_df = cuts_func(df.copy(), **cut_kwargs)
+
+        if xlog:
+            ax.set_xscale('log')
+        if ylog:
+            ax.set_yscale('log')
+
+        label1 = label_dict.get(xvar, xvar)
+        label2 = label_dict.get(yvar, yvar)
+
+        if omegah2bar:
+            sc = ax.scatter(filtered_df[xvar], filtered_df[yvar], c=filtered_df['Omegah2'],
+                            s=1, cmap='plasma', norm=LogNorm(vmin=1e-5, vmax=filtered_df['Omegah2'].max()), rasterized=True)
+        else:
+            sc = ax.scatter(filtered_df[xvar], filtered_df[yvar], color='red', s=1)
+
+        ax.set_title(cut_label, fontsize=12)
+        ax.grid(True, linestyle='--', alpha=0.5)
+        ax.set_xlabel(label1, fontsize=10)
+        ax.set_ylabel(label2, fontsize=10)
+
+    plt.tight_layout()
+
+    if omegah2bar:
+        cbar = fig.colorbar(sc, ax=axes.ravel().tolist(), shrink=0.95)
+        cbar.set_label('$\\Omega h_2$', fontsize=15)
+
+    plt.suptitle(f'Cumulative Cuts on {label1} vs {label2}', fontsize=18, y=1.02)
+    plt.subplots_adjust(top=0.90)
+    plt.show()
+
+plot_cuts_grid(df, xvar='MD1', yvar='l345')
