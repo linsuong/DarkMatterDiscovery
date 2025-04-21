@@ -31,12 +31,26 @@ filedump/
 Work/*
 
 # But not these subfolders
-!Work/CalcHEP_Scan_W/
-Work/CalcHEP_Scan_W/**
-!Work/CalcHEP_Scan_W/scan2.c
-!Work/CalcHEP_Scan_W/scan2.dat
+!Work/CalcHEP_Scan_W-/
+Work/CalcHEP_Scan_W-/**
+!Work/CalcHEP_Scan_W-/scan2.c
+!Work/CalcHEP_Scan_W-/scan2.dat
+
+!Work/CalcHEP_Scan_W+/
+Work/CalcHEP_Scan_W+/**
+!Work/CalcHEP_Scan_W+/scan2.c
+!Work/CalcHEP_Scan_W+/scan2.dat
 
 !Work/CalcHEP_Scan_Z/
 Work/CalcHEP_Scan_Z/**
 !Work/CalcHEP_Scan_Z/scan2.c
 !Work/CalcHEP_Scan_Z/scan2.dat
+
+!Work/batch_results/
+!Work/batch_files/
+
+Work/batch_results/tmp
+Work/batch_results/**/*.distr
+Work/batch_results/**/*.jpg
+Work/batch_results/**/*.html
+Work/batch_results/**/*.dat

@@ -1,0 +1,15 @@
+	CalcHEP Numerical Details
+
+	Calculating Cross Sections
+
+Processes                sigma (fb)     unc (%)   PID       Time (hr)
+U,d->~h1,~h-             5.6622e+01     1.45e-01  91216     0.00           
+d,U->~h1,~h-             5.6619e+01     5.62e-01  91328     0.00           
+s,C->~h1,~h-             8.5989e+00     6.46e-01  91331     0.00           
+C,s->~h1,~h-             8.6967e+00     2.01e-01  91334     0.00           
+Total                    1.3054e+02     2.56e-01                      0.00           
+
+Decays                   width (GeV)    unc (%)   PID       Time (hr)
+~h-->N1,e1,~h1           1.3700e-08     4.94e-02  91337     0.00           
+~h-->N2,e2,~h1           1.3692e-08     5.05e-02  91340     0.00           
+~h-->N3,e3,~h1           1.1754e-08     4.12e-02  91343     0.00           

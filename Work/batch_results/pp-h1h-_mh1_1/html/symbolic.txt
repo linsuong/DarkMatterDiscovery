@@ -1,0 +1,12 @@
+	CalcHEP Symbolic Details
+
+Processes                Removes                  Lib  PID       Time
+U,d->~h1,~h-                                      x              
+d,U->~h1,~h-                                      x              
+s,C->~h1,~h-                                      x              
+C,s->~h1,~h-                                      x              
+~h-->N1,e1,~h1                                    x              
+~h-->N2,e2,~h1                                    x              
+~h-->N3,e3,~h1                                    x              
+Widths                                            x              
+

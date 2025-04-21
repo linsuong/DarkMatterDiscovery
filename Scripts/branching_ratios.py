@@ -27,9 +27,14 @@ params_dict = {
     "Br(h2->n+n-h1)_total" : r'Br($h_2 \rightarrow n n h_1$)',
     
     #for decay via W- boson:
-    "Br(h-->e-nu)_total" : r'Br($h_- \rightarrow e^- \nu_e h_1$)',
-    "Br(h-->mu-nu)_total" : r'Br($h_- \rightarrow \mu^- \nu_{\mu} h_1$)',
-    "Br(h-->tau-nu)_total" : r'Br($h_- \rightarrow \tau^- \nu_{\tau} h_1$)'
+    "Br(h-->e-nu)_total" : r'Br($h_- \rightarrow e^- \bar{\nu}_e h_1$)',
+    "Br(h-->mu-nu)_total" : r'Br($h_- \rightarrow \mu^- \bar{\nu}_{\mu} h_1$)',
+    "Br(h-->tau-nu)_total" : r'Br($h_- \rightarrow \tau^- \bar{\nu}_{\tau} h_1$)',
+    
+    #for decay via W+ boson:
+    "Br(h+->e-nu)_total" : r'Br($h_+ \rightarrow e^+ \nu_e h_1$)',
+    "Br(h+->mu-nu)_total" : r'Br($h_+ \rightarrow \mu^+ \nu_{\mu} h_1$)',
+    "Br(h+->tau-nu)_total" : r'Br($h_+ \rightarrow \tau^+ \nu_{\tau} h_1$)'
 }
 
 """
@@ -57,7 +62,12 @@ savefile_dict = {
     #for decay via W- boson:
     "Br(h-->e-nu)_total" : r'Br(h-->en)',
     "Br(h-->mu-nu)_total" : r'Br(h-->mm)',
-    "Br(h-->tau-nu)_total" : r'Br(h-->tn)'	
+    "Br(h-->tau-nu)_total" : r'Br(h-->tn)',	
+    
+    #for decay via W+ boson:
+    "Br(h-->e-nu)_total" : r'Br(h+->en)',
+    "Br(h-->mu-nu)_total" : r'Br(h+->mm)',
+    "Br(h-->tau-nu)_total" : r'Br(h+->tn)'
 }
 
 if path == "Work/CalcHEP_Scan_Z/scan2.dat":
@@ -69,13 +79,21 @@ if path == "Work/CalcHEP_Scan_Z/scan2.dat":
     
     branching_ratios = ['Br(h2->e+e-h1)_total', 'Br(h2->mu+mu-h1)_total', 'Br(h2->tau+tau-h1)_total', 'Br(h2->n+n-h1)_total']
 
-if path == "Work/CalcHEP_Scan_W/scan2.dat":
+if path == "Work/CalcHEP_Scan_W-/scan2.dat":
     # Total BRs for h- decays (direct + via W)
     df['Br(h-->e-nu)_total'] = (df["Br(W-->e-nu)"] * df["Br(h-->W-h1)"]) + df['Br(h-->e-nu)']
     df['Br(h-->mu-nu)_total'] = (df["Br(W-->mu-nu)"] * df["Br(h-->W-h1)"]) + df['Br(h-->mu-nu)']
     df['Br(h-->tau-nu)_total'] = (df["Br(W-->tau-nu)"] * df["Br(h-->W-h1)"]) + df['Br(h-->tau-nu)']
     
     branching_ratios = ['Br(h-->e-nu)_total', 'Br(h-->mu-nu)_total', 'Br(h-->tau-nu)_total']
+    
+if path == "Work/CalcHEP_Scan_W-/scan2.dat":
+    # Total BRs for h+ decays (direct + via W)
+    df['Br(h+->e+nu)_total'] = (df["Br(W+->e+nu)"] * df["Br(h+->W+h1)"]) + df['Br(h+->e+nu)']
+    df['Br(h+->mu+nu)_total'] = (df["Br(W+->mu+nu)"] * df["Br(h+->W+h1)"]) + df['Br(h+->mu+nu)']
+    df['Br(h+->tau+nu)_total'] = (df["Br(W+->tau+nu)"] * df["Br(h+->W+h1)"]) + df['Br(h+->tau+nu)']
+    
+    branching_ratios = ['Br(h+->e+nu)_total', 'Br(h+->mu+nu)_total', 'Br(h+->tau+nu)_total']
 
 def plotfig(df1, df2, df3, xlog=False, ylog=False, label_dict=params_dict):
     label1 = label_dict.get(df1, df1)
