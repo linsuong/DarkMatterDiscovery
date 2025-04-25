@@ -2,11 +2,11 @@ import numpy as np
 import pandas as pd
 import yaml
 
-def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut4=False, cut5=False, cut6 = False, cut7 = False, cut8 = False):
+def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut4_strict = False, cut4=False, cut5=False, cut6 = False, cut7 = False, cut8 = False):
     """
     Applies constraints to the dataframe and returns a filtered dataframe.
     """
-    if cut3 == True and cut3_strict == True:
+    if cut3 == True and cut4_strict == True:
         raise Exception('please choose for a strict or relaxed bound on relic density')
     
     MW = 80.377
@@ -38,34 +38,75 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     dataframe['x1'] = dataframe['MD1']/dataframe['MDP']
     dataframe['x2'] = dataframe['MD2']/dataframe['MDP']
     
+    # Constants
+    alpha = 1 / 137  # Fine structure constant
+    nu = 246  # VEV in GeV
+
+    # Define helper functions
     def f_a(x):
         return -5 + 12 * np.log(x)
 
+    def f_a_1(x):
+        return 12/x
+
+    def f_a_2(x):
+        return -12/(x ** 2)
+
+    def f_a_3(x):
+        return 24/(x ** 3)
+
     def f_b(x):
         return 3 - 4 * np.log(x)
+
+    def f_b_1(x):
+        return -4/x
+
+    def f_b_2(x):
+        return 4/(x ** 2)
+
+    def f_b_3(x):
+        return -8/(x ** 3)
 
     def f_c(x, y):
         mask = np.isclose(x, y, rtol=1e-10)
         result = np.zeros_like(x)
         result[~mask] = ((x[~mask] + y[~mask]) / 2) - ((x[~mask] * y[~mask]) / (x[~mask] - y[~mask])) * np.log(x[~mask] / y[~mask])
-        return result
-    
-    alpha = 1/137
-    nu = 246    
         
-    dataframe['S'] = (1/(72 * np.pi * ((dataframe['x2']**2 - dataframe['x1']**2) ** 3))) * ((dataframe['x2'] ** 6) * f_a(dataframe['x2']) - 
-                                                                                ((dataframe['x1'] ** 6) * f_a(dataframe['x1'])) + 
-                                                                                (9 * ((dataframe['x2'] * dataframe['x1']) ** 2) * 
-                                                                                ((dataframe['x2'] ** 2)) * f_b(dataframe['x2']) - 
-                                                                                (dataframe['x1'] ** 2) * f_b(dataframe['x1']))
-                                                                                )
+        return result
 
-    dataframe['T'] = (1/(32 * (np.pi ** 2) * alpha * (nu ** 2))) * (f_c(dataframe['MDP'] ** 2, dataframe['MD2'] ** 2) + 
-                                                                f_c(dataframe['MDP'] ** 2, dataframe['MD1'] ** 2) -
-                                                                f_c(dataframe['MD2'] ** 2, dataframe['MD1'] ** 2)
-                                                                )
-    
-    
+    def compute_S(x1, x2):
+        mask = np.isclose(x1, x2, rtol=1e-10)
+        
+        S = np.zeros_like(x1)
+        
+        # Case where x1 ≠ x2
+        denominator = 72 * np.pi * ((x2**2 - x1**2) ** 3)
+        numerator = (x2**6) * f_a(x2) - (x1**6) * f_a(x1) + (9 * (x2**2) * (x1**2)) * ((x2**2) * f_b(x2) - (x1**2) * f_b(x1))
+        S[~mask] = numerator[~mask] / denominator[~mask]
+        
+        # Case where x1 ≈ x2 (use the limit)
+        if np.any(mask):
+            x = x1[mask]
+            #S_limit = (1 / (24 * np.pi)) * (-5 + 12 * np.log(x) + 3 * x - 4 * x * np.log(x))
+            
+            S_limit = (1/(72 * 48 * np.pi * x)) * ((120 * (x ** 3) * f_a(x)) + (90 * (x ** 4) * f_a_1(x)) + (18 * (x ** 5) * f_a_2(x)) + ((x ** 6) * f_a_3(x)) + (216 * (x ** 3) * f_b(x)) + (324 * (x ** 4) * f_b_1(x)) + (108 * (x ** 5) * f_b_2(x)) + (9 * (x ** 4) * f_b_3(x)))
+            
+            S[mask] = S_limit
+        
+        return S
+
+    def compute_T(MDP, MD1, MD2):
+        return (1 / (32 * (np.pi ** 2) * alpha * (nu ** 2))) * (
+            f_c(MDP**2, MD2**2) 
+            + f_c(MDP**2, MD1**2) 
+            - f_c(MD2**2, MD1**2)
+        )
+
+    # Apply to DataFrame
+    dataframe['S'] = compute_S(dataframe['x1'], dataframe['x2'])
+    dataframe['T'] = compute_T(dataframe['MDP'], dataframe['MD1'], dataframe['MD2'])
+
+    dataframe['brH_DMDM'] = pd.to_numeric(dataframe['brH_DMDM'], errors='coerce')
     
     cutl345 = dataframe['l345'] > -np.inf
     cutOM = dataframe['Omegah2'] > -np.inf
@@ -73,7 +114,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
     cutCMB = dataframe['CMB_ID'] > -np.inf
     cutBr = dataframe['brH_DMDM'] > -np.inf
     
-    cutMD1 = cutMDP = cutl345 = cutMass = cutLEP = cutLEP2 = cutLZ = True
+    cutMD1 = cutl345 = cutMass = cutLEP = cutMDP = cutOM = cutDD = cutCMB = cutBr = cutLZ = cutT = cutS = True
     
     if cut1:
         #vs1: mh1^2 > 0 for |R| < 1
@@ -97,22 +138,46 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
                     (dataframe['MD1']>10) & (dataframe['MD2']>10) & (dataframe['MDP']>10))
         
     if cut2:
-        cutLEP2 = (dataframe['MD1'] > 80) & (dataframe['MD2'] > 100) & (dataframe['DM2'] < 8) 
-        cutMDP = (dataframe['MDP'] > 70)
-        cutLEP = ((dataframe['MD1+MD2'] > MZ) & (dataframe['MD1+MDP'] > MW) & 
-                    (dataframe['MD2+MDP'] > MW) & (2 * dataframe['MDP'] > MZ))
+        # --- 1. Universal low-mass exclusion (Eq. 31) ---
+        # Exclude ALL points with Mh1,Mh2 < 45 GeV OR Mh+ < 70 GeV
+        cutLEP_universal = ~( 
+            ((dataframe['MD1'] < 45) & (dataframe['MD2'] < 45)) | (dataframe['MDP'] < 70)
+        )        
+        # --- 2. Kinematic LEP cuts (Eq. 19) ---
+        # Forbid Z/W decays to inert scalars
+        cutLEP_kinematic = (
+            (dataframe['MD1+MD2'] > MZ) & 
+            (dataframe['MD1+MDP'] > MW) & 
+            (dataframe['MD2+MDP'] > MW) & 
+            (2 * dataframe['MDP'] > MZ)
+        )
+        
+        # --- 3. Di-lepton LEP cut (Eq. 23) ---
+        # Exclude Mh1 < 80 GeV + Mh2 < 100 GeV + ΔM > 8 GeV
+        cutLEP_dilepton = ~(
+            (dataframe['MD1'] < 80) & 
+            (dataframe['MD2'] < 100) & 
+            (dataframe['MD2'] - dataframe['MD1'] > 8)
+        )
+        
+        # --- Combine all LEP cuts ---
+        cutLEP = cutLEP_universal & cutLEP_kinematic & cutLEP_dilepton
+        
+        # --- Additional charged scalar mass cut ---
+        cutMDP = (dataframe['MDP'] > 70)  # Redundant if already in cutLEP_universal
+        
     
     if cut3:
-        cutT = (dataframe['T'] > (0.1 - 0.07)) & (dataframe['T'] < (0.1 + 0.07))
-        cutS = (dataframe['S'] > (0.06 - 0.09)) & (dataframe ['S'] < (0.06 + 0.09))
+        #cutT = (dataframe['T'] > (0.1 - 0.07)) & (dataframe['T'] < (0.17))
+        #cutS = (dataframe['S'] > (-0.03)) & (dataframe ['S'] < (0.06 + 0.09))
         
-        cutT = (dataframe['T'] > (0.1 - 0.07)) & (dataframe['T'] < (0.1 + 0.07))
-        cutS = (dataframe['S'] > (0.06 - 0.09)) & (dataframe ['S'] < (0.06 + 0.09))
+        cutT = (dataframe['T'] > (0.04 - 0.08)) & (dataframe['T'] < (0.04 + 0.08))
+        cutS = (dataframe['S'] > (0.08 - 0.07)) & (dataframe ['S'] < (0.08 + 0.07))
 
 
     if cut4:
-        cutOM = dataframe['Omegah2'] < 0.12024
-        #cutOM = (df['Omegah2'] > 0.10) & (df['Omegah2'] < 0.12024) #strict bound of Omegah2
+        #cutOM = dataframe['Omegah2'] < 0.12024
+        cutOM = (dataframe['Omegah2'] > 0.10) & (dataframe['Omegah2'] < 0.12024) #strict bound of Omegah2
         
     if cut4_strict:
         cutOM = (dataframe['Omegah2'] > 0.10737) & (dataframe['Omegah2'] < 0.13123) #strict bound of Omegah2
@@ -139,10 +204,11 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut3_strict = False, cut
                     y_values = [point['value'] * conversion_factor for point in var['values']]
                     y_data[name] = y_values
                         
-        cutLZ=(dataframe['protonSI'] > np.interp(dataframe['MD1'], x_values, y_data["limit"]))       
+        cutLZ=(dataframe['protonSI'] < np.interp(dataframe['MD1'], x_values, y_data["limit"]))       
                      
     # Combine all cuts
-    cut_tot = cutMD1 & cutl345 & cutMass & cutLEP & cutLEP2 & cutMDP
+    cut_tot = cutMD1 & cutl345 & cutMass & cutLEP & cutMDP
+    cut_tot &= cutT & cutS
     cut_tot &=  cutOM & cutDD & cutCMB & cutBr & cutLZ 
     #& cutT & cutS
     # Apply the combined cuts

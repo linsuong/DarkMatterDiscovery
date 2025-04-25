@@ -114,7 +114,6 @@ def compute_S(x1, x2):
     
     return S
 
-
 def compute_T(MDP, MD1, MD2):
     return (1 / (32 * (np.pi ** 2) * alpha * (nu ** 2))) * (
         f_c(MDP**2, MD2**2) 

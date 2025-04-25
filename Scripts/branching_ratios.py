@@ -8,7 +8,7 @@ import re
 def sanitize_filename(name):
     return re.sub(r'[^a-zA-Z0-9_\-]', '_', name)
 
-path = "Work/CalcHEP_Scan_W/scan2.dat"
+path = "Work/CalcHEP_Scan_W+/scan2.dat"
 
 df = pd.read_csv(path, sep=r'\s+', low_memory= False)
 
@@ -18,7 +18,7 @@ params_dict = {
     'MDP': r'$m_{h_{\pm}}$',
     'DM2' : r'$\Delta m_1$', #mass diff mh2 - mh1
     'DMP' : r'$\Delta m_+$', #mass diff mh+ - mh1
-    'DM3' : r'$\Delta m_2$',
+    'DM3' : r'$m_{h_2} - m_{h_\pm}$',
     
     #for decay via Z boson:
     "Br(h2->e+e-h1)_total" 	: r'Br($h_2 \rightarrow e^- e^+ h_1$)',
@@ -127,7 +127,7 @@ def plotfig(df1, df2, df3, xlog=False, ylog=False, label_dict=params_dict):
     safe_label3 = sanitize_filename(label3)
     safe_label4 = sanitize_filename(label4)
     
-    plt.savefig(f'branching_ratio_plots/images/{safe_label4}{safe_label1}_scale_{safe_label3}.jpg', bbox_inches='tight')
+    fig.savefig(f'branching_ratio_plots/{safe_label4}{safe_label1}_scale_{safe_label3}.jpg', bbox_inches='tight')
     plt.close()
 
 
