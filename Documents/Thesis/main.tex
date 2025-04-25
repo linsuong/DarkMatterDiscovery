@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 %\usepackage{report}
-
+%\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}       % hyperlinks
@@ -27,12 +27,30 @@
 \usepackage[top=1.5in, bottom=1.5in, left=1in, right=1in]{geometry}
 \usepackage{titlesec}
 \usepackage[numbers,sort&compress]{natbib}
+\usepackage{verbatim}
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+\newcommand{\detailtexcount}[1]{
+  \immediate\write18{texcount -merge -sum #1.tex > #1.wc }%
+  \verbatiminput{#1.wc}
+}
+
 \begin{document}
+\detailtexcount{main}
+    
 % Adjust section heading size
-\titleformat{\section}{\large\bfseries}{\thesection}{0.5em}{}
+%\titleformat{\section}{\large\bfseries}{\thesection}{0.5em}{}
 
 % Adjust subsection heading size
-\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+%\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
 
 \begin{titlepage}
     \centering
@@ -82,7 +100,7 @@ We assume that if DM is a particle, then at high temperatures, it behaved relati
 
 The annihilation rate, which depends on the interaction cross section determined how much DM remained (the relic density). An annihilation process that is too efficient would lead to too low relic density, which would not pose too much of a problem. However, a relic density that is too high will cause an unstable Universe and cause it to collapse on itself. The reality is that DM particles eventually stopped interacting with SM particles, leading to a process known as freeze out, giving a constant relic density. This process can be described via the Boltzmann equation, which will be explained briefly in Section \ref{sec:boltzmann}.
 
-Many experiments have been carried can confirm the existence of DM\footnote{Although there have been recent alternative theories for the non-existence of DM \cite{Gupta_2023, Gupta_2024}, we nonetheless will continue expanding on this matter, as the strong evidence for DM is very convincing.}:
+Many experiments have been carried can confirm the existence of DM:
 
 \begin{itemize}
     \item Galactic Rotation Curves - The observed curves do not match the predicted curves due to the fact that the Milky Way is surrounded by DM
@@ -92,7 +110,7 @@ Many experiments have been carried can confirm the existence of DM\footnote{Alth
     \item Bullet Clusters: Clusters of galaxies collide, DM passes through each other.
 \end{itemize}
 
-We know that DM has to satisfy certain properties. It has to be neutral, colourless (lacking colour charge), non-baryonic, long-lived (DM life exceeds the age of the Universe) and massive (non-relativistic) \cite{ZACEK_2007, DeLuca2018, gondolo2004introductionnonbaryonicdarkmatter}. However, none of the SM particles fit the description perfectly - the neutrino is the closest, however it is not massive. The low mass of the neutrino causes them to move at relativistic speeds, which then do not allow the formation of large scale structures. The neutrino inspired the development a group of hypothetical particles called WIMPs (Weakly Interacting Massive Particles). Other than WIMPs, there are many models that were developed to search for DM. There are many models, but the Inert Two-Higgs Doublet Model (i2HDM) will be the model of focus in this work. 
+We know that DM has to satisfy certain properties. It has to be neutral, colourless (lacking colour charge), non-baryonic, long-lived (DM life exceeds the age of the Universe) and massive (non-relativistic) \cite{ZACEK_2007, DeLuca2018, gondolo2004introductionnonbaryonicdarkmatter}. However, none of the SM particles fit the description perfectly - the neutrino is the closest, however it is not massive. The low mass of the neutrino causes them to move at relativistic speeds, which then do not allow the formation of large scale structures. The neutrino inspired the development a group of hypothetical particles called WIMPs (Weakly Interacting Massive Particles). There are many models that were developed to search for DM, but the Inert Two-Higgs Doublet Model (i2HDM) will be the model of focus in this work. 
 
 The Higgs boson is responsible for giving masses to the $W^+, W^-$ and $Z_0$ bosons. This is done via the Higgs mechanism. The Higgs mechanism is as follows.
 The Higgs doublet before electroweak symmetry breaking (EWSB), $\Phi_H$ is:
@@ -264,20 +282,16 @@ The field, along with its Hermitian conjugate is:
 The (scalar) potential is expressed as:
 \begin{equation}
     \begin{split}
-        V(\Phi_1, \Phi_2) =& -m_1^2(\Phi_1^\dagger\Phi_1) - m_2^2(\Phi_2^\dagger\Phi_2)\\ 
-        &+ \lambda_1(\Phi_1^\dagger\Phi_1)^2 + \lambda_2(\Phi_2^\dagger\Phi_2)^2 \\
-        &+ \lambda_3(\Phi_1^\dagger\Phi_1)(\Phi_2^\dagger\Phi_2) \\
-        &+ \lambda_4(\Phi_2^\dagger\Phi_1)(\Phi_1^\dagger\Phi_2)\\ 
-        &+ \frac{\lambda_5}{2}[(\Phi_1^\dagger\Phi_2)^2 + (\Phi_2^\dagger\Phi_1)^2]
+        V(\Phi_1, \Phi_2) =& -m_1^2(\Phi_1^\dagger\Phi_1) - m_2^2(\Phi_2^\dagger\Phi_2) + \lambda_1(\Phi_1^\dagger\Phi_1)^2 + \lambda_2(\Phi_2^\dagger\Phi_2)^2 \\
+        &+ \lambda_3(\Phi_1^\dagger\Phi_1)(\Phi_2^\dagger\Phi_2) + \lambda_4(\Phi_2^\dagger\Phi_1)(\Phi_1^\dagger\Phi_2) + \frac{\lambda_5}{2}[(\Phi_1^\dagger\Phi_2)^2 + (\Phi_2^\dagger\Phi_1)^2]
         \end{split}
         \label{eq:higgs_potential}
 \end{equation}
-
 Where:
 \begin{itemize}
     \item $\Phi_1$ represents the active doublet
     \item $\Phi_2$ represents the inert doublet
-    \item $m_1$ is the term which determines the mass of the Higgs boson and symmetry breaking\footnote{The negative sign in the first term of Equation \ref{eq:higgs_potential} makes the first term a potential with negative slope, which introduces spontaneous symmetry breaking and gives the active Higgs doublet the VEV.}
+    \item $m_1$ is the term which determines the mass of the Higgs boson and symmetry breaking. The negative sign in the first term of Equation \ref{eq:higgs_potential} makes the first term a potential with negative slope, which introduces spontaneous symmetry breaking and gives the active Higgs doublet the VEV.
     \item $m_2$ is the mass term of the inert Higgs doublet (which helps determine the masses of the extra particles, $h_1$, $h_2$ and $h_\pm$)
     \item $\lambda_{1, 2}$ are self coupling terms of the doublets. $\lambda_1$ determines the mass of the Higgs boson and $\lambda_2$ determine the 
     \item $\lambda_{3, 4, 5}$ are the coupling terms of doublet interaction
@@ -340,7 +354,6 @@ and the mass differences:
 $m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$ and $\lambda_{345}$ are the main parameters of the study. $\lambda_{345}$ is an important parameter as it is involved in the $H\rightarrow h_1,h_1$ and $h_1,h_1 \rightarrow H$ (written in short as $Hh_1h_1$) interaction vertex. $\lambda_1$ is not a free parameter due to the reasons discussed earlier.
 
 In addition to that, we consider constraints due to symmetry breaking. We impose that, from \cite{Belyaev:2016lok, Ginzburg2010}:
-
 \begin{equation}
     m_{h_1}^2 >
         \begin{cases}
@@ -369,8 +382,8 @@ In addition, we can see Eqn. \ref{eqn:R} can be rewritten as:
 \end{equation}
 This is another one of our constraints on $\lambda_{345}$.
 
-\subsubsection{Constraints form perturbativity and unitarity}
-As shown in \cite{Belyaev:2016lok}, where \cite{Aruhrib2012Inert} was considered, it was shown that $\lambda_{345}$ had to obey these constraints:
+\subsubsection{Constraints from perturbativity and unitarity}
+As shown in \cite{Belyaev:2016lok}, where \cite{Aruhrib2012Inert} was considered, it was shown that $\lambda_{345}$ had to obey these constraints\improvement{add more info, too little!}:
 \begin{equation}
     -1.47 < \lambda_{345} < 4\pi
     \label{eqn:l345_pert}
@@ -382,47 +395,52 @@ And $m_{h_1, h_2, h_\pm}$ had to obey:
 \end{equation}
 
 \subsubsection{Constraints from LEP and EWPT (Electroweak Precision Data)}
-From LEP, we can see that the constraints follow the W and Z boson widths:
+There is a universal low-mass exclusion where LEP-II searched for pair produced scalars and set the lower mass limits:
 \begin{equation}
     \begin{split}
-        m_{h_1} + m_{h_\pm} &> m_{W^\pm},
-        \\m_{h_2} + m_{h_\pm} &> m_{W^\pm},
-        \\m_{h_1} + m_{h_\pm} &> m_{Z^0},
-        \\2m_{h_\pm} &> m_{Z^0}, 
+        &m_{h_1} < 45  \text{ GeV}, \qquad m_{h_2} < 45 \text{ GeV}
+         \\ &\text{or: } \qquad m_{h_\pm} <70 \text{ GeV}
     \end{split}
-\label{LEP2}
+    \label{LEP-1}
 \end{equation}
 
-From LEP II \cite{Lundstr_m_2009}, there are the additional constraints on the masses and mass differences, due to a visible dijet/dilepton signal:
-
+LEP has also placed \textbf{kinematic constraints} on the masses of $h_1, h_2$ and  $h_\pm$:
 \begin{equation}
     \begin{split}
-        m_{h_1}> 80 \text{ GeV},
-        m_{h_2}> 100 \text{ GeV},
+        &m_{h_1} + m_{h_\pm} > m_{W^\pm}, \qquad m_{h_1} + m_{h_\pm} > m_{Z^0},
+        \\&m_{h_2} + m_{h_\pm} > m_{W^\pm}, \qquad 2m_{h_\pm} > m_{Z^0}, 
+    \end{split}
+\label{LEP-2}
+\end{equation}
+From \ref{LEP-2}, we can see that the constraints follow the W and Z boson masses. This is because the decay of $Z \rightarrow h_1h_2$ or $W^- \rightarrow h_-h_1$ and others is forbidden, as it would contribute to the invisible decay width of the Z boson which LEP-I has placed tight constraints on (decays such as $Z\rightarrow \nu \bar{\nu}$; the portion of the decay width that cannot be detected directly) as $\Gamma(Z\rightarrow \text{invisible}) = 499.0 \pm 1.5 \text{ MeV}$, where deviation from this means evidence for new invisible particles. If $Z \rightarrow h_1h_2$ was allowed, and $ h_1,h_2$ were stable enough to escape detection, this would cause deviations in the extremely precisely measured invisible width of the Z boson.
+
+From LEP II \cite{Lundstr_m_2009}, there are the additional constraints on the masses and mass differences, due to a visible dijet/dilepton signal. This means that for a certain mass difference ($m_{h_2} - m_{h_1} > 8\text{ GeV}$, given by LEP) one would see a signal i.e.: $e^+e^-$ or $\mu^+ \mu^-$ along with some energy (which corresponds to the DM particles). However LEP-II did not observe such cases, therefore the parameter space is excluded. 
+
+Via LEP-II experiments, we require the following parameter space to be excluded, as they do not generate the signal (note that all the conditions have to be met in order for the point to be excluded):
+\begin{equation}
+    \begin{split}
+        m_{h_1} < 80 &\text{ GeV}, \qquad
+        m_{h_2} < 100 \text{ GeV},
         \\
-        m_{h_2} - m_{h_1} < 8\text{ GeV},
-        m_{h_\pm}> 70\text{ GeV}
+        &m_{h_2} - m_{h_1} > 8\text{ GeV},
     \end{split}
-\label{LEP2_2}
+\label{LEP-3}
 \end{equation}
+These regions, often referred to as "LEP holes", represent parts of parameter space where the production cross section or decay kinematics result in events that are either undetectable or mimic SM backgrounds closely. Thus, although the masses are small, these points evade exclusion due to limited detection sensitivity. While LEP constraints exclude low-mass and large-splitting scenarios, they are complementary to relic density and direct detection bounds. For example, compressed spectra allowed by LEP may still be ruled out by insufficient annihilation.
 
-From \cite{gfitter2014global}, for a Higgs boson mass of 125 GeV, we have values for $S$, $T$ and $U$, the Peskin-Takeuchi parameters \cite{PeskinTakeuchi1990} which describe potential new physics contributions (for example - BSM) to electroweak radiative corrections.
-
- The values for $S$ and $T$ when setting $U = 0$ are:
+From \cite{gfitter2018}, we introduce parameters $S$, $T$ and $U$, the Peskin-Takeuchi parameters \cite{PeskinTakeuchi1990} which describe potential new physics contributions \unsure{what does this even mean}{to electroweak radiative corrections}. For a Higgs boson mass of 125 GeV, the values for $S$ and $T$ when setting $U = 0$ are:
  \begin{align}
-     S = 0.06 \pm0.09, \qquad
-     T = 0.10\pm0.07
+     S|_{U=0} = 0.04 \pm0.08, \qquad
+     T|_{U=0} = 0.08\pm0.07
  \end{align}
-
-With a correlation coefficient of $+0.91$. Setting $U = 0$ allows simplification in parameter space, requiring only focus on the $S-T$ plane, which are more dominant. Defining:
+With a correlation coefficient of $+0.92$. Setting $U = 0$\footnote{Setting $U = 0$ is common practice as $U$ is related to the $W$ and $Z$ boson, and will be insigniicant unless new physics affects them.} allows simplification in parameter space, requiring only focus on the $S-T$ plane, which are more dominant. Defining:
 \begin{align}
     x_1 = \frac{m_{h_1}}{m_{h_\pm}}, \qquad 
     x_2 = \frac{m_{h_2}}{m_{h_\pm}}
 \end{align}
 As well as:
 \begin{align}
-    &f_a(x) = -5 +12\log(x), \qquad
-    \\&f_b(x) = 3-4\log(x),
+    &f_a(x) = -5 +12\log(x), \qquad f_b(x) = 3-4\log(x),
     \\
     &f_c(x,y) = 
     \begin{cases}
@@ -431,19 +449,14 @@ As well as:
     \end{cases}
 \end{align}
 
-The S and T parameters are given with the equations:
+The S and T parameters are given \cite{Belyaev:2016lok} with the equations:
 \begin{equation}
-    \begin{split}
-           S =& \frac{1}{72\pi}\frac{1}{(x^2_2 - x^2_1)^3}[x^6_2f_a(x_2)-x^6_1f_a(x_1)
-            \\&+ 9x_2^2x_1^2(x_2^2f_b(x_2)-x^2_1f_b(x_1)] 
-    \end{split}
+           S = \frac{1}{72\pi}\frac{1}{(x^2_2 - x^2_1)^3}[x^6_2f_a(x_2)-x^6_1f_a(x_1)+ 9x_2^2x_1^2(x_2^2f_b(x_2)-x^2_1f_b(x_1)] 
     \label{eqn:S}
 \end{equation}
 \begin{equation}
-    \begin{split}
-        T = &\frac{1}{32\pi^2\alpha\nu}[f_c(m^2_{h_\pm},m^2_{h_2})
-            \\&+ f_c(m^2_{h_\pm},m^2_{h_1}) - f_c(m^2_{h_2},m^2_{h_1})]
-    \end{split}
+        T = \frac{1}{32\pi^2\alpha\nu}[f_c(m^2_{h_\pm},m^2_{h_2})
+            + f_c(m^2_{h_\pm},m^2_{h_1}) - f_c(m^2_{h_2},m^2_{h_1})]
     \label{eqn:T}
 \end{equation}
 
@@ -455,7 +468,20 @@ Notice that there is a $\frac{0}{0}$ condition when $m_{h_1} = m_{h_2}$, which l
     \end{split}
 \end{equation}
 
-\subsubsection{Constraint from DM Relic Density}
+\subsubsection{Constraints from DM Direct Detection (DD), CMB, Branching Ratio and LZ 2024}
+The constraints applied from DM DD experiments are applied via a p-value. A p-value of 0.1 is used, and values greater than 0.1 are accepted to exclude values given by DD experiments.
+
+There also is the chance that the values obtained could have been excluded by the CMB. Energy injections from WIMP annihilation into Standard Model particles during the recombination era could alter the ionization history; this means recombination is delayed and will change how light travels through the universe, and, consequently, the observed CMB anisotropies, which are temperature fluctuations. To comply with measurements from Planck and other CMB experiments, parameter points are checked to ensure that their annihilation cross sections do not lead to excessive energy injection, which would otherwise distort the CMB power spectrum. 
+
+The upper limit of the branching ratio for the invisible Higgs at 95\% confidence level from the latest ATLAS search is \cite{ATLAS:2022yvh}:
+\begin{equation}
+    Br(\text{Higgs} \rightarrow \text{invisible}) = 0.145
+    \label{eqn:branching_ratio}
+\end{equation}
+
+The latest results from LZ (Fig. 5 from \cite{aalbers2024darkmattersearchresults}) is used to find new parameter space in the plane $m_{h1}$ against WIMP SI cross sections, which is how likely a WIMP scatters off a nucleon inside a detector. The cross section scales as $\sigma \propto A^2$, where $A$ is the atomic mass number. heavy nuclei are effective because the scattering amplitude acts coherently across all nucleons. DD experiments are optimised for SI interactions due to the $A^2$.
+
+\subsubsection{Constraints from DM Relic Density}
 \label{sec:relic density}
 DM relic density is the remaining DM from the Big Bang, and there are multiple experiments (PLANCK, WMAP) that calculate various cosmological parameters, one of them being the DM relic density. We can use this very accurate data to limit our parameter space to make the search for DM simpler. The latest experimental value for DM relic density is  \cite{Planck:2018vyg}:
 \begin{equation}
@@ -473,60 +499,7 @@ For data interpretation purposes, and since \verb|micrOMEGAS| software calculate
     \label{eqn:DM relic density value}
 \end{equation}
 
-\subsubsection{Constraints from DM Direct Detection (DD), CMB and Branching Ratios}
-The constraints applied from DM DD experiments are applied via a p-value. A p-value of 0.1 is used, and values greater than 0.1 are accepted to exclude values given by DD experiments.
-
-There also is the chance that the values obtained could have been excluded by the CMB. CMB measurements are sensitive to energy injections in the early universe, such as those from dark matter annihilations. Ensuring that the model complies with CMB constraints helps in maintaining consistency with observed cosmological parameters. 
-
-The upper limit of the branching ratio for the invisible Higgs at 95\% confidence level from the latest ATLAS search is\cite{ATLAS:2022yvh}:
-\begin{equation}
-    Br(\text{Higgs} \rightarrow \text{invisible}) = 0.145
-    \label{eqn:branching_ratio}
-\end{equation}
-
-\subsection{2 Lepton Final States at the Collider Level}
-We can now calculate the branching ratios for DM decay at the collider level, starting from 2 quarks. The goal here is to be able to find new limits at the 95\% confidence level. Using \verb|CalcHEP|'s \verb|getBr| function, it is easy to obtain the branching ratios.
-
-For example, we consider the process $p\bar{p} \rightarrow h_1h_2$ where $ h_2\rightarrow h_1 e^+e$ via the $Z$ boson. The branching ratio of the process is calculated like:
-\begin{equation}
-    \begin{split}
-        Br(h_2 \rightarrow h_1 e^+e) = Br(h_2\rightarrow h_1Z) \times Br(Z\rightarrow e^+e) + Br(h_2 \rightarrow h_1 e^+e)
-    \end{split}
-\end{equation}
-where \( Br(h_2 \rightarrow h_1 Z) \) is the branching ratio for the decay of \( h_2 \) into \( h_1 \) and a \( Z \)-boson, and \( Br(Z \rightarrow e^+ e^-) \) is the branching ratio for the \( Z \)-boson decaying into an electron-positron pair. The reason for the additional summation term is due to the nature of \verb|CalcHEP|, as it calculates a $1\rightarrow2$ decay first, and if that process is has branching ratio of $0$, then it will calculate the contribution from a $1\rightarrow3$ decay. Some processes have non-zero $1\rightarrow2$ decays, so just calculating $1\rightarrow3$ decays (directly computing $Br(h_2 \rightarrow h_1 e^+e)$) is going to result in zeros \footnote{There will be no double counting, because if a $1\rightarrow2$ decay path is not possible then the value of the intermediary (i.e. $Br(Z\rightarrow e^+e)$ will be $0$, giving only $Br(h_2 \rightarrow h_1 e^+e)$, the $1\rightarrow2$ decay.}. Likewise, another possible 2 lepton final state can occur through the $W$ boson, for example:
-\begin{equation}
-    Br(h_-\rightarrow h_1e^- \bar{\nu}_e) = Br(h_-\rightarrow h_1 W^-) \times Br(W^- \rightarrow e^- \bar{\nu}_e) + Br(h_-\rightarrow h_1e^- \bar{\nu}_e)
-\end{equation}
-
-\subsubsection{Exclusion Rate}
-From \cite{Aruhrib2012Inert}, the exclusion rate $r$ is defined as:
-\begin{equation}
-    r = \frac{\sigma_{DM}}{\sigma_{95}}
-\end{equation}
-Where $\sigma_{DM}$ and $\sigma_{95}$ are the cross sections for DM production and the limit of the cross section at $95\%$ confidence level. This equation can be scaled due to the fact that collider luminosity is constantly improving. In the LHC, luminosity depends on the beam parameters: the revolution frequency, number of particles per "bunch" (group of particles) in the beam, and the cross sectional area of the beams at collision point. One can scale $r$ in the following manner;
-Signal significance, the measure of how a potential signal stands out from background noise, is expressed as:
-\begin{equation}
-    \alpha = \frac{S}{\sqrt{B}}
-\end{equation}
-Where $S$ is the number of potential signals and $B$ the number of background signals. The signal and background can be expressed as $\sigma \mathcal{L}$
-\begin{equation}
-    \begin{split}
-        \alpha &= \frac{\sigma_{signal} \mathcal{L}}{\sqrt{\sigma_{background }\mathcal{L}}}
-        \\&= \frac{\sigma_{signal}}{\sqrt{\sigma_{background}}} \sqrt{\mathcal{L}}
-        \\&\implies \alpha \sqrt{\sigma_{background}} = \sigma_{limit}^{new}\sqrt{\mathcal{L}}
-        \\\sigma_{limit} &=\frac{\alpha \sqrt{\sigma_{background}}}{\sqrt{\mathcal{L}}}  
-        \\
-    \end{split}
-\end{equation}
-Keeping $\alpha$ the same, one can derive a relationship for the new limit, $\sigma_{limit}^{new}$ when there is new collider luminosity $\mathcal{L}^{new}$. Since $\sigma_{background}$ is the same for both, and writing the old integrated luminosity as $\mathcal{L}_0$ 
-\begin{equation}
-    \begin{split}
-    \sigma_{limit}^{new} \sqrt{\mathcal{L}^{new}} &= \sigma_{limit}\sqrt{\mathcal{L}_0}
-        \\ \sigma_{limit}^{new}&= \sigma_{limit}\sqrt{\frac{\mathcal{L}_0}{\mathcal{L}^{new}}}
-    \end{split}
-\end{equation}
-
-\section{Results and Analysis}
+\section{Scanning of Parameter Space}
 \label{sec:results}
 \subsection{5-D Random Scan}
 \label{5-D scan}
@@ -534,9 +507,13 @@ A 5-D scan is done across the parameters stated earlier and by applying "cuts" t
 We apply cuts in the following order:
 \begin{itemize}
     \item Cut 1 - Constraints from vacuum stability (Eqn. \ref{eqn:R}), pertubativity and unitarity (Eqn. \ref{eqn:l345_pert}, \ref{eqn:masses_pert}) 
-    \item Cut 2 - Constraints from LEP (Eqn. \ref{LEP2}, \ref{LEP2_2}) and EWPT (Eqn. \ref{eqn:S}, \ref{eqn:T}) - however, EWPT constraints have not been completely implemented so the results shown here will not include EWPT constraints.
-    \item Cut 3 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
-    \item Cut 4 - Constraints from DM direct detection, CMB data and branching ratios \ref{eqn:branching_ratio}.
+    \item Cut 2 - Constraints from LEP (Eqn. \ref{LEP-1}, \ref{LEP-2}, \ref{LEP-3}) 
+    \item  Cut 3 - EWPT constraints (Eqn. \ref{eqn:S}, \ref{eqn:T}) 
+    \item Cut 4 - Constraints from DM direct detection, 
+    \item Cut 5 - Constraints from CMB data
+    \item  Cut 6 - Constraint from branching ratio \ref{eqn:branching_ratio}.
+    \item Cut 7 - Constraints on spin-independent WIMP-nucleon cross section, based on latest 2024 results from LZ \cite{aalbers2024darkmattersearchresults}
+    \item Cut 8 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
 \end{itemize}
 
 The plots against DM mass will be shown in the following pages, and the rest in the Appendix (\ref{sec:Appendix}).
@@ -591,12 +568,61 @@ In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of 
     \item At $\sim$120 GeV, there is no obvious change in relic density except for $\lambda = \pm1$. This is the $h_1,h_1\rightarrow H H$ annihilation channel, which takes place only for big values of $\lambda_{345}$ due to stronger coupling term.
 \end{itemize}
 
+\section{2 Lepton Final States at the Collider Level}
+We can now calculate the branching ratios for DM decay at the collider level, starting from 2 quarks. The goal here is to be able to find new limits at the 95\% confidence level. Using \verb|CalcHEP|'s \verb|getBr| function, it is easy to obtain the branching ratios.
+
+For example, we consider the process $p\bar{p} \rightarrow h_1h_2$ where $ h_2\rightarrow h_1 e^+e$ via the $Z$ boson. The branching ratio of the process is calculated like:
+\begin{equation}
+    \begin{split}
+        Br(h_2 \rightarrow h_1 e^+e) = Br(h_2\rightarrow h_1Z) \times Br(Z\rightarrow e^+e) + Br(h_2 \rightarrow h_1 e^+e)_{non-resonant}
+    \end{split}
+\end{equation}
+where \( Br(h_2 \rightarrow h_1 Z) \) is the branching ratio for the decay of \( h_2 \) into \( h_1 \) and a \( Z \)-boson, and \( Br(Z \rightarrow e^+ e^-) \) is the branching ratio for the \( Z \)-boson decaying into an electron-positron pair. The reason for the additional "non-resonant" summation term is due to the nature of \verb|CalcHEP|, as it calculates a $1\rightarrow2$ decay first, and if that process is has branching ratio of $0$, then it will calculate the contribution from a $1\rightarrow3$ decay.  This  $1\rightarrow3$ decay is known as a "non-resonant 3-body decay", via the $Z^*$ boson, which is a virtual $Z$ boson. Some processes have non-zero $1\rightarrow2$ decays, so just calculating $1\rightarrow3$ decays (directly computing $Br(h_2 \rightarrow h_1 e^+e)$) is going to result in zeros \footnote{There will be no double counting, because if a $1\rightarrow2$ decay path is not possible then the value of the intermediary $Br(Z\rightarrow e^+e)$ will be $0$, giving only $Br(h_2 \rightarrow h_1 e^+e)_{non-resonant}$, the $1\rightarrow3$ decay.}. Likewise, another possible 2 lepton final state can occur through the $W$ boson, for example:
+\begin{equation}
+    Br(h_-\rightarrow h_1e^- \bar{\nu}_e) = Br(h_-\rightarrow h_1 W^-) \times Br(W^- \rightarrow e^- \bar{\nu}_e) + Br(h_-\rightarrow h_1e^- \bar{\nu}_e)_{non-resonant}
+\end{equation}
+Here there is a non-resonant 3-body decay via an off-shell ${W^-}$ boson. This is also true for the case of the $W^+$ boson:
+\begin{equation}
+    Br(h_+\rightarrow h_1e^+ \nu_e) = Br(h_+\rightarrow h_1 W^+) \times Br(W^+ \rightarrow e^+ \nu_e) + Br(h_+\rightarrow h_1e^+ \nu_e)_{non-resonant}
+\end{equation}
+
+From 2 quarks, the Feynmann diagrams for 2-lepton final states are as follows:
+
+
+\subsection{Exclusion Rate}
+From \cite{Aruhrib2012Inert}, the exclusion rate $r$ is defined as:
+\begin{equation}
+    r = \frac{\sigma_{DM}}{\sigma_{95}}
+\end{equation}
+Where $\sigma_{DM}$ and $\sigma_{95}$ are the cross sections for DM production and the limit of the cross section at $95\%$ confidence level. This equation can be scaled due to the fact that collider luminosity is constantly improving. In the LHC, luminosity depends on the beam parameters: the revolution frequency, number of particles per "bunch" (group of particles) in the beam, and the cross sectional area of the beams at collision point. One can scale $r$ in the following manner;
+Signal significance, the measure of how a potential signal stands out from background noise, is expressed as:
+\begin{equation}
+    \alpha = \frac{S}{\sqrt{B}}
+\end{equation}
+Where $S$ is the number of potential signals and $B$ the number of background signals. The signal and background can be expressed as $\sigma \mathcal{L}$
+\begin{equation}
+    \begin{split}
+        \alpha &= \frac{\sigma_{signal} \mathcal{L}}{\sqrt{\sigma_{background }\mathcal{L}}}
+        \\&= \frac{\sigma_{signal}}{\sqrt{\sigma_{background}}} \sqrt{\mathcal{L}}
+        \\&\implies \alpha \sqrt{\sigma_{background}} = \sigma_{limit}^{new}\sqrt{\mathcal{L}}
+        \\\sigma_{limit} &=\frac{\alpha \sqrt{\sigma_{background}}}{\sqrt{\mathcal{L}}}  
+        \\
+    \end{split}
+\end{equation}
+Keeping $\alpha$ the same, one can derive a relationship for the new limit, $\sigma_{limit}^{new}$ when there is new collider luminosity $\mathcal{L}^{new}$. Since $\sigma_{background}$ is the same for both, and writing the old integrated luminosity as $\mathcal{L}_0$ 
+\begin{equation}
+    \begin{split}
+    \sigma_{limit}^{new} \sqrt{\mathcal{L}^{new}} &= \sigma_{limit}\sqrt{\mathcal{L}_0}
+        \\ \sigma_{limit}^{new}&= \sigma_{limit}\sqrt{\frac{\mathcal{L}_0}{\mathcal{L}^{new}}}
+    \end{split}
+\end{equation}
+
 \section{Conclusion}
 \label{sec:conclusion}
 
 \onecolumn
 \newpage
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{references}
 
 \newpage
@@ -735,6 +761,5 @@ The remaining plots mentioned in Section \ref{sec:2D-proj} are shown below, with
     \end{subfigure}   
 \caption{Plots with $l_{345}$ against mass differences. From left to right: Constraints from vacuum permeability; constraints from LEP; constraints from DM relic density; constraints from DM DD and CMB data.}
 \end{figure}
-\end{document}
 
-**Introduction**
+\end{document}
