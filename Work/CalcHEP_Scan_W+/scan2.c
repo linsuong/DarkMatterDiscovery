@@ -67,7 +67,7 @@ int mdlnr=6;
  // Writing parameter names at first line to keep track of columns:
  //input parameters (1)
  //output parameters (3)
- fprintf(file,"MD1 \t MD2\t DMP \t DM2 \t Br(h+->e+nu) \t Br(h+->mu+nu) \t Br(h+->tau+nu) \t Br(h+->W-h1) \t Br(W-->e+nu) \tBr(W-->mu+nu) \t Br(W-->tau+nu)\n");		
+ fprintf(file,"MD1 \t MD2\t DMP \t DM3 \t Br(h+->e+nu) \t Br(h+->mu+nu) \t Br(h+->tau+nu) \t Br(h+->W-h1) \t Br(W-->e+nu) \tBr(W-->mu+nu) \t Br(W-->tau+nu)\n");		
  fclose(file); /*done with header of file*/
 
  /*** Starting randomizing loop ***/
