@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut4_strict = False, cut4=False, cut5=False, cut6 = False, cut7 = False, cut8 = False):
+def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut4=False, cut5=False, cut6 = False, cut7 = False, cut8 = False):
     """
     Applies constraints to the dataframe and returns a filtered dataframe.
     """
@@ -175,23 +175,23 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut4_strict = False, cut
         cutS = (dataframe['S'] > (0.08 - 0.07)) & (dataframe ['S'] < (0.08 + 0.07))
 
 
-    if cut4:
+    if cut8:
         #cutOM = dataframe['Omegah2'] < 0.12024
         cutOM = (dataframe['Omegah2'] > 0.10) & (dataframe['Omegah2'] < 0.12024) #strict bound of Omegah2
         
-    if cut4_strict:
+    if cut8_strict:
         cutOM = (dataframe['Omegah2'] > 0.10737) & (dataframe['Omegah2'] < 0.13123) #strict bound of Omegah2
 
-    if cut5:
+    if cut4:
         cutDD = dataframe['PvalDD'] > 0.1
 
-    if cut6:
+    if cut5:
         cutCMB = dataframe['CMB_ID'] < 1
     
-    if cut7:
+    if cut6:
         cutBr = dataframe['brH_DMDM'] < 0.145
         
-    if cut8:
+    if cut7:
         if 'independent_variables' in LZ:
             for var in LZ['independent_variables']:
                 if var['header']['name'] == 'mass':
