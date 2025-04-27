@@ -87,7 +87,7 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
     # Show plot
     plt.show()
     
-    plt.savefig("local_test/plt.png", bbox_inches='tight')
+    fig.savefig("local_test/plt.png", bbox_inches='tight')
     print('figure saved')                    
     #plt.show()
 

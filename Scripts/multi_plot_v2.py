@@ -30,9 +30,9 @@ cuts_dict = {
 }
 
 
-def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, savefig = False, ext = None, label_dict = params_dict):
+def plotfig(df, df1, df2, omegah2bar = False, xlog = True, ylog = True, savefig = False, ext = None, label_dict = params_dict):
     
-    dataframe
+    df
     label1 = label_dict.get(df1, df1)
     label2 = label_dict.get(df2, df2)
     
@@ -44,8 +44,8 @@ def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, s
         plt.yscale('log')
         
     if omegah2bar == True:
-        sc = plt.scatter(dataframe[df1], dataframe[df2], c=dataframe['Omegah2'], rasterized=True, s=1,
-                        cmap='plasma', norm=LogNorm(vmin=10e-6, vmax=dataframe['Omegah2'].max()))
+        sc = plt.scatter(df[df1], df[df2], c=df['Omegah2'], rasterized=True, s=1,
+                        cmap='plasma', norm=LogNorm(vmin=10e-6, vmax=df['Omegah2'].max()))
 
         plt.title(f'Plot of {label1} against {label2}, coloured by $\\Omega h_2$')
         
@@ -53,7 +53,7 @@ def plotfig(dataframe, df1, df2, omegah2bar = False, xlog = True, ylog = True, s
         cbar.set_label('$\\Omega h_2$', fontsize=15)
     
     else:
-        sc = plt.scatter(dataframe[df1], dataframe[df2], c = 'red', s = 1)
+        sc = plt.scatter(df[df1], df[df2], c = 'red', s = 1)
         plt.title(f'Plot of {label1} against {label2}')
 
     if omegah2bar & savefig:
@@ -73,11 +73,11 @@ def constraintplot(df1, df2, label_dict = params_dict):
     
     plt.figure(figsize=(8, 6))
     
-    lz5tmedian_df = dataframe[dataframe['expName'] == 'LZ5Tmedian']
+    lz5tmedian_df = df[df['expName'] == 'LZ5Tmedian']
 
-    notappl_df = dataframe[dataframe['expName'] == 'NotAppl']
+    notappl_df = df[df['expName'] == 'NotAppl']
 
-    xenon1t_df = dataframe[dataframe['expName'] == 'XENON1T_2018']
+    xenon1t_df = df[df['expName'] == 'XENON1T_2018']
     
     plt.scatter(notappl_df[df1], notappl_df[df2], c = 'blue', s = 0.8, label = 'NotAppl')
     plt.scatter(lz5tmedian_df[df1], lz5tmedian_df[df2], c = 'red', s = 0.8, label = 'LZ5Tmedian')
@@ -119,7 +119,7 @@ def multi_plot(df, x_axis, y_axis, xlog=None, ylog=None, omegah2bar=True, cut_fl
     Plot data with different combinations of cuts dynamically.
 
     Parameters:
-    - df: DataFrame
+    - df: df
     - x_axis: column name for x-axis
     - y_axis: column name for y-axis
     - ylog_values: List of booleans to toggle y-log scale for each plot

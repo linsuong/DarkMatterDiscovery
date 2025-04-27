@@ -54,3 +54,7 @@ Work/batch_results/**/*.distr
 Work/batch_results/**/*.jpg
 Work/batch_results/**/*.html
 Work/batch_results/**/*.dat
+
+Feynmann_Diagrams/*
+!Feynmann_Diagrams/
+!Feynmann_Diagrams/*.pdf

@@ -67,7 +67,7 @@ int mdlnr=6;
  // Writing parameter names at first line to keep track of columns:
  //input parameters (1)
  //output parameters (3)
- fprintf(file,"MD1 \t MD2\t DMP \t DM3 \t Br(h2->e+e-h1) \t Br(h2->mu+mu-h1) \t Br(h2->tau+tau-h1) \t Br(h2->n+n-h1) \t Br(h2->Zh1) \t Br(Z->e+e-h1) \t Br(Z->mu+mu-h1) \t Br(Z->tau+tau-h1) \t Br(Z->n+n-h1)\n");		
+ fprintf(file,"MD1 \t MD2\t DMP \t DM3 \t Br(h2->e+e-h1) \t Br(h2->mu+mu-h1) \t Br(h2->tau+tau-h1) \t Br(h2->n+n-h1) \t Br(h2->Zh1) \t Br(Z->e+e-) \t Br(Z->mu+mu-) \t Br(Z->tau+tau-) \t Br(Z->n+n-)\n");		
  fclose(file); /*done with header of file*/
 
  /*** Starting randomizing loop ***/
@@ -137,6 +137,10 @@ err = assignValW("DM3", DM3);
 		//cSec = findValW()
 		// write values to file
   		file  = fopen("scan2.dat","a+");
+		//fprintf(file,"MD1 \t MD2\t DMP \t DM3 \t Br(h2->e+e-h1) \t Br(h2->mu+mu-h1) 
+		//	\t Br(h2->tau+tau-h1) \t Br(h2->n+n-h1) \t Br(h2->Zh1) 
+		//	\t Br(Z->e+e-h1) \t Br(Z->mu+mu-h1) \t Br(Z->tau+tau-h1) \t Br(Z->n+n-h1)\n");		
+
   		fprintf(file,"%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \n", MD1, MD2, DMP, DM3,
 			BrHD__electron, BrHD__muon, BrHD__tau, BrHD__neutrino, BrHD__Z,
 			BrZ__electron, BrZ__muon, BrZ__tau, BrZ__neutrino
