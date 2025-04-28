@@ -6,7 +6,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
     """
     Applies constraints to the dataframe and returns a filtered dataframe.
     """
-    if cut3 == True and cut4_strict == True:
+    if cut3 == True and cut8_strict == True:
         raise Exception('please choose for a strict or relaxed bound on relic density')
     
     MW = 80.377

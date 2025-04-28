@@ -22,11 +22,11 @@ cuts_dict = {
     'cut1' : '+ Vacuum stability',
     'cut2' : '+ LEP',
     'cut3' : '+ EWPT',
-    'cut4' : '+ Relic Density',
-    'cut5' : '+ DM Direct Detection',
-    'cut6' : '+ CMB',
-    'cut7' : '+ Branching Ratio',
-    'cut8' : '+ LZ 2024'
+    'cut4' : '+ DM Direct Detection',
+    'cut5' : '+ CMB',
+    'cut6' : '+ Branching Ratio',
+    'cut7' : '+ LZ 2024',
+    'cut8' : '+ Relic Density'
 }
 
 def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
@@ -85,11 +85,25 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
     fig.suptitle(f'Cumulative Cuts on {label2} against {label1}, scaled by {label3}', fontsize=20)
 
     # Show plot
-    plt.show()
+    #plt.show()
     
-    fig.savefig("local_test/plt.png", bbox_inches='tight')
+    fig.savefig(f"big_plots_(low_dpi)/{xvar}_against_{yvar}_{scalevar}.pdf", bbox_inches='tight', dpi = 150)
     print('figure saved')                    
     #plt.show()
 
 
-plot_cuts_grid(df, xvar='MD1', yvar='l345', scalevar= 'Omegah2')
+pairs = [
+    ['MD1', 'MD2'], ['MD1', 'MDP'], ['MD1', 'DMP'], ['MD1', 'DM2'], ['MD1', 'DM3'],
+    ['MD2', 'MD1'], ['MD2', 'MDP'], ['MD2', 'DMP'], ['MD2', 'DM2'], ['MD2', 'DM3'],
+    ['MDP', 'MD1'], ['MDP', 'MD2'], ['MDP', 'DMP'], ['MDP', 'DM2'], ['MDP', 'DM3'],
+    ['MD1', 'MD2'], ['MDP', 'MD1'], ['DMP', 'MD1'], ['DM2', 'MD1'], ['DM3', 'MD1'],
+    ['MD2', 'MD1'], ['MDP', 'MD2'], ['DMP', 'MD2'], ['DM2', 'MD2'], ['DM3', 'MD2'],
+    ['MD1', 'MDP'], ['MD2', 'MDP'], ['DMP', 'MDP'], ['DM2', 'MDP'], ['DM3', 'MDP'],
+    ['MD1', 'l345'], ['MD2', 'l345'], ['MDP', 'l345'],
+    ['DMP', 'l345'], ['DM2', 'l345'], ['DM3', 'l345']
+]
+for x, y in pairs:
+    plot_cuts_grid(df, xvar=x, yvar=y, scalevar= 'Omegah2')
+
+
+#plot_cuts_grid(df, xvar='MD1', yvar='l345', scalevar= 'Omegah2')
