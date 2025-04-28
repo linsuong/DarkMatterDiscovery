@@ -1,9 +1,0 @@
-
-	CalcHEP Batch Details
-
-	Calculating Cross Sections
-
-		Finished	Time(hr)
-Symbolic	13/13		0.00
-sigma		120/120		0.19
-
