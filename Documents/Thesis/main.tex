@@ -519,17 +519,16 @@ We apply cuts in the following order:
 These cuts are strategically applied in this manner to clearly show the effects on the parameter space from each cut.
 \subsection{2-D Projection}
 \label{sec:2D-proj}
-We can first consider the relationship between $m_{h_1}$ and $\lambda_{345}$. 
-\newpage
-\begin{figure}
+We can first consider the relationship between $m_{h_1}$ and $\lambda_{345}$, shown in Fig. \ref{fig:l345_md1}.  
+
+\begin{figure}[h]
     \centering
-    %\includegraphics[width=\columnwidth]{big_plots/MD1_against_l345_Omegah2.pdf}
-    \makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{big_plots/MD1_against_l345_Omegah2.pdf}}
-    \caption{Plot of $\lambda_{345}$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-4 applied onto the data.}
-    \label{fig:l345_md1_main}
+    \makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{big_plots_(low_dpi)/l345_against_MD1_Omegah2.pdf}}
+    \caption{Plot of $\lambda_{345}$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-8 applied onto the data, with applied plots as their subtitles.}
+    \label{fig:l345_md1}
 \end{figure}
-\newpage
-We can see that in Fig. \ref{fig:l345_md1_main}, as the constraints are applied, the parameter space becomes more obvious - the final cut is the most obvious, as the values of $\lambda_{345}$ is constrained such that it has only values between $\pm 0.2$, which is in line with what has been discovered in \cite{Belyaev:2018ext}, which found strong cross section of $100 - 1000 \text{ fb}$. This also gives a good narrowing of the mass of DM particle.
+
+As the constraints are applied, one can observe 2 regions where $\lambda_{345}$, which is in line with what has been discovered in \cite{Belyaev:2018ext}, which found strong cross section of $100 - 1000 \text{ fb}$. This also gives a good narrowing of the mass of DM particle.
 
 \begin{figure*}[ht]
     \centering
@@ -543,7 +542,7 @@ In Fig. \ref{fig:DM2_md1_main}, one can observe the effects of the contraints sl
 \subsection{1-D Analysis}
 \label{1-D scan}
 We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:MD1_l345_1}, \ref{fig:MD1_l345_100}) as done in \cite{Belyaev:2016lok}:
-\begin{figure*}[ht]
+\begin{figure}[h]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
@@ -559,7 +558,7 @@ We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:
         \label{fig:MD1_l345_100}
     \end{subfigure}
     \caption{Plots of relic density against $m_{h_1}$ for different mass differences (while keeping $m_{h_1}$ lightest). The red shaded region is the area excluded by LEP, and the red line the upper limit of DM relic density (Eqn. \ref{eqn:DM relic density value}).}
-\end{figure*}
+\end{figure}
 
 In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of the DM candidate, $h_1$ and its complementary particles ($h_2$ and $h_{\pm}$) to observe the relic density, we make a few observations:
 \begin{itemize}
@@ -606,6 +605,25 @@ Here there is a non-resonant 3-body decay via an off-shell ${W^-}$ boson. This i
 \end{equation}
 
 By performing a random scan across parameters $\Delta m_3 = m_{h_2} - m_{h_\pm})$ and $\Delta m_+ = m_{h_\pm} - m_{h_1}$ For the decay in Eqn. \ref{eqn:branching_Z}, we can investigate what mass differences have upon the branching ratios.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{branching_ratio_plots/MD1_100GeV/Brh2ee}
+        \caption{Relic density against $m_{h_1}$, the case where $\Delta m_0 = 1$ GeV.}
+        \label{fig:Br(h2W+eeh1)}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{branching_ratio_plots/MD1_100GeV/__Delta_m_____Delta_m_3__scale_Br__h_2__rightarrow_e_-_e___h_1___MD1_100GeV.jpg}
+        \caption{Relic density against $m_{h_1}$, the case where $\Delta m_0 = 100$ GeV.}
+        \label{fig:Br(h2W-eeh1)}
+    \end{subfigure}
+    \caption{Branching ratios of the process }
+\end{figure}
+
 
 From Fig. \ref{fig:Br(h2->e+e-h1),DM2}, one can draw the following conclusions:
 \begin{itemize}
