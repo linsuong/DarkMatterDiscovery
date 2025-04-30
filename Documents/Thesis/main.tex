@@ -113,7 +113,7 @@ Many experiments have been carried can confirm the existence of DM:
 
 We know that DM has to satisfy certain properties. It has to be neutral, colourless (lacking colour charge), non-baryonic, long-lived (DM life exceeds the age of the Universe) and massive (non-relativistic) \cite{ZACEK_2007, DeLuca2018, gondolo2004introductionnonbaryonicdarkmatter}. However, none of the SM particles fit the description perfectly - the neutrino is the closest, however it is not massive. The low mass of the neutrino causes them to move at relativistic speeds, which then do not allow the formation of large scale structures. The neutrino inspired the development a group of hypothetical particles called WIMPs (Weakly Interacting Massive Particles). There are many models that were developed to search for DM, but the Inert Two-Higgs Doublet Model (i2HDM) will be the model of focus in this work. 
 
-The Higgs boson is responsible for giving masses to the $W^+, W^-$ and $Z_0$ bosons. This is done via the Higgs mechanism. The Higgs mechanism is as follows.
+The Higgs boson is responsible for giving masses to the $W^+, W^-$ and $Z^0$ bosons. This is done via the Higgs mechanism. The Higgs mechanism is as follows.
 The Higgs doublet before electroweak symmetry breaking (EWSB), $\Phi_H$ is:
 \begin{equation}
     \Phi_H =
@@ -124,7 +124,7 @@ The Higgs doublet before electroweak symmetry breaking (EWSB), $\Phi_H$ is:
 \end{equation}
 
 %A more accurate description of the Higgs mechanism is the moving around of the degrees of freedom \cite{lyre2008does}.
-This consists of 4 (real) degrees of freedom. Via the Higgs mechanism, the first 2 degrees of freedom are "given" as the mass of the $W^+$ and $W-$ boson ($\phi_1 + i\phi_2$ is the longitudinal component of $W^\pm$), whereas the third is the mass of the $Z_0$ boson. The Higgs field has one last degree of freedom ($\phi_4$), which, after symmetry breaking (when the degrees of freedom are lost to the other baryons) of the Higgs potential function is: 
+This consists of 4 (real) degrees of freedom. Via the Higgs mechanism, the first 2 degrees of freedom are "given" as the mass of the $W^+$ and $W-$ boson ($\phi_1 + i\phi_2$ is the longitudinal component of $W^\pm$), whereas the third is the mass of the $Z^0$ boson. The Higgs field has one last degree of freedom ($\phi_4$), which, after symmetry breaking (when the degrees of freedom are lost to the other baryons) of the Higgs potential function is: 
 \begin{equation}
     \Phi_H = \frac{1}{\sqrt{2}}
     \begin{pmatrix}
@@ -186,9 +186,7 @@ We also can define interaction rate, $\Gamma$, as $\Gamma = n\sigma\nu$, the int
 
 Fig. \ref{fig:freezeout} is a plot of comoving number density (the number density scaled by the Hubble constant), $Y = \frac{n}{s}$ where $s$ is the entropy density, against inverse temperature of the universe, $x = \frac{m}{T}$, where $m$ is the mass of DM, $T$ being temperature. If DM relic density does not change, it would follow the black solid line. However, that is not the case, as the number density of DM actually follows the dotted line. A higher cross-section means particles stay in equilibrium longer, resulting in a lower relic abundance, and vice versa.
 
-We can derive an expression for $\frac{dY}{dx}$ from Eqn. \ref{eqn:boltzmann}:
-
-By using the product rule,we can write the following equation:
+We can derive an expression for $\frac{dY}{dx}$ from Eqn. \ref{eqn:boltzmann}. By using the product rule,we can write the following equation:
 \begin{equation}
     \begin{split}
         \frac{d}{dt} \left(\frac{n}{s} \right) =& \frac{s\frac{dn}{dt} - n\frac{ds}{dt}}{s^2}
@@ -241,8 +239,9 @@ From the Boltzmann equation, one can derive an expression for DM relic density. 
 \begin{equation}
     s = \frac{2 \pi^2}{45}{g_s}T^3, \qquad 
     H = \frac{\pi}{3}\sqrt{\frac{g_*}{10}}\frac{m^2}{x^2 M_{Pl}}
+    \label{eqn:s_and_H}
 \end{equation}
-One has:
+Substitution of expressions in Eqn. \ref{eqn:s_and_H} into Eqn. \ref{eqn:boltzmann_xy}:
 \begin{equation}
     \begin{split}
         \frac{dY}{dx} &= \frac{2\pi^2}{45}\left(\frac{3}{\pi}g_s\sqrt{\frac{10}{g}}\right)\frac{1}{x}\braket{\sigma \nu}(Y_{eq}^2 - Y^2) \\
@@ -260,7 +259,7 @@ We can solve for x:
         \\ 
     \end{split}
 \end{equation}
-\section{Inert Two Higgs Doublet Model (i2HDM)}
+\section{The Inert Two Higgs Doublet Model (i2HDM)}
 \label{sec:i2HDM}
 In the i2HDM, we propose two doublets, $\Phi_1$, $\Phi_2$ - where the first doublet is active and second doublet is inert. The latter does not share its degrees of freedom with other particles (or, it does not couple to fermions via Yukawa interactions \cite{Belyaev_2022}), and has no VEV; unlike the former which is just the SM Higgs doublet, which has a VEV. We can invoke a new set of particles arising from $\Phi_2$- $h^\pm, h_1,$ and $h_2$, where $m_{h_1} < m_{h_2}$ and $m_{h_1} < m_{h^\pm}$. The lightest particle, $h_1$ is the DM candidate particle.
 
@@ -294,26 +293,26 @@ Where:
     \item $\Phi_2$ represents the inert doublet
     \item $m_1$ is the term which determines the mass of the Higgs boson and symmetry breaking. The negative sign in the first term of Equation \ref{eq:higgs_potential} makes the first term a potential with negative slope, which introduces spontaneous symmetry breaking and gives the active Higgs doublet the VEV.
     \item $m_2$ is the mass term of the inert Higgs doublet (which helps determine the masses of the extra particles, $h_1$, $h_2$ and $h_\pm$)
-    \item $\lambda_{1, 2}$ are self coupling terms of the doublets. $\lambda_1$ determines the mass of the Higgs boson and $\lambda_2$ determine the 
+    \item $\lambda_{1, 2}$ are self coupling terms of the doublets. $\lambda_1$ determines the mass of the Higgs boson and $\lambda_2$ determine the \todo{determine what?}
     \item $\lambda_{3, 4, 5}$ are the coupling terms of doublet interaction
 \end{itemize}
 Furthermore, we impose additional parametrisation in terms of mass differences that allow better visualisation of parameter space \cite{Belyaev_2022}, the reason which will be prevalent in the next sections when considering constrains:
 \begin{align}
 \label{eq:mass_diff_1}
-    \Delta m^{0} = m_{h_2} - m_{h^\pm},\\ \notag
-    \Delta m^1 = m_{h_2} - m_{h_1},\\ \notag
-    \Delta m^+ = m_{h^\pm} - m_{h_1}
+    \Delta m_0 = m_{h_2} - m_{h^\pm},\\ \notag
+    \Delta m_1 = m_{h_2} - m_{h_1},\\ \notag
+    \Delta m_+ = m_{h^\pm} - m_{h_1}
 \end{align}
 
 \subsection{Constraints of the i2HDM}
-We have four parameters to scan across: $m_{h_1}$, $\Delta m^0$, $\Delta m^+$ and $\lambda_{345}$ ($\lambda_3 + \lambda_4 + \lambda_5$), with $\lambda_2 = 1$. We can set $\lambda_2 = 1$ because $\lambda_2$ does not affect DM phenomenology at the tree level\footnote{lowest-order approximation in perturbation theory, where Feynman diagrams do not include loops (closed paths)}\cite{Belyaev:2016lok}; it only governs self interaction of the inert Higgs doublet, does not affect physical observables, and the DM candidate $h_1$ is only dependent on $\lambda_3$, $\lambda_4$ and $\lambda_5$ (Equation \ref{eqn:massdmscalar}). 
+We have four parameters to scan across: $m_{h_1}$, $\Delta m_0$, $\Delta m_+$, and $\lambda_{345}$ ($\lambda_3 + \lambda_4 + \lambda_5$), with $\lambda_2 = 1$. We can set $\lambda_2 = 1$ because $\lambda_2$ does not affect DM phenomenology at the tree level\footnote{lowest-order approximation in perturbation theory, where Feynman diagrams do not include loops (closed paths)}\cite{Belyaev:2016lok}; it only governs self interaction of the inert Higgs doublet, does not affect physical observables, and the DM candidate $h_1$ is only dependent on $\lambda_3$, $\lambda_4$ and $\lambda_5$ (Equation \ref{eqn:massdmscalar}). 
 
 While $\lambda_2$ does not appear explicitly in the relevant interactions, it indirectly contributes to vacuum stability, ensuring a consistent and physically viable model. Setting $\lambda_2 = 1$ also greatly reduces computing load and time. The masses of $h_2$, $h_\pm$ are then calculated using Eqn. \ref{eq:mass_diff_1}.
 
-This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|, version 6.1.15. Through theory and experiments, there are certain constraints that will have to be applied to the scan such that a proper search can be done.
+This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|, version 6.1.15. Through theory and experiments, there are certain constraints that will have to be applied to the scan such that a proper search can be done.\todo{rewrite this to make this paragraph more clear}
 
 \subsubsection{Constraints from vacuum stability}
-First of all, we need to ensure that the potential is bounded from below to ensure stability \cite{Deshpande:1977rw}:
+First of all, we need to ensure that the potential is bounded from below to ensure stability \cite{Deshpande:1977rw}. This can be done by imposing limits for $\lambda$ couplings:
 \begin{equation}
     \begin{split}
     \lambda_1>0,& \qquad
@@ -352,7 +351,7 @@ and the mass differences:
     &m_{h_\pm}^2 - m_{h_2}^2 = -\frac{1}{2}(\lambda_4 - |\lambda_5|)v^2
 \end{align}
 
-$m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$ and $\lambda_{345}$ are the main parameters of the study. $\lambda_{345}$ is an important parameter as it is involved in the $H\rightarrow h_1,h_1$ and $h_1,h_1 \rightarrow H$ (written in short as $Hh_1h_1$) interaction vertex. $\lambda_1$ is not a free parameter due to the reasons discussed earlier.
+$m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$ and $\lambda_{345}$, along with mass differences $\Delta m_{0, 1, +}$, are parameters of interest of this study. $\lambda_{345}$ is an important parameter as it is involved in the $H\rightarrow h_1,h_1$ and $h_1,h_1 \rightarrow H$ (written in short as $Hh_1h_1$) interaction vertex. $\lambda_1$ is not a free parameter due to the reasons discussed earlier.
 
 In addition to that, we consider constraints due to symmetry breaking. We impose that, from \cite{Belyaev:2016lok, Ginzburg2010}:
 \begin{equation}
@@ -429,12 +428,12 @@ Via LEP-II experiments, we require the following parameter space to be excluded,
 \end{equation}
 These regions, often referred to as "LEP holes", represent parts of parameter space where the production cross section or decay kinematics result in events that are either undetectable or mimic SM backgrounds closely. Thus, although the masses are small, these points evade exclusion due to limited detection sensitivity. While LEP constraints exclude low-mass and large-splitting scenarios, they are complementary to relic density and direct detection bounds. For example, compressed spectra allowed by LEP may still be ruled out by insufficient annihilation.
 
-From \cite{gfitter2018}, we introduce parameters $S$, $T$ and $U$, the Peskin-Takeuchi parameters \cite{PeskinTakeuchi1990} which describe potential new physics contributions \unsure{what does this even mean}{to electroweak radiative corrections}. For a Higgs boson mass of 125 GeV, the values for $S$ and $T$ when setting $U = 0$ are:
+From \cite{gfitter2018}, we introduce parameters $S$, $T$ and $U$, the Peskin-Takeuchi parameters \cite{PeskinTakeuchi1990} which describe potential new physics contributions \unsure{what does this even mean}{to electroweak radiative corrections}. For a Higgs boson mass of 125 GeV, the latest values for $S$ and $T$ when setting $U = 0$ are \cite{gfitter2018}:
  \begin{align}
      S|_{U=0} = 0.04 \pm0.08, \qquad
      T|_{U=0} = 0.08\pm0.07
  \end{align}
-With a correlation coefficient of $+0.92$. Setting $U = 0$\footnote{Setting $U = 0$ is common practice as $U$ is related to the $W$ and $Z$ boson, and will be insigniicant unless new physics affects them.} allows simplification in parameter space, requiring only focus on the $S-T$ plane, which are more dominant. Defining:
+With a correlation coefficient of $+0.92$. Setting $U = 0$ allows simplification in parameter space, requiring only focus on the $S-T$ plane, which are more dominant. This is is common practice as $U$ is related to the $W$ and $Z$ boson, and will be insignificant unless new physics affects them. Defining:
 \begin{align}
     x_1 = \frac{m_{h_1}}{m_{h_\pm}}, \qquad 
     x_2 = \frac{m_{h_2}}{m_{h_\pm}}
@@ -461,12 +460,13 @@ The S and T parameters are given \cite{Belyaev:2016lok} with the equations:
     \label{eqn:T}
 \end{equation}
 
-Notice that there is a $\frac{0}{0}$ condition when $m_{h_1} = m_{h_2}$, which leads to instability. By applying L'Hopital's rule, we can resolve this problem. By expressing $S$ as a fraction of 2 functions, $\frac{F(x_1, x_2)}{H(x_1, x_2)}$, we require 3rd order derivatives for $F$  and $H$. For the case where $x_1 = x_2$, one requires the equation: 
+Notice that for Eqn. \ref{eqn:S} there is a $\frac{0}{0}$ condition when $m_{h_1} = m_{h_2}$, which leads to instability. This is not required for Eqn. \ref{eqn:T} as the function $f_c(x, y)$ handles the instability. By expressing $S$ as a fraction of 2 functions, $\frac{F(x_1, x_2)}{H(x_1, x_2)}$, and applying L'Hopital's Rule, we require 3rd order derivatives for $F$ and $H$. For the case where $x_1 = x_2$, one obtains the equation (the detailed deriviation will be shown in the \ref{appendix}: 
 \begin{equation}
     \begin{split}
         S =& \frac{120 x^3f_a(x) + 90 x^4f_a'(x)+18x^5f''_a(x)+x^6f'''_a(x)}{48x^2} \\&+\frac{9x^2\left(24xf_b(x) + 36x^2f_b'(x)+12x^3f_b''(x) + x^4f_b'''(x)\right)}{48x^2}
         \\ =& \frac{1}{24\pi}\left(-5 + 12\log(x) + 3x - 4x\log(x)\right)
     \end{split}
+    \label{eqn:S_hopital}
 \end{equation}
 
 \subsubsection{Constraints from DM Direct Detection (DD), CMB, Branching Ratio and LZ 2024}
@@ -509,36 +509,36 @@ We apply cuts in the following order:
 \begin{itemize}
     \item Cut 1 - Constraints from vacuum stability (Eqn. \ref{eqn:R}), pertubativity and unitarity (Eqn. \ref{eqn:l345_pert}, \ref{eqn:masses_pert}) 
     \item Cut 2 - Constraints from LEP (Eqn. \ref{LEP-1}, \ref{LEP-2}, \ref{LEP-3}) 
-    \item  Cut 3 - EWPT constraints (Eqn. \ref{eqn:S}, \ref{eqn:T}) 
-    \item Cut 4 - Constraints from DM direct detection, 
-    \item Cut 5 - Constraints from CMB data
-    \item  Cut 6 - Constraint from branching ratio \ref{eqn:branching_ratio}.
-    \item Cut 7 - Constraints on spin-independent WIMP-nucleon cross section, based on latest 2024 results from LZ \cite{aalbers2024darkmattersearchresults}
+    \item Cut 3 - Constraints from DM direct detection, 
+    \item Cut 4 - Constraints from CMB data
+    \item Cut 5 - Constraint from branching ratio \ref{eqn:branching_ratio}.
+    \item Cut 6 - Constraints on spin-independent WIMP-nucleon cross section, based on latest 2024 results from LZ \cite{aalbers2024darkmattersearchresults}
+    \item Cut 7 - EWPT constraints (Eqn. \ref{eqn:S}, \ref{eqn:T})
     \item Cut 8 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
 \end{itemize}
-
-The plots against DM mass will be shown in the following pages, and the rest in the Appendix (\ref{sec:Appendix}).
-
+These cuts are strategically applied in this manner to clearly show the effects on the parameter space from each cut.
 \subsection{2-D Projection}
 \label{sec:2D-proj}
 We can first consider the relationship between $m_{h_1}$ and $\lambda_{345}$. 
-\begin{figure*}[ht]
+\newpage
+\begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{4plot/l345_MD1.pdf}
+    %\includegraphics[width=\columnwidth]{big_plots/MD1_against_l345_Omegah2.pdf}
+    \makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{big_plots/MD1_against_l345_Omegah2.pdf}}
     \caption{Plot of $\lambda_{345}$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-4 applied onto the data.}
     \label{fig:l345_md1_main}
-\end{figure*}
-
+\end{figure}
+\newpage
 We can see that in Fig. \ref{fig:l345_md1_main}, as the constraints are applied, the parameter space becomes more obvious - the final cut is the most obvious, as the values of $\lambda_{345}$ is constrained such that it has only values between $\pm 0.2$, which is in line with what has been discovered in \cite{Belyaev:2018ext}, which found strong cross section of $100 - 1000 \text{ fb}$. This also gives a good narrowing of the mass of DM particle.
 
 \begin{figure*}[ht]
     \centering
     \includegraphics[width=\linewidth]{4plot/DM2_MD1.pdf}
-    \caption{Plot of $\Delta m^0$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-4 applied onto the data.}
+    \caption{Plot of $\Delta m_0$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-8 applied sequentially onto the data.}
     \label{fig:DM2_md1_main}
 \end{figure*}
 
-In Fig. \ref{fig:DM2_md1_main}, as constraints are applied, the final constraint shows a mass range of $m_{h_1}$ to be below $10^2$ GeV and above $1.1\times10^2$ GeV. The empty space in between the values of $m_{h_1}$ in the rightmost plot is excluded due to the DM DD constraints.
+In Fig. \ref{fig:DM2_md1_main}, one can observe the effects of the contraints slowly shrinking the parameter space. The
 
 \subsection{1-D Analysis}
 \label{1-D scan}
@@ -548,14 +548,14 @@ We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{plots/plot_MD1_l345+1.pdf}
-        \caption{Relic density against $m_{h_1}$, the case where $\Delta m^0 = 1$ GeV.}
+        \caption{Relic density against $m_{h_1}$, the case where $\Delta m_0 = 1$ GeV.}
         \label{fig:MD1_l345_1}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{plots/plot_MD1_l345+100.pdf}
-        \caption{Relic density against $m_{h_1}$, the case where $\Delta m^0 = 100$ GeV.}
+        \caption{Relic density against $m_{h_1}$, the case where $\Delta m_0 = 100$ GeV.}
         \label{fig:MD1_l345_100}
     \end{subfigure}
     \caption{Plots of relic density against $m_{h_1}$ for different mass differences (while keeping $m_{h_1}$ lightest). The red shaded region is the area excluded by LEP, and the red line the upper limit of DM relic density (Eqn. \ref{eqn:DM relic density value}).}
@@ -563,32 +563,67 @@ We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:
 
 In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of the DM candidate, $h_1$ and its complementary particles ($h_2$ and $h_{\pm}$) to observe the relic density, we make a few observations:
 \begin{itemize}
-    \item The slight dips at 40 and 45 GeV for all values of $\lambda$ is the decay channel where $h_1, h_2 \rightarrow Z_0$ boson, and also the reaction for $h_1, h_{\pm} \rightarrow W_\pm$. The $Z^0$ and $W^\pm$ boson have masses $\sim$80 GeV and $\sim$85 GeV respectively.
+    \item The slight dips at 40 and 45 GeV for all values of $\lambda$ is the decay channel where $h_1, h_2 \rightarrow Z^0$ boson, and also the reaction for $h_1, h_{\pm} \rightarrow W_\pm$. The $Z^0$ and $W^\pm$ boson have masses $\sim$80 GeV and $\sim$85 GeV respectively.
     \item At $\sim$60 GeV, there is a dip for all values of $\lambda$ - this is because that is the $h_1,h_1\rightarrow H$ process - the DM DM decay process. 
-    \item At 80-90 GeV, we can observe a slight dip for relic density for all values of $\lambda$ except for $\lambda = \pm1$. The reason this happens is because that is the annihilation channel for $h, h \rightarrow Z_0Z_0$ and $h, h \rightarrow W_+ W_-$.
+    \item At 80-90 GeV, we can observe a slight dip for relic density for all values of $\lambda$ except for $\lambda = \pm1$. The reason this happens is because that is the annihilation channel for $h, h \rightarrow Z^0Z^0$ and $h, h \rightarrow W_+ W_-$.
     \item At $\sim$120 GeV, there is no obvious change in relic density except for $\lambda = \pm1$. This is the $h_1,h_1\rightarrow H H$ annihilation channel, which takes place only for big values of $\lambda_{345}$ due to stronger coupling term.
 \end{itemize}
 
 \section{2 Lepton Final States at the Collider Level}
-We can now calculate the branching ratios for DM decay at the collider level, starting from 2 quarks. The goal here is to be able to find new limits at the 95\% confidence level. Using \verb|CalcHEP|'s \verb|getBr| function, it is easy to obtain the branching ratios.
+We can now calculate the branching ratios for DM decay at the collider level, starting from 2 quarks. The goal here is to be able to find new limits at the 95\% confidence level. Using \verb|CalcHEP|'s \verb|getBr| function, it is easy to obtain the branching ratios. 
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Feynmann_Diagrams/pp-h1h2.pdf}
+        \caption{Production of 2 lepton final states, through decay of the $h_1$ particle to $e^+$ and $e^-$ via the $Z^0$ boson.}
+        \label{fig:decay_h2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Feynmann_Diagrams/pp-h+h-.pdf}
+        \caption{Production of 2 lepton final states, through decay of the $h_+$ particle to $e^+$ and $\nu_e$ via the $W^+$ boson, and $h_-$ particle to $e^-$ and $\bar{\nu}_e$ via the $W^-$ boson}
+        \label{fig:decay_h+}
+    \end{subfigure}
+    \caption{Feynman diagrams of possible paths for production of 2 lepton final states.}
+\end{figure}
 
-For example, we consider the process $p\bar{p} \rightarrow h_1h_2$ where $ h_2\rightarrow h_1 e^+e$ via the $Z$ boson. The branching ratio of the process is calculated like:
+For example, we consider the process $p\bar{p} \rightarrow h_1h_2$ where $ h_2\rightarrow h_1 e^+e$ via the $Z$ boson (see Fig. \ref{fig:decay_h2}). The branching ratio of the process is calculated like:
 \begin{equation}
     \begin{split}
         Br(h_2 \rightarrow h_1 e^+e) = Br(h_2\rightarrow h_1Z) \times Br(Z\rightarrow e^+e) + Br(h_2 \rightarrow h_1 e^+e)_{non-resonant}
+        \label{eqn:branching_Z}
     \end{split}
 \end{equation}
 where \( Br(h_2 \rightarrow h_1 Z) \) is the branching ratio for the decay of \( h_2 \) into \( h_1 \) and a \( Z \)-boson, and \( Br(Z \rightarrow e^+ e^-) \) is the branching ratio for the \( Z \)-boson decaying into an electron-positron pair. The reason for the additional "non-resonant" summation term is due to the nature of \verb|CalcHEP|, as it calculates a $1\rightarrow2$ decay first, and if that process is has branching ratio of $0$, then it will calculate the contribution from a $1\rightarrow3$ decay.  This  $1\rightarrow3$ decay is known as a "non-resonant 3-body decay", via the $Z^*$ boson, which is a virtual $Z$ boson. Some processes have non-zero $1\rightarrow2$ decays, so just calculating $1\rightarrow3$ decays (directly computing $Br(h_2 \rightarrow h_1 e^+e)$) is going to result in zeros \footnote{There will be no double counting, because if a $1\rightarrow2$ decay path is not possible then the value of the intermediary $Br(Z\rightarrow e^+e)$ will be $0$, giving only $Br(h_2 \rightarrow h_1 e^+e)_{non-resonant}$, the $1\rightarrow3$ decay.}. Likewise, another possible 2 lepton final state can occur through the $W$ boson, for example:
 \begin{equation}
     Br(h_-\rightarrow h_1e^- \bar{\nu}_e) = Br(h_-\rightarrow h_1 W^-) \times Br(W^- \rightarrow e^- \bar{\nu}_e) + Br(h_-\rightarrow h_1e^- \bar{\nu}_e)_{non-resonant}
 \end{equation}
-Here there is a non-resonant 3-body decay via an off-shell ${W^-}$ boson. This is also true for the case of the $W^+$ boson:
+Here there is a non-resonant 3-body decay via an off-shell ${W^-}$ boson. This is also true for the case of the $W^+$ boson (see Fig. \ref{fig:decay_h+}):
 \begin{equation}
     Br(h_+\rightarrow h_1e^+ \nu_e) = Br(h_+\rightarrow h_1 W^+) \times Br(W^+ \rightarrow e^+ \nu_e) + Br(h_+\rightarrow h_1e^+ \nu_e)_{non-resonant}
 \end{equation}
 
-From 2 quarks, the Feynmann diagrams for 2-lepton final states are as follows:
- 
+By performing a random scan across parameters $\Delta m_3 = m_{h_2} - m_{h_\pm})$ and $\Delta m_+ = m_{h_\pm} - m_{h_1}$ For the decay in Eqn. \ref{eqn:branching_Z}, we can investigate what mass differences have upon the branching ratios.
+
+From Fig. \ref{fig:Br(h2->e+e-h1),DM2}, one can draw the following conclusions:
+\begin{itemize}
+    \item At $\Delta m_+= 20\text{ GeV}$ , we can see the branching ratio increase as the value of $\Delta m_3$ decreases. When $\Delta m_3 \approx 90 \text{ GeV}$, there is a low branching ratio of $\approx 1\%$. This is because the decay happens via ${Z}^*$, off mass shell $Z^0$ boson, but at the same time there is another decay route via off mass shell $W^-$ boson, decaying via $h_2 \rightarrow {W^-}^*h_+$. This is due to the fact that:
+    \begin{equation}
+        \begin{split}
+            \Delta m_+ = m_{h_\pm} &- m_{h_1}
+            \\ \text{for }\Delta m_+ \approx 0: m_{h_\pm} &= m_{h_1}
+            \\ \implies \Delta m_3 + m_{h_2} &= m_{h_\pm}
+            \\\implies m_{h_2} >> m_{h_\pm} &= m_{h_1}
+        \end{split}
+    \end{equation}
+    This allows the $h_2$ particle more decay channels, $h_2 \rightarrow {W^-}^*h_+$ being one of them.
+    \item At $\Delta m_+= \Delta m_3=80 \text{ GeV}$ (high value), we get branching ratio of $\approx 3\%$. Although one might argue the fact that this means a bigger difference between $m_{h_2}$ and $m_{h_1}$, leading to more decay channels therefore the branching ratio should be low. This is not true in this case as the decay occurs through on mass shell $Z^0$ boson, which is a $1\rightarrow2$ decay, therefore all $1\rightarrow3$ decays are suppressed.
+    \item At point $\Delta m_+=\Delta m_3=10 \text{ GeV}$ (low value), comparing both $h_2 \rightarrow e^+ e^- h_1$ and $h_2 \rightarrow e^- \bar{\nu}_e h_+$, which is also another possible decay route (via off mass shell $W^-$). However, $Z^0$ boson will be less off mass shell than the $W^-$ boson; due to $m_{h_2} - m_{h_1} = 20 \text{ GeV}$ and $\Delta m_3= 10 \text{ GeV}$, one can see that $h_2 \rightarrow e^- \bar{\nu}_e h_+$ will be more suppressed, leaving $h_2 \rightarrow e^+ e^- h_1$ the dominant one with branching ratio of $\approx 3.3\%$
+    \item One also will notice a dark band at $Br(h_2 \rightarrow h_1 e^+e) \approx 0.033$. One of the points that this is possible is at $\Delta m_+= 20$ and $\Delta m_3=72 \text{ GeV}$. At this point, the value of $m_{h_2} - m_{h_1}$ is $ 92 \text{ GeV}$, which is the mass of the $Z^0$ boson. This enables an on-shell $Z^0$-mediated decay, which maximises the branching ratio into $e^+ e^- h_1$ final state.
+\end{itemize}
+
 \subsection{Exclusion Rate}
 From \cite{Aruhrib2012Inert}, the exclusion rate $r$ is defined as:
 \begin{equation}
@@ -625,4 +660,7 @@ Keeping $\alpha$ the same, one can derive a relationship for the new limit, $\si
 \bibliographystyle{unsrt}
 \bibliography{references}
 
+\appendix
+\section{Deriviation of Equations}
+\subsection{Eqn. \ref{eqn:S_hopital}}
 \end{document}
