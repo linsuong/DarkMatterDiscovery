@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cuts
 from matplotlib.colors import LogNorm
+import itertools
 
 file_path = 'scans/5-D_scans/combined.dat'
 
@@ -15,15 +16,15 @@ params_dict = {
     'Omegah2': r'$\Omega h_2$',
     'l345' : r'$\lambda_{345}$',
     'DM2' : r'$\Delta m_1$', #mass diff mh2 - mh1
-    'DM3' : r'$\Delta m_+$' #mass diff mh+ - mh2
+    'DMP' : r'$\Delta m_+$' #mass diff mh+ - mh2
 }
 
 cuts_dict = {
-    'cut1' : '+ Vacuum stability',
+    'cut1' : '+ Theory Constraints',
     'cut2' : '+ LEP',
     'cut3' : '+ DM Direct Detection',
     'cut4' : '+ CMB',
-    'cut5' : r'+ $Br(H \rightarrow \mathrm{invisible}) < 0.145$',
+    'cut5' : r'+ $Br(H \rightarrow \mathrm{inv}) < 0.145$',
     'cut6' : '+ LZ 2024',
     'cut7' : '+ EWPT',
     'cut8' : '+ Relic Density'
@@ -33,8 +34,9 @@ cuts_dict = {
 def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
                    label_dict=params_dict, cuts_func=cuts.cuts, cuts_dict=cuts_dict):
     
-    # Create subplots with auto-managed spacing
-    fig, axes = plt.subplots(2, 4, figsize=(22, 10), sharex=True, sharey=True, constrained_layout=True)
+    # Create subplots with manual spacing control
+    fig, axes = plt.subplots(2, 4, figsize=(16,8), sharex=True, sharey=True, constrained_layout=True)
+    #plt.subplots_adjust(hspace=0.3)
     axes = axes.flatten()
 
     cut_kwargs = {}  # Cumulative cuts to apply
@@ -70,29 +72,33 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
         else:
             sc = ax.scatter(filtered_df[xvar], filtered_df[yvar], color='red', s=1)
 
-        ax.set_title(cut_label, fontsize=15)
+        ax.set_title(cut_label, fontsize=25)
         ax.grid(True, linestyle='--', alpha=0.5)
-        ax.set_xlabel(label1, fontsize=15)
-        ax.set_xlabel(label1, fontsize=15)
+        if i >= 4:
+            ax.set_xlabel(label1, fontsize=25)
+        else:
+            ax.set_xlabel("")
+            ax.tick_params(labelbottom=False)
         if i % 4 == 0:
-            ax.set_ylabel(label2, fontsize=15)
+            ax.set_ylabel(label2, fontsize=25)
+        ax.tick_params(axis='both', labelsize=20)
 
     # Single colorbar on the far right (works with constrained_layout)
     if scale:
-        cbar = fig.colorbar(sc, ax=axes.ravel().tolist(), location='right', shrink=0.8)
-        cbar.set_label(label3, fontsize=15)
+        cbar = fig.colorbar(sc, ax=axes.ravel().tolist(), location='right')
+        cbar.set_label(label3, fontsize=25)
+        cbar.ax.tick_params(labelsize=20)
 
     # Title for the full figure
-    fig.suptitle(f'Cumulative Cuts on {label2} against {label1}, scaled by {label3}', fontsize=20)
-
-    # Show plot
-    #plt.show()
+    fig.suptitle(f'Cumulative Cuts on {label2} against {label1}, scaled by {label3}', fontsize=30)
     
-    #fig.savefig(f"big_plots_(low_dpi)/{xvar}_against_{yvar}_{scalevar}.pdf", bbox_inches='tight', dpi = 150)
-    #print('figure saved')                    
-    plt.show()
+    fig.savefig(f"big_plots_(low_dpi)/{yvar}_against_{xvar}_{scalevar}.pdf", bbox_inches='tight', dpi=80)
+    print(f'figure {yvar}_against_{xvar} saved')  
+    #plt.show()       
+    plt.close('all')           
+    #plt.show()
 
-
+"""
 pairs = [
     ['MD1', 'MD2'], ['MD1', 'MDP'], ['MD1', 'DMP'], ['MD1', 'DM2'], ['MD1', 'DM3'],
     ['MD2', 'MD1'], ['MD2', 'MDP'], ['MD2', 'DMP'], ['MD2', 'DM2'], ['MD2', 'DM3'],
@@ -102,9 +108,12 @@ pairs = [
     ['MD1', 'MDP'], ['MD2', 'MDP'], ['DMP', 'MDP'], ['DM2', 'MDP'], ['DM3', 'MDP'],
     ['MD1', 'l345'], ['MD2', 'l345'], ['MDP', 'l345'],
     ['DMP', 'l345'], ['DM2', 'l345'], ['DM3', 'l345']
-]
+]"""
+
+elements = ['MD1', 'MD2', 'MDP', 'DMP', 'DM2', 'DM3', 'l345']
+pairs = [list(p) for p in itertools.permutations(elements, 2)]
+
 for x, y in pairs:
     plot_cuts_grid(df, xvar=x, yvar=y, scalevar= 'Omegah2')
-
 
 #plot_cuts_grid(df, xvar='MD1', yvar='l345', scalevar= 'Omegah2')

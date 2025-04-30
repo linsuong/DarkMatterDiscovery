@@ -8,8 +8,10 @@ import re
 def sanitize_filename(name):
     return re.sub(r'[^a-zA-Z0-9_\-]', '_', name)
 
-path = "Work/CalcHEP_Scan_Z_MD1_100GeV/scan2.dat"
+paths = ["Work/CalcHEP_Scan_Z_MD1_100GeV/scan2.dat", "Work/CalcHEP_Scan_W-_MD1_100GeV/scan2.dat", "Work/CalcHEP_Scan_W+_MD1_100GeV/scan2.dat"]
 
+path = paths[2]
+print(f"processing {path}")
 df = pd.read_csv(path, sep=r'\s+', low_memory= False)
 
 params_dict = {
@@ -38,7 +40,6 @@ params_dict = {
     
 }
 
-
 savefile_dict = {
     #for decay via Z boson:
     "Br(h2->e+e-h1)_total" 	: r'Br(h2->ee)',
@@ -57,31 +58,31 @@ savefile_dict = {
     "Br(hp->tau-nu)_total" : r'Br(h+->tn)'
 }
 
-if path == "Work/CalcHEP_Scan_Z/scan2.dat" or 'Work/CalcHEP_Scan_Z_MD1_100GeV/scan2.dat':
+if path == "Work/CalcHEP_Scan_Z/scan2.dat" or path == 'Work/CalcHEP_Scan_Z_MD1_100GeV/scan2.dat':
     # Total BRs for h2 decays (direct + via Z)
-    df['Br(h2->e+e-h1)_total'] = (df["Br(Z->e+e-)"] * df["Br(h2->Zh1)"]) + df['Br(h2->e+e-h1)']
-    df['Br(h2->mu+mu-h1)_total'] = (df["Br(Z->mu+mu-)"] * df["Br(h2->Zh1)"]) + df['Br(h2->mu+mu-h1)']
-    df['Br(h2->tau+tau-h1)_total'] = (df["Br(Z->tau+tau-)"] * df["Br(h2->Zh1)"]) + df['Br(h2->tau+tau-h1)']
-    df['Br(h2->n+n-h1)_total'] = (df["Br(Z->n+n-)"] * df["Br(h2->Zh1)"]) + df['Br(h2->n+n-h1)']
+    df['Br(h2->e+e-h1)_total'] = np.round((df["Br(Z->e+e-)"] * df["Br(h2->Zh1)"]) + df['Br(h2->e+e-h1)'], decimals=8)
+    df['Br(h2->mu+mu-h1)_total'] = np.round((df["Br(Z->mu+mu-)"] * df["Br(h2->Zh1)"]) + df['Br(h2->mu+mu-h1)'], decimals=8)
+    df['Br(h2->tau+tau-h1)_total'] = np.round((df["Br(Z->tau+tau-)"] * df["Br(h2->Zh1)"]) + df['Br(h2->tau+tau-h1)'], decimals=8)
+    df['Br(h2->n+n-h1)_total'] = np.round((df["Br(Z->n+n-)"] * df["Br(h2->Zh1)"]) + df['Br(h2->n+n-h1)'], decimals=8)
     
     branching_ratios = ['Br(h2->e+e-h1)_total', 'Br(h2->mu+mu-h1)_total', 'Br(h2->tau+tau-h1)_total', 'Br(h2->n+n-h1)_total']
-"""
-if path == "Work/CalcHEP_Scan_W-/scan2.dat" or 'Work/CalcHEP_Scan_W-_MD1_100GeV/scan2.dat':
+
+if path == "Work/CalcHEP_Scan_W-/scan2.dat" or path == 'Work/CalcHEP_Scan_W-_MD1_100GeV/scan2.dat':
     # Total BRs for h- decays (direct + via W)
-    df['Br(h-->e-nu)_total'] = (df["Br(W-->e-nu)"] * df["Br(h-->W-h1)"]) + df['Br(h-->e-nu)']
-    df['Br(h-->mu-nu)_total'] = (df["Br(W-->mu-nu)"] * df["Br(h-->W-h1)"]) + df['Br(h-->mu-nu)']
-    df['Br(h-->tau-nu)_total'] = (df["Br(W-->tau-nu)"] * df["Br(h-->W-h1)"]) + df['Br(h-->tau-nu)']
+    df['Br(h-->e-nu)_total'] = np.round((df["Br(W-->e-nu)"] * df["Br(h-->W-h1)"]) + df['Br(h-->e-nu)'], decimals=8)
+    df['Br(h-->mu-nu)_total'] = np.round((df["Br(W-->mu-nu)"] * df["Br(h-->W-h1)"]) + df['Br(h-->mu-nu)'], decimals=8)
+    df['Br(h-->tau-nu)_total'] = np.round((df["Br(W-->tau-nu)"] * df["Br(h-->W-h1)"]) + df['Br(h-->tau-nu)'], decimals=8)
     
     branching_ratios = ['Br(h-->e-nu)_total', 'Br(h-->mu-nu)_total', 'Br(h-->tau-nu)_total']
     
-if path == "Work/CalcHEP_Scan_W+/scan2.dat" or 'Work/CalcHEP_Scan_W+_MD1_100GeV/scan2.dat':
+if path == "Work/CalcHEP_Scan_W+/scan2.dat" or path =='Work/CalcHEP_Scan_W+_MD1_100GeV/scan2.dat':
     # Total BRs for h+ decays (direct + via W)
-    df['Br(h+->e+nu)_total'] = (df["Br(W+->e+nu)"] * df["Br(h+->W+h1)"]) + df['Br(h+->e+nu)']
-    df['Br(h+->mu+nu)_total'] = (df["Br(W+->mu+nu)"] * df["Br(h+->W+h1)"]) + df['Br(h+->mu+nu)']
-    df['Br(h+->tau+nu)_total'] = (df["Br(W+->tau+nu)"] * df["Br(h+->W+h1)"]) + df['Br(h+->tau+nu)']
+    df['Br(h+->e+nu)_total'] = np.round((df["Br(W+->e+nu)"] * df["Br(h+->W+h1)"]) + df['Br(h+->e+nu)'], decimals=8)
+    df['Br(h+->mu+nu)_total'] = np.round((df["Br(W+->mu+nu)"] * df["Br(h+->W+h1)"]) + df['Br(h+->mu+nu)'], decimals=8)
+    df['Br(h+->tau+nu)_total'] = np.round((df["Br(W+->tau+nu)"] * df["Br(h+->W+h1)"]) + df['Br(h+->tau+nu)'], decimals=8)
     
     branching_ratios = ['Br(h+->e+nu)_total', 'Br(h+->mu+nu)_total', 'Br(h+->tau+nu)_total']
-"""
+
 def plotfig(df1, df2, df3, xlog=False, ylog=False, label_dict=params_dict):
     label1 = label_dict.get(df1, df1)
     label2 = label_dict.get(df2, df2)
@@ -114,10 +115,10 @@ def plotfig(df1, df2, df3, xlog=False, ylog=False, label_dict=params_dict):
     safe_label2 = sanitize_filename(label2)
     safe_label3 = sanitize_filename(label3)
     
-    #plt.savefig(f'branching_ratio_plots/MD1_100GeV/{safe_label2}{safe_label1}_scale_{safe_label3}_MD1_100GeV.jpg', bbox_inches='tight')
-    plt.show()
+    plt.savefig(f'branching_ratio_plots/MD1_100GeV/{safe_label2}{safe_label1}_scale_{safe_label3}_MD1_100GeV.pdf', bbox_inches='tight', dpi = 80)
+    #plt.show()
+    print(f'plot {safe_label2}_{safe_label1} saved')
     plt.close()
-
 
 for i in range(len(branching_ratios)):
     print(i)

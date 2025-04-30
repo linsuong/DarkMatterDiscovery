@@ -199,7 +199,8 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
         
     if cut8:
         #cutOM = dataframe['Omegah2'] < 0.12024
-        cutOM = (dataframe['Omegah2'] > 0.10) & (dataframe['Omegah2'] < 0.12024) #strict bound of Omegah2
+        #cutOM = (dataframe['Omegah2'] > 0.10) & (dataframe['Omegah2'] < 0.12024) #strict bound of Omegah2 (10%)
+        cutOM = (dataframe['Omegah2'] > 0.084168) & (dataframe['Omegah2'] < 0.156312) #30% bound
         
     if cut8_strict:
         cutOM = (dataframe['Omegah2'] > 0.10737) & (dataframe['Omegah2'] < 0.13123) #strict bound of Omegah2
