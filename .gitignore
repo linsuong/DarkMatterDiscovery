@@ -46,6 +46,21 @@ Work/CalcHEP_Scan_Z/**
 !Work/CalcHEP_Scan_Z/scan2.c
 !Work/CalcHEP_Scan_Z/scan2.dat
 
+!Work/CalcHEP_Scan_W-_MD1_100GeV/
+Work/CalcHEP_Scan_W-_MD1_100GeV/**
+!Work/CalcHEP_Scan_W-_MD1_100GeV/scan2.c
+!Work/CalcHEP_Scan_W-_MD1_100GeV/scan2.dat
+
+!Work/CalcHEP_Scan_W+_MD1_100GeV/
+Work/CalcHEP_Scan_W+_MD1_100GeV/**
+!Work/CalcHEP_Scan_W+_MD1_100GeV/scan2.c
+!Work/CalcHEP_Scan_W+_MD1_100GeV/scan2.dat
+
+!Work/CalcHEP_Scan_Z_MD1_100GeV/
+Work/CalcHEP_Scan_Z_MD1_100GeV/**
+!Work/CalcHEP_Scan_Z_MD1_100GeV/scan2.c
+!Work/CalcHEP_Scan_Z_MD1_100GeV/scan2.dat
+
 !Work/batch_results/
 !Work/batch_files/
 

@@ -166,32 +166,16 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
         # --- Additional charged scalar mass cut ---
         cutMDP = (dataframe['MDP'] > 70)  # Redundant if already in cutLEP_universal
         
-    
     if cut3:
-        #cutT = (dataframe['T'] > (0.1 - 0.07)) & (dataframe['T'] < (0.17))
-        #cutS = (dataframe['S'] > (-0.03)) & (dataframe ['S'] < (0.06 + 0.09))
-        
-        cutT = (dataframe['T'] > (0.04 - 0.08)) & (dataframe['T'] < (0.04 + 0.08))
-        cutS = (dataframe['S'] > (0.08 - 0.07)) & (dataframe ['S'] < (0.08 + 0.07))
-
-
-    if cut8:
-        #cutOM = dataframe['Omegah2'] < 0.12024
-        cutOM = (dataframe['Omegah2'] > 0.10) & (dataframe['Omegah2'] < 0.12024) #strict bound of Omegah2
-        
-    if cut8_strict:
-        cutOM = (dataframe['Omegah2'] > 0.10737) & (dataframe['Omegah2'] < 0.13123) #strict bound of Omegah2
-
-    if cut4:
         cutDD = dataframe['PvalDD'] > 0.1
 
-    if cut5:
+    if cut4:
         cutCMB = dataframe['CMB_ID'] < 1
     
-    if cut6:
+    if cut5:
         cutBr = dataframe['brH_DMDM'] < 0.145
         
-    if cut7:
+    if cut6:
         if 'independent_variables' in LZ:
             for var in LZ['independent_variables']:
                 if var['header']['name'] == 'mass':
@@ -204,8 +188,22 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
                     y_values = [point['value'] * conversion_factor for point in var['values']]
                     y_data[name] = y_values
                         
-        cutLZ=(dataframe['protonSI'] < np.interp(dataframe['MD1'], x_values, y_data["limit"]))       
+        cutLZ=(dataframe['protonSI'] < np.interp(dataframe['MD1'], x_values, y_data["limit"]))    
                      
+    if cut7:
+        #cutT = (dataframe['T'] > (0.1 - 0.07)) & (dataframe['T'] < (0.17))
+        #cutS = (dataframe['S'] > (-0.03)) & (dataframe ['S'] < (0.06 + 0.09))
+        
+        cutT = (dataframe['T'] > (0.04 - 0.08)) & (dataframe['T'] < (0.04 + 0.08))
+        cutS = (dataframe['S'] > (0.08 - 0.07)) & (dataframe ['S'] < (0.08 + 0.07))
+        
+    if cut8:
+        #cutOM = dataframe['Omegah2'] < 0.12024
+        cutOM = (dataframe['Omegah2'] > 0.10) & (dataframe['Omegah2'] < 0.12024) #strict bound of Omegah2
+        
+    if cut8_strict:
+        cutOM = (dataframe['Omegah2'] > 0.10737) & (dataframe['Omegah2'] < 0.13123) #strict bound of Omegah2
+
     # Combine all cuts
     cut_tot = cutMD1 & cutl345 & cutMass & cutLEP & cutMDP
     cut_tot &= cutT & cutS

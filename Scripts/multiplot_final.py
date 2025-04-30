@@ -4,7 +4,7 @@ import numpy as np
 import cuts
 from matplotlib.colors import LogNorm
 
-file_path = 'scans\\5-D_scans\\combined.dat'
+file_path = 'scans/5-D_scans/combined.dat'
 
 df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
 
@@ -21,12 +21,13 @@ params_dict = {
 cuts_dict = {
     'cut1' : '+ Vacuum stability',
     'cut2' : '+ LEP',
-    'cut3' : '+ EWPT',
-    'cut4' : '+ DM Direct Detection',
-    'cut5' : '+ CMB',
-    'cut6' : '+ Branching Ratio',
-    'cut7' : '+ LZ 2024',
+    'cut3' : '+ DM Direct Detection',
+    'cut4' : '+ CMB',
+    'cut5' : r'+ $Br(H \rightarrow \mathrm{invisible}) < 0.145$',
+    'cut6' : '+ LZ 2024',
+    'cut7' : '+ EWPT',
     'cut8' : '+ Relic Density'
+    
 }
 
 def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
@@ -87,9 +88,9 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
     # Show plot
     #plt.show()
     
-    fig.savefig(f"big_plots_(low_dpi)/{xvar}_against_{yvar}_{scalevar}.pdf", bbox_inches='tight', dpi = 150)
-    print('figure saved')                    
-    #plt.show()
+    #fig.savefig(f"big_plots_(low_dpi)/{xvar}_against_{yvar}_{scalevar}.pdf", bbox_inches='tight', dpi = 150)
+    #print('figure saved')                    
+    plt.show()
 
 
 pairs = [

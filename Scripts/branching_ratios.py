@@ -86,7 +86,6 @@ def plotfig(df1, df2, df3, xlog=False, ylog=False, label_dict=params_dict):
     label1 = label_dict.get(df1, df1)
     label2 = label_dict.get(df2, df2)
     label3 = label_dict.get(df3, df3)
-    label4 = savefile_dict.get(df2, df2)
     label5 = label_dict.get('MD1', 'MD1')
     
     if xlog:
@@ -112,10 +111,11 @@ def plotfig(df1, df2, df3, xlog=False, ylog=False, label_dict=params_dict):
 
     # Sanitize filename
     safe_label1 = sanitize_filename(label1)
+    safe_label2 = sanitize_filename(label2)
     safe_label3 = sanitize_filename(label3)
-    safe_label4 = sanitize_filename(label4)
     
-    plt.savefig(f'branching_ratio_plots/MD1_100GeV/{safe_label4}{safe_label1}_scale_{safe_label3}_MD1_100GeV.jpg', bbox_inches='tight')
+    #plt.savefig(f'branching_ratio_plots/MD1_100GeV/{safe_label2}{safe_label1}_scale_{safe_label3}_MD1_100GeV.jpg', bbox_inches='tight')
+    plt.show()
     plt.close()
 
 
@@ -123,3 +123,5 @@ for i in range(len(branching_ratios)):
     print(i)
     plotfig('DMP', branching_ratios[i], 'DM3')
     plotfig('DM3', branching_ratios[i], 'DMP')
+    plotfig('DM3', 'DMP', branching_ratios[i])
+    plotfig('DMP', 'DM3',branching_ratios[i])
