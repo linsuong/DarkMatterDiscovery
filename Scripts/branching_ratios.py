@@ -116,7 +116,8 @@ def plotfig(df1, df2, df3, xlog=False, ylog=False, label_dict=params_dict):
     safe_label2 = sanitize_filename(label2)
     safe_label3 = sanitize_filename(label3)
     
-    plt.savefig(f'branching_ratio_plots/{safe_label2}{safe_label1}_scale_{safe_label3}.pdf', bbox_inches='tight', dpi = 150)
+    plt.savefig(f'branching_ratio_plots_(low_dpi)/hplus/{safe_label2}{safe_label1}_scale_{safe_label3}.pdf', 
+                bbox_inches='tight', dpi = 80)
     #plt.show()
     print(f'plot {safe_label2}_{safe_label1} saved')
     plt.close()
