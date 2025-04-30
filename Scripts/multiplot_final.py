@@ -5,6 +5,8 @@ import cuts
 from matplotlib.colors import LogNorm
 import itertools
 
+plt.rcParams['font.serif'] = ['Times New Roman'] 
+
 file_path = 'scans/5-D_scans/combined.dat'
 
 df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
@@ -90,9 +92,9 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
         cbar.ax.tick_params(labelsize=20)
 
     # Title for the full figure
-    fig.suptitle(f'Cumulative Cuts on {label2} against {label1}, scaled by {label3}', fontsize=30)
+    fig.suptitle(f'Cumulative Cuts on {label2} against {label1}, scaled by {label3}', fontsize=28)
     
-    fig.savefig(f"big_plots_(low_dpi)/{yvar}_against_{xvar}_{scalevar}.pdf", bbox_inches='tight', dpi=80)
+    fig.savefig(f"big_plots/{yvar}_against_{xvar}_{scalevar}.pdf", bbox_inches='tight', dpi=150)
     print(f'figure {yvar}_against_{xvar} saved')  
     #plt.show()       
     plt.close('all')           
