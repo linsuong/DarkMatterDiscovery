@@ -101,21 +101,22 @@ def plotfig(df1, df2, df3, xlog=False, ylog=False, label_dict=params_dict):
                      cmap='plasma_r', norm=Normalize(vmin=vmin, vmax=vmax))
     
     cbar = plt.colorbar(sc)
-    cbar.set_label(label3, fontsize=15)
+    cbar.set_label(label3, fontsize=20)
+    cbar.ax.tick_params(labelsize=18)
             
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()
-    plt.xlabel(label1, fontsize=15)
-    plt.ylabel(label2, fontsize=15)
-    plt.tick_params(axis='both', labelsize=15)
-    plt.title(f'{label2} against {label1}, scaled by {label3}, {label5} = 100 GeV', fontsize=15)
+    plt.xlabel(label1, fontsize=20)
+    plt.ylabel(label2, fontsize=20)
+    plt.tick_params(axis='both', labelsize=20)
+    plt.title(f'{label2} against {label1}, scaled by {label3}', fontsize=18)
 
     # Sanitize filename
     safe_label1 = sanitize_filename(label1)
     safe_label2 = sanitize_filename(label2)
     safe_label3 = sanitize_filename(label3)
     
-    plt.savefig(f'branching_ratio_plots/MD1_100GeV/{safe_label2}{safe_label1}_scale_{safe_label3}_MD1_100GeV.pdf', bbox_inches='tight', dpi = 80)
+    plt.savefig(f'branching_ratio_plots/{safe_label2}{safe_label1}_scale_{safe_label3}.pdf', bbox_inches='tight', dpi = 80)
     #plt.show()
     print(f'plot {safe_label2}_{safe_label1} saved')
     plt.close()
