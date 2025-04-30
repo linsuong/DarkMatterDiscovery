@@ -34,9 +34,9 @@ params_dict = {
     "Br(h-->tau-nu)_total" : r'Br($h_- \rightarrow \tau^- \bar{\nu}_{\tau} h_1$)',
     
     #for decay via W+ boson:
-    "Br(h+->e-nu)_total" : r'Br($h_+ \rightarrow e^+ \nu_e h_1$)',
-    "Br(h+->mu-nu)_total" : r'Br($h_+ \rightarrow \mu^+ \nu_{\mu} h_1$)',
-    "Br(h+->tau-nu)_total" : r'Br($h_+ \rightarrow \tau^+ \nu_{\tau} h_1$)'
+    "Br(h+->e+nu)_total" : r'Br($h_+ \rightarrow e^+ \nu_e h_1$)',
+    "Br(h+->mu+nu)_total" : r'Br($h_+ \rightarrow \mu^+ \nu_{\mu} h_1$)',
+    "Br(h+->tau+nu)_total" : r'Br($h_+ \rightarrow \tau^+ \nu_{\tau} h_1$)'
     
 }
 
