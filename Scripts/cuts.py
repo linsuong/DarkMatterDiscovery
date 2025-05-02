@@ -21,7 +21,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
         
     conversion_factor = 1e36  # Convert from cm^-2 to pb
     y_data = {}
-
+    # have MD1, DM3 and DMP, so convert to other values such as MDP, MD2 and DM2.
     dataframe['MDP'] = dataframe['DMP'] + dataframe['MD1']
     dataframe['MD2'] = dataframe['DM3'] + dataframe['DMP'] + dataframe['MD1']
     dataframe['DM2'] = dataframe['DM3'] + dataframe['DMP']
