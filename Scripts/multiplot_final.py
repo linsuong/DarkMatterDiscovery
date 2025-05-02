@@ -5,6 +5,8 @@ import cuts
 from matplotlib.colors import LogNorm
 import itertools
 
+plt.close('all')
+
 plt.rcParams['font.serif'] = ['Times New Roman'] 
 
 file_path = 'scans/5-D_scans/combined.dat'
@@ -50,7 +52,7 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
         cut_kwargs[cut_flag] = True
         
         # Apply cumulative cuts
-        colorbar_range = cuts_func(df.copy(), cut1=True, cut2=True)
+        colorbar_range = cuts_func(df.copy(), cut1=True)
         filtered_df = cuts_func(df.copy(), **cut_kwargs)
 
         if xlog:
@@ -84,6 +86,8 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
         if i % 4 == 0:
             ax.set_ylabel(label2, fontsize=25)
         ax.tick_params(axis='both', labelsize=20)
+        
+        plt.ylim(-1.5, 1.5)
 
     # Single colorbar on the far right (works with constrained_layout)
     if scale:
@@ -94,11 +98,10 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
     # Title for the full figure
     fig.suptitle(f'Cumulative Cuts on {label2} against {label1}, scaled by {label3}', fontsize=28)
     
-    fig.savefig(f"big_plots/{yvar}_against_{xvar}_{scalevar}.pdf", bbox_inches='tight', dpi=150)
-    print(f'figure {yvar}_against_{xvar} saved')  
-    #plt.show()       
-    plt.close('all')           
-    #plt.show()
+    #fig.savefig(f"big_plots/{yvar}_against_{xvar}_{scalevar}.pdf", bbox_inches='tight', dpi=150)
+    print(f'figure {yvar}_against_{xvar} saved')        
+    #plt.close('all')           
+    plt.show()
 
 """
 pairs = [
@@ -115,7 +118,7 @@ pairs = [
 elements = ['MD1', 'MD2', 'MDP', 'DMP', 'DM2', 'DM3', 'l345']
 pairs = [list(p) for p in itertools.permutations(elements, 2)]
 
-for x, y in pairs:
-    plot_cuts_grid(df, xvar=x, yvar=y, scalevar= 'Omegah2')
+#for x, y in pairs:
+    #plot_cuts_grid(df, xvar=x, yvar=y, scalevar= 'Omegah2')
 
-#plot_cuts_grid(df, xvar='MD1', yvar='l345', scalevar= 'Omegah2')
+plot_cuts_grid(df, xvar='MD1', yvar='l345',ylog = False, scalevar= 'Omegah2')

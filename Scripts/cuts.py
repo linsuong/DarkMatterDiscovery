@@ -128,10 +128,10 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
         
         cutl345 = (
             (dataframe['l345'] < 2 * (((dataframe['MD1'] ** 2)/(v ** 2)) + np.sqrt(l1))) & 
-            #(dataframe['l345'] < ((16/3) * np.pi) - l1) & 
-            #(dataframe['l345'] < 4 * np.pi - ((3/2) * l1)) &
-            (dataframe['l345'] > -1.47) &
-            (dataframe['l345'] < 8 * np.pi)
+            (dataframe['l345'] < ((16/3) * np.pi) - l1) & 
+            (dataframe['l345'] < 4 * np.pi - ((3/2) * l1)) &
+            (dataframe['l345'] > -1.47) 
+            #(dataframe['l345'] < 8 * np.pi)
         )
         
         cutMass = ((dataframe['MD1']<1000) & (dataframe['MD2']<1000) & (dataframe['MDP']<1000) &
