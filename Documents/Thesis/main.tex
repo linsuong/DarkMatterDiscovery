@@ -521,28 +521,21 @@ These cuts are strategically applied in this manner to clearly show the effects 
 \label{sec:2D-proj}
 We can first consider the relationship between $m_{h_1}$ and $\lambda_{345}$, shown in Fig. \ref{fig:l345_md1}.  
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{big_plots_(low_dpi)/l345_against_MD1_Omegah2.pdf}}
-    \caption{Plot of $\lambda_{345}$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-8 applied onto the data, with applied plots as their subtitles.}
-    \label{fig:l345_md1}
+    \includegraphics[width=\linewidth]{big_plots_(low_dpi)/l345_against_MD1_Omegah2.pdf}
+    \caption{Caption}
+    \label{fig:enter-label}
 \end{figure}
 
 As the constraints are applied, one can observe 2 regions where $\lambda_{345}$, which is in line with what has been discovered in \cite{Belyaev:2018ext}, which found strong cross section of $100 - 1000 \text{ fb}$. This also gives a good narrowing of the mass of DM particle.
 
-\begin{figure*}[ht]
-    \centering
-    \includegraphics[width=\linewidth]{4plot/DM2_MD1.pdf}
-    \caption{Plot of $\Delta m_0$ against $m_{h_1}$, coloured by $\Omega h^2$. From left to right are Cuts 1-8 applied sequentially onto the data.}
-    \label{fig:DM2_md1_main}
-\end{figure*}
-
-In Fig. \ref{fig:DM2_md1_main}, one can observe the effects of the contraints slowly shrinking the parameter space. The
+In Fig. \ref{fig:DM2_md1_main}, one can observe the effects of the constraints slowly shrinking the parameter space. The
 
 \subsection{1-D Analysis}
 \label{1-D scan}
 We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:MD1_l345_1}, \ref{fig:MD1_l345_100}) as done in \cite{Belyaev:2016lok}:
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
@@ -595,7 +588,7 @@ For example, we consider the process $p\bar{p} \rightarrow h_1h_2$ where $ h_2\r
         \label{eqn:branching_Z}
     \end{split}
 \end{equation}
-where \( Br(h_2 \rightarrow h_1 Z) \) is the branching ratio for the decay of \( h_2 \) into \( h_1 \) and a \( Z \)-boson, and \( Br(Z \rightarrow e^+ e^-) \) is the branching ratio for the \( Z \)-boson decaying into an electron-positron pair. The reason for the additional "non-resonant" summation term is due to the nature of \verb|CalcHEP|, as it calculates a $1\rightarrow2$ decay first, and if that process is has branching ratio of $0$, then it will calculate the contribution from a $1\rightarrow3$ decay.  This  $1\rightarrow3$ decay is known as a "non-resonant 3-body decay", via the $Z^*$ boson, which is a virtual $Z$ boson. Some processes have non-zero $1\rightarrow2$ decays, so just calculating $1\rightarrow3$ decays (directly computing $Br(h_2 \rightarrow h_1 e^+e)$) is going to result in zeros \footnote{There will be no double counting, because if a $1\rightarrow2$ decay path is not possible then the value of the intermediary $Br(Z\rightarrow e^+e)$ will be $0$, giving only $Br(h_2 \rightarrow h_1 e^+e)_{non-resonant}$, the $1\rightarrow3$ decay.}. Likewise, another possible 2 lepton final state can occur through the $W$ boson, for example:
+Where $Br(h_2 \rightarrow h_1 Z)$ is the branching ratio for the decay of $h_2$ into $h_1$ and a $Z$ boson, and $Br(Z \rightarrow e^+ e^-)$ is the branching ratio for the $Z$ boson decaying into an electron-positron pair. The reason for the additional "non-resonant" summation term is due to the nature of \verb|CalcHEP|, as it calculates a $1\rightarrow2$ decay first, and if that process has branching ratio 0, then it will calculate the contribution from a $1\rightarrow3$ decay. This $1\rightarrow3$ decay is known as a "non-resonant 3-body decay", via the $Z^*$ boson, which is a virtual $Z$ boson. Some processes have non-zero $1\rightarrow2$ decays, so just calculating $Br(h_2 \rightarrow h_1 e^+e^-)$ directly will yield zeros in such cases. There is no double counting: if the $1\rightarrow2$ decay path is not possible, then the value of the intermediary $Br(Z\rightarrow e^+e^-)$ will be 0, leaving only $Br(h_2 \rightarrow h_1 e^+e^-)_{\text{non-resonant}}$, the $1\rightarrow3$ decay. Likewise, another possible 2-lepton final state can occur through the $W$ boson, for example:
 \begin{equation}
     Br(h_-\rightarrow h_1e^- \bar{\nu}_e) = Br(h_-\rightarrow h_1 W^-) \times Br(W^- \rightarrow e^- \bar{\nu}_e) + Br(h_-\rightarrow h_1e^- \bar{\nu}_e)_{non-resonant}
 \end{equation}
@@ -605,29 +598,28 @@ Here there is a non-resonant 3-body decay via an off-shell ${W^-}$ boson. This i
 \end{equation}
 
 By performing a random scan across parameters $\Delta m_3 = m_{h_2} - m_{h_\pm})$ and $\Delta m_+ = m_{h_\pm} - m_{h_1}$ For the decay in Eqn. \ref{eqn:branching_Z}, we can investigate what mass differences have upon the branching ratios.
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{branching_ratio_plots/MD1_100GeV/Brh2ee}
-        \caption{Relic density against $m_{h_1}$, the case where $\Delta m_0 = 1$ GeV.}
-        \label{fig:Br(h2W+eeh1)}
+        \includegraphics[width=\textwidth]{branching_ratio_plots/Br__h_2__rightarrow_e_-_e___h_1____Delta_m____scale___Delta_m_3_.pdf}
+        \caption{}
+        \label{fig:Br(h2ee),Dm3_scale}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{branching_ratio_plots/MD1_100GeV/__Delta_m_____Delta_m_3__scale_Br__h_2__rightarrow_e_-_e___h_1___MD1_100GeV.jpg}
-        \caption{Relic density against $m_{h_1}$, the case where $\Delta m_0 = 100$ GeV.}
-        \label{fig:Br(h2W-eeh1)}
+        \includegraphics[width=\textwidth]{branching_ratio_plots/__Delta_m_3___Delta_m____scale_Br__h_2__rightarrow_e_-_e___h_1__.pdf}
+        \caption{}
+        \label{fig:Br(h2ee),Br_scale}
     \end{subfigure}
-    \caption{Branching ratios of the process }
+    \caption{Branching ratios of the process $h_2 \rightarrow h_1 e^+e$ for different mass differences $\Delta m_+$ and $\Delta m_3$, with $m_{h_1} =100$ GeV.}
+    \label{fig:Br(h2ee)}
 \end{figure}
 
-
-From Fig. \ref{fig:Br(h2->e+e-h1),DM2}, one can draw the following conclusions:
+From Fig. \ref{fig:Br(h2ee)}, one can draw the following conclusions:
 \begin{itemize}
-    \item At $\Delta m_+= 20\text{ GeV}$ , we can see the branching ratio increase as the value of $\Delta m_3$ decreases. When $\Delta m_3 \approx 90 \text{ GeV}$, there is a low branching ratio of $\approx 1\%$. This is because the decay happens via ${Z}^*$, off mass shell $Z^0$ boson, but at the same time there is another decay route via off mass shell $W^-$ boson, decaying via $h_2 \rightarrow {W^-}^*h_+$. This is due to the fact that:
+    \item At $\Delta m_+= 20\text{ GeV}$ , we can see the branching ratio increase as the value of $\Delta m_3$ decreases (apart from the anomaly at $\Delta m_3 \approx 80$ GeV in Fig. \ref{fig:Br(h2ee),Br_scale}, which will be discussed shortly). When $\Delta m_3 \approx 90 \text{ GeV}$, there is a low branching ratio of $\approx 1\%$. This is because the decay happens via ${Z}^*$, off mass shell $Z^0$ boson, but at the same time there is another decay route via off mass shell $W^-$ boson, decaying via $h_2 \rightarrow {W^-}^*h_+$. This is due to the fact that:
     \begin{equation}
         \begin{split}
             \Delta m_+ = m_{h_\pm} &- m_{h_1}
@@ -640,8 +632,38 @@ From Fig. \ref{fig:Br(h2->e+e-h1),DM2}, one can draw the following conclusions:
     \item At $\Delta m_+= \Delta m_3=80 \text{ GeV}$ (high value), we get branching ratio of $\approx 3\%$. Although one might argue the fact that this means a bigger difference between $m_{h_2}$ and $m_{h_1}$, leading to more decay channels therefore the branching ratio should be low. This is not true in this case as the decay occurs through on mass shell $Z^0$ boson, which is a $1\rightarrow2$ decay, therefore all $1\rightarrow3$ decays are suppressed.
     \item At point $\Delta m_+=\Delta m_3=10 \text{ GeV}$ (low value), comparing both $h_2 \rightarrow e^+ e^- h_1$ and $h_2 \rightarrow e^- \bar{\nu}_e h_+$, which is also another possible decay route (via off mass shell $W^-$). However, $Z^0$ boson will be less off mass shell than the $W^-$ boson; due to $m_{h_2} - m_{h_1} = 20 \text{ GeV}$ and $\Delta m_3= 10 \text{ GeV}$, one can see that $h_2 \rightarrow e^- \bar{\nu}_e h_+$ will be more suppressed, leaving $h_2 \rightarrow e^+ e^- h_1$ the dominant one with branching ratio of $\approx 3.3\%$
     \item One also will notice a dark band at $Br(h_2 \rightarrow h_1 e^+e) \approx 0.033$. One of the points that this is possible is at $\Delta m_+= 20$ and $\Delta m_3=72 \text{ GeV}$. At this point, the value of $m_{h_2} - m_{h_1}$ is $ 92 \text{ GeV}$, which is the mass of the $Z^0$ boson. This enables an on-shell $Z^0$-mediated decay, which maximises the branching ratio into $e^+ e^- h_1$ final state.
+    \item There is a point at $\Delta m_+= 10$ and $\Delta m_3=81 \text{ GeV}$ respectively. This is the point where $m_{h_2} - m_{h_1} = 81 \text{ GeV}$, which is the mass of the $W$ boson. This therefore enables $100\%$ on-shell $W$ boson decay, $h_2 \rightarrow W^- h_+$ and $h_2 \rightarrow W^+ h_-$, with branching ratios of $50\%$ each. 
 \end{itemize}
 
+Likewise, there is the decay processes via $W$ boson,  
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{branching_ratio_plots/Br__h__rightarrow_e_-__bar__nu__e_h_1____Delta_m____scale___Delta_m_3_.pdf}
+        \caption{}
+        \label{fig:Br(h2ee),Dm3_scale}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{branching_ratio_plots/__Delta_m_3___Delta_m____scale_Br__h_-__rightarrow_e_-__bar__nu__e_h_1__.pdf}
+        \caption{}
+        \label{fig:Br(h2ee),Br_scale}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{branching_ratio_plots/Br__h_-__rightarrow_e_-__bar__nu__e_h_1____Delta_m____scale___Delta_m_3_.pdf}
+        \caption{}
+        \label{fig:Br(h2ee),Br_scale}
+    \end{subfigure}
+        \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=\textwidth]{branching_ratio_plots/__Delta_m_3___Delta_m____scale_Br__h_-__rightarrow_e_-__bar__nu__e_h_1__.pdf}
+        \caption{}
+        \label{fig:Br(h2ee),Br_scale}
+    \end{subfigure}
+    \caption{Branching ratios of the process $h_2 \rightarrow h_1 e^+e$ for different mass differences $\Delta m_+$ and $\Delta m_3$, with $m_{h_1} =100$ GeV.}
+    \label{fig:Br(h2ee)}
+\end{figure}
 \subsection{Exclusion Rate}
 From \cite{Aruhrib2012Inert}, the exclusion rate $r$ is defined as:
 \begin{equation}
