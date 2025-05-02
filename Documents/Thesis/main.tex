@@ -44,6 +44,12 @@
   \verbatiminput{#1.wc}
 }
 
+\newcommand{\useto}{\mathrel{\text{ to }}}
+\newcommand{\gev}{\mathrel{\text{ GeV}}}
+\newcommand{\mhone}{m_{h_1}}
+\newcommand{\mhtwo}{m_{h_2}}
+\newcommand{\mhp}{m_{h_\pm}}
+
 \begin{document}
 \detailtexcount{main}
     
@@ -380,8 +386,7 @@ In addition, we can see Eqn. \ref{eqn:R} can be rewritten as:
 \begin{equation}
     \lambda_{345} < 2\left( \frac{m_{h_1}^2}{v^2} + \sqrt{\lambda_1\lambda_2}\right)
 \end{equation}
-This is another one of our constraints on $\lambda_{345}$.
-
+This is another one of our constraints on $\lambda_{345}$. To summarise, the bounds on $\lambda_{345}$ are: \todo{check l345 constraints, maybe a little wrong.}
 \subsubsection{Constraints from perturbativity and unitarity}
 As shown in \cite{Belyaev:2016lok}, where \cite{Aruhrib2012Inert} was considered, it was shown that $\lambda_{345}$ had to obey these constraints\improvement{add more info, too little!}:
 \begin{equation}
@@ -516,8 +521,8 @@ We apply cuts in the following order:
     \item Cut 7 - EWPT constraints (Eqn. \ref{eqn:S}, \ref{eqn:T})
     \item Cut 8 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
 \end{itemize}
-These cuts are strategically applied in this manner to clearly show the effects on the parameter space from each cut.
-\subsection{2-D Projection}
+These cuts are strategically applied in this manner to clearly show the effects on the parameter space from each cut. Variables are displayed in logarithmic scale for better visualisation, except for $\lambda_{345}$ that has negative bounds discussed in Eqn. \ref{eqn:l345_pert}.
+\subsection{2-D Analysis}
 \label{sec:2D-proj}
 We can first consider the relationship between $m_{h_1}$ and $\lambda_{345}$, shown in Fig. \ref{fig:l345_md1}.  
 
@@ -525,12 +530,41 @@ We can first consider the relationship between $m_{h_1}$ and $\lambda_{345}$, sh
     \centering
     \includegraphics[width=\linewidth]{big_plots_(low_dpi)/l345_against_MD1_Omegah2.pdf}
     \caption{Caption}
+    \label{fig:l345_md1}
+\end{figure}
+
+As the constraints are applied, one can observe 2 regions in Fig. \ref{fig:l345_md1} where $\lambda_{345}$, and $m_{h_1}$ is present in. The first region is where $\lambda_{345} \approx 10^{-10} \text{ to } 10^{-3}$ where $m_{h_1} \approx 60 \gev$. This is because this region is the region where $\mhone = \frac{m_H}{2}$, $H$ being the Higgs boson - this causes resonant annihilation via the Higgs. Recall that $\lambda_{345}$ controls the coupling between $h_1$ and the Higgs, which governs the annihilation of $h_1 h_1 \rightarrow \text{SM}$ particles. The other region is from $\lambda_{345} \approx 10^{-10} \text{ to } 10^{-1}$,  with a bigger range of $m_{h_1} \approx 300 \useto 1000 \gev$. This region is 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{big_plots_(low_dpi)/DM2_against_DMP_Omegah2.pdf}
+    \caption{Caption}
     \label{fig:enter-label}
 \end{figure}
 
-As the constraints are applied, one can observe 2 regions where $\lambda_{345}$, which is in line with what has been discovered in \cite{Belyaev:2018ext}, which found strong cross section of $100 - 1000 \text{ fb}$. This also gives a good narrowing of the mass of DM particle.
+The plots in Fig. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{big_plots_(low_dpi)/DM3_against_MD2_Omegah2.pdf}
+    \caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
 
-In Fig. \ref{fig:DM2_md1_main}, one can observe the effects of the constraints slowly shrinking the parameter space. The
+In Fig. \ref{fig:DM2_md1_main}, one can observe the effects of the constraints slowly shrinking the parameter space. \todo{discuss what CMB does to the data, the large gap in between, recombination, etc. should be able to find this written down somewhere}
+
+Considering other plots, for example - $\mhp$ against $\mhone$; after applying all constraints, we end up with the following parameter space:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{big_plots_(low_dpi)/MDP_against_MD1_Omegah2.pdf}
+    \caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+One might notice the relationship between $\mhp$ and $\mhone$, which is:
+\begin{equation}
+    \frac{\mhp}{\mhone} \approx 0.1
+\end{equation}
 
 \subsection{1-D Analysis}
 \label{1-D scan}
@@ -540,14 +574,14 @@ We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{plots/plot_MD1_l345+1.pdf}
-        \caption{Relic density against $m_{h_1}$, the case where $\Delta m_0 = 1$ GeV.}
+        \caption{}
         \label{fig:MD1_l345_1}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{plots/plot_MD1_l345+100.pdf}
-        \caption{Relic density against $m_{h_1}$, the case where $\Delta m_0 = 100$ GeV.}
+        \caption{}
         \label{fig:MD1_l345_100}
     \end{subfigure}
     \caption{Plots of relic density against $m_{h_1}$ for different mass differences (while keeping $m_{h_1}$ lightest). The red shaded region is the area excluded by LEP, and the red line the upper limit of DM relic density (Eqn. \ref{eqn:DM relic density value}).}
@@ -579,6 +613,7 @@ We can now calculate the branching ratios for DM decay at the collider level, st
         \label{fig:decay_h+}
     \end{subfigure}
     \caption{Feynman diagrams of possible paths for production of 2 lepton final states.}
+    \label{fig:feynmann_diag}
 \end{figure}
 
 For example, we consider the process $p\bar{p} \rightarrow h_1h_2$ where $ h_2\rightarrow h_1 e^+e$ via the $Z$ boson (see Fig. \ref{fig:decay_h2}). The branching ratio of the process is calculated like:
@@ -639,33 +674,33 @@ Likewise, there is the decay processes via $W$ boson,
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{branching_ratio_plots/Br__h__rightarrow_e_-__bar__nu__e_h_1____Delta_m____scale___Delta_m_3_.pdf}
+        \includegraphics[width=\textwidth]{branching_ratio_plots/hplus/Br__h____rightarrow_e____nu_e_h_1____Delta_m____scale___Delta_m_3_.pdf}
         \caption{}
-        \label{fig:Br(h2ee),Dm3_scale}
+        \label{fig:Br(h+en),Dm3_scale}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{branching_ratio_plots/__Delta_m_3___Delta_m____scale_Br__h_-__rightarrow_e_-__bar__nu__e_h_1__.pdf}
+        \includegraphics[width=\textwidth]{branching_ratio_plots/hplus/__Delta_m_3___Delta_m____scale_Br__h____rightarrow_e____nu_e_h_1__.pdf}
         \caption{}
-        \label{fig:Br(h2ee),Br_scale}
+        \label{fig:Br(h+en),Br_scale}
     \end{subfigure}
     \\
     \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{branching_ratio_plots/Br__h_-__rightarrow_e_-__bar__nu__e_h_1____Delta_m____scale___Delta_m_3_.pdf}
+        \includegraphics[width=\textwidth]{branching_ratio_plots/hminus/Br__h_-__rightarrow_e_-__bar__nu__e_h_1____Delta_m____scale___Delta_m_3_.pdf}
         \caption{}
-        \label{fig:Br(h2ee),Br_scale}
+        \label{fig:Br(h-en),Dm3_scale}
     \end{subfigure}
-        \hfill
+    \hfill
     \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{branching_ratio_plots/__Delta_m_3___Delta_m____scale_Br__h_-__rightarrow_e_-__bar__nu__e_h_1__.pdf}
+        \includegraphics[width=\textwidth]{branching_ratio_plots/hminus/__Delta_m_3___Delta_m____scale_Br__h_-__rightarrow_e_-__bar__nu__e_h_1__.pdf}
         \caption{}
-        \label{fig:Br(h2ee),Br_scale}
+        \label{fig:Br(h-en),Br_scale}
     \end{subfigure}
     \caption{Branching ratios of the process $h_2 \rightarrow h_1 e^+e$ for different mass differences $\Delta m_+$ and $\Delta m_3$, with $m_{h_1} =100$ GeV.}
     \label{fig:Br(h2ee)}
 \end{figure}
 \subsection{Exclusion Rate}
-From \cite{Aruhrib2012Inert}, the exclusion rate $r$ is defined as:
+From \cite{Belyaev_2022}, the exclusion rate $r$ is defined as:
 \begin{equation}
     r = \frac{\sigma_{DM}}{\sigma_{95}}
 \end{equation}
@@ -692,6 +727,11 @@ Keeping $\alpha$ the same, one can derive a relationship for the new limit, $\si
     \end{split}
 \end{equation}
 
+Referring to table V, in Appendix F of \cite{Belyaev_2022}, one can find limit of the cross sections at different combinations of mass using new values of the collider luminosity. The value of $\mathcal{L}_0$ used is $39.5 \text{ fb} ^{-1}$, according to data from Table I of the same cited paper. The new luminosity value will be the LHC's predicted luminosity of $3000 \text{ fb} ^{–1}$, an ambitious number.
+
+
+\subsection{Finding Cross Secitons}
+Using \verb|CalcHEP| batch process, it is easy to calculate the cross sections of DM process. Defining processes $pp\rightarrow h_1h_2$ and $pp \rightarrow h_+h_-$, which are the processes in Fig. \ref{fig:feynmann_diag}. The same values of DM parameters will be used as in  \cite{Belyaev_2022}, where values of $m_{h_1}$ and $\Delta m_+$ are changed for each value of $\Delta m_0$, where $\Delta m_0 = 1, \text{ }10,\text{ } 100$. It is then possible to see excluded values of cross sections, and calculate the exclusion values.
 \section{Conclusion}
 \label{sec:conclusion}
 
