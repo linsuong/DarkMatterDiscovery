@@ -37,7 +37,7 @@ def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
     label3 = label_dict.get(scalevar, scalevar)
 
     # Start plotting
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(4, 3))
     if scale:
         sc = plt.scatter(
             filtered_df[xvar], filtered_df[yvar],
@@ -101,11 +101,12 @@ def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
     else:   
         #plt.show() 
         plt.savefig(f'single_plots/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
-        
+    
+    
     print(f'figure {yvar}_against_{xvar} saved')
     plt.close("all")
 
-plot_cut(df, 'MD1', 'l345', 'Omegah2', xlog = False, ylog = False, scale = False, limits = False)
+#plot_cut(df, 'MD1', 'MD2', 'Omegah2', xlog = False, ylog = False, scale = True, limits = False)
 
 
 elements = ['MD1', 'MD2', 'MDP', 'DMP', 'DM2', 'DM3', 'l345']
@@ -113,4 +114,4 @@ pairs = [list(p) for p in itertools.permutations(elements, 2)]
 
 for x, y in pairs:
     plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False, scale = False, limits = True)
-    #plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False)
+    plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False)

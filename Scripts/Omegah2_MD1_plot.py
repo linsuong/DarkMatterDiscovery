@@ -73,10 +73,10 @@ for filepath in files:
     l345_value = df['l345'][1]
     
     if l345_value > 0:   
-        line, = plt.plot(df['MD1'], df['Omegah2'], '-', linewidth=1, rasterized=False,
+        line, = plt.plot(df['MD1'], df['Omegah2'], '-', linewidth=2, rasterized=False,
                          label=f'$\lambda_{{345}} = {l345_value}$')
     else:
-        line, = plt.plot(df['MD1'], df['Omegah2'], '--', linewidth=1, rasterized=False,
+        line, = plt.plot(df['MD1'], df['Omegah2'], '--', linewidth=2, rasterized=False,
                          label=f'$\lambda_{{345}} = {l345_value}$')
     
     lines.append(line)
@@ -86,21 +86,24 @@ sorted_indices = [labels.index(val) for val in desired_order if val in labels]
 sorted_lines = [lines[i] for i in sorted_indices]
 sorted_labels = [f'$\lambda_{{345}} = {desired_order[i]}$' for i in range(len(sorted_indices))]
 
-plt.text(x = 400, y = 0.17, s = '$\Omega h^2 \\approx 0.119$', color = 'red')
+plt.text(x = 150, y = 0.17, s = '$\Omega h^2 \\approx 0.119$', color = 'red', fontsize = 20)
 plt.axhline(y=0.11933, color='r', linestyle='dashdot', label='$\Omega h^2 = 0.12024$')
 
 plt.xscale('log')
 plt.yscale('log')
 plt.xlim(10, 10e2)
-plt.ylim(10e-7, 10e1)
-plt.xlabel('$m_{h_1}$ (GeV)', fontsize=12)
-plt.ylabel('Relic Density, $\\Omega h^2$', fontsize=12)
-plt.title('Plot where $m_{h_2} = m_{h_\pm} = m_{h_1}$ + 100 GeV', fontsize=14)
+plt.ylim(10e-7, 10e3)
+plt.xticks(fontsize=20)
+plt.yticks(fontsize=20)
+plt.xlabel('$m_{h_1}$ (GeV)', fontsize=20)
+plt.ylabel('Relic Density, $\\Omega h^2$', fontsize=20)
+plt.title('$m_{h_2} = m_{h_\pm} = m_{h_1}$ + 100 GeV', fontsize=20)
 plt.grid(True, linestyle='--', alpha=0.7)
-plt.gca().add_patch(Rectangle((0, 10e-7), 45, 10e1, color='red', alpha=0.2))
+plt.gca().add_patch(Rectangle((0, 10e-7), 45, 10e5, color='red', alpha=0.2))
 plt.tight_layout()
+#plt.clf()
 
-plt.legend(sorted_lines, sorted_labels, loc='upper right', prop={'size': 8}, ncol=2)
+#plt.legend(sorted_lines, sorted_labels, prop={'size': 15}, ncol=3, bbox_to_anchor = (1.15, -0.2))
 
-plt.savefig("plots/plot_MD1_l345+100.pdf", format='pdf')
-plt.show()
+plt.savefig("plots/plot_MD1_l345+100(no_legend).pdf", bbox_inches = 'tight', dpi = 80)
+#plt.show()
