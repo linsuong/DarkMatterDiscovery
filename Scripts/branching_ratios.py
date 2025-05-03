@@ -8,12 +8,16 @@ import re
 def sanitize_filename(name):
     return re.sub(r'[^a-zA-Z0-9_\-]', '_', name)
 
-paths = ["Work/CalcHEP_Scan_Z_MD1_100GeV/scan2.dat", "Work/CalcHEP_Scan_W-_MD1_100GeV/scan2.dat", "Work/CalcHEP_Scan_W+_MD1_100GeV/scan2.dat"]
+paths = ["Work/CalcHEP_Scan_W+_MD1_100GeV/scan2.dat", "Work/CalcHEP_Scan_W-_MD1_100GeV/scan2.dat", "Work/CalcHEP_Scan_W+_MD1_100GeV/scan2.dat"]
 
 path = paths[2]
 print(f"processing {path}")
 df = pd.read_csv(path, sep=r'\s+', low_memory= False)
 
+df['MDP'] = df['DMP'] + df['MD1']
+df['MD2'] = df['DM3'] + df['DMP'] + df['MD1']
+df['DM2'] = df['DM3'] + df['DMP']
+    
 params_dict = {
     'MD1': r'$m_{h1}$',
     'MD2': r'$m_{h2}$',
@@ -116,15 +120,19 @@ def plotfig(df1, df2, df3, xlog=False, ylog=False, label_dict=params_dict):
     safe_label2 = sanitize_filename(label2)
     safe_label3 = sanitize_filename(label3)
     
+    #plt.show()
+    
     plt.savefig(f'branching_ratio_plots_(low_dpi)/hplus/{safe_label2}{safe_label1}_scale_{safe_label3}.pdf', 
                 bbox_inches='tight', dpi = 80)
-    #plt.show()
+    
     print(f'plot {safe_label2}_{safe_label1} saved')
     plt.close()
 
+plotfig('MD2', 'MDP', 'Br(h+->e+nu)_total')
+"""
 for i in range(len(branching_ratios)):
     print(i)
     plotfig('DMP', branching_ratios[i], 'DM3')
     plotfig('DM3', branching_ratios[i], 'DMP')
     plotfig('DM3', 'DMP', branching_ratios[i])
-    plotfig('DMP', 'DM3',branching_ratios[i])
+    plotfig('DMP', 'DM3',branching_ratios[i])"""
