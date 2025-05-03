@@ -46,6 +46,7 @@
 
 \newcommand{\useto}{\mathrel{\text{ to }}}
 \newcommand{\gev}{\mathrel{\text{ GeV}}}
+\newcommand{\gevs}{\mathrel{\text{ GeV }}}
 \newcommand{\mhone}{m_{h_1}}
 \newcommand{\mhtwo}{m_{h_2}}
 \newcommand{\mhp}{m_{h_\pm}}
@@ -505,6 +506,7 @@ For data interpretation purposes, and since \verb|micrOMEGAS| software calculate
     \label{eqn:DM relic density value}
 \end{equation}
 
+\newpage
 \section{Scanning of Parameter Space}
 \label{sec:results}
 \subsection{5-D Random Scan}
@@ -522,48 +524,82 @@ We apply cuts in the following order:
     \item Cut 8 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
 \end{itemize}
 These cuts are strategically applied in this manner to clearly show the effects on the parameter space from each cut. Variables are displayed in logarithmic scale for better visualisation, except for $\lambda_{345}$ that has negative bounds discussed in Eqn. \ref{eqn:l345_pert}.
+\newpage
 \subsection{2-D Analysis}
 \label{sec:2D-proj}
-We can first consider the relationship between $m_{h_1}$ and $\lambda_{345}$, shown in Fig. \ref{fig:l345_md1}.  
+First, one can consider the relationship between the DM particle masses, $\mhone$ and $\mhtwo$, in Fig. \ref{fig:MD2_against_MD1} below: 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{big_plots_(low_dpi)/MD2_against_MD1_Omegah2.pdf}
+    \caption{Effect on cuts on plots of $\mhone$ and $\mhtwo$.}
+    \label{fig:MD2_against_MD1}
+\end{figure}
+This plot clearly shows the effect each constraint has on the dataset:
+\begin{itemize}
+    \item Across the constraints, there is a region where viable masses of $\mhone$ and $\mhtwo$ lie close to the diagonal line $\mhone = \mhtwo$. This is known as the \textbf{co-annihilation region}, where the mass splitting $\Delta m_1 $ is small, typically $\Delta m_1 \leq 10 \gev$. In this region, the heavier inert scalar $h_2$ remains sufficiently populated during freeze-out, allowing additional processes such as $h_1 h_2 \rightarrow \text{SM particles}$ and $h_2 h_2 \rightarrow \text{SM particles}$ to contribute to the total annihilation cross section. These co-annihilation processes enhance the depletion of $h_1$, leading to a reduction in the relic dark matter abundance. The presence of this narrow diagonal band in the $m_{h_1}$–$m_{h_2}$ plane is therefore crucial for satisfying the observed relic density in parts of the parameter space where $h_1 h_1$ annihilation alone would be insufficient.
+    \item After applying LEP constraints, the DM region is significantly reduced to mast $\mhtwo > 10^2 \gev$ - excluding the "tail" around $\mhone ,\mhtwo = 10^2 \gev$. 
+    \item After applying CMB constraints, the region removed has to do with \todo{discuss what CMB does to the data, the large gap in between, recombination, etc. should be able to find this written down somewhere}\todo{recombination time!}
+    \item There are 2 mass regions in the final plot where all constraints are applied - a "high mass" region, and a low mass region.
+    \item At $\mhone \approx 70 \gev$ (low mass region), one observes valid DM parameter space. There is a Higgs portal as $\mhone \approx \frac{m_H}{2}$ - this causes resonant annihilation via the Higgs. Interestingly it is here (and to the left) that one finds a larger range of $\Omega h^2$, showing regions of DM over-abundance and under-abundance. As \todo{explain why? bigger mass splitting = ? why is only the points where mh1 = mh2 allowed?}
+    \item There is also the remaining high mass region, which is due to the fact that \todo{why is this high mass region still surviving?}
+\end{itemize}
 
+We consider the relationship between other plots - an important plot one can consider is the plot of $\lambda_{345}$ against $\mhone$.  
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{big_plots_(low_dpi)/l345_against_MD1_Omegah2.pdf}
-    \caption{Caption}
+    \caption{Effect on cuts on plots of $\lambda_{345}$ against $\mhone$}
     \label{fig:l345_md1}
 \end{figure}
-
-As the constraints are applied, one can observe 2 regions in Fig. \ref{fig:l345_md1} where $\lambda_{345}$, and $m_{h_1}$ is present in. The first region is where $\lambda_{345} \approx 10^{-10} \text{ to } 10^{-3}$ where $m_{h_1} \approx 60 \gev$. This is because this region is the region where $\mhone = \frac{m_H}{2}$, $H$ being the Higgs boson - this causes resonant annihilation via the Higgs. Recall that $\lambda_{345}$ controls the coupling between $h_1$ and the Higgs, which governs the annihilation of $h_1 h_1 \rightarrow \text{SM}$ particles. The other region is from $\lambda_{345} \approx 10^{-10} \text{ to } 10^{-1}$,  with a bigger range of $m_{h_1} \approx 300 \useto 1000 \gev$. This region is 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{big_plots_(low_dpi)/DM2_against_DMP_Omegah2.pdf}
-    \caption{Caption}
-    \label{fig:enter-label}
-\end{figure}
-
-The plots in Fig. 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{big_plots_(low_dpi)/DM3_against_MD2_Omegah2.pdf}
-    \caption{Caption}
-    \label{fig:enter-label}
-\end{figure}
-
-In Fig. \ref{fig:DM2_md1_main}, one can observe the effects of the constraints slowly shrinking the parameter space. \todo{discuss what CMB does to the data, the large gap in between, recombination, etc. should be able to find this written down somewhere}
-
-Considering other plots, for example - $\mhp$ against $\mhone$; after applying all constraints, we end up with the following parameter space:
+\begin{itemize}
+    \item Similarly, the region of the Higgs portal is also very obvious here - two regions of masses, with one low region with $ \leq \lambda_{345} \leq $ at $\mhone \approx \frac{m_H}{2}$. 
+    \item 
+\end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{big_plots_(low_dpi)/MDP_against_MD1_Omegah2.pdf}
-    \caption{Caption}
-    \label{fig:enter-label}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{single_plots/l345_against_MD1_Omegah2.pdf}
+        \caption{Region of parameter space allowed in the $(\mhone,\lambda_{345})$ plane.}
+        \label{fig:MD1_l345_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{single_plots_(small_range)/l345_against_MD1_Omegah2.pdf}
+        \caption{Zoomed in plot of the region of the Higgs portal.}
+        \label{fig:label}
+    \end{subfigure}
+    \caption{}
 \end{figure}
 
-One might notice the relationship between $\mhp$ and $\mhone$, which is:
+In Fig. \ref{fig:DM2_md1_main}, one can observe the effects of the constraints slowly shrinking the parameter space. 
+
+Considering other plots, for example - $\mhp$ against $\mhone$; after applying all constraints, we end up with the following parameter space. For $\lambda_2 = 1$:
 \begin{equation}
-    \frac{\mhp}{\mhone} \approx 0.1
+    {
+        \begin{split}
+            \\ \text{low mass region:}& 
+            \\ 60.5 \gevs \leq &\mhone \leq 75.5 \gevs
+            \\  \mhtwo &\geq 130 \gev
+            \\  \Delta m_1 & \geq 50 \gev
+            \\ 8 \gevs\leq &\Delta m_\pm \leq 13\gev
+            \\ -1 \times 10 ^{-3}\leq &\lambda_{345} \leq 5 \times 10^-5
+        \end{split}
+        }
+        \qquad
+    {
+        \begin{split}
+            \\ \text{high mass region:}&
+            \\   \mhone &\geq 450 \gev
+            \\ \mhtwo &\geq 450 \gev
+            \\ \implies &\mhone = \mhtwo
+            \\  \Delta m_1 & = 0 \gev
+            \\0 \gevs\leq &\Delta m_\pm \leq 10\gev
+            \\ -0.03 \leq &\lambda_{345} \leq 0.04
+        \end{split}
+    \text{ }}
 \end{equation}
 
 \subsection{1-D Analysis}
@@ -683,18 +719,6 @@ Likewise, there is the decay processes via $W$ boson,
         \includegraphics[width=\textwidth]{branching_ratio_plots/hplus/__Delta_m_3___Delta_m____scale_Br__h____rightarrow_e____nu_e_h_1__.pdf}
         \caption{}
         \label{fig:Br(h+en),Br_scale}
-    \end{subfigure}
-    \\
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{branching_ratio_plots/hminus/Br__h_-__rightarrow_e_-__bar__nu__e_h_1____Delta_m____scale___Delta_m_3_.pdf}
-        \caption{}
-        \label{fig:Br(h-en),Dm3_scale}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{branching_ratio_plots/hminus/__Delta_m_3___Delta_m____scale_Br__h_-__rightarrow_e_-__bar__nu__e_h_1__.pdf}
-        \caption{}
-        \label{fig:Br(h-en),Br_scale}
     \end{subfigure}
     \caption{Branching ratios of the process $h_2 \rightarrow h_1 e^+e$ for different mass differences $\Delta m_+$ and $\Delta m_3$, with $m_{h_1} =100$ GeV.}
     \label{fig:Br(h2ee)}
