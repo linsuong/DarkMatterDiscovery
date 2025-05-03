@@ -21,7 +21,11 @@ params_dict = {
     'l345' : r'$\lambda_{345}$',
     'DM2' : r'$\Delta m_1$', #mass diff mh2 - mh1
     'DMP' : r'$\Delta m_+$', #mass diff mh+ - mh2
+<<<<<<< HEAD
     'DM3' : r'$\Delta m_3$' #mass diff mh2 - mh+
+=======
+    'DM3' : r'$\Delta m_+$' #mass diff mh2 - mh+
+>>>>>>> 744fba5 (batch_file reorganise, new dataset)
 }
 
 cuts_dict = {

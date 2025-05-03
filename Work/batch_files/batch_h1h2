@@ -12,14 +12,14 @@ pdf2:      PDT:cteq6l1(proton)
 p1:        6800
 p2:        6800
  
-Parameter: DM3=1
+Parameter: DM3=10
  
-#Run parameter: Mh1
-#Run begin:     0
-#Run step size: 10
-#Run n steps:   10
+Run parameter: Mh1
+Run begin:     0
+Run step size: 10
+Run n steps:   10
 
-Parameter: Mh1 = 1
+#Parameter: Mh1 = 1
 
 Run parameter: DMP
 Run begin:     10
@@ -27,8 +27,8 @@ Run step size: 10
 Run n steps:   12
 
 
-#Filename:                        pp-h1h2_10_step_increment
-Filename:                        pp-h1h2_mh1_1
+Filename:                        pp-h1h2_10_step_increment
+#Filename:                        pp-h1h2_mh1_1
 
 NTuple:                          False
 Cleanup:                         False
