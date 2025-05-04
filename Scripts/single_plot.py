@@ -8,7 +8,7 @@ plt.close('all')
 
 plt.rcParams['font.serif'] = ['Times New Roman'] 
 
-file_path = 'scans/5-D_scans/combined.dat'
+file_path = 'scan_shrink.dat'
 
 df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
 
@@ -96,7 +96,7 @@ def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
             plt.xlim(40, 100)  
         
         #plt.show()
-        plt.savefig(f'single_plots_(small_range)/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
+        plt.savefig(f'single_plots_(shrink)/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
     
     else:   
         #plt.show() 

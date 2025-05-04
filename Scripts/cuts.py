@@ -38,6 +38,14 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
     dataframe['x1'] = dataframe['MD1']/dataframe['MDP']
     dataframe['x2'] = dataframe['MD2']/dataframe['MDP']
     
+    cutZero = dataframe['MD1'] < 0
+    cutOne = dataframe['MD2'] < 0
+    cutTwo = dataframe['MDP'] < 0
+    
+    initialCut = cutZero & cutOne
+    dataframeTest = dataframe[initialCut]
+    print(dataframeTest)
+    
     # Constants
     alpha = 1 / 137  # Fine structure constant
     nu = 246  # VEV in GeV
