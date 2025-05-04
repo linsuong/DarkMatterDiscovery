@@ -25,7 +25,7 @@ params_dict = {
 
 
 def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
-                   limits = False, label_dict=params_dict, cuts_func=cuts.cuts):
+                   limits = False, limits2 = False, label_dict=params_dict, cuts_func=cuts.cuts):
 
     # Apply cuts
     filtered_df = cuts_func(df, cut1 = True,cut2  = True, cut3  = True, cut4  = True, 
@@ -42,19 +42,19 @@ def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
         sc = plt.scatter(
             filtered_df[xvar], filtered_df[yvar],
             c=filtered_df[scalevar],
-            s=5, cmap='plasma',
+            s=10, cmap='plasma',
             norm=LogNorm(vmin=filtered_df[scalevar].min(), vmax=filtered_df[scalevar].max()),
             rasterized=True
         )
         
         cbar = plt.colorbar(sc)
-        cbar.set_label(label3, fontsize=18)
+        cbar.set_label(label3, fontsize=20)
         cbar.ax.tick_params(labelsize=20)
 
     else: 
         sc = plt.scatter(
             filtered_df[xvar], filtered_df[yvar], 
-            s = 5, c = 'red', rasterized=True)
+            s = 10, c = 'red', rasterized=True)
 
     if xlog:
         plt.xscale('log')
@@ -67,10 +67,10 @@ def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
     
     plt.tight_layout()
 
-    plt.xlabel(label1, fontsize=20)
-    plt.ylabel(label2, fontsize=20)
-    plt.xticks(fontsize=20)
-    plt.yticks(fontsize=20)
+    plt.xlabel(label1, fontsize=25)
+    plt.ylabel(label2, fontsize=25)
+    plt.xticks(fontsize=25)
+    plt.yticks(fontsize=25)
     
     if limits:
         if xvar in ['MD1', 'MD2']:
@@ -96,21 +96,43 @@ def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
             plt.xlim(40, 100)  
         
         #plt.show()
+<<<<<<< HEAD
         plt.savefig(f'single_plots_(shrink)/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
     
     else:   
+=======
+        plt.savefig(f'single_plots_(small_range)/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
+
+    if limits2:
+        if xvar in ['MD1', 'MD2']:
+            plt.xlim(left = 425)
+
+        if yvar in ['MD1', 'MD2']:
+            plt.ylim(bottom = 425)
+            
+        if yvar in ['MD1'] and xvar in ['DM2']:
+            plt.xlim(-5, 5)
+            
+        if yvar in ['MD1'] and xvar in ['DMP']:
+            plt.xlim(-5, 10)
+            
+        plt.savefig(f'single_plots_(big_range)/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
+            
+    if limits == False and limits2 == False:   
+>>>>>>> 27a133560f1962cfaf939c5978d5121ea7f58624
         #plt.show() 
         plt.savefig(f'single_plots/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
-        
+    
+    
     print(f'figure {yvar}_against_{xvar} saved')
     plt.close("all")
 
-plot_cut(df, 'MD1', 'l345', 'Omegah2', xlog = False, ylog = False, scale = False, limits = False)
+#plot_cut(df, 'MD1', 'MD2', 'Omegah2', xlog = False, ylog = False, scale = True, limits = False)
 
 
 elements = ['MD1', 'MD2', 'MDP', 'DMP', 'DM2', 'DM3', 'l345']
 pairs = [list(p) for p in itertools.permutations(elements, 2)]
 
 for x, y in pairs:
-    plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False, scale = False, limits = True)
-    #plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False)
+    #plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False, scale = False, limits = True)
+    plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False, scale = False, limits2 = True)
