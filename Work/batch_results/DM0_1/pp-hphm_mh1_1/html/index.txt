@@ -1,0 +1,9 @@
+
+	CalcHEP Batch Details
+
+	Calculating Cross Sections
+
+		Finished	Time(hr)
+Symbolic	17/17		0.00
+sigma		12/12		0.02
+

@@ -1,0 +1,19 @@
+	CalcHEP Numerical Details
+
+	Calculating Cross Sections
+
+Scans               sigma (fb)     Running   Finished   Time (hr)   N events
+DMP10                                0/13     13/13     0.01        
+DMP20                                0/13     13/13     0.01        
+DMP30                                0/13     13/13     0.01        
+DMP40                                0/13     13/13     0.01        
+DMP50                                0/13     13/13     0.01        
+DMP60                                0/13     13/13     0.01        
+DMP70                                0/13     13/13     0.01        
+DMP80                                0/13     13/13     0.01        
+DMP90                                0/13     13/13     0.01        
+DMP100                               0/13     13/13     0.01        
+DMP110                               0/13     13/13     0.01        
+DMP120                               0/13     13/13     0.01        
+                                                        0.13
+
