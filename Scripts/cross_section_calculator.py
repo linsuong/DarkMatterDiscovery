@@ -1,69 +1,97 @@
-import pandas as pd 
-import numpy as np 
+import pandas as pd
+import numpy as np
 
-file = "cross_sections/DM_100/cs_widths.dat"
-output_file = "cross_sections/DM_100/cs_calculated.dat"
+# --- File paths ---
+cs_files = {
+    "DM_1": "cross_sections/DM_1/cs_widths.dat",
+    "DM_10": "cross_sections/DM_10/cs_widths.dat",
+    "DM_100": "cross_sections/DM_100/cs_widths.dat"
+}
 
-df = pd.read_csv(file, sep=r'\s+', low_memory= False)
+branching_files = {
+    "Z": 'Work/Z_fixed/scan2.dat',
+    "W+": 'Work/W+_fixed/scan2.dat',
+    "W-": 'Work/W-_fixed/scan2.dat'
+}
 
-decay_cols = [
+# --- Valid scanned mass values ---
+valid_MD1 = [1, 10, 20, 30, 40, 50, 60, 70, 80]
+valid_DMP = [5, 20, 40, 60, 80, 120]
+valid_DM3 = [1, 10, 100]
+
+# --- Load cross section data and combine ---
+cs_dfs = []
+for label, path in cs_files.items():
+    df = pd.read_csv(path, sep=r'\s+', low_memory=False)
+    df["DM_label"] = label
+    cs_dfs.append(df)
+
+cs_all = pd.concat(cs_dfs, ignore_index=True)
+
+# --- Filter to keep only scanned points ---
+cs_all = cs_all[
+    cs_all['MD1'].isin(valid_MD1) &
+    cs_all['DMP'].isin(valid_DMP) &
+    cs_all['DM3'].isin(valid_DM3)
+].copy()
+
+
+# Keep only relevant columns and drop duplicates
+cs_all = cs_all.drop_duplicates()
+
+# --- Load branching ratio data ---
+dfZ = pd.read_csv(branching_files["Z"], sep=r'\s+', low_memory=False)
+dfWm = pd.read_csv(branching_files["W-"], sep=r'\s+', low_memory=False)
+dfWp = pd.read_csv(branching_files["W+"], sep=r'\s+', low_memory=False)
+
+# --- Compute total BRs ---
+dfZ['Br(h2->e+e-h1)_total'] = dfZ["Br(Z->e+e-)"] * dfZ["Br(h2->Zh1)"] + dfZ['Br(h2->e+e-h1)']
+dfZ['Br(h2->mu+mu-h1)_total'] = dfZ["Br(Z->mu+mu-)"] * dfZ["Br(h2->Zh1)"] + dfZ['Br(h2->mu+mu-h1)']
+dfZ['Br(h2->tau+tau-h1)_total'] = dfZ["Br(Z->tau+tau-)"] * dfZ["Br(h2->Zh1)"] + dfZ['Br(h2->tau+tau-h1)']
+dfZ['Br(h2->n+n-h1)_total'] = dfZ["Br(Z->n+n-)"] * dfZ["Br(h2->Zh1)"] + dfZ['Br(h2->n+n-h1)']
+
+dfWm['Br(h-->e-nu)_total'] = dfWm["Br(W-->e-nu)"] * dfWm["Br(h-->W-h1)"] + dfWm['Br(h-->e-nu)']
+dfWm['Br(h-->mu-nu)_total'] = dfWm["Br(W-->mu-nu)"] * dfWm["Br(h-->W-h1)"] + dfWm['Br(h-->mu-nu)']
+dfWm['Br(h-->tau-nu)_total'] = dfWm["Br(W-->tau-nu)"] * dfWm["Br(h-->W-h1)"] + dfWm['Br(h-->tau-nu)']
+
+dfWp['Br(h+->e+nu)_total'] = dfWp["Br(W+->e+nu)"] * dfWp["Br(h+->W+h1)"] + dfWp['Br(h+->e+nu)']
+dfWp['Br(h+->mu+nu)_total'] = dfWp["Br(W+->mu+nu)"] * dfWp["Br(h+->W+h1)"] + dfWp['Br(h+->mu+nu)']
+dfWp['Br(h+->tau+nu)_total'] = dfWp["Br(W+->tau+nu)"] * dfWp["Br(h+->W+h1)"] + dfWp['Br(h+->tau+nu)']
+
+# --- Keep only relevant columns and remove duplicates ---
+#dfZ = dfZ[['MD1', 'DMP', 'DM3', 'Br(h2->e+e-h1)_total', 'Br(h2->mu+mu-h1)_total', 'Br(h2->tau+tau-h1)_total', 'Br(h2->n+n-h1)_total']].drop_duplicates()
+#dfWm = dfWm[['MD1', 'DMP', 'DM3', 'Br(h-->e-nu)_total', 'Br(h-->mu-nu)_total', 'Br(h-->tau-nu)_total']].drop_duplicates()
+#dfWp = dfWp[['MD1', 'DMP', 'DM3', 'Br(h+->e+nu)_total', 'Br(h+->mu+nu)_total', 'Br(h+->tau+nu)_total']].drop_duplicates()
+
+# --- Merge all data ---
+merged = cs_all.merge(dfZ, on=["MD1", "DMP", "DM3"], how="left") \
+               .merge(dfWm, on=["MD1", "DMP", "DM3"], how="left") \
+               .merge(dfWp, on=["MD1", "DMP", "DM3"], how="left")
+
+# Optional: fill NaNs with 0 or keep as NaN
+merged = merged.fillna(0)
+
+columns_to_remove = [
+    # Original columns to remove
     '~h2->e1,E1,~h1', '~h2->e2,E2,~h1', '~h2->e3,E3,~h1',
     '~h-->N1,e1,~h1', '~h-->N2,e2,~h1', '~h-->N3,e3,~h1',
-    '~h+->n1,E1,~h1', '~h+->n2,E2,~h1', '~h+->n3,E3,~h1'
+    '~h+->n1,E1,~h1', '~h+->n2,E2,~h1', '~h+->n3,E3,~h1',
+    'DM_label', 'MD2_x',
+    'MD2', 'Br(h+->e+nu)', 'Br(h+->mu+nu)', 'Br(h+->tau+nu)',
+    'Br(h+->W+h1)', 'Br(W+->e+nu)', 'Br(W+->mu+nu)', 'Br(W+->tau+nu)',
+    'Br(h2->e+e-h1)', 'Br(h2->mu+mu-h1)', 'Br(h2->tau+tau-h1)',
+    'Br(h2->n+n-h1)', 'Br(h2->Zh1)', 'Br(Z->e+e-)', 'Br(Z->mu+mu-)',
+    'Br(Z->tau+tau-)', 'Br(Z->n+n-)',
+    'MD2_y', 'Br(h-->e-nu)', 'Br(h-->mu-nu)', 'Br(h-->tau-nu)',
+    'Br(h-->W-h1)', 'Br(W-->e-nu)', 'Br(W-->mu-nu)', 'Br(W-->tau-nu)', "Br(h2->n+n-h1)_total"
 ]
+# Drop the unwanted columns
+merged = merged.drop(columns=columns_to_remove, errors='ignore')  # 'errors=ignore' prevents errors if a column doesn't exist
 
-df['totalWidth'] = df[decay_cols].sum(axis=1)
+# --- Sort by DM3 and save ---
+merged = merged.sort_values(by='DM3').reset_index(drop=True)
+merged.to_csv("cross_sections/combined.dat", index=False, sep='\t')
 
-decayh2 = ['~h2->e1,E1,~h1', '~h2->e2,E2,~h1', '~h2->e3,E3,~h1']
-decayhp = ['~h-->N1,e1,~h1', '~h-->N2,e2,~h1', '~h-->N3,e3,~h1']
-decayhm = ['~h+->n1,E1,~h1', '~h+->n2,E2,~h1', '~h+->n3,E3,~h1']
+print("✅ Combined file saved as cross_sections/combined.dat (unwanted columns removed)")
 
-# Calculate branching ratios (BR) for each process
-df['brh2'] = (df['~h2->e1,E1,~h1'] / df['totalWidth'] + 
-              df['~h2->e2,E2,~h1'] / df['totalWidth'] + 
-              df['~h2->e3,E3,~h1'] / df['totalWidth'])
-
-df['brhp'] = (df['~h-->N1,e1,~h1'] / df['totalWidth'] + 
-              df['~h-->N2,e2,~h1'] / df['totalWidth'] + 
-              df['~h-->N3,e3,~h1'] / df['totalWidth'])
-
-df['brhm'] = (df['~h+->n1,E1,~h1'] / df['totalWidth'] + 
-              df['~h+->n2,E2,~h1'] / df['totalWidth'] + 
-              df['~h+->n3,E3,~h1'] / df['totalWidth'])
-
-'''
-# H2 contribution (where the decay widths are not NaN)
-mask_h2 = df[decayh2].notna().all(axis=1)
-df['brh2_weighted'] = np.where(mask_h2, df['brh2'] * df['CrossSection_fb'], np.nan)
-
-# HP contribution (where the decay widths are not NaN)
-mask_hp = df[decayhp].notna().all(axis=1)
-df['brhp_weighted'] = np.where(mask_hp, df['brhp'] * df['CrossSection_fb'], np.nan)
-
-# HM contribution (where the decay widths are not NaN)
-mask_hm = df[decayhm].notna().all(axis=1)
-df['brhm_weighted'] = np.where(mask_hm, df['brhm'] * df['brhp'] * df['CrossSection_fb'], np.nan)
-'''
-
-df['cs_total'] = df[['CrossSection_fb', 'brh2', 'brhp', 'brhm']].prod(axis=1)
-
-#brhphm = calcBr(df, widthshphm, 'widthsTotalhphm', 'hphm')
-
-
-df.to_csv(output_file, sep="\t", index=False, float_format="%.6e", na_rep="NaN")
-
-print(f"Data written to {output_file}")
-
-"""
-df['total_CS_hphm'] = df['CS_hphm'] * df['Br_hphm']
-
-#total cross section:
-df['total_CS'] = (2 * df['total_CS_hphm']) + df['total_CS_h1h2']
-
-def calcBr(df, widths, total_width, process):
-    total_br = 0
-    for width in widths:
-        br_col = f'BR_{width}'
-        df[br_col] = df[width] / df[total_width]
-        total_br += df[br_col]
-    df[f'totalBr_{process}'] = total_br"""
+print(merged)

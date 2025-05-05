@@ -4,14 +4,23 @@ import pandas as pd
 import numpy as np
 
 # === Configuration ===
+"""
 input_dirs = [
-            'Work/batch_results/DM0_100/pp-h1h2_10_step_increment/html/runs/',
-             'Work/batch_results/DM0_100/pp-h1h2_mh1_1/html/runs/',
-             'Work/batch_results/DM0_100/pp-h+h-_10_step_increment/html/runs/',
-             'Work/batch_results/DM0_100/pp-h+h-_mh1_1/html/runs/'
+            'Work/batch_results/DM0_10/pp-h1h2_10_step_increment/html/runs/',
+             'Work/batch_results/DM0_10/pp-h1h2_mh1_1/html/runs/',
+             'Work/batch_results/DM0_10/pp-h+h-_10_step_increment/html/runs/',
+             'Work/batch_results/DM0_10/pp-h+h-_mh1_1/html/runs/'
+             ]
+"""
+
+input_dirs = [
+            'Work/batch_results/DM0_1/pp-h1h2_10_step_increment/html/runs/',
+             'Work/batch_results/DM0_1/pp-h1h2_mh1_1/html/runs/',
+             'Work/batch_results/DM0_1/pp-hphm_10_step_increment/html/runs/',
+             'Work/batch_results/DM0_1/pp-hphm_mh1_1/html/runs/'
              ]
 
-output_file = "cross_sections/DM_100/cs_widths.dat"
+output_file = "cross_sections/DM_1/cs_widths.dat"
 
 data = []
 
@@ -36,7 +45,7 @@ for input_dir in input_dirs:
         Mh, DMP = None, None
 
         # Try full match: Mh10DMP20
-        match = re.search(r"Mh(\d+)DMP(\d+)", filename)
+        match = re.search(r"Mh1(\d+)DMP(\d+)", filename)
         if match:
             Mh = int(match.group(1))
             DMP = int(match.group(2))
@@ -80,7 +89,7 @@ for input_dir in input_dirs:
                             pass
 
         # Combine data
-        row = {'Mh': Mh, 'DMP': DMP, 'CrossSection_fb': sigma}
+        row = {'MD1': Mh, 'DMP': DMP, 'DM3': 1, 'CrossSection_fb': sigma}
         row.update(widths)
         data.append(row)
 

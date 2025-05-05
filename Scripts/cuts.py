@@ -10,7 +10,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
         raise Exception('please choose for a strict or relaxed bound on relic density')
     
     MW = 80.377
-    MZ = 91.19
+    MZ = 91.19                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     l1 = 0.129
     v = 246
         
