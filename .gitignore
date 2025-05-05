@@ -61,6 +61,21 @@ Work/CalcHEP_Scan_Z_MD1_100GeV/**
 !Work/CalcHEP_Scan_Z_MD1_100GeV/scan2.c
 !Work/CalcHEP_Scan_Z_MD1_100GeV/scan2.dat
 
+!Work/W-_fixed/
+Work/W-_fixed/**
+!Work/W-_fixed/scan2.c
+!Work/W-_fixed/scan2.dat
+
+!Work/W+_fixed/
+Work/W+_fixed/**
+!Work/W+_fixed/scan2.c
+!Work/W+_fixed/scan2.dat
+
+!Work/Z_fixed/
+Work/Z_fixed/**
+!Work/Z_fixed/scan2.c
+!Work/Z_fixed/scan2.dat
+
 !Work/batch_results/
 !Work/batch_files/
 

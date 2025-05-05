@@ -70,86 +70,83 @@ int mdlnr=6;
  fprintf(file,"MD1 \t MD2\t DMP \t DM3 \t Br(h2->e+e-h1) \t Br(h2->mu+mu-h1) \t Br(h2->tau+tau-h1) \t Br(h2->n+n-h1) \t Br(h2->Zh1) \t Br(Z->e+e-) \t Br(Z->mu+mu-) \t Br(Z->tau+tau-) \t Br(Z->n+n-)\n");		
  fclose(file); /*done with header of file*/
 
- /*** Starting randomizing loop ***/
-int npoints=10000;
+ /*** Starting fixed values loop ***/
 
-double MD1_min = 10, MD1_max = 1e3;
-double DMP_min = 10, DMP_max = 1e2;
-double DM3_min = 10, DM3_max = 1e2;
+double MD1_values[] = {1, 10, 20, 30, 40, 50, 60, 70, 80};
+double DMP_values[] = {5, 20, 40, 60, 80, 120};
+double DM3_values[] = {1, 10, 100};
 
-double step_size = 1;
+int n_MD1 = sizeof(MD1_values) / sizeof(MD1_values[0]);
+int n_DMP = sizeof(DMP_values) / sizeof(DMP_values[0]);
+int n_DM3 = sizeof(DM3_values) / sizeof(DM3_values[0]);
 
- for (i = 0; i <= npoints; i++){
+for (int i_MD1 = 0; i_MD1 < n_MD1; i_MD1++) {
+    for (int i_DMP = 0; i_DMP < n_DMP; i_DMP++) {
+        for (int i_DM3 = 0; i_DM3 < n_DM3; i_DM3++) {
+            double MD1 = MD1_values[i_MD1];
+            double DMP = DMP_values[i_DMP];
+            double DM3 = DM3_values[i_DM3];
+            double MD2 = DM3 + DMP + MD1;
 
- /********** generate random values for variables **********/
- //double MHD,LogMHDmin=10,LogMHDmax=100;
- double MD1, DMP, DM3, MD2;
- 
- //MHD  = pow(10,(LogMHDmin+ i*(LogMHDmax-LogMHDmin)/npoints));
- MD1 = rnd_slg(MD1_min,MD1_max); //MD1 = mass of DM particle h1
- DMP = rnd_slg(DMP_min,DMP_max); //DMP = MDP-MD1                                      
- DM3 = rnd_slg(DM3_min,DM3_max); //DM3 = MD2-MDP    
- MD2 = DM3 + DMP + MD1;
+            /* Have to reset model every time, otherwise widths are not recalculated */
+            setModel(mdldir , mdlnr);
 
- /* Have to reset model every time, otherwise widths are not recalculated */
- setModel(mdldir , mdlnr);
+            /******* assign variable values ********/
+            // Debugging: Print values before assignment
+            printf("MD1 = %f, Mh1+DMP = %f, Mhc+DM3 = %f\n", MD1, DMP, DM3);
 
- /******* assign variable values ********/
- // Debugging: Print values before assignment
-printf("MD1 = %f, Mh1+DMP = %f, Mhc+DM3 = %f\n", MD1, DMP, DM3);
+            // Assigning values to the model parameters
+            // string =  CalcHEP  vars.mdl expression, variable can be whatever
+            err = assignValW("MD1", MD1);
+            err = assignValW("DMP", DMP);
+            err = assignValW("DM3", DM3);
+            //err = assignValW('~h2', MD2);
 
-// Assigning values to the model parameters
-// string =  CalcHEP  vars.mdl expression, variable can be whatever
-err = assignValW("MD1", MD1);
-err = assignValW("DMP", DMP);
-err = assignValW("DM3", DM3);
-//err = assignValW('~h2', MD2);
+            // Calculation of public constraints
+            err=calcMainFunc();
 
- // Calculation of public constraints
- err=calcMainFunc();
+            if(err!=0) {
+                printf("Can not calculate constrained parameter %s\n",varNames[err]);
+            }
+            else {
+                // if the point survives the constraints collect more output values:
+                // width and branchings of a particle
+                double wZ, wHD;
+                double BrHD__electron, BrHD__muon, BrHD__tau, BrHD__neutrino, BrHD__Z;
+                double BrZ__electron, BrZ__muon, BrZ__tau, BrZ__neutrino;
+                wHD = pWidth("~h2",&branchings_HD);
+                wZ = pWidth("Z", &branchings_Z);
 
- if(err!=0) {
-	  printf("Can not calculate constrained parameter %s\n",varNames[err]);i--;
- }
- else {
-		// if the point survives the constraints collect more output values:
-		// width and branchings of a particle
-		double wZ, wHD;
-		double BrHD__electron, BrHD__muon, BrHD__tau, BrHD__neutrino, BrHD__Z;
-		double BrZ__electron, BrZ__muon, BrZ__tau, BrZ__neutrino;
-		wHD = pWidth("~h2",&branchings_HD);
-		wZ = pWidth("Z", &branchings_Z);
+                
+                BrHD__electron= findBr(branchings_HD,"e1,E1,~h1");   // h2 -> e+ e- ~h1
+                BrHD__muon= findBr(branchings_HD,"e2,E2,~h1"); // h2 -> mu+ mu- ~h1
+                BrHD__tau= findBr(branchings_HD,"e3,E3,~h1"); // h2 -> tau+ tau- ~h1
+                BrHD__neutrino = findBr(branchings_HD, "n1, N1, ~h1"); 
 
-		
-		BrHD__electron= findBr(branchings_HD,"e1,E1,~h1");   // h2 -> e+ e- ~h1
-		BrHD__muon= findBr(branchings_HD,"e2,E2,~h1"); // h2 -> mu+ mu- ~h1
-		BrHD__tau= findBr(branchings_HD,"e3,E3,~h1"); // h2 -> tau+ tau- ~h1
-		BrHD__neutrino = findBr(branchings_HD, "n1, N1, ~h1"); 
+                BrHD__Z = findBr(branchings_HD, "Z, ~h1");
 
-		BrHD__Z = findBr(branchings_HD, "Z, ~h1");
+                BrZ__electron = findBr(branchings_Z,"e1,E1");
+                BrZ__muon = findBr(branchings_Z,"e2,E2" );
+                BrZ__tau = findBr(branchings_Z, "e3,E3");
+                BrZ__neutrino = findBr(branchings_Z, "n1, N1");
 
-		BrZ__electron = findBr(branchings_Z,"e1,E1");
-		BrZ__muon = findBr(branchings_Z,"e2,E2" );
-		BrZ__tau = findBr(branchings_Z, "e3,E3");
-		BrZ__neutrino = findBr(branchings_Z, "n1, N1");
+                
+                //cSec = findValW()
+                // write values to file
+                file  = fopen("scan2.dat","a+");
+                //fprintf(file,"MD1 \t MD2\t DMP \t DM3 \t Br(h2->e+e-h1) \t Br(h2->mu+mu-h1) 
+                //	\t Br(h2->tau+tau-h1) \t Br(h2->n+n-h1) \t Br(h2->Zh1) 
+                //	\t Br(Z->e+e-h1) \t Br(Z->mu+mu-h1) \t Br(Z->tau+tau-h1) \t Br(Z->n+n-h1)\n");		
 
-		
-		//cSec = findValW()
-		// write values to file
-  		file  = fopen("scan2.dat","a+");
-		//fprintf(file,"MD1 \t MD2\t DMP \t DM3 \t Br(h2->e+e-h1) \t Br(h2->mu+mu-h1) 
-		//	\t Br(h2->tau+tau-h1) \t Br(h2->n+n-h1) \t Br(h2->Zh1) 
-		//	\t Br(Z->e+e-h1) \t Br(Z->mu+mu-h1) \t Br(Z->tau+tau-h1) \t Br(Z->n+n-h1)\n");		
-
-  		fprintf(file,"%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \n", MD1, MD2, DMP, DM3,
-			BrHD__electron, BrHD__muon, BrHD__tau, BrHD__neutrino, BrHD__Z,
-			BrZ__electron, BrZ__muon, BrZ__tau, BrZ__neutrino
-			 );
-  		fclose(file);
- }
-
-//findValW() to get value of something.
- }// *** end of rand loop ***
+                fprintf(file,"%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \t%e \n", MD1, MD2, DMP, DM3,
+                    BrHD__electron, BrHD__muon, BrHD__tau, BrHD__neutrino, BrHD__Z,
+                    BrZ__electron, BrZ__muon, BrZ__tau, BrZ__neutrino
+                     );
+                fclose(file);
+            }
+        }
+    }
+}
 
   return 0;
 }
