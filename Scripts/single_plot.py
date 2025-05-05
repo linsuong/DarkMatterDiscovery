@@ -8,7 +8,7 @@ plt.close('all')
 
 plt.rcParams['font.serif'] = ['Times New Roman'] 
 
-file_path = 'scan_shrink.dat'
+file_path = 'scans/5-D_scans/combined.dat'
 
 df = pd.read_csv(file_path, sep=r'\s+', low_memory= False)
 
@@ -42,7 +42,7 @@ def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
         sc = plt.scatter(
             filtered_df[xvar], filtered_df[yvar],
             c=filtered_df[scalevar],
-            s=10, cmap='plasma',
+            s=20, cmap='plasma',
             norm=LogNorm(vmin=filtered_df[scalevar].min(), vmax=filtered_df[scalevar].max()),
             rasterized=True
         )
@@ -54,7 +54,7 @@ def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
     else: 
         sc = plt.scatter(
             filtered_df[xvar], filtered_df[yvar], 
-            s = 10, c = 'red', rasterized=True)
+            s=20, c = 'red', rasterized=True)
 
     if xlog:
         plt.xscale('log')
@@ -96,19 +96,14 @@ def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
             plt.xlim(40, 100)  
         
         #plt.show()
-<<<<<<< HEAD
-        plt.savefig(f'single_plots_(shrink)/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
-    
-    else:   
-=======
         plt.savefig(f'single_plots_(small_range)/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
 
     if limits2:
         if xvar in ['MD1', 'MD2']:
-            plt.xlim(left = 425)
+            plt.xlim(left = 400)
 
         if yvar in ['MD1', 'MD2']:
-            plt.ylim(bottom = 425)
+            plt.ylim(bottom = 400)
             
         if yvar in ['MD1'] and xvar in ['DM2']:
             plt.xlim(-5, 5)
@@ -119,7 +114,6 @@ def plot_cut(df, xvar, yvar, scalevar, xlog=True, ylog=True, scale = True,
         plt.savefig(f'single_plots_(big_range)/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
             
     if limits == False and limits2 == False:   
->>>>>>> 27a133560f1962cfaf939c5978d5121ea7f58624
         #plt.show() 
         plt.savefig(f'single_plots/{yvar}_against_{xvar}_{scalevar}.pdf',  bbox_inches='tight', dpi=80)
     
@@ -134,5 +128,7 @@ elements = ['MD1', 'MD2', 'MDP', 'DMP', 'DM2', 'DM3', 'l345']
 pairs = [list(p) for p in itertools.permutations(elements, 2)]
 
 for x, y in pairs:
-    #plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False, scale = False, limits = True)
+    plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False, scale = False, limits = True)
     plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False, scale = False, limits2 = True)
+    plot_cut(df, x, y, 'Omegah2', xlog = False, ylog = False, scale = True, limits2 = False)
+
