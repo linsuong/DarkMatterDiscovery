@@ -85,13 +85,17 @@
 \newpage
 \thispagestyle{empty}
 \begin{abstract}
-The Higgs potential, characterized by a "Mexican hat" shaped function, determines the vacuum expectation value (VEV) of the Higgs boson, denoted as $v$. This potential leads to spontaneous symmetry breaking, where the Higgs field acquires a non-zero VEV, resulting in mass generation for certain particles.
+Dark matter (DM) has been a hot topic of discussion since the early 20th century. There have been many theories of what DM actually is - in this paper, we will explore one of the models for DM, the Inert Two-Higgs Doublet Model (i2HDM), a variant of the Two-Higgs Doublet Model (2HDM).
 
-Extending this framework, we explore the Inert Two-Higgs Doublet Model (i2HDM), which introduces a second Higgs doublet that is inert — meaning it does not acquire a VEV, does not couple to fermions, and preserves a discrete symmetry. This inert doublet contributes additional scalar particles, including a viable dark matter candidate, $h_1$.
+The Higgs potential, characterized by a "Mexican hat" shaped function, determines the vacuum expectation value (VEV) of the Higgs boson, denoted as $v$. This potential leads to spontaneous symmetry breaking, where the Higgs field acquires a non-zero VEV, resulting in mass generation for certain particles like the $W$ and $Z$ boson.
 
-In this study, we update the parameter space of the i2HDM, focusing on parameters such as the masses of the scalar particles ($m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$), and the quartic couplings ($\lambda_2$, and $\lambda_{345}$).We incorporate the latest theoretical and experimental constraints. Following that, we explore 2 lepton final states in the LHC, incorporating updated collider integrated luminosity, and exploring branching ratios of decay paths via $W$ and $Z$ bosons respectively.
+Extending this framework, we explore the i2HDM, which introduces a second Higgs doublet that is inert — meaning it does not acquire a VEV, does not couple to fermions, and preserves a discrete symmetry. This inert doublet contributes additional scalar particles, including a viable dark matter candidate, $h_1$, along with other particles $h_2$ and $h_\pm$. 
 
-Section \ref{sec:i2HDM} provides a detailed overview of the i2HDM and the constraints considered. Section \ref{sec:results} presents our findings and analysis. Finally, Section \ref{sec:conclusion} offers concluding remarks.
+In this study, we update the parameter space of the i2HDM, focusing on the masses of the scalar particles ($m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$) along with their mass differences, and the quartic couplings ($\lambda_2$, and $\lambda_{345}$). We incorporate the latest theoretical and experimental constraints. We conclude to have found allowed DM mass $\mhone $
+
+Following that, we explore 2 lepton final states in the LHC, exploring branching ratios of decay paths via $W$ and $Z$ bosons respectively. We also incorporate predicted collider integrated luminosity, and find new combinations of the masses where total cross sections do not cross the limit.
+
+Section \ref{sec:introduction} gives a brief introduction to DM and the motivation of this paper, followed by Section \ref{sec:boltzmann}, introducing the Boltzmann equation, and how relic density is calculated. Section \ref{sec:i2HDM} provides a detailed explanation of the i2HDM and also the constraints that will be implemented. Section \ref{sec:results} presents the new parameter space of the i2HDM along with the analysis of the parameter space. Following that, Sec. \ref{sec:2lepton} Finally, Section \ref{sec:conclusion} offers concluding remarks.
 
 \end{abstract}
 
@@ -536,15 +540,19 @@ First, one can consider the relationship between the DM particle masses, $\mhone
 \end{figure}
 This plot clearly shows the effect each constraint has on the dataset:
 \begin{itemize}
-    \item Across the constraints, there is a region where viable masses of $\mhone$ and $\mhtwo$ lie close to the diagonal line $\mhone = \mhtwo$. This is known as the \textbf{co-annihilation region}, where the mass splitting $\Delta m_1 $ is small, typically $\Delta m_1 \leq 10 \gev$. In this region, the heavier inert scalar $h_2$ remains sufficiently populated during freeze-out, allowing additional processes such as $h_1 h_2 \rightarrow \text{SM particles}$ and $h_2 h_2 \rightarrow \text{SM particles}$ to contribute to the total annihilation cross section. These co-annihilation processes enhance the depletion of $h_1$, leading to a reduction in the relic dark matter abundance. The presence of this narrow diagonal band in the $m_{h_1}$–$m_{h_2}$ plane is therefore crucial for satisfying the observed relic density in parts of the parameter space where $h_1 h_1$ annihilation alone would be insufficient.
+    \item In \ref{fig:MD2_against_MD1}, across the constraints, there is a region where viable masses of $\mhone$ and $\mhtwo$ lie close to the diagonal line $\mhone = \mhtwo$. This is known as the \textbf{co-annihilation region}, where the mass splitting $\Delta m_1 $ is small, typically $\Delta m_1 \leq 10 \gev$. In this region, the heavier inert scalar $h_2$ remains sufficiently populated during freeze-out, allowing additional processes such as $h_1 h_2 \rightarrow \text{SM particles}$ and $h_2 h_2 \rightarrow \text{SM particles}$ to contribute to the total annihilation cross section. These co-annihilation processes enhance the depletion of $h_1$, leading to a reduction in the relic dark matter abundance. The presence of this narrow diagonal band in the $m_{h_1}$–$m_{h_2}$ plane is therefore crucial for satisfying the observed relic density in parts of the parameter space where $h_1 h_1$ annihilation alone would be insufficient.
     \item After applying LEP constraints, the DM region is significantly reduced to mast $\mhtwo > 10^2 \gev$ - excluding the "tail" around $\mhone ,\mhtwo = 10^2 \gev$. 
     \item After applying CMB constraints, the region removed has to do with \todo{discuss what CMB does to the data, the large gap in between, recombination, etc. should be able to find this written down somewhere}\todo{recombination time!}
+    \item Effects of branching ratio limits and LZ2024 are not so obvious in this plot, but will be obvious in other plots.
+    \item EWPT constraints have reduced large set of points to the left of $\mhone \approx50 \gev$, due to combinations of $\mhone$ and $\mhtwo$.
     \item There are 2 mass regions in the final plot where all constraints are applied - a "high mass" region, and a low mass region.
-    \item At $\mhone \approx 70 \gev$ (low mass region), one observes valid DM parameter space. There is a Higgs portal as $\mhone \approx \frac{m_H}{2}$ - this causes resonant annihilation via the Higgs. Interestingly it is here (and to the left) that one finds a larger range of $\Omega h^2$, showing regions of DM over-abundance and under-abundance. As \todo{explain why? bigger mass splitting = ? why is only the points where mh1 = mh2 allowed?}
+    \begin{itemize}
+            \item At $\mhone \approx 70 \gev$ (low mass region), one observes valid DM parameter space. There is a Higgs portal as $\mhone \approx \frac{m_H}{2}$ - this causes resonant annihilation via the Higgs. Interestingly it is here (and to the left) that one finds a larger range of $\Omega h^2$, showing regions of DM over-abundance and under-abundance. As \todo{explain why? bigger mass splitting = ? why is only the points where mh1 = mh2 allowed?}
     \item There is also the remaining high mass region, which is due to the fact that \todo{why is this high mass region still surviving?}
+    \end{itemize}
 \end{itemize}
 
-We consider the relationship between other plots - an important plot one can consider is the plot of $\lambda_{345}$ against $\mhone$.  
+Another important plot one can consider is the plot of $\lambda_{345}$ against $\mhone$.  
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{big_plots_(low_dpi)/l345_against_MD1_Omegah2.pdf}
@@ -553,7 +561,7 @@ We consider the relationship between other plots - an important plot one can con
 \end{figure}
 \begin{itemize}
     \item Similarly, the region of the Higgs portal is also very obvious here - two regions of masses, with one low region with $ \leq \lambda_{345} \leq $ at $\mhone \approx \frac{m_H}{2}$. 
-    \item 
+    \item The effects of LZ2024 and 
 \end{itemize}
 
 \begin{figure}[H]
@@ -564,17 +572,22 @@ We consider the relationship between other plots - an important plot one can con
         \caption{Region of parameter space allowed in the $(\mhone,\lambda_{345})$ plane.}
         \label{fig:MD1_l345_1}
     \end{subfigure}
-    \hfill
+    \\
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{single_plots_(small_range)/l345_against_MD1_Omegah2.pdf}
-        \caption{Zoomed in plot of the region of the Higgs portal.}
+        \caption{Zoomed in Higgs resonance region.}
+        \label{fig:label}
+    \end{subfigure}
+        \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{single_plots_(big_range)/l345_against_MD1_Omegah2.pdf}
+        \caption{Zoomed in high mass region.}
         \label{fig:label}
     \end{subfigure}
     \caption{}
 \end{figure}
-
-In Fig. \ref{fig:DM2_md1_main}, one can observe the effects of the constraints slowly shrinking the parameter space. 
 
 Considering other plots, for example - $\mhp$ against $\mhone$; after applying all constraints, we end up with the following parameter space. For $\lambda_2 = 1$:
 \begin{equation}
@@ -592,10 +605,8 @@ Considering other plots, for example - $\mhp$ against $\mhone$; after applying a
     {
         \begin{split}
             \\ \text{high mass region:}&
-            \\   \mhone &\geq 450 \gev
-            \\ \mhtwo &\geq 450 \gev
-            \\ \implies &\mhone = \mhtwo
-            \\  \Delta m_1 & = 0 \gev
+            \\   \mhone, \mhtwo &\geq 450 \gev
+            \\   \Delta m_1 & = 0 \gev
             \\0 \gevs\leq &\Delta m_\pm \leq 10\gev
             \\ -0.03 \leq &\lambda_{345} \leq 0.04
         \end{split}
@@ -609,14 +620,21 @@ We can investigate the affect of $\lambda_{345}$ on $\Omega h^2$ (Fig. \ref{fig:
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{plots/plot_MD1_l345+1.pdf}
+        \includegraphics[width=1.2\textwidth, trim={0pt 0pt 0pt 11cm}, clip]{plots/plot_MD1_l345_legend.pdf}
+        \label{fig:MD1_l345_le}
+    \end{subfigure}
+    \\
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/plot_MD1_l345+1_(no_legend).pdf}
         \caption{}
         \label{fig:MD1_l345_1}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{plots/plot_MD1_l345+100.pdf}
+        \includegraphics[width=\textwidth]{plots/plot_MD1_l345+100(no_legend).pdf}
         \caption{}
         \label{fig:MD1_l345_100}
     \end{subfigure}
@@ -631,8 +649,9 @@ In Fig. \ref{fig:MD1_l345_1} and \ref{fig:MD1_l345_100}, we alter the masses of 
     \item At $\sim$120 GeV, there is no obvious change in relic density except for $\lambda = \pm1$. This is the $h_1,h_1\rightarrow H H$ annihilation channel, which takes place only for big values of $\lambda_{345}$ due to stronger coupling term.
 \end{itemize}
 
-\section{2 Lepton Final States at the Collider Level}
-We can now calculate the branching ratios for DM decay at the collider level, starting from 2 quarks. The goal here is to be able to find new limits at the 95\% confidence level. Using \verb|CalcHEP|'s \verb|getBr| function, it is easy to obtain the branching ratios. 
+\section{2 Lepton Final States}
+\label{sec:2lepton}
+We can investigate the limits at the collider level, starting from 2 quarks and ending at a di-lepton final state. First, it is helpful to understand what happens when $h_2$ and $h_\pm$ undergo decay. Using \verb|CalcHEP|'s \verb|getBr| function, it is easy to obtain the branching ratios, which is the probability that a particle will undergo a certain decay process.
 \begin{figure}[h]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
@@ -668,8 +687,8 @@ Here there is a non-resonant 3-body decay via an off-shell ${W^-}$ boson. This i
     Br(h_+\rightarrow h_1e^+ \nu_e) = Br(h_+\rightarrow h_1 W^+) \times Br(W^+ \rightarrow e^+ \nu_e) + Br(h_+\rightarrow h_1e^+ \nu_e)_{non-resonant}
 \end{equation}
 
-By performing a random scan across parameters $\Delta m_3 = m_{h_2} - m_{h_\pm})$ and $\Delta m_+ = m_{h_\pm} - m_{h_1}$ For the decay in Eqn. \ref{eqn:branching_Z}, we can investigate what mass differences have upon the branching ratios.
-\begin{figure}[H]
+By performing a random scan across parameters $\Delta m_3 = m_{h_2} - m_{h_\pm}$ and $\Delta m_+ = m_{h_\pm} - m_{h_1}$, and keeping $\mhone$ constant for the decay in Eqn. \ref{eqn:branching_Z}, we can investigate what mass differences have upon the branching ratios. 
+\begin{figure}
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
@@ -706,39 +725,21 @@ From Fig. \ref{fig:Br(h2ee)}, one can draw the following conclusions:
     \item There is a point at $\Delta m_+= 10$ and $\Delta m_3=81 \text{ GeV}$ respectively. This is the point where $m_{h_2} - m_{h_1} = 81 \text{ GeV}$, which is the mass of the $W$ boson. This therefore enables $100\%$ on-shell $W$ boson decay, $h_2 \rightarrow W^- h_+$ and $h_2 \rightarrow W^+ h_-$, with branching ratios of $50\%$ each. 
 \end{itemize}
 
-Likewise, there is the decay processes via $W$ boson,  
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{branching_ratio_plots/hplus/Br__h____rightarrow_e____nu_e_h_1____Delta_m____scale___Delta_m_3_.pdf}
-        \caption{}
-        \label{fig:Br(h+en),Dm3_scale}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{branching_ratio_plots/hplus/__Delta_m_3___Delta_m____scale_Br__h____rightarrow_e____nu_e_h_1__.pdf}
-        \caption{}
-        \label{fig:Br(h+en),Br_scale}
-    \end{subfigure}
-    \caption{Branching ratios of the process $h_2 \rightarrow h_1 e^+e$ for different mass differences $\Delta m_+$ and $\Delta m_3$, with $m_{h_1} =100$ GeV.}
-    \label{fig:Br(h2ee)}
-\end{figure}
-\subsection{Exclusion Rate}
-From \cite{Belyaev_2022}, the exclusion rate $r$ is defined as:
-\begin{equation}
-    r = \frac{\sigma_{DM}}{\sigma_{95}}
-\end{equation}
-Where $\sigma_{DM}$ and $\sigma_{95}$ are the cross sections for DM production and the limit of the cross section at $95\%$ confidence level. This equation can be scaled due to the fact that collider luminosity is constantly improving. In the LHC, luminosity depends on the beam parameters: the revolution frequency, number of particles per "bunch" (group of particles) in the beam, and the cross sectional area of the beams at collision point. One can scale $r$ in the following manner;
+$h_2$ also decays into other particles, i.e. $\tau$ and $\mu$, but they share the same behaviour, so it will be not explicitly looked into. There are the decay processes via $W$ bosons; however it is not worth discussing as the change in the parameters barely change the branching ratios, with changes of magnitude of branching ratios of $10^{-3}$, due to kinematic effects where decays via off-shell W boson gives slightly higher branching ratio and vice versa. Following this, we can investigate new collider limits and see the allowed space based on cross sections.
+
+
+\subsection{Finding Cross Sections}
+
 Signal significance, the measure of how a potential signal stands out from background noise, is expressed as:
 \begin{equation}
     \alpha = \frac{S}{\sqrt{B}}
 \end{equation}
-Where $S$ is the number of potential signals and $B$ the number of background signals. The signal and background can be expressed as $\sigma \mathcal{L}$
+Where $S$ is the number of potential signals and $B$ the number of background signals. The signal and background can be expressed as $\sigma \mathcal{L}$. This equation can be scaled due to the fact that collider luminosity is constantly improving. In the LHC, luminosity depends on the beam parameters: the revolution frequency, number of particles per "bunch" (group of particles) in the beam, and the cross sectional area of the beams at collision point.
 \begin{equation}
     \begin{split}
         \alpha &= \frac{\sigma_{signal} \mathcal{L}}{\sqrt{\sigma_{background }\mathcal{L}}}
         \\&= \frac{\sigma_{signal}}{\sqrt{\sigma_{background}}} \sqrt{\mathcal{L}}
-        \\&\implies \alpha \sqrt{\sigma_{background}} = \sigma_{limit}^{new}\sqrt{\mathcal{L}}
+        \\\implies &\alpha \sqrt{\sigma_{background}} = \sigma_{limit}^{new}\sqrt{\mathcal{L}}
         \\\sigma_{limit} &=\frac{\alpha \sqrt{\sigma_{background}}}{\sqrt{\mathcal{L}}}  
         \\
     \end{split}
@@ -751,18 +752,182 @@ Keeping $\alpha$ the same, one can derive a relationship for the new limit, $\si
     \end{split}
 \end{equation}
 
-Referring to table V, in Appendix F of \cite{Belyaev_2022}, one can find limit of the cross sections at different combinations of mass using new values of the collider luminosity. The value of $\mathcal{L}_0$ used is $39.5 \text{ fb} ^{-1}$, according to data from Table I of the same cited paper. The new luminosity value will be the LHC's predicted luminosity of $3000 \text{ fb} ^{–1}$, an ambitious number.
+Referring to Table V, in Appendix F of \cite{Belyaev_2022}, one can find limit of the cross sections at different combinations of mass using new values of the collider luminosity. The value of $\mathcal{L}_0$ used is $39.5 \text{ fb} ^{-1}$, according to data from Table I of the same cited paper. The new luminosity value will be the LHC's predicted luminosity of $3000 \text{ fb} ^{-1}$, an ambitious number.
 
+Using \verb|CalcHEP| batch process, it is easy to calculate the cross sections of DM process. Defining processes $pp\rightarrow h_1h_2$ and $pp \rightarrow h_+h_-$, which are the processes in Fig. \ref{fig:feynmann_diag}. The same values of DM parameters will be used as in \cite{Belyaev_2022}, where values of $m_{h_1}$ and $\Delta m_+$ are changed for each value of $\Delta m_0$, where $\Delta m_0 = 1, \text{ }10,\text{ } 100$. It is then possible to see excluded values of cross sections, and calculate the exclusion values.
 
-\subsection{Finding Cross Secitons}
-Using \verb|CalcHEP| batch process, it is easy to calculate the cross sections of DM process. Defining processes $pp\rightarrow h_1h_2$ and $pp \rightarrow h_+h_-$, which are the processes in Fig. \ref{fig:feynmann_diag}. The same values of DM parameters will be used as in  \cite{Belyaev_2022}, where values of $m_{h_1}$ and $\Delta m_+$ are changed for each value of $\Delta m_0$, where $\Delta m_0 = 1, \text{ }10,\text{ } 100$. It is then possible to see excluded values of cross sections, and calculate the exclusion values.
+\verb|CalcHEP| batch process only gives the total production cross section; i.e. $\sigma(pp\rightarrow h_1 h_2)$. The branching ratios of the decay processes are calculated using the \verb|getBr| function and scanning over specific masses. To get the total cross section for a certain combination of masses:
+\begin{equation}
+    \sigma_{total} = \sigma_{prod.} \times \sum_i Br_i
+\end{equation}
+
+Data is presented in a similar fashion to Table V in \cite{Belyaev_2022}. Note that $2 \ell \sigma_{A}^{95}$ is the total cross section when $h_1 h_2$ and $h_+h_-$ pairs decay into $h_2 \rightarrow \ell^+\ell^-h_1$ via $Z$ boson and $h_\pm \rightarrow \ell^\pm \nu h_1$ via the $W$ boson respectively; both processes result in a di-lepton final state (Fig. \ref{fig:feynmann_diag}), which is easy to process and is also the focus of this section.
+
+In similar fashion, the data will be presented in table format in Tables~\ref{tab:cross_section_limits_1}, \ref{tab:cross_section_limits_10}, and \ref{tab:cross_section_limits_100}. After applying new collider luminosity, one can notice that there is a reduction in the allowed mass combinations, as some cross sections that have not crossed the limit have crossed the limit with new collider luminosity. Any value of cross section that crosses the limit is rejected. We can see that more cross sections are rejected for values at $\Delta m_3 = 10\gev$, and for values of $\Delta m_3 = 100\gev$, there are no changes in the result if the calculated cross sections past the limit. 
+\begin{table}[H]
+    \caption{Calculated cross sections compared with old limits and new limits for selected mass points for $\Delta m_3 = 1\gev$.}
+    \label{tab:cross_section_limits_1}
+\begin{tabular}{rrrrrrrr}
+\toprule
+    \multicolumn{1}{c}{$m_{h1}$} & 
+    \multicolumn{1}{c}{$\Delta m_\pm$} & 
+    \multicolumn{1}{c}{$\Delta m_3$} & 
+    \multicolumn{1}{c}{$\sigma_{calc}$} & 
+    \multicolumn{1}{c}{$\sigma^{new}_{95}$} & 
+    \multicolumn{1}{c}{Cross new limit} & 
+    \multicolumn{1}{c}{$\sigma^{old}_{95}$} & 
+    \multicolumn{1}{c}{Cross old limit} \\
+    \midrule
+1 & 20 & 1 & 1.277e+02 & 1.687e+02 & No & 1.470e+03 & No \\
+1 & 40 & 1 & 9.120e+01 & 1.170e+04 & No & 1.020e+05 & No \\
+1 & 60 & 1 & 6.711e+01 & 1.014e+03 & No & 8.840e+03 & No \\
+1 & 80 & 1 & 5.034e+01 & 8.985e+01 & No & 7.830e+02 & No \\
+10 & 20 & 1 & 1.278e+02 & 3.293e+01 & Yes & 2.870e+02 & No \\
+10 & 40 & 1 & 9.107e+01 & 1.606e+03 & No & 1.400e+04 & No \\
+10 & 60 & 1 & 6.704e+01 & 5.095e+02 & No & 4.440e+03 & No \\
+10 & 80 & 1 & 5.036e+01 & 1.721e+01 & Yes & 1.500e+02 & No \\
+10 & 120 & 1 & 2.991e+01 & 3.224e+01 & No & 2.810e+02 & No \\
+20 & 20 & 1 & 1.276e+02 & 5.485e+02 & No & 4.780e+03 & No \\
+20 & 40 & 1 & 9.121e+01 & 7.240e+02 & No & 6.310e+03 & No \\
+20 & 60 & 1 & 6.684e+01 & 2.834e+01 & Yes & 2.470e+02 & No \\
+20 & 80 & 1 & 5.040e+01 & 1.044e+01 & Yes & 9.100e+01 & No \\
+20 & 120 & 1 & 2.996e+01 & 2.834e+01 & Yes & 2.470e+02 & No \\
+40 & 20 & 1 & 9.363e+01 & 9.145e+01 & Yes & 7.970e+02 & No \\
+40 & 40 & 1 & 5.514e+01 & 3.615e+01 & Yes & 3.150e+02 & No \\
+40 & 60 & 1 & 3.503e+01 & 1.136e+01 & Yes & 9.900e+01 & No \\
+40 & 80 & 1 & 2.366e+01 & 6.426e+00 & Yes & 5.600e+01 & No \\
+40 & 120 & 1 & 1.237e+01 & 2.111e+01 & No & 1.840e+02 & No \\
+60 & 20 & 1 & 9.396e+01 & 3.947e+01 & Yes & 3.440e+02 & No \\
+60 & 40 & 1 & 5.507e+01 & 2.616e+01 & Yes & 2.280e+02 & No \\
+60 & 60 & 1 & 3.506e+01 & 9.065e+00 & Yes & 7.900e+01 & No \\
+60 & 80 & 1 & 2.366e+01 & 5.164e+00 & Yes & 4.500e+01 & No \\
+60 & 120 & 1 & 1.237e+01 & 1.928e+01 & No & 1.680e+02 & No \\
+80 & 20 & 1 & 1.274e+02 & 3.660e+01 & Yes & 3.190e+02 & No \\
+80 & 40 & 1 & 9.112e+01 & 2.157e+01 & Yes & 1.880e+02 & No \\
+80 & 60 & 1 & 6.712e+01 & 7.803e+00 & Yes & 6.800e+01 & No \\
+80 & 80 & 1 & 5.039e+01 & 4.475e+00 & Yes & 3.900e+01 & Yes \\
+80 & 120 & 1 & 2.988e+01 & 3.110e+01 & No & 2.710e+02 & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+\begin{table}[H]
+    \caption{Calculated cross sections compared with old limits and new limits for selected mass points for $\Delta m_3 = 10\gev$.}
+    \label{tab:cross_section_limits_10}
+\begin{tabular}{rrrrrrrr}
+\toprule
+    \multicolumn{1}{c}{$m_{h1}$} & 
+    \multicolumn{1}{c}{$\Delta m_\pm$} & 
+    \multicolumn{1}{c}{$\Delta m_3$} & 
+    \multicolumn{1}{c}{$\sigma_{calc}$} & 
+    \multicolumn{1}{c}{$\sigma^{new}_{95}$} & 
+    \multicolumn{1}{c}{Cross new limit} & 
+    \multicolumn{1}{c}{$\sigma^{old}_{95}$} & 
+    \multicolumn{1}{c}{Cross old limit} \\
+    \midrule
+1 & 20 & 10 & 1.085e+02 & 4.108e+01 & Yes & 3.580e+02 & No \\
+1 & 40 & 10 & 7.908e+01 & 1.262e+03 & No & 1.100e+04 & No \\
+1 & 60 & 10 & 5.872e+01 & 5.450e+02 & No & 4.750e+03 & No \\
+1 & 80 & 10 & 4.454e+01 & 1.928e+01 & Yes & 1.680e+02 & No \\
+1 & 120 & 10 & 2.682e+01 & 3.396e+01 & No & 2.960e+02 & No \\
+10 & 20 & 10 & 1.088e+02 & 4.108e+01 & Yes & 3.580e+02 & No \\
+10 & 40 & 10 & 7.909e+01 & 6.288e+02 & No & 5.480e+03 & No \\
+10 & 60 & 10 & 5.887e+01 & 6.150e+01 & No & 5.360e+02 & No \\
+10 & 80 & 10 & 4.444e+01 & 1.388e+01 & Yes & 1.210e+02 & No \\
+10 & 120 & 10 & 2.681e+01 & 3.029e+01 & No & 2.640e+02 & No \\
+20 & 20 & 10 & 1.089e+02 & 4.808e+02 & No & 4.190e+03 & No \\
+20 & 40 & 10 & 7.920e+01 & 1.343e+02 & No & 1.170e+03 & No \\
+20 & 60 & 10 & 5.873e+01 & 1.847e+01 & Yes & 1.610e+02 & No \\
+20 & 80 & 10 & 4.455e+01 & 9.409e+00 & Yes & 8.200e+01 & No \\
+20 & 120 & 10 & 2.679e+01 & 2.547e+01 & Yes & 2.220e+02 & No \\
+40 & 20 & 10 & 1.091e+02 & 1.090e+02 & Yes & 9.500e+02 & No \\
+40 & 40 & 10 & 7.912e+01 & 2.433e+01 & Yes & 2.120e+02 & No \\
+40 & 60 & 10 & 5.877e+01 & 8.950e+00 & Yes & 7.800e+01 & No \\
+40 & 80 & 10 & 4.446e+01 & 6.885e+00 & Yes & 6.000e+01 & No \\
+40 & 120 & 10 & 2.684e+01 & 2.065e+01 & Yes & 1.800e+02 & No \\
+60 & 20 & 10 & 1.090e+02 & 6.632e+01 & Yes & 5.780e+02 & No \\
+60 & 40 & 10 & 7.912e+01 & 1.446e+01 & Yes & 1.260e+02 & No \\
+60 & 60 & 10 & 5.884e+01 & 7.229e+00 & Yes & 6.300e+01 & No \\
+60 & 80 & 10 & 4.447e+01 & 5.737e+00 & Yes & 5.000e+01 & No \\
+60 & 120 & 10 & 2.687e+01 & 1.893e+01 & Yes & 1.650e+02 & No \\
+80 & 20 & 10 & 1.091e+02 & 9.019e+01 & Yes & 7.860e+02 & No \\
+80 & 40 & 10 & 7.918e+01 & 1.331e+01 & Yes & 1.160e+02 & No \\
+80 & 60 & 10 & 5.877e+01 & 6.426e+00 & Yes & 5.600e+01 & Yes \\
+80 & 80 & 10 & 4.452e+01 & 5.393e+00 & Yes & 4.700e+01 & No \\
+80 & 120 & 10 & 2.684e+01 & 2.318e+01 & Yes & 2.020e+02 & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \caption{Calculated cross sections compared with old limits and new limits for selected mass points for $\Delta m_3 = 1\gev$.}
+    \label{tab:cross_section_limits_100}
+\begin{tabular}{rrrrrrrr}
+\toprule
+    \multicolumn{1}{c}{$m_{h1}$} & 
+    \multicolumn{1}{c}{$\Delta m_\pm$} & 
+    \multicolumn{1}{c}{$\Delta m_3$} & 
+    \multicolumn{1}{c}{$\sigma_{calc}$} & 
+    \multicolumn{1}{c}{$\sigma^{new}_{95}$} & 
+    \multicolumn{1}{c}{Cross new limit} & 
+    \multicolumn{1}{c}{$\sigma^{old}_{95}$} & 
+    \multicolumn{1}{c}{Cross old limit} \\
+    \midrule
+1 & 20 & 100 & 8.391e+01 & 0.000e+00 & Yes & 0.000e+00 & Yes \\
+1 & 40 & 100 & 5.092e+01 & 4.119e+02 & No & 3.590e+03 & No \\
+10 & 20 & 100 & 8.482e+01 & 4.808e+02 & No & 4.190e+03 & No \\
+10 & 40 & 100 & 5.151e+01 & 4.716e+02 & No & 4.110e+03 & No \\
+20 & 20 & 100 & 8.539e+01 & 3.224e+02 & No & 2.810e+03 & No \\
+20 & 40 & 100 & 5.169e+01 & 2.123e+02 & No & 1.850e+03 & No \\
+40 & 20 & 100 & 2.801e+01 & 1.377e+02 & No & 1.200e+03 & No \\
+40 & 40 & 100 & 2.257e+01 & 1.308e+02 & No & 1.140e+03 & No \\
+60 & 20 & 100 & 2.804e+01 & 2.800e+02 & No & 2.440e+03 & No \\
+60 & 40 & 100 & 2.268e+01 & 9.765e+01 & No & 8.510e+02 & No \\
+80 & 20 & 100 & 8.641e+01 & 1.675e+02 & No & 1.460e+03 & No \\
+80 & 40 & 100 & 5.238e+01 & 9.076e+01 & No & 7.910e+02 & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Conclusion}
 \label{sec:conclusion}
+In this paper we explored the theory of DM, especially the Inert Two Higgs Doublet Model (i2HDM), and have successfully performed 4-D parameter space scan of the i2HDM for a fixed value of $\lambda_2 = 1$, utilising latest constraints (i.e. ATLAS 2022 \cite{ATLAS:2022yvh}, LZ 2024 \cite{aalbers2024darkmattersearchresults}, and GFITTER 2018 \cite{gfitter2018}) that have not been implemented together in previous papers, along with known theoretical constraints. Through this process, a slightly smaller parameter space for DM has been discovered. It has been found that for the region where $ 60.5 \gevs\leq \mhone \leq75.5 \gev$, we require $\mhtwo \geq 130 \gev, $
 
+There is also another region where $\mhone, \mhtwo \geq 450 \gev$
+
+\begin{equation}
+    {
+        \begin{split}
+            \\ \text{low mass region:}& 
+            \\ 60.5 \gevs \leq &\mhone \leq 75.5 \gevs
+            \\  \mhtwo &\geq 130 \gev 
+            \\  \Delta m_1 & \geq 50 \gev
+            \\ 8 \gevs\leq &\Delta m_\pm \leq 13\gev
+            \\ -1 \times 10 ^{-3}\leq &\lambda_{345} \leq 5 \times 10^-5
+        \end{split}
+        }
+        \qquad
+    {
+        \begin{split}
+            \\ \text{high mass region:}&
+            \\   \mhone, \mhtwo &\geq 450 \gev
+            \\   \Delta m_1 & = 0 \gev
+            \\0 \gevs\leq &\Delta m_\pm \leq 10\gev
+            \\ -0.03 \leq &\lambda_{345} \leq 0.04
+        \end{split}
+    \text{ }}
+\end{equation}
+
+Apart from this, we also investigated collider limits, where branching ratio of the process $h_2\rightarrow e^+e^-h_1$ was investigated - we identified different regions of mass differences and the reason of their branching ratios, especially at regions where $\mhtwo - \mhone = m_Z$ or $m_W$.
+
+
+\section{Acknowledgements}
+I would like to express my sincere gratitude to my supervisor, Prof. Alexander Belyaev, for his guidance throughout this project, where through his feedback taught me how to be a better physicist. His expertise and patience have been essential to the completion of this project. I would also like to extend my heartfelt thanks to my family and friends for their continuous encouragement and emotional support throughout this journey.
 \onecolumn
 \newpage
 \bibliographystyle{unsrt}
-\bibliography{references}
+\bibliography{references} 
 
 \appendix
 \section{Deriviation of Equations}
