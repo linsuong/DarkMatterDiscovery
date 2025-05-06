@@ -52,6 +52,7 @@
 \newcommand{\mhp}{m_{h_\pm}}
 
 \begin{document}
+
 \detailtexcount{main}
     
 % Adjust section heading size
@@ -91,11 +92,9 @@ The Higgs potential, characterized by a "Mexican hat" shaped function, determine
 
 Extending this framework, we explore the i2HDM, which introduces a second Higgs doublet that is inert — meaning it does not acquire a VEV, does not couple to fermions, and preserves a discrete symmetry. This inert doublet contributes additional scalar particles, including a viable dark matter candidate, $h_1$, along with other particles $h_2$ and $h_\pm$. 
 
-In this study, we update the parameter space of the i2HDM, focusing on the masses of the scalar particles ($m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$) along with their mass differences, and the quartic couplings ($\lambda_2$, and $\lambda_{345}$). We incorporate the latest theoretical and experimental constraints. We conclude to have found allowed DM mass $\mhone $
+In this study, we explore the parameter space of the i2HDM, focusing on the masses of the scalar particles ($m_{h_1}$, $m_{h_2}$, $m_{h_\pm}$) along with their mass differences, and the quartic couplings ($\lambda_2$, and $\lambda_{345}$) We incorporate the latest theoretical and experimental constraints, to find a valid parameter space for future experiments. We conclude to have found allowed DM mass regions $ 60.5 \gevs \leq \mhone \leq 75.5 \gev$ with values of $\mhtwo \geq 130 \gev$. Next there is another region where $\mhone, \text{ } \mhtwo \geq 450 \gev$.\todo{wite in results}
 
 Following that, we explore 2 lepton final states in the LHC, exploring branching ratios of decay paths via $W$ and $Z$ bosons respectively. We also incorporate predicted collider integrated luminosity, and find new combinations of the masses where total cross sections do not cross the limit.
-
-Section \ref{sec:introduction} gives a brief introduction to DM and the motivation of this paper, followed by Section \ref{sec:boltzmann}, introducing the Boltzmann equation, and how relic density is calculated. Section \ref{sec:i2HDM} provides a detailed explanation of the i2HDM and also the constraints that will be implemented. Section \ref{sec:results} presents the new parameter space of the i2HDM along with the analysis of the parameter space. Following that, Sec. \ref{sec:2lepton} Finally, Section \ref{sec:conclusion} offers concluding remarks.
 
 \end{abstract}
 
@@ -106,14 +105,13 @@ Section \ref{sec:introduction} gives a brief introduction to DM and the motivati
 \setcounter{page}{1}
 \section{Introduction}
 \label{sec:introduction}
-Initially, the Universe was in a hot dense state with an unknown initial temperature. \footnote{As this was prior to the Big Bang, we don't know how hot it was. We know for sure it was above 10 MeV, otherwise the Big Bang would not happen. This should be sufficiently hot to generate protons and neutrons, allowing a process known as nucleosynthesis to happen, where new nuclei are created.} In this state, all particles were in thermal equilibrium within a plasma. Then 14 billion years ago, the Big Bang occurred - an expansion from a singularity which slowed down over time due to inflation.
+Initially, the Universe was in a hot dense state with an unknown initial temperature. As this was prior to the Big Bang, we don't know how hot it was. We know for sure it was above 10 MeV, otherwise the Big Bang would not happen. This should be sufficiently hot to generate protons and neutrons, allowing a process known as nucleosynthesis to happen, where new nuclei are created. In this state, all particles were in thermal equilibrium within a plasma. Then 14 billion years ago, the Big Bang occurred - an expansion from a singularity which slowed down over time due to inflation.
 
-We assume that if DM is a particle, then at high temperatures, it behaved relativistically like other particles. However, as the universe cooled down exponentially, there was a point where the temperature of the universe dropped below the mass of DM. This led to DM annihilation with standard model (SM) particles, an irreversible process which lowered the density of DM particles. 
+We assume that if DM is a particle, then at high temperatures, it behaved relativistically like other particles. However, as the universe cooled down, there was a point where the temperature of the universe dropped below the mass of DM. This led to DM annihilation with standard model (SM) particles, an irreversible process which lowered the density of DM particles. 
 
 The annihilation rate, which depends on the interaction cross section determined how much DM remained (the relic density). An annihilation process that is too efficient would lead to too low relic density, which would not pose too much of a problem. However, a relic density that is too high will cause an unstable Universe and cause it to collapse on itself. The reality is that DM particles eventually stopped interacting with SM particles, leading to a process known as freeze out, giving a constant relic density. This process can be described via the Boltzmann equation, which will be explained briefly in Section \ref{sec:boltzmann}.
 
 Many experiments have been carried can confirm the existence of DM:
-
 \begin{itemize}
     \item Galactic Rotation Curves - The observed curves do not match the predicted curves due to the fact that the Milky Way is surrounded by DM
     \item CMB (WMAP and PLANCK): Confirmed relic density from experimental measurements \cite{Planck:2018vyg}.
@@ -134,7 +132,6 @@ The Higgs doublet before electroweak symmetry breaking (EWSB), $\Phi_H$ is:
     \end{pmatrix}
 \end{equation}
 
-%A more accurate description of the Higgs mechanism is the moving around of the degrees of freedom \cite{lyre2008does}.
 This consists of 4 (real) degrees of freedom. Via the Higgs mechanism, the first 2 degrees of freedom are "given" as the mass of the $W^+$ and $W-$ boson ($\phi_1 + i\phi_2$ is the longitudinal component of $W^\pm$), whereas the third is the mass of the $Z^0$ boson. The Higgs field has one last degree of freedom ($\phi_4$), which, after symmetry breaking (when the degrees of freedom are lost to the other baryons) of the Higgs potential function is: 
 \begin{equation}
     \Phi_H = \frac{1}{\sqrt{2}}
@@ -154,39 +151,44 @@ Here $v$ is the vacuum expectation value (VEV) of the Higgs potential. The Higgs
     \end{pmatrix}
 \end{equation}
 
-The Higgs mechanism can be described simply as the mechanism that gives the baryons we know today their masses\footnote{Fermions get their masses via Yukawa coupling with the Higgs field $\Phi$}.
+The Higgs mechanism can be described simply as the mechanism that gives the baryons we know today their masses\footnote{Fermions get their masses via Yukawa coupling with the Higgs field $\Phi$}. With the same idea, we then theorise a DM counterpart to the Higgs, which will be introduced in Section \ref{sec:i2HDM}.
 
-The aim of this paper is to discover and perform analysis for the parameter space of the model, as a revision of the work done in \cite{Belyaev:2016lok}. In section \ref{sec:i2HDM} we introduce the i2HDM model in more detail and the constraints; in Section \ref{sec:results} the results are presented followed by an analysis. Finally, there is the conclusion which is in Section \ref{sec:conclusion}.
+The aim of this paper is to discover and perform analysis for the parameter space of the model, as a revision of the work done in \cite{Belyaev:2016lok} and in later sections for \cite{Belyaev_2022}. Section \ref{sec:introduction} gives a brief introduction to DM and the motivation of this paper, followed by Section \ref{sec:boltzmann}, introducing the Boltzmann equation, and how relic density is calculated. Section \ref{sec:i2HDM} provides a detailed explanation of the i2HDM and also the constraints that will be implemented. Section \ref{sec:results} presents the new parameter space of the i2HDM along with the analysis of the parameter space. Following that, Sec. \ref{sec:2lepton} Finally, Section \ref{sec:conclusion} offers concluding remarks.
 
 \section{The Boltzmann Equation}
 \label{sec:boltzmann}
-The Boltzmann equation can be qualitatively derived by the simple relation:
+The Boltzmann equation is essential for modeling dark matter’s evolution from the early universe to today.
+\begin{itemize}
+    \item Thermal Freeze-Out determines the relic abundance of DM.
+    \item Observational signatures, which predicts imprints on the cosmic microwave background (CMB), large-scale structure (LSS), and DM halo properties.
+    \item Connects microscopic DM physics (e.g., annihilation cross-sections) to cosmological observables.
+\end{itemize}
+Without it, we couldn’t connect particle physics models of DM to cosmological observations. The Boltzmann equation can be qualitatively derived by the simple relation:
 \begin{equation}
     \begin{split}
             \text{Evolution of particle A per unit volume} &= \text{Particle A created by annihilation of particles in the bath B} 
             \\&- \text{Self annihilation of A}
     \end{split}
 \end{equation}
-This can be expressed as:
+The Boltzmann equation tracks the number density $n_A$ of a particle $A$ in an expanding universe. For a homogeneous, isotropic universe, this can be expressed as:
 \begin{equation}
     \begin{split}
         \frac{1}{a^3}\frac{d(n_Aa^3)}{dt} = \braket{\sigma \nu}_{B \rightarrow A} n^2_B- \braket{\sigma \nu}_{A \rightarrow B}n^2_A
     \end{split}
 \end{equation}
-For a number density $n$ of a particle species in an expanding universe, the Boltzmann equation is:
+Where $a$ is the scale factor. For a number density $n$ of a particle species in an expanding universe, the Boltzmann equation is:
 \begin{equation}
     \label{eqn:boltzmann}
     \frac{dn}{dt} = -3Hn - \braket{\sigma\nu}(n^2 - n^2_{eq})
 \end{equation}
-
 Where:
 \begin{itemize}
-    \item $H$ is the Hubble expansion rate.
+    \item $H = \frac{\dot{a}}{a}$ is the Hubble expansion rate.
     \item $\braket{\sigma\nu}$ is the thermally averaged cross section - the average rate at which particles interact in a hot environment, accounting for their varying speeds due to temperature.
     \item $n$ and $n_{eq}$ are number densities, with the later being number density at equilibrium.
 \end{itemize}
 
-We also can define interaction rate, $\Gamma$, as $\Gamma = n\sigma\nu$, the interaction rate per article. The interaction rate drops below the Hubble constant $H$. At this point particles here no longer have enough energy to interact with DM, and as the universe expands, the particles get further apart from each other. This is the "freeze-out" process. This leads to the popular plot in Fig. \ref{fig:freezeout}.
+We also can define interaction rate, $\Gamma$, as $\Gamma = n\sigma\nu$, the interaction rate per article. As the universe expands, the interaction rate drops below the Hubble constant $H$. At this point particles here no longer have enough energy to interact with DM, and as the universe expands, the particles get further apart from each other. This is the "freeze-out" process. This leads to the popular plot in Fig. \ref{fig:freezeout}.
 
 \begin{wrapfigure}{l}{0.5\textwidth}
     %\centering
@@ -270,6 +272,11 @@ We can solve for x:
         \\ 
     \end{split}
 \end{equation}
+At freeze-out, where $x_f \sim 20$, integrating from $x_f$ to $x\rightarrow \infty$ gives the relic density:
+\begin{equation}
+    Y_\infty \approx \frac{x_f}{\lambda} \propto \frac{1}{\langle \sigma v \rangle}.
+\end{equation}
+Which the observed relic density $\sim 0.12$ requires $\langle \sigma v \rangle \sim 10^{-26} \text{ cm}^3 \text{s}^{-1}$
 \section{The Inert Two Higgs Doublet Model (i2HDM)}
 \label{sec:i2HDM}
 In the i2HDM, we propose two doublets, $\Phi_1$, $\Phi_2$ - where the first doublet is active and second doublet is inert. The latter does not share its degrees of freedom with other particles (or, it does not couple to fermions via Yukawa interactions \cite{Belyaev_2022}), and has no VEV; unlike the former which is just the SM Higgs doublet, which has a VEV. We can invoke a new set of particles arising from $\Phi_2$- $h^\pm, h_1,$ and $h_2$, where $m_{h_1} < m_{h_2}$ and $m_{h_1} < m_{h^\pm}$. The lightest particle, $h_1$ is the DM candidate particle.
@@ -308,19 +315,21 @@ Where:
     \item $\lambda_{3, 4, 5}$ are the coupling terms of doublet interaction
 \end{itemize}
 Furthermore, we impose additional parametrisation in terms of mass differences that allow better visualisation of parameter space \cite{Belyaev_2022}, the reason which will be prevalent in the next sections when considering constrains:
-\begin{align}
-\label{eq:mass_diff_1}
-    \Delta m_0 = m_{h_2} - m_{h^\pm},\\ \notag
-    \Delta m_1 = m_{h_2} - m_{h_1},\\ \notag
-    \Delta m_+ = m_{h^\pm} - m_{h_1}
-\end{align}
+\begin{equation}
+    \begin{split}
+        \Delta m_+ &= m_{h^\pm} - m_{h_1},\\
+        \Delta m_1 &= m_{h_2} - m_{h_1},\\
+        \Delta m_3 &= m_{h_2} - m_{h^\pm}
+    \end{split}
+    \label{eq:mass_diff_1}
+\end{equation}
 
 \subsection{Constraints of the i2HDM}
-We have four parameters to scan across: $m_{h_1}$, $\Delta m_0$, $\Delta m_+$, and $\lambda_{345}$ ($\lambda_3 + \lambda_4 + \lambda_5$), with $\lambda_2 = 1$. We can set $\lambda_2 = 1$ because $\lambda_2$ does not affect DM phenomenology at the tree level\footnote{lowest-order approximation in perturbation theory, where Feynman diagrams do not include loops (closed paths)}\cite{Belyaev:2016lok}; it only governs self interaction of the inert Higgs doublet, does not affect physical observables, and the DM candidate $h_1$ is only dependent on $\lambda_3$, $\lambda_4$ and $\lambda_5$ (Equation \ref{eqn:massdmscalar}). 
+A random scan of the parameter space will be done with the software \verb|microOMEGAS|, version 6.1.15. We have four parameters to scan across: $m_{h_1}$, $\Delta m_3$, $\Delta m_+$, and $\lambda_{345}$ ($\lambda_3 + \lambda_4 + \lambda_5$), with $\lambda_2 = 1$. The choice of the parameters is due to how the model is defined.
+
+We can set $\lambda_2 = 1$ because $\lambda_2$ does not affect DM phenomenology at the tree level\footnote{lowest-order approximation in perturbation theory, where Feynman diagrams do not include loops (closed paths)}\cite{Belyaev:2016lok}; it only governs self interaction of the inert Higgs doublet, does not affect physical observables, and the DM candidate $h_1$ is only dependent on $\lambda_3$, $\lambda_4$ and $\lambda_5$ (Equation \ref{eqn:massdmscalar}). 
 
 While $\lambda_2$ does not appear explicitly in the relevant interactions, it indirectly contributes to vacuum stability, ensuring a consistent and physically viable model. Setting $\lambda_2 = 1$ also greatly reduces computing load and time. The masses of $h_2$, $h_\pm$ are then calculated using Eqn. \ref{eq:mass_diff_1}.
-
-This will be a random scan of the parameter space, done with the software \verb|microOMEGAS|, version 6.1.15. Through theory and experiments, there are certain constraints that will have to be applied to the scan such that a proper search can be done.\todo{rewrite this to make this paragraph more clear}
 
 \subsubsection{Constraints from vacuum stability}
 First of all, we need to ensure that the potential is bounded from below to ensure stability \cite{Deshpande:1977rw}. This can be done by imposing limits for $\lambda$ couplings:
@@ -392,6 +401,7 @@ In addition, we can see Eqn. \ref{eqn:R} can be rewritten as:
     \lambda_{345} < 2\left( \frac{m_{h_1}^2}{v^2} + \sqrt{\lambda_1\lambda_2}\right)
 \end{equation}
 This is another one of our constraints on $\lambda_{345}$. To summarise, the bounds on $\lambda_{345}$ are: \todo{check l345 constraints, maybe a little wrong.}
+
 \subsubsection{Constraints from perturbativity and unitarity}
 As shown in \cite{Belyaev:2016lok}, where \cite{Aruhrib2012Inert} was considered, it was shown that $\lambda_{345}$ had to obey these constraints\improvement{add more info, too little!}:
 \begin{equation}
@@ -438,7 +448,7 @@ Via LEP-II experiments, we require the following parameter space to be excluded,
 \end{equation}
 These regions, often referred to as "LEP holes", represent parts of parameter space where the production cross section or decay kinematics result in events that are either undetectable or mimic SM backgrounds closely. Thus, although the masses are small, these points evade exclusion due to limited detection sensitivity. While LEP constraints exclude low-mass and large-splitting scenarios, they are complementary to relic density and direct detection bounds. For example, compressed spectra allowed by LEP may still be ruled out by insufficient annihilation.
 
-From \cite{gfitter2018}, we introduce parameters $S$, $T$ and $U$, the Peskin-Takeuchi parameters \cite{PeskinTakeuchi1990} which describe potential new physics contributions \unsure{what does this even mean}{to electroweak radiative corrections}. For a Higgs boson mass of 125 GeV, the latest values for $S$ and $T$ when setting $U = 0$ are \cite{gfitter2018}:
+From \cite{gfitter2018}, we introduce parameters $S$, $T$ and $U$, the Peskin-Takeuchi parameters \cite{PeskinTakeuchi1990} which describe potential new physics contributions. S reflects isospin-symmetric new physics (extra Higgs doublets), and T is sensitive to mass splittings (known as custodial symmetry violation). For a Higgs boson mass of 125 GeV, the latest values for $S$ and $T$ when setting $U = 0$ are \cite{gfitter2018}:
  \begin{align}
      S|_{U=0} = 0.04 \pm0.08, \qquad
      T|_{U=0} = 0.08\pm0.07
@@ -470,7 +480,7 @@ The S and T parameters are given \cite{Belyaev:2016lok} with the equations:
     \label{eqn:T}
 \end{equation}
 
-Notice that for Eqn. \ref{eqn:S} there is a $\frac{0}{0}$ condition when $m_{h_1} = m_{h_2}$, which leads to instability. This is not required for Eqn. \ref{eqn:T} as the function $f_c(x, y)$ handles the instability. By expressing $S$ as a fraction of 2 functions, $\frac{F(x_1, x_2)}{H(x_1, x_2)}$, and applying L'Hopital's Rule, we require 3rd order derivatives for $F$ and $H$. For the case where $x_1 = x_2$, one obtains the equation (the detailed deriviation will be shown in the \ref{appendix}: 
+Notice that for Eqn. \ref{eqn:S} there is a $\frac{0}{0}$ condition when $m_{h_1} = m_{h_2}$, which leads to instability. This is not required for Eqn. \ref{eqn:T} as the function $f_c(x, y)$ handles the instability. By expressing $S$ as a fraction of 2 functions, $\frac{F(x_1, x_2)}{H(x_1, x_2)}$, and applying L'Hopital's Rule, we require 3rd order derivatives for $F$ and $H$. For the case where $x_1 = x_2$, one obtains the equation:
 \begin{equation}
     \begin{split}
         S =& \frac{120 x^3f_a(x) + 90 x^4f_a'(x)+18x^5f''_a(x)+x^6f'''_a(x)}{48x^2} \\&+\frac{9x^2\left(24xf_b(x) + 36x^2f_b'(x)+12x^3f_b''(x) + x^4f_b'''(x)\right)}{48x^2}
@@ -480,9 +490,9 @@ Notice that for Eqn. \ref{eqn:S} there is a $\frac{0}{0}$ condition when $m_{h_1
 \end{equation}
 
 \subsubsection{Constraints from DM Direct Detection (DD), CMB, Branching Ratio and LZ 2024}
-The constraints applied from DM DD experiments are applied via a p-value. A p-value of 0.1 is used, and values greater than 0.1 are accepted to exclude values given by DD experiments.
+We incorporate constraints from dark matter direct detection experiments using a p-value statistical approach, accepting parameter points with p-values > 0.1. This conservative threshold helps avoid excluding viable regions while accounting for experimental uncertainties.
 
-There also is the chance that the values obtained could have been excluded by the CMB. Energy injections from WIMP annihilation into Standard Model particles during the recombination era could alter the ionization history; this means recombination is delayed and will change how light travels through the universe, and, consequently, the observed CMB anisotropies, which are temperature fluctuations. To comply with measurements from Planck and other CMB experiments, parameter points are checked to ensure that their annihilation cross sections do not lead to excessive energy injection, which would otherwise distort the CMB power spectrum. 
+There also is the chance that the values obtained could have been excluded by the CMB. Energy injections from WIMP annihilation into Standard Model particles during the recombination era could alter the ionization history; this means recombination is delayed and will change how light travels through the universe, and, consequently, the observed CMB anisotropies, which are temperature fluctuations. To comply with measurements from Planck and other CMB experiments, parameter points are checked to ensure that their annihilation cross sections do not lead to excessive energy injection, which would otherwise distort the CMB power spectrum.
 
 The upper limit of the branching ratio for the invisible Higgs at 95\% confidence level from the latest ATLAS search is \cite{ATLAS:2022yvh}:
 \begin{equation}
@@ -501,11 +511,11 @@ DM relic density is the remaining DM from the Big Bang, and there are multiple e
 
 We set the parameter space for the density of the DM relic to ignore the cases of DM overabundance (where $\Omega h^2 > \Omega^{PLANCK}_{DM_{max}}h^2$). DM overabundance is not considered as it leads to inconsistencies with the observed CMB and its constraints \cite{Croon_2024, Zavala_2010}. DM under-abundance is allowed to allow for possible external sources of DM.
 
-For data interpretation purposes, and since \verb|micrOMEGAS| software calculates relic density via tree-level calculation, the theoretical constraints applied to the density of DM relics will be within $\pm10\%$ of the value of $\Omega ^{PLANCK}_{DM} h^2$.
+For data interpretation purposes, and since \verb|micrOMEGAS| software calculates relic density via tree-level calculation, the theoretical constraints applied to the density of DM relics will be within $\pm30\%$ of the value of $\Omega ^{PLANCK}_{DM} h^2$. This wider band helps maintain sufficient parameter points for meaningful statistical analysis while still respecting the observational constraint.
 \begin{equation}
     \begin{split}
-        \Omega_{DM} h^2 &= 0.11933 \pm 10\% \\
-        &\approx 0.119 \pm 0.012
+        \Omega_{DM} h^2 &= 0.11933 \pm 30\% \\
+        &\approx 0.119 \pm 0.036 
     \end{split}
     \label{eqn:DM relic density value}
 \end{equation}
@@ -520,12 +530,12 @@ We apply cuts in the following order:
 \begin{itemize}
     \item Cut 1 - Constraints from vacuum stability (Eqn. \ref{eqn:R}), pertubativity and unitarity (Eqn. \ref{eqn:l345_pert}, \ref{eqn:masses_pert}) 
     \item Cut 2 - Constraints from LEP (Eqn. \ref{LEP-1}, \ref{LEP-2}, \ref{LEP-3}) 
-    \item Cut 3 - Constraints from DM direct detection, 
-    \item Cut 4 - Constraints from CMB data
-    \item Cut 5 - Constraint from branching ratio \ref{eqn:branching_ratio}.
-    \item Cut 6 - Constraints on spin-independent WIMP-nucleon cross section, based on latest 2024 results from LZ \cite{aalbers2024darkmattersearchresults}
+    \item Cut 3 - Constraint from branching ratio \ref{eqn:branching_ratio}
+    \item Cut 4 - Constraints from DM direct detection
+    \item Cut 5 - Constraints on spin-independent WIMP-nucleon cross section, based on latest 2024 results from LZ \cite{aalbers2024darkmattersearchresults}
+    \item Cut 6 - Constraints from CMB data
     \item Cut 7 - EWPT constraints (Eqn. \ref{eqn:S}, \ref{eqn:T})
-    \item Cut 8 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value}) - also adding an option for a "strict" bound - a $\pm 10 \%$ bound on the value of relic density.
+    \item Cut 8 - Constraint from the experimental value of DM relic density (Eqn. \ref{eqn:DM relic density value})
 \end{itemize}
 These cuts are strategically applied in this manner to clearly show the effects on the parameter space from each cut. Variables are displayed in logarithmic scale for better visualisation, except for $\lambda_{345}$ that has negative bounds discussed in Eqn. \ref{eqn:l345_pert}.
 \newpage
@@ -540,10 +550,10 @@ First, one can consider the relationship between the DM particle masses, $\mhone
 \end{figure}
 This plot clearly shows the effect each constraint has on the dataset:
 \begin{itemize}
-    \item In \ref{fig:MD2_against_MD1}, across the constraints, there is a region where viable masses of $\mhone$ and $\mhtwo$ lie close to the diagonal line $\mhone = \mhtwo$. This is known as the \textbf{co-annihilation region}, where the mass splitting $\Delta m_1 $ is small, typically $\Delta m_1 \leq 10 \gev$. In this region, the heavier inert scalar $h_2$ remains sufficiently populated during freeze-out, allowing additional processes such as $h_1 h_2 \rightarrow \text{SM particles}$ and $h_2 h_2 \rightarrow \text{SM particles}$ to contribute to the total annihilation cross section. These co-annihilation processes enhance the depletion of $h_1$, leading to a reduction in the relic dark matter abundance. The presence of this narrow diagonal band in the $m_{h_1}$–$m_{h_2}$ plane is therefore crucial for satisfying the observed relic density in parts of the parameter space where $h_1 h_1$ annihilation alone would be insufficient.
+    \item In Fig.  \ref{fig:MD2_against_MD1}, across the constraints, there is a region where viable masses of $\mhone$ and $\mhtwo$ lie close to the diagonal line $\mhone = \mhtwo$. This is known as the \textbf{co-annihilation region}, where the mass splitting $\Delta m_1 $ is small, typically $\Delta m_1 \leq 10 \gev$. In this region, the heavier inert scalar $h_2$ remains sufficiently populated during freeze-out, allowing additional processes such as $h_1 h_2 \rightarrow \text{SM particles}$ and $h_2 h_2 \rightarrow \text{SM particles}$ to contribute to the total annihilation cross section. These co-annihilation processes enhance the depletion of $h_1$, leading to a reduction in the relic dark matter abundance. The presence of this narrow diagonal band in the $m_{h_1}$–$m_{h_2}$ plane is therefore crucial for satisfying the observed relic density in parts of the parameter space where $h_1 h_1$ annihilation alone would be insufficient.
     \item After applying LEP constraints, the DM region is significantly reduced to mast $\mhtwo > 10^2 \gev$ - excluding the "tail" around $\mhone ,\mhtwo = 10^2 \gev$. 
-    \item After applying CMB constraints, the region removed has to do with \todo{discuss what CMB does to the data, the large gap in between, recombination, etc. should be able to find this written down somewhere}\todo{recombination time!}
     \item Effects of branching ratio limits and LZ2024 are not so obvious in this plot, but will be obvious in other plots.
+    \item After applying CMB constraints, the region removed has to do with \todo{discuss what CMB does to the data, the large gap in between, recombination, etc. should be able to find this written down somewhere}\todo{recombination time!}
     \item EWPT constraints have reduced large set of points to the left of $\mhone \approx50 \gev$, due to combinations of $\mhone$ and $\mhtwo$.
     \item There are 2 mass regions in the final plot where all constraints are applied - a "high mass" region, and a low mass region.
     \begin{itemize}
@@ -552,41 +562,37 @@ This plot clearly shows the effect each constraint has on the dataset:
     \end{itemize}
 \end{itemize}
 
-Another important plot one can consider is the plot of $\lambda_{345}$ against $\mhone$.  
+Another important plot one can consider is the plot of $\lambda_{345}$ against $\mhone$ in Fig. \ref{fig:l345_md1}. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{big_plots_(low_dpi)/l345_against_MD1_Omegah2.pdf}
     \caption{Effect on cuts on plots of $\lambda_{345}$ against $\mhone$}
     \label{fig:l345_md1}
 \end{figure}
-\begin{itemize}
-    \item Similarly, the region of the Higgs portal is also very obvious here - two regions of masses, with one low region with $ \leq \lambda_{345} \leq $ at $\mhone \approx \frac{m_H}{2}$. 
-    \item The effects of LZ2024 and 
-\end{itemize}
-
+Here, the effects of LZ 2024 are more obvious. 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.49\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{single_plots/l345_against_MD1_Omegah2.pdf}
         \caption{Region of parameter space allowed in the $(\mhone,\lambda_{345})$ plane.}
         \label{fig:MD1_l345_1}
     \end{subfigure}
     \\
-    \begin{subfigure}[b]{0.49\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{single_plots_(small_range)/l345_against_MD1_Omegah2.pdf}
         \caption{Zoomed in Higgs resonance region.}
         \label{fig:label}
     \end{subfigure}
         \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
+    \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{single_plots_(big_range)/l345_against_MD1_Omegah2.pdf}
         \caption{Zoomed in high mass region.}
-        \label{fig:label}
+        \label{fig:l345_md1_zoomed}
     \end{subfigure}
-    \caption{}
+    \caption{Zoomed in regions of $(\mhone,\lambda_{345})$}
 \end{figure}
 
 Considering other plots, for example - $\mhp$ against $\mhone$; after applying all constraints, we end up with the following parameter space. For $\lambda_2 = 1$:
@@ -754,7 +760,7 @@ Keeping $\alpha$ the same, one can derive a relationship for the new limit, $\si
 
 Referring to Table V, in Appendix F of \cite{Belyaev_2022}, one can find limit of the cross sections at different combinations of mass using new values of the collider luminosity. The value of $\mathcal{L}_0$ used is $39.5 \text{ fb} ^{-1}$, according to data from Table I of the same cited paper. The new luminosity value will be the LHC's predicted luminosity of $3000 \text{ fb} ^{-1}$, an ambitious number.
 
-Using \verb|CalcHEP| batch process, it is easy to calculate the cross sections of DM process. Defining processes $pp\rightarrow h_1h_2$ and $pp \rightarrow h_+h_-$, which are the processes in Fig. \ref{fig:feynmann_diag}. The same values of DM parameters will be used as in \cite{Belyaev_2022}, where values of $m_{h_1}$ and $\Delta m_+$ are changed for each value of $\Delta m_0$, where $\Delta m_0 = 1, \text{ }10,\text{ } 100$. It is then possible to see excluded values of cross sections, and calculate the exclusion values.
+Using \verb|CalcHEP| batch process, it is easy to calculate the cross sections of DM process. Defining processes $pp\rightarrow h_1h_2$ and $pp \rightarrow h_+h_-$, which are the processes in Fig. \ref{fig:feynmann_diag}. The same values of DM parameters will be used as in \cite{Belyaev_2022}, where values of $m_{h_1}$ and $\Delta m_+$ are changed for each value of $\Delta m_3$, where $\Delta m_3 = 1, \text{ }10,\text{ } 100$. It is then possible to see excluded values of cross sections, and calculate the exclusion values.
 
 \verb|CalcHEP| batch process only gives the total production cross section; i.e. $\sigma(pp\rightarrow h_1 h_2)$. The branching ratios of the decay processes are calculated using the \verb|getBr| function and scanning over specific masses. To get the total cross section for a certain combination of masses:
 \begin{equation}
@@ -929,7 +935,4 @@ I would like to express my sincere gratitude to my supervisor, Prof. Alexander B
 \bibliographystyle{unsrt}
 \bibliography{references} 
 
-\appendix
-\section{Deriviation of Equations}
-\subsection{Eqn. \ref{eqn:S_hopital}}
 \end{document}
