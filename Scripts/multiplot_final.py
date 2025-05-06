@@ -21,23 +21,18 @@ params_dict = {
     'l345' : r'$\lambda_{345}$',
     'DM2' : r'$\Delta m_1$', #mass diff mh2 - mh1
     'DMP' : r'$\Delta m_+$', #mass diff mh+ - mh2
-<<<<<<< HEAD
     'DM3' : r'$\Delta m_3$' #mass diff mh2 - mh+
-=======
-    'DM3' : r'$\Delta m_+$' #mass diff mh2 - mh+
->>>>>>> 744fba5 (batch_file reorganise, new dataset)
 }
 
 cuts_dict = {
     'cut1' : '+ Theory Constraints',
     'cut2' : '+ LEP',
-    'cut3' : '+ DM Direct Detection',
-    'cut4' : '+ CMB',
-    'cut5' : r'+ $Br(H \rightarrow \mathrm{inv}) < 0.145$',
-    'cut6' : '+ LZ 2024',
+    'cut3' : r'+ $Br(H \rightarrow \mathrm{inv}) < 0.145$',
+    'cut4' : '+ Direct Detection',
+    'cut5' : '+ LZ 2024',
+    'cut6' : '+ CMB',
     'cut7' : '+ EWPT',
     'cut8' : '+ Relic Density'
-    
 }
 
 def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
@@ -59,6 +54,8 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
         # Apply cumulative cuts
         filtered_df = cuts_func(df.copy(), **cut_kwargs)
 
+        scale_df = cuts_func(df.copy(), cut1 = True)
+
         if xlog:
             ax.set_xscale('log')
             
@@ -76,13 +73,13 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
                 filtered_df[xvar], filtered_df[yvar],
                 c=filtered_df[scalevar],
                 s=2, cmap='plasma',
-                norm=LogNorm(vmin=1e-5, vmax=filtered_df[scalevar].max()),
+                norm=LogNorm(vmin=1e-5, vmax=scale_df[scalevar].max()),
                 rasterized=True
             )
         else:
             sc = ax.scatter(filtered_df[xvar], filtered_df[yvar], color='red', s=1)
 
-        ax.set_title(cut_label, fontsize=25)
+        ax.set_title(cut_label, fontsize=20)
         ax.grid(True, linestyle='--', alpha=0.5)
         if i >= 4:
             ax.set_xlabel(label1, fontsize=25)
@@ -94,35 +91,35 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
             ax.set_ylabel(label2, fontsize=25)
         ax.tick_params(axis='both', labelsize=20)
         
-        """
-        if i == 0:
-            ydata = filtered_df[yvar]
-            ydata = ydata[np.isfinite(ydata)]  # Clean NaNs and infs
-            if ylog and yvar != 'l345':
-                ydata = ydata[ydata > 0]  # Remove zeros or negatives for log scale
-            ylims_row1 = (ydata.min(), ydata.max())
-            print("Captured manual y-limits for row 2:", ylims_row2)
-        # Capture y-limits for the second row
-        
-        if i == 4:
-            ydata = filtered_df[yvar]
-            ydata = ydata[np.isfinite(ydata)]  # Clean NaNs and infs
-            if ylog and yvar != 'l345':
-                ydata = ydata[ydata > 0]  # Remove zeros or negatives for log scale
-            ylims_row2 = (ydata.min(), ydata.max())
-            print("Captured manual y-limits for row 2:", ylims_row2)
-        
-        if  1<= i <= 3:
-            # Apply captured y-limits to the second row plots
-            if ylims_row2:
-                axes[i].set_ylim(ylims_row1)
-        
-        if 5 <= i <= 7:
-            # Apply captured y-limits to the second row plots
-            if ylims_row2:
-                axes[i].set_ylim(ylims_row2)
-        
-        """
+        if yvar == 'l345':
+            if i == 0:
+                ydata = filtered_df[yvar]
+                ydata = ydata[np.isfinite(ydata)]  # Clean NaNs and infs
+                if ylog and yvar != 'l345':
+                    ydata = ydata[ydata > 0]  # Remove zeros or negatives for log scale
+                ylims_row1 = (ydata.min(), ydata.max())
+                print("Captured manual y-limits for row 2:", ylims_row2)
+            # Capture y-limits for the second row
+            
+            if i == 3:
+                ydata = filtered_df[yvar]
+                ydata = ydata[np.isfinite(ydata)]  # Clean NaNs and infs
+                if ylog and yvar != 'l345':
+                    ydata = ydata[ydata > 0]  # Remove zeros or negatives for log scale
+                ylims_row2 = (ydata.min(), ydata.max())
+                print("Captured manual y-limits for row 2:", ylims_row2)
+            
+            if  1<= i <= 3:
+                # Apply captured y-limits to the second row plots
+                if ylims_row2:
+                    axes[i].set_ylim(ylims_row1)
+            
+            if 5 <= i <= 7:
+                # Apply captured y-limits to the second row plots
+                if ylims_row2:
+                    axes[i].set_ylim(ylims_row2)
+            
+
     # Single colorbar on the far right (works with constrained_layout)
     if scale:
         cbar = fig.colorbar(sc, ax=axes.ravel().tolist(), location='right')
@@ -132,17 +129,17 @@ def plot_cuts_grid(df, xvar, yvar, scalevar, scale=True, xlog=True, ylog=True,
     # Title for the full figure
     fig.suptitle(f'Cumulative Cuts on {label2} against {label1}, scaled by {label3}', fontsize=28)
     
-    fig.savefig(f"big_plots/{yvar}_against_{xvar}_{scalevar}.pdf", bbox_inches='tight', dpi=150)
+    fig.savefig(f"big_plots_(low_dpi)/{yvar}_against_{xvar}_{scalevar}.pdf", bbox_inches='tight', dpi=100)
     print(f'figure {yvar}_against_{xvar} saved')        
     #plt.close('all')           
-    #plt.show()
  
-#plot_cuts_grid(df, xvar='MD1', yvar='l345', scalevar= 'Omegah2', ylog =  False)
+#plot_cuts_grid(df, xvar='MD1', yvar='MD2', scalevar= 'Omegah2')
 
 elements = ['MD1', 'MD2', 'MDP', 'DMP', 'DM2', 'DM3', 'l345']
 pairs = [list(p) for p in itertools.permutations(elements, 2)]
 
 for x, y in pairs:
     plot_cuts_grid(df, xvar=x, yvar=y, scalevar= 'Omegah2')
+    plt.close('all')
 
 #plot_cuts_grid(df, xvar='MD1', yvar='l345',ylog = False, scalevar= 'Omegah2')

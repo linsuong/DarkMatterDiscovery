@@ -38,14 +38,6 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
     dataframe['x1'] = dataframe['MD1']/dataframe['MDP']
     dataframe['x2'] = dataframe['MD2']/dataframe['MDP']
     
-    cutZero = dataframe['MD1'] < 0
-    cutOne = dataframe['MD2'] < 0
-    cutTwo = dataframe['MDP'] < 0
-    
-    initialCut = cutZero & cutOne
-    dataframeTest = dataframe[initialCut]
-    print(dataframeTest)
-    
     # Constants
     alpha = 1 / 137  # Fine structure constant
     nu = 246  # VEV in GeV
@@ -175,15 +167,9 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
         cutMDP = (dataframe['MDP'] > 70)  # Redundant if already in cutLEP_universal
         
     if cut3:
-        cutDD = dataframe['PvalDD'] > 0.1
-
-    if cut4:
-        cutCMB = dataframe['CMB_ID'] < 1
-    
-    if cut5:
         cutBr = dataframe['brH_DMDM'] < 0.145
         
-    if cut6:
+    if cut5:
         if 'independent_variables' in LZ:
             for var in LZ['independent_variables']:
                 if var['header']['name'] == 'mass':
@@ -197,7 +183,13 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
                     y_data[name] = y_values
                         
         cutLZ=(dataframe['protonSI'] < np.interp(dataframe['MD1'], x_values, y_data["limit"]))    
-                     
+    
+    if cut4:
+        cutDD = dataframe['PvalDD'] > 0.1
+
+    if cut6:
+        cutCMB = dataframe['CMB_ID'] < 1
+                         
     if cut7:
         #cutT = (dataframe['T'] > (0.1 - 0.07)) & (dataframe['T'] < (0.17))
         #cutS = (dataframe['S'] > (-0.03)) & (dataframe ['S'] < (0.06 + 0.09))
@@ -216,7 +208,7 @@ def cuts(dataframe, cut1=False, cut2=False, cut3=False, cut8_strict = False, cut
     # Combine all cuts
     cut_tot = cutMD1 & cutl345 & cutMass & cutLEP & cutMDP
     cut_tot &= cutT & cutS
-    cut_tot &=  cutOM & cutDD & cutCMB & cutBr & cutLZ 
+    cut_tot &= cutOM & cutDD & cutCMB & cutBr & cutLZ 
     #& cutT & cutS
     # Apply the combined cuts
     dataframe_cut = dataframe[cut_tot]
